@@ -9,6 +9,7 @@ Requires these Python modules (use pip to install)...
 - pandas
 - xlrd
 - unidecode
+- pyyaml
 
 To run the script use the following comand...
 
