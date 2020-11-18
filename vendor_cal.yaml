@@ -1,0 +1,18 @@
+aci:  {main: "JOBBER",      P1: 0,   P2: 0.85,  P3: 0,   P4: 0.85, P5: 0,    P6: 0,   NTE: 0}
+ard:  {main: "MSRP/List",   P1: 0,   P2: 0.85,  P3: 0,   P4: 0.75, P5: 0.65, P6: 0,   NTE: 0}
+adu:  {main: "MSRP/List",   P1: 0,   P2: 0,     P3: 0,   P4: 0,    P5: 0,    P6: 0,   NTE: 0}
+curt: {main: "COST",        P1: 0,   P2: 0.66,  P3: 0,   P4: 0.8,  P5: 0.7,  P6: 0.8, NTE: 0}
+fia:  {main: "JOBBER",      P1: 0,   P2: 0.8,   P3: 0,   P4: 0.85, P5: 0,    P6: 0,   NTE: 0}
+gor:  {main: "COST",        P1: 0,   P2: 0.644, P3: 0,   P4: 0.85, P5: 0,    P6: 0,   NTE: 0}
+gorm: {main: "COST",        P1: 0,   P2: 0.644, P3: 0,   P4: 0.85, P5: 0,    P6: 0,   NTE: 0}
+knn:  {main: "JOBBER",      P1: 0,   P2: 0.85,  P3: 0,   P4: 0.8,  P5: 0,    P6: 0,   NTE: 0}
+kso:  {main: "JOBBER",      P1: 0,   P2: 0,     P3: 0,   P4: 0.45, P5: 0.63, P6: 0,   NTE: 0}
+par:  {main: "Jobber",      P1: 0.6, P2: 0,     P3: 0,   P4: 0.85, P5: 0,    P6: 0,   NTE: 0}
+rgr:  {main: "JOBBER",      P1: 0,   P2: 1.1,   P3: 0,   P4: 0.67, P5: 0,    P6: 0,   NTE: 0}
+rig:  {main: "COST",        P1: 0,   P2: 0,     P3: 0,   P4: 0.75, P5: 0,    P6: 0,   NTE: 0}
+rsp:  {main: "AAM COST",    P1: 0,   P2: 0,     P3: 0,   P4: 0.75, P5: 0,    P6: 0,   NTE: 0}
+tech: {main: "TTK",         P1: 0,   P2: 0.7,   P3: 0,   P4: 0.75, P5: 0,    P6: 0,   NTE: 1}
+tim:  {main: "US $    MAP", P1: 0,   P2: 0.75,  P3: 0,   P4: 0.8,  P5: 0,    P6: 0,   NTE: 0}
+warn: {main: "JOBBER",      P1: 0,   P2: 0.9,   P3: 0,   P4: 0.85, P5: 0,    P6: 0,   NTE: 0}
+wes:  {main: "JOBBER",      P1: 0,   P2: 0.75,  P3: 0,   P4: 0.8,  P5: 0,    P6: 0,   NTE: 0}
+yak:  {main: "MAP",         P1: 0,   P2: 0,     P3: 0.75, P4: 0.75,P5: 0.9,  P6: 0,   NTE: 0}
