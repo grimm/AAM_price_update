@@ -1,4 +1,4 @@
-# python-xlsx-processing
+# AAM Vendor Price Update
 
 Set the python path so that it can find the import files in local directory...
 
