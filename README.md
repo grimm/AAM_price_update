@@ -1,4 +1,5 @@
 # AAM Vendor Price Update
+This script takes a AAM vendor (and other vendors) Excel file and process/converts it to a CSV (pipe seperated) file that can be ingested into the FACS system.  The initial instructions here are for setting up the Python environment.
 
 Set the python path so that it can find the import files in local directory...
 
