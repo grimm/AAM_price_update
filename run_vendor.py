@@ -50,6 +50,11 @@ def vendor(vendor_pandas, vendor_cal, product_groups, vendor_name, vendor):
 	if vendor_name == "knn":
 	    new_pandas = vendor.do_knn(vendor_pandas, vendor_cal["knn"])
 
+	if vendor_name == "piaa":
+	    new_pandas = vendor.do_piaa(vendor_pandas, product_groups["piaa"], vendor_cal["piaa"])
+	    titan_columns = ["NewPart", "Part Number", "Desc1", "Desc2", "P1", "P2", "P3",
+	                     "P4", "P5", "Length", "Width", "Height", "Weight", "Group"]
+
 	if vendor_name == "warn":
 	    new_pandas = vendor.do_warn(vendor_pandas, product_groups["warn"], vendor_cal["warn"])
 	    titan_columns = ["NewPart", "Part Number", "Desc1", "Desc2", "P1", "P2", "P3", "P4",

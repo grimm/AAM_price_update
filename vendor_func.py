@@ -25,6 +25,8 @@ def vendor_func(vendor_name):
 	    import vendor.rsp as vendor
 	elif vendor_name == "kso":
 	    import vendor.kso as vendor
+	elif vendor_name == "piaa":
+	    import vendor.piaa as vendor
 	elif vendor_name == "par":
 	    import vendor.par as vendor
 	elif vendor_name == "rig":

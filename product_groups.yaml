@@ -9,6 +9,7 @@ aci:
 
 tech:
   "Underseat Storage System": 0
+  "Scratch Protection": 0
   "Front&Rear Side Window Deflectors": 1
   "Rear FloorLiner": 2
   "Rear FloorLiner for vinyl floors": 2
@@ -22,6 +23,128 @@ tech:
   "LampGard": 6
   "SunShade": 8
   "SunShade Full Vehicle Kit": 8
+  "No Drill MudFlaps": 30
+  "No Drill Mudflaps": 30
+
+piaa:
+  "2000 Series Lmp Kit": 0
+  "2100 Ser Single Lmp": 0
+  "2100 Series Lmp Kit": 0
+  "LP270 Fog Light Single": 0
+  "LP270 LED Driv Lamp": 0
+  "LP270 Fog Light Kit": 0
+  "LP270 Driving Light Kit": 0
+  "40 Series Single Lmp": 0
+  "40 Series  Light Kit": 0
+  "520 Series Light Single": 0
+  "520 Series Light Kit": 0
+  "LP530  Fog Lamp": 0
+  "LP530 Driving Lamp": 0
+  "Jeep Wrangler VSK ": 0
+  "LP530 LED Light Kit": 0
+  "LP550  Lamp": 0
+  "LP550 Light Kit": 0
+  "LP560 Lamp": 0
+  "LP560 Light Kit": 0
+  "LP570 Lamp": 0
+  "LP570 Light Kit": 0
+  "RF Series 6\" Light Bar ": 0
+  "RF Series 10\" Light Bar ": 0
+  "RF Series 18\"  Light Bar ": 0
+  "RF Series Light Bar Kit": 0
+  "RF Cube Light Single": 0
+  "RF Series Light Bar": 0
+  "RF Cube Light Kit": 0
+  "RF Series Light Bar Kit": 0
+  " Xtreme White Plus Bulb": 0
+  "Xtreme White Plus Pack": 0
+  "Clear Halogen, Single Pack": 0
+  "Halogen Bulb, Single Pack": 0
+  "Clear Halogen XTRA Bulb": 0
+  "Illuminated Switch": 0
+  "LED Light Display": 0
+  "Pillar Mount Bracket Kit": 0
+  "Mounting Bracket Kit": 0
+  "LED Working Display": 0
+  "Promo Pack": 0
+  "Bulb Promo Pack": 0
+  "Light Promo Pack": 0
+  "LED Working Display": 0
+  "RF3 LED Display ": 0
+  "RF6 LED Display ": 0
+  "RF10 LED Display Only": 0
+  "2000 Series  Lens": 0
+  "2101 Series Lens": 0
+  "2100 Series Lens": 0
+  "Relay ": 0
+  "40 Series Lens": 0
+  "Wiring Harness ": 0
+  "523 Series Lens": 0
+  "521 Series Lens": 0
+  "522 Series Lens": 0
+  "520 Series Lens": 0
+  "540 Series Lens": 0
+  "40 Series Cover": 0
+  "520 Series Guard ": 0
+  "510 Series Cover ": 0
+  "Black Mesh Guard ": 0
+  "540 Series Guard ": 0
+  "Black Lens Guard ": 0
+  "White Cover": 0
+  "Horn Kit": 0
+  "Wiper Display": 0
+  "Wiper Promo Pack ": 0
+  "Promo Material ": 0
+  "Wiper Promo Pack ": 0
+  "Window Prep Pad": 0
+  "Silicone Wiper Refill": 50
+  "Super Silicone Wiper": 50
+  "Aero Vogue Blade": 0
+  " Si-Tech Wiper Blade": 0
+  "LP270  Light Single": 0
+  "LP530 Light Single, ": 0
+  "LP530 Light Single": 0
+  "RF Series LED Light Bar": 0
+  "Solar Yellow Single": 0
+  "Xtreme White Hybrid ": 0
+  "1100P Single Light": 0
+  "Quad Series LED Light Bar ": 0
+  "Quad Ser LED Cube Lamp": 0
+  "RF Series LED Light Bar ": 0
+  "Platinum LED Bulb": 0
+  "G3 LED Bulb - Single Pack": 0
+  "LP270 Light Kit": 0
+  "Jeep Wrangler VSK ": 0
+  "LP530 LED Light Kit": 0
+  "RF Series Light Bar Kit": 0
+  "Solar Yellow Pack ": 0
+  "Xtreme White Hybrid ": 0
+  "1100P Light Kit": 0
+  "Quad Series Light Bar Kit ": 0
+  "Quad Ser Cube Light Kit": 0
+  "Platinum LED Bulb Pack ": 0
+  "G3 LED Bulbs - Twin Pack": 0
+  "Wedge BulbPack": 0
+  "PIAA 6\" S-RF KIT": 0
+  "PIAA 9\" S-RF KIT": 0
+  "PIAA 20\" S-RF KIT": 0
+  "PIAA 30\" S-RF KIT": 0
+  "PIAA 40\" S-RF KIT": 0
+  "PIAA 2000 LED Lights ": 0
+  "PIAA Edge 4” LED Cube Kit ": 0
+  "PIAA All Weather LED Bulb ": 0
+  "PIAA 2000 LED Lights ": 0
+  "PIAA 6\" S-RF ": 0
+  "PIAA 9\" S-RF": 0
+  "PIAA 20\" S-RF": 0
+  "PIAA 30\" S-RF ": 0
+  "PIAA 40\" S-RF ": 0
+  "PIAA Edge 4” LED  ": 0
+  "PIAA Wiring Harness": 0
+  "PIAA Matte Black  Cover": 0
+  "PIAA Amber Covers": 0
+  "PIAA Amber Cover": 0
+  "Wiring Harness": 0
 
 warn:
   "120V MOTOR": 0

@@ -1,4 +1,3 @@
-#! /usr/bin/python
 # 
 # parts-list.py
 #
@@ -25,7 +24,7 @@ import run_vendor as run
 
 # Define the supported vendors and load yaml calculation and groups files
 Vendors = ["tech", "ard", "tim", "curt", "fia", "gor", "knn", "warn", "rsp", "kso", "par",
-           "rig", "gorm", "yak", "aci", "adu"]
+           "rig", "gorm", "yak", "aci", "adu", "piaa"]
 vendor_cal = {}
 product_groups = {}
 
@@ -36,7 +35,7 @@ epilog = epilog + ", ".join(Vendors)
 with open('vendor_cal.yaml') as f:
     vendor_cal = yaml.load(f, Loader=yaml.FullLoader)
 
-with open('product_groups.yaml') as f:
+with open('product_groups.yaml', encoding='utf8') as f:
     product_groups = yaml.load(f, Loader=yaml.FullLoader)
 
 # Parse command line options
@@ -90,7 +89,7 @@ new_pandas, titan_columns, nelson_columns = run.vendor(vendor_pandas, vendor_cal
 #         print(col)
 
 # Write CSV file
-new_pandas.to_csv(titan_csv_file, columns=titan_columns, header=False, index=False, float_format="%.2f", sep="|", quoting=csv.QUOTE_NONE)
+new_pandas.to_csv(titan_csv_file, columns=titan_columns, header=False, index=False, float_format="%.2f", sep="|", quoting=csv.QUOTE_NONE, escapechar='\\')
 print("Saved - " + titan_csv_file)
 
 if vendor_cal[args.vendor]["NTE"]:
