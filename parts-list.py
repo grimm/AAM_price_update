@@ -23,8 +23,8 @@ import vendor_func as ven
 import run_vendor as run
 
 # Define the supported vendors and load yaml calculation and groups files
-Vendors = ["tech", "ard", "tim", "curt", "fia", "gor", "knn", "warn", "rsp", "kso", "par",
-           "rig", "gorm", "yak", "aci", "adu", "piaa"]
+Vendors = ["aci", "adu", "ard", "curt", "fia", "gor", "gorm", "knn", "kso", 
+           "par", "piaa", "tech", "tim", "rig", "rsp", "warn", "yak"]
 vendor_cal = {}
 product_groups = {}
 
