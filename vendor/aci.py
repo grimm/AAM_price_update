@@ -38,11 +38,13 @@ def do_aci(vendor_pandas, prod_group, tech_cal):
     vendor_pandas["P3"] = vendor_pandas["P3"].replace("-", "0").astype(float)
     vendor_pandas["P3"] = vendor_pandas["P3"].astype(float)
 
-    vendor_pandas["P5"] = vendor_pandas["Customer Price"]
-
-    vendor_pandas["Customer Price"] = vendor_pandas["Customer Price"].replace("$", "").replace(",", "")
-    vendor_pandas["Customer Price"] = vendor_pandas["Customer Price"].replace("-", "0")
-    vendor_pandas["Customer Price"] = vendor_pandas["Customer Price"].astype(float)
+    if not "Customer Price" in vendor_pandas.columns:
+        vendor_pandas["P5"] = vendor_pandas["P3"] * 0.7 * 0.95 * 0.95
+    else:
+        vendor_pandas["Customer Price"] = vendor_pandas["Customer Price"].replace("$", "").replace(",", "")
+        vendor_pandas["Customer Price"] = vendor_pandas["Customer Price"].replace("-", "0")
+        vendor_pandas["Customer Price"] = vendor_pandas["Customer Price"].astype(float)
+        vendor_pandas["P5"] = vendor_pandas["Customer Price"]
 
     vendor_pandas["MAP"] = vendor_pandas["MAP"].replace("-", "0").astype(float)
     vendor_pandas["P2"] = vendor_pandas["P3"].astype(float)
@@ -63,7 +65,10 @@ def do_aci(vendor_pandas, prod_group, tech_cal):
             vendor_pandas["P2"][index] = vendor_pandas["P1"][index]
             vendor_pandas["P3"][index] = vendor_pandas["P1"][index]
             vendor_pandas["P4"][index] = vendor_pandas["P1"][index]
-            vendor_pandas["P5"][index] = vendor_pandas["Customer Price"][index]
+            if not "Customer Price" in vendor_pandas.columns:
+                vendor_pandas["P5"][index] = vendor_pandas["P3"][index] * 0.7 * 0.95 * 0.95
+            else:
+                vendor_pandas["P5"][index] = vendor_pandas["Customer Price"][index]
 
     # Set dimensions and status
     vendor_pandas["Weight"] = vendor_pandas["Ship Weight"].replace("-", "0")
