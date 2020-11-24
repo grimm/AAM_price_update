@@ -24,7 +24,8 @@ import run_vendor as run
 
 # Define the supported vendors and load yaml calculation and groups files
 Vendors = ["aci", "adu", "ard", "curt", "fia", "gor", "gorm", "knn", "kso", 
-           "par", "piaa", "tech", "tim", "rig", "rsp", "warn", "yak"]
+           "par", "piaa", "protec", "tech", "tim", "rig", "rsp", "warn",
+           "yak"]
 vendor_cal = {}
 product_groups = {}
 
@@ -76,7 +77,10 @@ elif args.vendor == "gorm":
 elif args.vendor == "kso":
     skiprow = 17
 
-vendor_pandas = pd.read_excel(args.file, keep_default_na=False, skiprows=skiprow)
+if args.vendor == "protec":
+    vendor_pandas = pd.read_excel(args.file, keep_default_na=False, skiprows=skiprow, sheet_name="price list")
+else:
+    vendor_pandas = pd.read_excel(args.file, keep_default_na=False, skiprows=skiprow)
 
 # Create CSV file dictionary
 # --------------------------
