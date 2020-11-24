@@ -19,6 +19,8 @@ def vendor_func(vendor_name):
 	    import vendor.gor as vendor
 	elif vendor_name == "knn":
 	    import vendor.knn as vendor
+	elif vendor_name == "nfa":
+	    import vendor.nfa as vendor
 	elif vendor_name == "warn":
 	    import vendor.warn as vendor
 	elif vendor_name == "rsp":
