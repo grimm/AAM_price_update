@@ -13,11 +13,11 @@ Requires these Python modules (use pip to install)...
 
 To run the script use the following comand...
 
-`python parts-list.py {name of price Excel file} {vendor name}`
+`py parts-list.py {name of price Excel file} {vendor name}`
 
 To see a list of supported vendor namess, use the following command...
 
-`python parts-list.py -h`
+`py parts-list.py -h`
 
 And the script should output something similar to this...
 
