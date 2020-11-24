@@ -21,6 +21,7 @@ import csv
 import parts_functions as func
 import vendor_func as ven
 import run_vendor as run
+import vendor_sheet as sheet
 
 # Define the supported vendors and load yaml calculation and groups files
 Vendors = ["aci", "adu", "ard", "curt", "fia", "gor", "gorm", "knn", "kso", 
@@ -67,20 +68,12 @@ titan_csv_file = vname + "_UPDATE_TTE_" + date + ".csv"
 nelson_csv_file = vname + "_UPDATE_NTE_" + date + ".csv"
 
 # Load vendor file using pandas
-skiprow = 1
-if (args.vendor == "tech") | (args.vendor == "tim") | (args.vendor == "yak") | (args.vendor == "aci"):
-    skiprow = 0
-elif args.vendor == "adu":
-    skiprow = 2
-elif args.vendor == "gorm":
-    skiprow = 5
-elif args.vendor == "kso":
-    skiprow = 17
+skiprow, sheet_name = sheet.set_excel(args.vendor)
 
-if args.vendor == "protec":
-    vendor_pandas = pd.read_excel(args.file, keep_default_na=False, skiprows=skiprow, sheet_name="price list")
-else:
+if sheet_name == "":
     vendor_pandas = pd.read_excel(args.file, keep_default_na=False, skiprows=skiprow)
+else:
+    vendor_pandas = pd.read_excel(args.file, keep_default_na=False, skiprows=skiprow, sheet_name=sheet_name)
 
 # Create CSV file dictionary
 # --------------------------
