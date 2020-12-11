@@ -18,6 +18,12 @@ def vendor(vendor_pandas, vendor_cal, product_groups, vendor_name, vendor):
 	if vendor_name == "ard":
 	    new_pandas = vendor.do_ard(vendor_pandas, vendor_cal["ard"])
 
+	if vendor_name == "bkr":
+	    new_pandas = vendor.do_bkr(vendor_pandas, vendor_cal["bkr"])
+	    titan_columns = ["NewPart", "Part Number", "Desc1", "Desc2", "P1", "P2", "P3", "P4",
+                     "P5", "Length", "Width", "Height", "Weight"]
+	    nelson_columns = titan_columns
+
 	if vendor_name == "tech":
 	    new_pandas = vendor.do_tech(vendor_pandas, product_groups, vendor_cal["tech"])
 	    #                 new_part   part     descriptions     P1     P2      P3      P4    P5
@@ -46,6 +52,9 @@ def vendor(vendor_pandas, vendor_cal, product_groups, vendor_name, vendor):
 	    titan_columns = ["NewPart", "Part Number", "Desc1", "Desc2", "P1", "P2", "P3", "P4",
                      "P5", "Length", "Width", "Height", "Weight"]
 	    nelson_columns = titan_columns
+
+	if vendor_name == "knk":
+	    new_pandas = vendor.do_knk(vendor_pandas, vendor_cal["knk"])
 
 	if vendor_name == "knn":
 	    new_pandas = vendor.do_knn(vendor_pandas, vendor_cal["knn"])

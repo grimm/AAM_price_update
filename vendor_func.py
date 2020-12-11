@@ -9,6 +9,8 @@ def vendor_func(vendor_name):
 	    import vendor.ard as vendor
 	elif vendor_name == "adu":
 	    import vendor.adu as vendor
+	elif vendor_name == "bkr":
+	    import vendor.bkr as vendor
 	elif vendor_name == "tim":
 	    import vendor.tim as vendor
 	elif vendor_name == "curt":
@@ -17,6 +19,8 @@ def vendor_func(vendor_name):
 	    import vendor.fia as vendor
 	elif vendor_name == "gor":
 	    import vendor.gor as vendor
+	elif vendor_name == "knk":
+	    import vendor.knk as vendor
 	elif vendor_name == "knn":
 	    import vendor.knn as vendor
 	elif vendor_name == "nfa":

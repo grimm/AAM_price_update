@@ -24,8 +24,8 @@ import run_vendor as run
 import vendor_sheet as sheet
 
 # Define the supported vendors and load yaml calculation and groups files
-Vendors = ["aci", "adu", "ard", "curt", "fia", "gor", "gorm", "knn", "kso", "nfa",
-           "par", "piaa", "protec", "tech", "tim", "rig", "rsp", "warn",
+Vendors = ["aci", "adu", "ard", "bkr", "curt", "fia", "gor", "gorm", "knk", "knn", "kso",
+           "nfa", "par", "piaa", "protec", "tech", "tim", "rig", "rsp", "warn",
            "yak"]
 vendor_cal = {}
 product_groups = {}
@@ -80,10 +80,6 @@ else:
 # Run vendor function and set columns
 new_pandas, titan_columns, nelson_columns = run.vendor(vendor_pandas, vendor_cal,
     product_groups, args.vendor, vendor)
-
-# for index, col in enumerate(new_pandas.columns): 
-#     if index < 20:
-#         print(col)
 
 # Write CSV file
 new_pandas.to_csv(titan_csv_file, columns=titan_columns, header=False, index=False, float_format="%.2f", sep="|", quoting=csv.QUOTE_NONE, escapechar='\\')
