@@ -27,35 +27,41 @@ def do_rig(vendor_pandas, tech_cal):
     #vendor_pandas[long_desc] = vendor_pandas[long_desc].replace(r'\\r\\n',' ', regex=True)
 
     # Process part number
-    vendor_pandas["NewPart"] = vendor_pandas["Part Number"]
-    for index, item in enumerate(vendor_pandas["NewPart"]):
-        if item[:3] == "RSP":
-            vendor_pandas["NewPart"][index] = item[3:]
-        elif item[:2] == "RS":
-            vendor_pandas["NewPart"][index] = item[2:]
-        else:
-            vendor_pandas["NewPart"][index] = item
+    vendor_pandas["NewPart"] = vendor_pandas["Part Number"].astype(str)
+    # for index, item in enumerate(vendor_pandas["NewPart"]):
+    #     if item[:3] == "RSP":
+    #         vendor_pandas["NewPart"][index] = item[3:]
+    #     elif item[:2] == "RS":
+    #         vendor_pandas["NewPart"][index] = item[2:]
+    #     else:
+    #         vendor_pandas["NewPart"][index] = item
 
-    vendor_pandas["NewPart"] = vendor_pandas["NewPart"].str.replace('-', '')
-    vendor_pandas["NewPart"] = vendor_pandas["NewPart"].apply(lambda x: x[:20])
-    vendor_pandas["NewPart"] = vendor_pandas["NewPart"].apply(lambda x: "RSP" + x)
+    # vendor_pandas["NewPart"] = vendor_pandas["NewPart"].str.replace('-', '')
+    # vendor_pandas["NewPart"] = vendor_pandas["NewPart"].apply(lambda x: x[:20])
+    vendor_pandas["NewPart"] = vendor_pandas["NewPart"].apply(lambda x: "RIG" + x)
     
     # Create new description columns
-    vendor_pandas["Desc1"] = vendor_pandas[long_desc]
+    vendor_pandas["Desc1"] = vendor_pandas[long_desc].astype(str)
+    vendor_pandas["Desc1"] = vendor_pandas["Desc1"].str.replace("|", "-")
+    vendor_pandas["Desc1"] = vendor_pandas["Desc1"].str.upper()
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].apply(lambda x: unidecode.unidecode(x))
-    vendor_pandas["Desc2"] = vendor_pandas[long_desc]
-    vendor_pandas["Desc2"] = vendor_pandas["Desc2"].apply(lambda x: unidecode.unidecode(x))
+    vendor_pandas["Desc2"] = vendor_pandas["Desc1"]
 
     # Upper case text and trim it to 30 characters
-    vendor_pandas["Desc1"] = vendor_pandas["Desc1"].str.upper()
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].apply(lambda x: x[:30])
-    vendor_pandas["Desc2"] = vendor_pandas["Desc2"].str.upper()
     vendor_pandas["Desc2"] = vendor_pandas["Desc2"].apply(lambda x: x[30:60])
 
     # Create all price fields
     vendor_pandas["P1"] = vendor_pandas["MSRP/List"]
-    vendor_pandas["P2"] = vendor_pandas["MAP Retail"]
     vendor_pandas["P3"] = vendor_pandas["Jobber"]
+
+    vendor_pandas["P2"] = vendor_pandas["MAP Retail"]
+    for index, item in enumerate(vendor_pandas["MAP Retail"]):
+        if item == "":
+            vendor_pandas["P2"][index] = vendor_pandas["P3"][index]
+        else:
+            vendor_pandas["P2"][index] = item
+
     vendor_pandas["P5"] = vendor_pandas["AAM Cost"].astype(float)
 
     vendor_pandas["P4"] = vendor_pandas["AAM Cost"]
