@@ -24,9 +24,9 @@ import run_vendor as run
 import vendor_sheet as sheet
 
 # Define the supported vendors and load yaml calculation and groups files
-Vendors = ["aci", "adu", "ard", "bkr", "curt", "fia", "gor", "gorm", "knk", "knn", "kso",
-           "nfa", "par", "piaa", "protec", "tech", "tim", "rig", "rsp", "warn",
-           "yak"]
+Vendors = ["aci", "adu", "ard", "bkr", "curt", "fia", "gor", "gorm", "kar", "knk",
+           "knn", "kso", "nfa", "par", "piaa", "protec", "tech", "tim", "rig",
+           "rsp", "warn", "yak"]
 vendor_cal = {}
 product_groups = {}
 
@@ -68,12 +68,16 @@ titan_csv_file = vname + "_UPDATE_TTE_" + date + ".csv"
 nelson_csv_file = vname + "_UPDATE_NTE_" + date + ".csv"
 
 # Load vendor file using pandas
-skiprow, sheet_name = sheet.set_excel(args.vendor)
+skiprow, sheet_name, multisheet = sheet.set_excel(args.vendor)
 
-if sheet_name == "":
-    vendor_pandas = pd.read_excel(args.file, keep_default_na=False, skiprows=skiprow)
+if multisheet == 0:
+  if sheet_name == "":
+      vendor_pandas = pd.read_excel(args.file, keep_default_na=False, skiprows=skiprow)
+  else:
+      vendor_pandas = pd.read_excel(args.file, keep_default_na=False, skiprows=skiprow, sheet_name=sheet_name)
 else:
-    vendor_pandas = pd.read_excel(args.file, keep_default_na=False, skiprows=skiprow, sheet_name=sheet_name)
+  vendor_pandas = pd.read_excel(args.file, keep_default_na=False, skiprows=skiprow, sheet_name=None)
+  
 
 # Create CSV file dictionary
 # --------------------------
