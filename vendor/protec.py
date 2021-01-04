@@ -35,14 +35,14 @@ def do_protec(vendor_pandas, tech_cal):
     vendor_pandas["P4"] = vendor_pandas["P5"] / tech_cal["P4"]
 
     # Set dimensions
-    len_pandas = len(vendor_pandas)
-    new_column = list("0" * len_pandas)
-    [float(i) for i in new_column]
+    # len_pandas = len(vendor_pandas)
+    # new_column = list("0" * len_pandas)
+    # [float(i) for i in new_column]
 
-    vendor_pandas["Weight"] = pd.Series(new_column)
-    vendor_pandas["Length"] = pd.Series(new_column)
-    vendor_pandas["Height"] = pd.Series(new_column)
-    vendor_pandas["Width"] = pd.Series(new_column)
+    # vendor_pandas["Weight"] = pd.Series(new_column)
+    # vendor_pandas["Length"] = pd.Series(new_column)
+    # vendor_pandas["Height"] = pd.Series(new_column)
+    # vendor_pandas["Width"] = pd.Series(new_column)
 
     return vendor_pandas
 
