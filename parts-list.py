@@ -18,7 +18,6 @@ import yaml
 import csv
 
 # Import helper functions
-import parts_functions as func
 import vendor_func as ven
 import run_vendor as run
 import vendor_sheet as sheet
@@ -26,7 +25,7 @@ import vendor_sheet as sheet
 # Define the supported vendors and load yaml calculation and groups files
 Vendors = ["aci", "adu", "ard", "bkr", "curt", "fia", "gor", "gorm", "kar", "knk",
            "knn", "kso", "nfa", "par", "piaa", "protec", "tech", "tim", "rig",
-           "rsp", "warn", "yak"]
+           "rsp", "warn", "wes", "yak"]
 vendor_cal = {}
 product_groups = {}
 
@@ -76,6 +75,7 @@ if multisheet == 0:
   else:
       vendor_pandas = pd.read_excel(args.file, keep_default_na=False, skiprows=skiprow, sheet_name=sheet_name)
 else:
+  # Load multiple sheets, these get put into a dictionary
   vendor_pandas = pd.read_excel(args.file, keep_default_na=False, skiprows=skiprow, sheet_name=None)
   
 

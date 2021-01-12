@@ -15,6 +15,9 @@ def vendor(vendor_pandas, vendor_cal, product_groups, vendor_name, vendor):
                      "P5", "Length", "Width", "Height", "Weight"]
 	    nelson_columns = titan_columns
 
+	if vendor_name == "amp":
+	    new_pandas = vendor.do_ard(vendor_pandas, vendor_cal["ard"])
+
 	if vendor_name == "ard":
 	    new_pandas = vendor.do_ard(vendor_pandas, vendor_cal["ard"])
 
@@ -43,6 +46,9 @@ def vendor(vendor_pandas, vendor_cal, product_groups, vendor_name, vendor):
 
 	if vendor_name == "fia":
 	    new_pandas = vendor.do_fia(vendor_pandas, vendor_cal["fia"])
+	    titan_columns = ["NewPart", "Part Number", "Desc1", "Desc2", "P1", "P2", "P3", "P4",
+                     "P5", "Length", "Width", "Height", "Weight"]
+	    nelson_columns = titan_columns
 
 	if vendor_name == "gor":
 	    new_pandas = vendor.do_gor(vendor_pandas, vendor_cal["gor"])
@@ -79,13 +85,7 @@ def vendor(vendor_pandas, vendor_cal, product_groups, vendor_name, vendor):
 	if vendor_name == "protec":
 	    new_pandas = vendor.do_protec(vendor_pandas, vendor_cal["protec"])
 	    titan_columns = ["NewPart", "Part Number", "Desc1", "Desc2", "P1", "P2", "P3", "P4",
-                     "P5", "Length", "Width", "Height", "Weight"]
-	    nelson_columns = titan_columns
-
-	if vendor_name == "warn":
-	    new_pandas = vendor.do_warn(vendor_pandas, product_groups["warn"], vendor_cal["warn"])
-	    titan_columns = ["NewPart", "Part Number", "Desc1", "Desc2", "P1", "P2", "P3", "P4",
-                     "P5", "Length", "Width", "Height", "Weight", "Group"]
+                     "P5"]
 	    nelson_columns = titan_columns
 
 	if vendor_name == "rsp":
@@ -105,6 +105,18 @@ def vendor(vendor_pandas, vendor_cal, product_groups, vendor_name, vendor):
 
 	if vendor_name == "rig":
 	    new_pandas = vendor.do_rig(vendor_pandas, vendor_cal["rig"])
+
+	if vendor_name == "warn":
+	    new_pandas = vendor.do_warn(vendor_pandas, product_groups["warn"], vendor_cal["warn"])
+	    titan_columns = ["NewPart", "Part Number", "Desc1", "Desc2", "P1", "P2", "P3", "P4",
+                     "P5", "Length", "Width", "Height", "Weight", "Group"]
+	    nelson_columns = titan_columns
+
+	if vendor_name == "wes":
+	    new_pandas = vendor.do_wes(vendor_pandas, product_groups["wes"], vendor_cal["wes"])
+	    titan_columns = ["NewPart", "Part Number", "Desc1", "Desc2", "P1", "P2", "P3", "P4",
+                     "P5", "Length", "Width", "Height", "Weight", "Group"]
+	    nelson_columns = titan_columns
 
 	if vendor_name == "yak":
 	    new_pandas = vendor.do_yak(vendor_pandas, vendor_cal["yak"])

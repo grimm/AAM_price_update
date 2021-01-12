@@ -16,11 +16,15 @@ def set_excel(vendor):
 	    skiprow = 0
 	elif vendor == "adu":
 	    skiprow = 2
+	elif vendor == "amp":
+	    skiprow = 3
 	elif vendor == "kar":
 	    skiprow = 4
 	    multisheet = 1
 	elif vendor == "gorm":
 	    skiprow = 5
+	elif vendor == "wes":
+	    skiprow = 8
 	elif vendor == "kso":
 	    skiprow = 17
 
