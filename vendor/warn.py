@@ -58,17 +58,18 @@ def do_warn(vendor_pandas, prod_group, tech_cal):
     # Set dimensions and status
     lname = "Weight - IN POUNDS"
     vendor_pandas[lname] = vendor_pandas[lname].astype(str)
-    vendor_pandas[lname] = vendor_pandas[lname].replace('', '0')
-    vendor_pandas["Weight"] = vendor_pandas[lname].astype(float)
+    vendor_pandas[lname] = vendor_pandas[lname].replace(' ', '0')
+    vendor_pandas["Weight"] = vendor_pandas[lname].replace('', '0').astype(float)
 
-    vendor_pandas["Length"] = vendor_pandas["Length"].replace('', '0')
-    vendor_pandas["Length"] = vendor_pandas["Length"].astype(float)
+    #print(vendor_pandas["Length"].to_list())
+    vendor_pandas["Length"] = vendor_pandas["Length"].replace(' ', '0')
+    vendor_pandas["Length"] = vendor_pandas["Length"].replace('', '0').astype(float)
 
-    vendor_pandas["Width"] = vendor_pandas["Width"].replace('', '0')
-    vendor_pandas["Width"] = vendor_pandas["Width"].astype(float)
+    vendor_pandas["Width"] = vendor_pandas["Width"].replace(' ', '0')
+    vendor_pandas["Width"] = vendor_pandas["Width"].replace('', '0').astype(float)
 
-    vendor_pandas["Height"] = vendor_pandas["Height"].replace('', '0')
-    vendor_pandas["Height"] = vendor_pandas["Height"].astype(float)
+    vendor_pandas["Height"] = vendor_pandas["Height"].replace(' ', '0')
+    vendor_pandas["Height"] = vendor_pandas["Height"].replace('', '0').astype(float)
 
     # Set product groups
     vendor_pandas["Group"] = vendor_pandas["NewPart"]
