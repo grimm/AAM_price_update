@@ -32,7 +32,7 @@ def do_wes(vendor_pandas, prod_group, tech_cal):
     vendor_pandas["P2"] = vendor_pandas["P3"]
     for index, item in enumerate(vendor_pandas["MAP Retail"]):
         #print(index)
-        if item == 0:
+        if item == "":
             vendor_pandas["P2"][index] = vendor_pandas["P1"][index] * tech_cal["P2"]
         else:
             vendor_pandas["P2"][index] = item
