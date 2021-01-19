@@ -21,6 +21,8 @@ def vendor_func(vendor_name):
 	    import vendor.fia as vendor
 	elif vendor_name == "gor":
 	    import vendor.gor as vendor
+	elif vendor_name == "gorm":
+	    import vendor.gorm as vendor
 	elif vendor_name == "kar":
 	    import vendor.kar as vendor
 	elif vendor_name == "knk":
@@ -37,12 +39,12 @@ def vendor_func(vendor_name):
 	    import vendor.par as vendor
 	elif vendor_name == "piaa":
 	    import vendor.piaa as vendor
+	elif vendor_name == "prime":
+	    import vendor.prime as vendor
 	elif vendor_name == "protec":
 	    import vendor.protec as vendor
 	elif vendor_name == "rig":
 	    import vendor.rig as vendor
-	elif vendor_name == "gorm":
-	    import vendor.gorm as vendor
 	elif vendor_name == "warn":
 	    import vendor.warn as vendor
 	elif vendor_name == "wes":

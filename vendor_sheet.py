@@ -14,7 +14,7 @@ def set_excel(vendor):
 	# Set skiprow or default to 1
 	if (vendor == "tech") | (vendor == "tim") | (vendor == "yak") | (vendor == "aci") | (vendor == "nfa"):
 	    skiprow = 0
-	elif vendor == "adu":
+	elif (vendor == "adu") | (vendor == "prime"):
 	    skiprow = 2
 	elif vendor == "amp":
 	    skiprow = 3

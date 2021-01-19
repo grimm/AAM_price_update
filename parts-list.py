@@ -24,7 +24,7 @@ import vendor_sheet as sheet
 
 # Define the supported vendors and load yaml calculation and groups files
 Vendors = ["aci", "adu", "ard", "bkr", "curt", "fia", "gor", "gorm", "kar", "knk",
-           "knn", "kso", "nfa", "par", "piaa", "protec", "tech", "tim", "rig",
+           "knn", "kso", "nfa", "par", "piaa", "prime", "protec", "tech", "tim", "rig",
            "rsp", "warn", "wes", "yak"]
 vendor_cal = {}
 product_groups = {}
@@ -41,7 +41,7 @@ with open('product_groups.yaml', encoding='utf8') as f:
 
 # Parse command line options
 parser = argparse.ArgumentParser(description='Convert parts Excel file to a CSV formated file', epilog = epilog)
-parser.add_argument('file', help='Excel file')
+parser.add_argument('file', help='Excel file or PDF file')
 parser.add_argument('vendor', help='Vendor name')
 args = parser.parse_args()
 
@@ -69,15 +69,14 @@ nelson_csv_file = vname + "_UPDATE_NTE_" + date + ".csv"
 # Load vendor file using pandas
 skiprow, sheet_name, multisheet = sheet.set_excel(args.vendor)
 
-if multisheet == 0:
-  if sheet_name == "":
-      vendor_pandas = pd.read_excel(args.file, keep_default_na=False, skiprows=skiprow)
-  else:
-      vendor_pandas = pd.read_excel(args.file, keep_default_na=False, skiprows=skiprow, sheet_name=sheet_name)
-else:
-  # Load multiple sheets, these get put into a dictionary
-  vendor_pandas = pd.read_excel(args.file, keep_default_na=False, skiprows=skiprow, sheet_name=None)
-  
+if sheet_name == "": # and pdf_file ==0:     # no sheet name
+    vendor_pandas = pd.read_excel(args.file, keep_default_na=False, skiprows=skiprow)
+
+elif not sheet_name == "": # read a specific sheet out of the Excel file
+    vendor_pandas = pd.read_excel(args.file, keep_default_na=False, skiprows=skiprow, sheet_name=sheet_name)
+
+elif multisheet == 1:      # Load multiple sheets, these get put into a dictionary
+    vendor_pandas = pd.read_excel(args.file, keep_default_na=False, skiprows=skiprow, sheet_name=None)
 
 # Create CSV file dictionary
 # --------------------------

@@ -3,6 +3,8 @@ def vendor(vendor_pandas, vendor_cal, product_groups, vendor_name, vendor):
 	titan_columns = ["NewPart", "Part Number", "Desc1", "Desc2", "P1", "P2", "P3", "P4", "P5",
                      "Length", "Width", "Height", "Weight", "Status"]
 	nelson_columns = titan_columns
+	titan_columns_group = ["NewPart", "Part Number", "Desc1", "Desc2", "P1", "P2", "P3", "P4",
+	                       "P5", "Length", "Width", "Height", "Weight", "Group Code"]
 
 	if vendor_name == "aci":
 	    new_pandas = vendor.do_aci(vendor_pandas, product_groups["aci"], vendor_cal["aci"])
@@ -99,6 +101,12 @@ def vendor(vendor_pandas, vendor_cal, product_groups, vendor_name, vendor):
 
 	if vendor_name == "par":
 	    new_pandas = vendor.do_par(vendor_pandas, vendor_cal["par"])
+	    titan_columns = ["NewPart", "Part Number", "Desc1", "Desc2", "P1", "P2", "P3", "P4",
+                     "P5", "Length", "Width", "Height", "Weight"]
+	    nelson_columns = titan_columns
+
+	if vendor_name == "prime":
+	    new_pandas = vendor.do_prime(vendor_pandas, vendor_cal["prime"])
 	    titan_columns = ["NewPart", "Part Number", "Desc1", "Desc2", "P1", "P2", "P3", "P4",
                      "P5", "Length", "Width", "Height", "Weight"]
 	    nelson_columns = titan_columns
