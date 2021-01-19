@@ -11,6 +11,7 @@ tech:
   "Underseat Storage System": 0
   "Scratch Protection": 0
   "Front&Rear Side Window Deflectors": 1
+  "Front Side Window Deflectors": 1
   "Rear Side Window Deflectors": 1
   "Rear FloorLiner": 2
   "Rear FloorLiner for vinyl floors": 2
@@ -25,7 +26,6 @@ tech:
   "LampGard": 6
   "SunShade": 8
   "SunShade Full Vehicle Kit": 8
-  "No Drill MudFlaps": 30
   "No Drill Mudflaps": 30
 
 wes:
@@ -121,7 +121,7 @@ wes:
   "E-Series 3 Step Pad & Clips": 0
   "E-Series Bull Bar": 0
   "EF Lighting": 1
-  "EF2 LED Light Bar": 0
+  "EF2 LED Light Bar": 1
   "Electrical Connector": 0
   "End Cap": 0
   "Evap Canister Skid Plate": 0
@@ -148,8 +148,8 @@ wes:
   "HDX Bumper Display Stand": 0
   "HDX Bumper Display": 0
   "HDX DEF Tank Skid Plate": 0
-  "HDX Drop Hitch Step": 0
-  "HDX Drop Nerf Step Bars": 0
+  "HDX Drop Hitch Step": 2
+  "HDX Drop Nerf Step Bars": 2
   "HDX Drop Step - 40\" Sample": 0
   "HDX Drop Step Display": 0
   "HDX Drop Step Pad": 0
@@ -160,7 +160,7 @@ wes:
   "HDX Grille Guard LED Light Bracket": 0
   "HDX Grille Guard Light Clamps": 0
   "HDX Grille Guard Rub Strip Repl": 0
-  "HDX Grille Guard": 0
+  "HDX Grille Guard": 32
   "HDX LED Grille": 0
   "HDX Light Bar": 0
   "HDX Pre Runner Bar": 0
@@ -169,7 +169,7 @@ wes:
   "HDX Stainless Drop Nerf Step Bars": 0
   "HDX Stainless Drop Step Plate Repl Kit": 0
   "HDX Stainless Drop Wheel-to-Wheel Nerf Step Bars": 0
-  "HDX Winch Mount Grille Guard": 0
+  "HDX Winch Mount Grille Guard": 33
   "HDX Xtreme Nerf Step Bars": 0
   "HDX Xtreme Step Board Display": 0
   "HDX Xtreme Step Pad": 0
