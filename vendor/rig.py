@@ -1,5 +1,5 @@
 #
-# rsp.py
+# rig.py
 #
 # This script holds functions for the vendor Rigid Industries
 #

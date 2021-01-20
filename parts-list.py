@@ -24,8 +24,8 @@ import vendor_sheet as sheet
 
 # Define the supported vendors and load yaml calculation and groups files
 Vendors = ["aci", "adu", "ard", "bkr", "curt", "fia", "gor", "gorm", "kar", "knk",
-           "knn", "kso", "nfa", "par", "piaa", "prime", "protec", "tech", "tim", "rig",
-           "rsp", "warn", "wes", "yak"]
+           "knn", "kso", "nfa", "par", "piaa", "prime", "protec", "tech", "tim", "rch",
+           "rig", "rsp", "warn", "wes", "yak"]
 vendor_cal = {}
 product_groups = {}
 
@@ -40,8 +40,8 @@ with open('product_groups.yaml', encoding='utf8') as f:
     product_groups = yaml.load(f, Loader=yaml.FullLoader)
 
 # Parse command line options
-parser = argparse.ArgumentParser(description='Convert parts Excel file to a CSV formated file', epilog = epilog)
-parser.add_argument('file', help='Excel file or PDF file')
+parser = argparse.ArgumentParser(description='Convert pricing Excel file to a CSV formated file', epilog = epilog)
+parser.add_argument('file', help='Excel file')
 parser.add_argument('vendor', help='Vendor name')
 args = parser.parse_args()
 
