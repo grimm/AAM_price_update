@@ -23,9 +23,9 @@ import run_vendor as run
 import vendor_sheet as sheet
 
 # Define the supported vendors and load yaml calculation and groups files
-Vendors = ["aci", "adu", "ard", "bkr", "curt", "fia", "gor", "gorm", "kar", "knk",
-           "knn", "kso", "nfa", "par", "piaa", "prime", "protec", "scs", "tech", "tim",
-           "trux", "rch", "rig", "rsp", "warn", "wes", "yak"]
+Vendors = ["aci", "adu", "ard", "baja", "bkr", "curt", "fia", "gor", "gorm", "kar",
+           "knk", "knn", "kso", "nfa", "par", "piaa", "prime", "protec", "scs", "tech",
+           "tim", "trux", "rch", "rig", "rsp", "warn", "wes", "yak"]
 vendor_cal = {}
 product_groups = {}
 
@@ -61,8 +61,10 @@ vendor = ven.vendor_func(args.vendor)
 # Create CSV output file names
 date = datetime.today().strftime('%m-%d-%y')
 vname = args.vendor.upper()
+
 if vname == "GORM":
     vname = "GOR"
+    
 titan_csv_file = vname + "_UPDATE_TTE_" + date + ".csv"
 nelson_csv_file = vname + "_UPDATE_NTE_" + date + ".csv"
 
