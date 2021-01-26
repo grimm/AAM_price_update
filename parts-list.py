@@ -64,11 +64,8 @@ vname = args.vendor.upper()
 
 if vname == "GORM":
     vname = "GOR"
-elif vname == "ECCOT":
+elif vname == "ECCOT" or vname == "ECCON":
     vname = "ECCO"
-elif vname == "ECCON":
-    vname = "ECCO"
-
     
 titan_csv_file = vname + "_UPDATE_TTE_" + date + ".csv"
 nelson_csv_file = vname + "_UPDATE_NTE_" + date + ".csv"
