@@ -52,6 +52,18 @@ def vendor(vendor_pandas, vendor_cal, product_groups, vendor_name, vendor):
 	if vendor_name == "curt":
 	    new_pandas = vendor.do_curt(vendor_pandas, vendor_cal["curt"])
 
+	if vendor_name == "eccon":
+	    new_pandas = vendor.do_eccon(vendor_pandas, vendor_cal["eccon"])
+	    titan_columns = ["NewPart", "Part Number", "Desc1", "Desc2", "P1", "P2", "P3", "P4",
+                     "P5", "Length", "Width", "Height", "Weight"]
+	    nelson_columns = titan_columns
+
+	if vendor_name == "eccot":
+	    new_pandas = vendor.do_eccot(vendor_pandas, vendor_cal["eccot"])
+	    titan_columns = ["NewPart", "Part Number", "Desc1", "Desc2", "P1", "P2", "P3", "P4",
+                     "P5", "Length", "Width", "Height", "Weight"]
+	    nelson_columns = titan_columns
+
 	if vendor_name == "fia":
 	    new_pandas = vendor.do_fia(vendor_pandas, vendor_cal["fia"])
 	    titan_columns = ["NewPart", "Part Number", "Desc1", "Desc2", "P1", "P2", "P3", "P4",

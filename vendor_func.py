@@ -19,6 +19,10 @@ def vendor_func(vendor_name):
 	    import vendor.tim as vendor
 	elif vendor_name == "curt":
 	    import vendor.curt as vendor
+	elif vendor_name == "eccot":
+	    import vendor.eccot as vendor
+	elif vendor_name == "eccon":
+	    import vendor.eccon as vendor
 	elif vendor_name == "fia":
 	    import vendor.fia as vendor
 	elif vendor_name == "gor":
