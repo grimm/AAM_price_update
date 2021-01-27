@@ -13,6 +13,8 @@ def vendor_func(vendor_name):
 	    import vendor.amp as vendor
 	elif vendor_name == "baja":
 	    import vendor.baja as vendor
+	elif vendor_name == "big":
+	    import vendor.big as vendor
 	elif vendor_name == "bkr":
 	    import vendor.bkr as vendor
 	elif vendor_name == "tim":
