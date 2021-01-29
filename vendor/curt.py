@@ -9,6 +9,7 @@
 
 from datetime import datetime
 import csv
+import re
 
 # Main vendor processing function
 def do_curt(vendor_pandas, tech_cal):
@@ -59,25 +60,12 @@ def do_curt(vendor_pandas, tech_cal):
     vendor_pandas["Weight"] = vendor_pandas["Weight - IN POUNDS"]
     vendor_pandas["Status"] = new_column
 
-    # Write out discontinued parts
-    #------------------------------
-    date = datetime.today().strftime('%m-%d-%y')
-    discon_file = "CURT_Discontinued_" + date + ".csv"
+    # Check for discontinued parts
+    for index, item in enumerate(vendor_pandas[short_desc]):
+        # print(index)
+        if re.search("Discontinued", item):
+            # print(item)
+            vendor_pandas["Status"][index] = "D"
 
-    #           new_part   part          descriptions       P1    P2    P3    P4    P5
-    columns = ["NewPart", "Part Number", "Desc1", "Desc2", "P1", "P2", "P3", "P4", "P5",
-               "Length", "Width", "Height", "Weight", "Status"]
 
-    # Separate out the discontinued parts from the others
-    discon_pandas = vendor_pandas[vendor_pandas[short_desc].str.match("Discontinued")]
-    update_pandas = vendor_pandas[~vendor_pandas[short_desc].isin(discon_pandas[short_desc])]
-
-    # Set status field
-    len_pandas = len(discon_pandas.axes[0])
-    new_column = list("D" * len_pandas)
-    discon_pandas["Status"] = new_column
-
-    discon_pandas.to_csv(discon_file, columns=columns, header=False, index=False, float_format="%.2f", sep="|", quoting=csv.QUOTE_NONE)
-    print("Saved - " + discon_file + " discontinued parts file.")
-
-    return update_pandas
+    return vendor_pandas
