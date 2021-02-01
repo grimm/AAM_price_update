@@ -63,6 +63,8 @@ def vendor_func(vendor_name):
 	    import vendor.warn as vendor
 	elif vendor_name == "wes":
 	    import vendor.wes as vendor
+	elif vendor_name == "west":
+	    import vendor.west as vendor
 	elif vendor_name == "yak":
 	    import vendor.yak as vendor
 
