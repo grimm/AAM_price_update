@@ -12,7 +12,7 @@ def set_excel(vendor):
 	multisheet = 0
 	
 	# Set skiprow or default to 1
-	if (vendor == "tech") | (vendor == "tim") | (vendor == "yak") | (vendor == "aci") | (vendor == "nfa") | (vendor == "baja") | (vendor == "west"):
+	if (vendor == "tech") | (vendor == "tim") | (vendor == "yak") | (vendor == "aci") | (vendor == "nfa") | (vendor == "baja") | (vendor == "west") | (vendor == "vms"):
 	    skiprow = 0
 	elif (vendor == "adu") | (vendor == "prime"):
 	    skiprow = 2

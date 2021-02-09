@@ -59,6 +59,8 @@ def vendor_func(vendor_name):
 	    import vendor.scs as vendor
 	elif vendor_name == "trux":
 	    import vendor.trux as vendor
+	elif vendor_name == "vms":
+	    import vendor.vms as vendor
 	elif vendor_name == "warn":
 	    import vendor.warn as vendor
 	elif vendor_name == "wes":
