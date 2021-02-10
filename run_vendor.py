@@ -150,6 +150,12 @@ def vendor(vendor_pandas, vendor_cal, product_groups, vendor_name, vendor):
 	if vendor_name == "rig":
 	    new_pandas = vendor.do_rig(vendor_pandas, vendor_cal["rig"])
 
+	if vendor_name == "road":
+	    new_pandas = vendor.do_road(vendor_pandas, vendor_cal["road"])
+	    titan_columns = ["NewPart", "Part Number", "Desc1", "Desc2", "P1", "P2", "P3", "P4",
+                     "P5", "Length", "Width", "Height", "Weight"]
+	    nelson_columns = titan_columns
+
 	if vendor_name == "scs":
 	    new_pandas = vendor.do_scs(vendor_pandas, vendor_cal["scs"])
 	    titan_columns = ["NewPart", "Part Number", "Desc1", "Desc2", "P1", "P2", "P3", "P4",

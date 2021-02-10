@@ -21,6 +21,8 @@ def set_excel(vendor):
 	elif vendor == "kar":
 	    skiprow = 4
 	    multisheet = 1
+	elif vendor == "road":
+	    skiprow = 4
 	elif (vendor == "gorm") | (vendor == "eccot") | (vendor == "eccon"):
 	    skiprow = 5
 	elif vendor == "wes":

@@ -43,6 +43,8 @@ def vendor_func(vendor_name):
 	    import vendor.nfa as vendor
 	elif vendor_name == "rch":
 	    import vendor.rch as vendor
+	elif vendor_name == "road":
+	    import vendor.road as vendor
 	elif vendor_name == "rsp":
 	    import vendor.rsp as vendor
 	elif vendor_name == "kso":
