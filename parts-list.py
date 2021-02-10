@@ -23,10 +23,10 @@ import run_vendor as run
 import vendor_sheet as sheet
 
 # Define the supported vendors and load yaml calculation and groups files
-Vendors = ["aci", "adu", "ard", "baja", "big", "bkr", "curt", "eccon", "eccot", "fia", "gor",
-           "gorm", "kar", "knk", "knn", "kso", "nfa", "par", "piaa", "prime", "protec",
-           "scs", "tech", "tim", "trux", "rch", "rig", "rsp", "vms", "warn", "wes", "west",
-           "yak"]
+Vendors = ["aci", "adu", "ard", "baja", "big", "bkr", "curt", "deck", "eccon", "eccot",
+           "fia", "gor", "gorm", "kar", "knk", "knn", "kso", "nfa", "par", "piaa",
+           "prime", "protec", "scs", "tech", "tim", "trux", "rch", "rig", "rsp", "vms",
+           "warn", "wes", "west", "yak"]
 vendor_cal = {}
 product_groups = {}
 
