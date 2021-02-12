@@ -55,6 +55,12 @@ def vendor(vendor_pandas, vendor_cal, product_groups, vendor_name, vendor):
 	    titan_columns = ["NewPart", "PART #", "Desc1", "Desc2", "US $      List", "P2", "US $ JOBBER", "P4", "US $           J - 31%", "BOX (L)      (inches)", "BOX (D)  (inches)", "BOX(H) (inches)", "Shipping Weight (Lbs.)"]
 	    nelson_columns = ["NewPart", "PART #", "Desc1", "Desc2", "US $      List", "P2", "US $ JOBBER", "P4", "US $           J - 31%", "BOX (L)      (inches)", "BOX (D)  (inches)", "BOX(H) (inches)", "Shipping Weight (Lbs.)"]
 
+	if vendor_name == "carr":
+	    new_pandas = vendor.do_carr(vendor_pandas, vendor_cal["carr"])
+	    titan_columns = ["NewPart", "Part Number", "Desc1", "Desc2", "P1", "P2", "P3", "P4",
+                     "P5", "Length", "Width", "Height", "Weight"]
+	    nelson_columns = titan_columns
+
 	if vendor_name == "curt":
 	    new_pandas = vendor.do_curt(vendor_pandas, vendor_cal["curt"])
 

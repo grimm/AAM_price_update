@@ -19,6 +19,8 @@ def vendor_func(vendor_name):
 	    import vendor.bkr as vendor
 	elif vendor_name == "tim":
 	    import vendor.tim as vendor
+	elif vendor_name == "carr":
+	    import vendor.carr as vendor
 	elif vendor_name == "curt":
 	    import vendor.curt as vendor
 	elif vendor_name == "deck":
