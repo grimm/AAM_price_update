@@ -47,13 +47,14 @@ def do_odr(vendor_pandas, tech_cal):
         if item == 0:
             vendor_pandas["P1"][index] = vendor_pandas["P3"][index]
 
-    vendor_pandas["P2"] = vendor_pandas["MAP Retail"].replace('n/a','0')
+    vendor_pandas["P2"] = vendor_pandas["MAP Retail"].replace('[\$,)]','', regex=True)
+    vendor_pandas["P2"] = vendor_pandas["P2"].replace('n/a','0')
 
     # Replace missing values in P2
     for index, item in enumerate(vendor_pandas["P2"]):
         if item == '' or item == '0':
-            vendor_pandas["P2"] = vendor_pandas["P3"]
-            
+            vendor_pandas["P2"][index] = vendor_pandas["P3"][index]
+
     vendor_pandas["P5"] = vendor_pandas["AAM Cost"].astype(float)
     vendor_pandas["P4"] = vendor_pandas["P5"] / tech_cal["P4"]
 
