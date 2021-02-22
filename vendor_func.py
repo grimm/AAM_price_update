@@ -49,6 +49,8 @@ def vendor_func(vendor_name):
 	    import vendor.rch as vendor
 	elif vendor_name == "road":
 	    import vendor.road as vendor
+	elif vendor_name == "rrk":
+	    import vendor.rrk as vendor
 	elif vendor_name == "rsp":
 	    import vendor.rsp as vendor
 	elif vendor_name == "kso":
