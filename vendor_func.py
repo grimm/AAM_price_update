@@ -67,6 +67,8 @@ def vendor_func(vendor_name):
 	    import vendor.protec as vendor
 	elif vendor_name == "rig":
 	    import vendor.rig as vendor
+	elif vendor_name == "sb":
+	    import vendor.sb as vendor
 	elif vendor_name == "scs":
 	    import vendor.scs as vendor
 	elif vendor_name == "trux":

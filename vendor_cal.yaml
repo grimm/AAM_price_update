@@ -30,6 +30,7 @@ rig:  {main: "COST",        P1: 0,   P2: 0,     P3: 0,   P4: 0.75, P5: 0,    P6:
 road: {main: "Retail",      P1: 0,   P2: 0,     P3: 0,   P4: 0.9,  P5: 0,    P6: 0,   NTE: 0}
 rrk:  {main: "AAM COST",    P1: 0,   P2: 0,     P3: 0,   P4: 0.8,  P5: 0.57, P6: 0,   NTE: 0}
 rsp:  {main: "AAM COST",    P1: 0,   P2: 0,     P3: 0,   P4: 0.75, P5: 0,    P6: 0,   NTE: 0}
+sb:   {main: "list_price",  P1: 0,   P2: 0,     P3: 0,   P4: 0,    P5: 0,    P6: 0,   NTE: 0}
 scs:  {main: "MSRP/List",   P1: 0,   P2: 0,     P3: 0,   P4: 0.75, P5: 0,    P6: 0,   NTE: 0}
 tech: {main: "TTK",         P1: 0,   P2: 0.7,   P3: 0,   P4: 0.75, P5: 0,    P6: 0,   NTE: 1}
 tim:  {main: "US $    MAP", P1: 0,   P2: 0.75,  P3: 0,   P4: 0.8,  P5: 0,    P6: 0,   NTE: 0}

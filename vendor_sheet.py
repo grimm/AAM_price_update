@@ -10,28 +10,30 @@ def set_excel(vendor):
 	skiprow = 1
 	sheetname = ""
 	multisheet = 0
+	csvfile = 0
 	
 	# Set skiprow or default to 1
-	if (vendor == "tech") | (vendor == "tim") | (vendor == "yak") | (vendor == "aci") | (vendor == "nfa") | (vendor == "baja") | (vendor == "west") | (vendor == "vms"):
-	    skiprow = 0
+	if (vendor == "tech") | (vendor == "tim") | (vendor == "yak") | (vendor == "aci") | (vendor == "nfa") | (vendor == "baja") | (vendor == "west") | (vendor == "vms") | (vendor == "sb"):
+	  skiprow = 0
+	  if vendor == "sb": csvfile = 1
 	elif (vendor == "adu") | (vendor == "prime"):
-	    skiprow = 2
+	  skiprow = 2
 	elif (vendor == "amp") | (vendor == "odr"):
-	    skiprow = 3
+	  skiprow = 3
 	elif vendor == "kar":
-	    skiprow = 4
-	    multisheet = 1
+	  skiprow = 4
+	  multisheet = 1
 	elif vendor == "road":
-	    skiprow = 4
+	  skiprow = 4
 	elif (vendor == "gorm") | (vendor == "eccot") | (vendor == "eccon"):
-	    skiprow = 5
+	  skiprow = 5
 	elif vendor == "wes":
-	    skiprow = 8
+	  skiprow = 8
 	elif vendor == "kso":
-	    skiprow = 17
+	  skiprow = 17
 
 	# Set sheetname or default to ""
 	if vendor == "protec":
 		sheetname = "price list"
 
-	return skiprow, sheetname, multisheet
+	return skiprow, sheetname, multisheet, csvfile

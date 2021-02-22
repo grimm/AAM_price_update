@@ -26,7 +26,7 @@ import vendor_sheet as sheet
 Vendors = ["aci", "adu", "ard", "baja", "big", "bkr", "buy", "carr", "curt", "deck",
            "eccon", "eccot", "fia", "gor", "gorm", "kar", "knk", "knn", "kso", "nfa",
            "odr", "par", "piaa", "prime", "protec", "rch", "rig", "road", "rrk", "rsp",
-           "scs", "tech", "tim", "trux", "vms", "warn", "wes", "west", "yak"]
+           "sb", "scs", "tech", "tim", "trux", "vms", "warn", "wes", "west", "yak"]
 vendor_cal = {}
 product_groups = {}
 
@@ -72,9 +72,9 @@ titan_csv_file = vname + "_UPDATE_TTE_" + date + ".csv"
 nelson_csv_file = vname + "_UPDATE_NTE_" + date + ".csv"
 
 # Load vendor file using pandas
-skiprow, sheet_name, multisheet = sheet.set_excel(args.vendor)
+skiprow, sheet_name, multisheet, csvfile = sheet.set_excel(args.vendor)
 
-if sheet_name == "": # and pdf_file ==0:     # no sheet name
+if sheet_name == "" and csvfile == 0: # no sheet name
     vendor_pandas = pd.read_excel(args.file, keep_default_na=False, skiprows=skiprow)
 
 elif not sheet_name == "": # read a specific sheet out of the Excel file
@@ -82,6 +82,8 @@ elif not sheet_name == "": # read a specific sheet out of the Excel file
 
 elif multisheet == 1:      # Load multiple sheets, these get put into a dictionary
     vendor_pandas = pd.read_excel(args.file, keep_default_na=False, skiprows=skiprow, sheet_name=None)
+elif csvfile == 1:         # Load CSV file instead of Excel
+    vendor_pandas = pd.read_csv(args.file, keep_default_na=False)
 
 # Create CSV file dictionary
 # --------------------------
