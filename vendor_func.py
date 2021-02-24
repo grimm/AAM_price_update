@@ -33,6 +33,8 @@ def vendor_func(vendor_name):
 	    import vendor.eccon as vendor
 	elif vendor_name == "fia":
 	    import vendor.fia as vendor
+	elif vendor_name == "fil":
+	    import vendor.fil as vendor
 	elif vendor_name == "gor":
 	    import vendor.gor as vendor
 	elif vendor_name == "gorm":

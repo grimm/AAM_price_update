@@ -10,17 +10,24 @@ import unidecode
 
 # Main vendor processing function
 def do_tech(vendor_pandas, prod_group, tech_cal):
+    # Remove promotional stuff
+    # vendor_pandas = vendor_pandas.drop(vendor_pandas[(vendor_pandas['Product Group'] == "Hoodie ") & (vendor_pandas['Product Group'] == "Racing Polo") & (vendor_pandas['Product Group'] == "T-Shirt") & (vendor_pandas["Product Group"] == "Hat ")].index)
+    vendor_pandas = vendor_pandas[(vendor_pandas["Product Group"] != "Hoodie ")]
+    vendor_pandas = vendor_pandas[(vendor_pandas["Product Group"] != "Racing Polo")]
+    vendor_pandas = vendor_pandas[(vendor_pandas["Product Group"] != "T-Shirt")]
+    vendor_pandas = vendor_pandas[(vendor_pandas["Product Group"] != "Hat ")]
+    vendor_pandas = vendor_pandas.reset_index(drop=True)
+
     # Copy Part column to NewPart column and modify to add TECH
     vendor_pandas.loc[:,"NewPart"] = vendor_pandas["Part"]
     vendor_pandas["NewPart"] = vendor_pandas["NewPart"].apply(lambda x: "TECH" + x)
     
-    # Create new description columns
-    vendor_pandas.loc[:,"Desc1"] = vendor_pandas["Product Group"]
-    vendor_pandas.loc[:,"Desc2"] = vendor_pandas["Product Group"]
-
     # Create description 1
     # Only concat columns if the Color column has text in it
+    vendor_pandas.loc[:,"Desc1"] = vendor_pandas["Product Group"]
+
     for index, item in enumerate(vendor_pandas["Desc1"]):
+        # print(index, vendor_pandas["Color"][index])
         if vendor_pandas["Color"][index] != "NA":
             vendor_pandas["Desc1"][index] = item + "; " + vendor_pandas["Color"][index]
 
@@ -51,7 +58,8 @@ def do_tech(vendor_pandas, prod_group, tech_cal):
             if item == key:
                 vendor_pandas["Group"][index] = value
         if vendor_pandas["Group"][index] == 99999:
-            print("******* Warning - " + item + " not found in product groups!")
+            # print("******* Warning - " + item + " not found in product groups!")
+            print(item)
 
     # Build Nelson cost from the TTK column
     vendor_pandas["NP5"] = vendor_pandas["TTK"] / 1.01

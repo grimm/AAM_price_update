@@ -31,30 +31,100 @@ big:
   "Exhaust tips": 0
 
 tech:
-  "Underseat Storage System": 0
-  "Scratch Protection": 0
-  "Face Shield": 0
-  "Front&Rear Side Window Deflectors": 1
-  "Front Side Window Deflectors": 1
-  "Rear Side Window Deflectors": 1
-  "Stone & Bug Deflector": 1
-  "Rear FloorLiner": 2
-  "Rear FloorLiner for vinyl floors": 2
-  "Front FloorLiner for Vinyl Floors": 2
-  "Front FloorLiner": 2
-  "Front FloorLiner HP": 2
-  "Rear FloorLiner HP": 2
-  "TechLiner": 2
-  "Rear Rubber Mats": 3
-  "Front Rubber Mats": 3
-  "Indoor Mat 24\" x 39\"": 3
-  "Outdoor Mat 24' x 39\"": 3
+  "Accessory": 0
+  "All Purpose Mat 40\" x 44\"": 3
+  "All Purpose Mat 44\" x 48\"": 3
+  "AlloyCover Hard Truck Bed Cover": 0
+  "Billet BumpStepXL w/Stainless hardware and Allen Key": 0
+  "Billet BumpStepXL": 0
+  "Blackhawk Drink Coasters": 0
+  "Boot Tray 16\" x 36\"": 0
+  "BumpFrame": 0
+  "BumpStep": 0
+  "BumpStepXL": 0
+  "Cabon Fiber Licence Plate Frame": 0
+  "Car Coasters": 0
+  "Cargo for Vinyl Floors With Bumper Protector": 0
+  "Cargo Liners for Vinyl Floors": 0
+  "Cargo liners": 0
   "Cargo Liners": 4
+  "Cargo Tech": 0
   "Cargo With Bumper Protector": 4
+  "Christmas Tree Mat": 0
+  "Door Protector": 0
+  "EasyRamp": 0
+  "Face Shield": 0
+  "FlexTray (without storage bag)": 0
+  "FlexTray with Storage Bag": 0
+  "Front and Rear Rubber Mats": 3
+  "Front and Rear Trim-to-fit HD mat set": 0
+  "Front and Rear Trim-to-fit mat": 0
+  "Front FloorLiner For Vinyl Floors": 0
+  "Front FloorLiner for Vinyl Floors": 2
+  "Front FloorLiner HP": 2
+  "Front FloorLiner": 2
+  "Front Rubber Mats": 3
+  "Front Side Window Deflectors": 1
+  "Front&Rear Side Window Deflectors": 1
+  "Fuel Glove": 0
+  "Gift Bag": 0
+  "Hitch Pin": 0
+  "Hood Protector": 0
+  "Indoor Mat 24\" x 39\"": 3
+  "Indoor Mat 30\" x 60\"": 3
+  "Indoor Mat 48\" x 30\"": 3
   "LampGard": 6
-  "SunShade": 8
-  "SunShade Full Vehicle Kit": 8
+  "lsx tech": 0
+  "No Drill MudFlaps Mid Flap": 0
+  "No Drill MudFlaps": 0
   "No Drill Mudflaps": 30
+  "Outdoor Mat 24' x 39\"": 3
+  "Outdoor Mat 30\" x 60\"": 3
+  "Outdoor Mat 48\" x 30\"": 3
+  "Pet Barrier Fence Kit": 0
+  "Pet Barrier Storage Bag": 0
+  "Pet Barrier": 0
+  "Pet Partition": 0
+  "PetRamp": 0
+  "Prep/Tack Slip Solution Kit": 0
+  "Rack Sack": 0
+  "Rear FloorLiner for Vinyl Floors": 0
+  "Rear FloorLiner for vinyl floors": 2
+  "Rear FloorLiner HP": 2
+  "Rear FloorLiner Vinyl Floors": 0
+  "Rear Floorliner": 0
+  "Rear FloorLiner": 2
+  "Rear Rubber Mats": 3
+  "Rear Side Window Deflectors": 1
+  "Roll Up Truck Bed Cover": 0
+  "Round Coaster Set": 0
+  "Scratch Protection": 0
+  "Seat Back Protectors": 0
+  "Seat Protector": 0
+  "Sink Mat": 0
+  "Stainless Steel Hitch Pin": 0
+  "StarBelt Buckle": 0
+  "StarBelt": 0
+  "Stone & Bug Deflector": 1
+  "Storage Bag for FlexTray/Fuel Glove": 0
+  "Sunroof Wind Deflectors": 0
+  "SunShade Bag 42in": 0
+  "SunShade Bag XL": 0
+  "SunShade Bag": 0
+  "SunShade Full Vehicle Kit": 8
+  "SunShade": 8
+  "Techcare": 0
+  "TechCare": 0
+  "TechFloor": 0
+  "TechLiner": 2
+  "Travel Safe Harness": 0
+  "Trim-to-fit Cargo/Truck Mat": 0
+  "Trim-to-fit Front and Rear OTH Mat set": 0
+  "underliner": 0
+  "Underseat Storage System": 0
+  "WaterBlade": 0
+  "WeatherTech Drink Coasters": 0
+  "WeatherTech Water Bottle": 0
 
 trux:
   "Lo Pro QT Tonneau Cover": 1
