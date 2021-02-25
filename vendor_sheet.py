@@ -9,7 +9,7 @@ def set_excel(vendor):
 	# Set default values
 	skiprow = 1
 	sheetname = ""
-	multisheet = 0
+	multisheet = []
 	csvfile = 0
 	
 	# Set skiprow or default to 1
@@ -23,6 +23,8 @@ def set_excel(vendor):
 	elif vendor == "kar":
 	  skiprow = 4
 	  multisheet = 1
+	elif vendor == "mrw":
+		multisheet = ["WHEELS", "ACCESSORIES"]
 	elif vendor == "road":
 	  skiprow = 4
 	elif (vendor == "gorm") | (vendor == "eccot") | (vendor == "eccon"):

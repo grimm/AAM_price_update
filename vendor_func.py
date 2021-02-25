@@ -45,6 +45,8 @@ def vendor_func(vendor_name):
 	    import vendor.knk as vendor
 	elif vendor_name == "knn":
 	    import vendor.knn as vendor
+	elif vendor_name == "mrw":
+	    import vendor.mrw as vendor
 	elif vendor_name == "nfa":
 	    import vendor.nfa as vendor
 	elif vendor_name == "rch":

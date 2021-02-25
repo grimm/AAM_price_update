@@ -24,8 +24,8 @@ import vendor_sheet as sheet
 
 # Define the supported vendors and load yaml calculation and groups files
 Vendors = ["aci", "adu", "ard", "baja", "big", "bkr", "buy", "carr", "curt", "deck",
-           "eccon", "eccot", "fia", "fil", "gor", "gorm", "kar", "knk", "knn", "kso", "nfa",
-           "odr", "par", "piaa", "prime", "protec", "rch", "rig", "road", "rrk", "rsp",
+           "eccon", "eccot", "fia", "fil", "gor", "gorm", "kar", "knk", "knn", "kso", "mrw",
+           "nfa", "odr", "par", "piaa", "prime", "protec", "rch", "rig", "road", "rrk", "rsp",
            "sb", "scs", "tech", "tim", "trux", "vms", "warn", "wes", "west", "yak"]
 vendor_cal = {}
 product_groups = {}
@@ -74,15 +74,16 @@ nelson_csv_file = vname + "_UPDATE_NTE_" + date + ".csv"
 # Load vendor file using pandas
 skiprow, sheet_name, multisheet, csvfile = sheet.set_excel(args.vendor)
 
-if sheet_name == "" and csvfile == 0: # no sheet name
+if sheet_name == "" and csvfile == 0 and not multisheet: # no sheet name
     vendor_pandas = pd.read_excel(args.file, keep_default_na=False, skiprows=skiprow)
 
-elif not sheet_name == "": # read a specific sheet out of the Excel file
+elif not sheet_name == "":   # read a specific sheet out of the Excel file
     vendor_pandas = pd.read_excel(args.file, keep_default_na=False, skiprows=skiprow, sheet_name=sheet_name)
 
-elif multisheet == 1:      # Load multiple sheets, these get put into a dictionary
-    vendor_pandas = pd.read_excel(args.file, keep_default_na=False, skiprows=skiprow, sheet_name=None)
-elif csvfile == 1:         # Load CSV file instead of Excel
+elif multisheet:             # Load multiple sheets, these get put into a dictionary
+    print(multisheet)
+    vendor_pandas = pd.read_excel(args.file, keep_default_na=False, skiprows=skiprow, sheet_name= multisheet)
+elif csvfile == 1:           # Load CSV file instead of Excel
     vendor_pandas = pd.read_csv(args.file, keep_default_na=False)
 
 # Create CSV file dictionary
