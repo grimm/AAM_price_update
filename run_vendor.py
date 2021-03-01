@@ -108,6 +108,9 @@ def vendor(vendor_pandas, vendor_cal, product_groups, vendor_name, vendor):
 
 	if vendor_name == "gor":
 	    new_pandas = vendor.do_gor(vendor_pandas, vendor_cal["gor"])
+	    titan_columns = ["NewPart", "Part Number", "Desc1", "Desc2", "P1", "P2", "P3", "P4",
+                     "P5", "Weight"]
+	    nelson_columns = titan_columns
 
 	if vendor_name == "gorm":
 	    new_pandas = vendor.do_gorm(vendor_pandas, vendor_cal["gorm"])
@@ -188,6 +191,12 @@ def vendor(vendor_pandas, vendor_cal, product_groups, vendor_name, vendor):
 
 	if vendor_name == "road":
 	    new_pandas = vendor.do_road(vendor_pandas, vendor_cal["road"])
+	    titan_columns = ["NewPart", "Part Number", "Desc1", "Desc2", "P1", "P2", "P3", "P4",
+                     "P5", "Length", "Width", "Height", "Weight"]
+	    nelson_columns = titan_columns
+
+	if vendor_name == "rug":
+	    new_pandas = vendor.do_rug(vendor_pandas, vendor_cal["rug"])
 	    titan_columns = ["NewPart", "Part Number", "Desc1", "Desc2", "P1", "P2", "P3", "P4",
                      "P5", "Length", "Width", "Height", "Weight"]
 	    nelson_columns = titan_columns

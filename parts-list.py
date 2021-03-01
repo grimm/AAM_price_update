@@ -26,7 +26,7 @@ import vendor_sheet as sheet
 Vendors = ["aci", "adu", "ard", "baja", "big", "bkr", "bush", "buy", "carr", "curt", "deck",
            "eccon", "eccot", "fia", "fil", "gor", "gorm", "kar", "knk", "knn", "kso", "mrw",
            "nfa", "odr", "par", "piaa", "prime", "protec", "rch", "rig", "road", "rrk", "rsp",
-           "sb", "scs", "tech", "tim", "trux", "vms", "warn", "wes", "west", "yak"]
+           "rug", "sb", "scs", "tech", "tim", "trux", "vms", "warn", "wes", "west", "yak"]
 vendor_cal = {}
 product_groups = {}
 

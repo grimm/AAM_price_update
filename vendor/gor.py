@@ -36,6 +36,8 @@ def do_gor(vendor_pandas, tech_cal):
     vendor_pandas["P1"] = vendor_pandas["MSRP/List"]
     vendor_pandas["P3"] = vendor_pandas["Jobber"]
     vendor_pandas["P5"] = vendor_pandas["AAM Cost"]
+    vendor_pandas["P2"] = vendor_pandas["P5"]
+    vendor_pandas["P4"] = vendor_pandas["P3"]
 
     for index, item in enumerate(vendor_pandas["Unilateral Retail"]):
         if item == "":
@@ -53,19 +55,23 @@ def do_gor(vendor_pandas, tech_cal):
     lname = "Weight - IN POUNDS"
     vendor_pandas[lname] = vendor_pandas[lname].astype(str)
     vendor_pandas[lname] = vendor_pandas[lname].str.replace('TBD', '0')
-    vendor_pandas["Weight"] = vendor_pandas[lname].astype(float)
+    vendor_pandas["Weight"] = vendor_pandas[lname].replace("", "0")
+    vendor_pandas["Weight"] = vendor_pandas["Weight"].str.replace("½", ".5").astype(float)
 
     vendor_pandas["Length"] = vendor_pandas[lname].astype(str)
     vendor_pandas["Length"] = vendor_pandas["Length"].str.replace('TBD', '0')
-    vendor_pandas["Length"] = vendor_pandas["Length"].astype(float)
+    vendor_pandas["Length"] = vendor_pandas["Length"].str.replace("½", ".5")
+    vendor_pandas["Length"] = vendor_pandas["Length"].replace("", "0").astype(float)
 
     vendor_pandas["Width"] = vendor_pandas[lname].astype(str)
     vendor_pandas["Width"] = vendor_pandas["Width"].str.replace('TBD', '0')
-    vendor_pandas["Width"] = vendor_pandas["Width"].astype(float)
+    vendor_pandas["Width"] = vendor_pandas["Width"].str.replace("½", ".5")
+    vendor_pandas["Width"] = vendor_pandas["Width"].replace("", "0").astype(float)
 
     vendor_pandas["Height"] = vendor_pandas[lname].astype(str)
     vendor_pandas["Height"] = vendor_pandas["Height"].str.replace('TBD', '0')
-    vendor_pandas["Height"] = vendor_pandas["Height"].astype(float)
+    vendor_pandas["Height"] = vendor_pandas["Height"].str.replace("½", ".5")
+    vendor_pandas["Height"] = vendor_pandas["Height"].replace("", "0").astype(float)
 
     return vendor_pandas
 
