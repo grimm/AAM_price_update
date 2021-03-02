@@ -29,6 +29,8 @@ def vendor_func(vendor_name):
 	    import vendor.curt as vendor
 	elif vendor_name == "deck":
 	    import vendor.deck as vendor
+	elif vendor_name == "dez":
+	    import vendor.dez as vendor
 	elif vendor_name == "eccot":
 	    import vendor.eccot as vendor
 	elif vendor_name == "eccon":
