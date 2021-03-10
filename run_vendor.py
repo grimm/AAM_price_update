@@ -56,9 +56,9 @@ def vendor(vendor_pandas, vendor_cal, product_groups, vendor_name, vendor):
 	if vendor_name == "tech":
 	    new_pandas = vendor.do_tech(vendor_pandas, product_groups, vendor_cal["tech"])
 	    #                 new_part   part     descriptions     P1     P2      P3      P4    P5
-	    titan_columns = ["NewPart", "Part", "Desc1", "Desc2", "MAP or Sug. Ret", "P2", "JOB", "P4", "TTK",
+	    titan_columns = ["NewPart", "Part", "Desc1", "Desc2", "P1", "P2", "P3", "P4", "TTK",
 	                     "Length", "Width", "Height", "Weight", "Group"]
-	    nelson_columns =["NewPart", "Part", "Desc1", "Desc2", "MAP or Sug. Ret", "P2", "JOB", "P4", "NP5",
+	    nelson_columns =["NewPart", "Part", "Desc1", "Desc2", "P1", "P2", "P3", "P4", "NP5",
 	                     "Length", "Width", "Height", "Weight", "Group"]
 
 	if vendor_name == "tim":

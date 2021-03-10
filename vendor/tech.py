@@ -42,6 +42,18 @@ def do_tech(vendor_pandas, prod_group, tech_cal):
     vendor_pandas["Desc2"] = vendor_pandas["Desc2"].apply(lambda x: x[:30]).str.upper()
     vendor_pandas["Desc2"] = vendor_pandas["Desc2"].apply(lambda x: unidecode.unidecode(x))
 
+    # Create price numbers
+    colnames = list(vendor_pandas.columns)
+    if ('MAP or Sug. Ret' in colnames):
+        vendor_pandas["P1"] = vendor_pandas["MAP or Sug. Ret"]
+    else:
+        vendor_pandas["P1"] = vendor_pandas["MAP"]
+
+    if ('JOB' in colnames):
+        vendor_pandas["P3"] = vendor_pandas["JOB"]
+    else:
+        vendor_pandas["P3"] = vendor_pandas["Jobber"]
+
     # Create P2 and P4 by calculation
     # Calculate P4 first as P2 uses it
     vendor_pandas["P4"] = vendor_pandas[tech_cal["main"]] / tech_cal["P4"] / 1.01
