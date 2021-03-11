@@ -11,6 +11,8 @@ def vendor_func(vendor_name):
 	    import vendor.adu as vendor
 	elif vendor_name == "amp":
 	    import vendor.amp as vendor
+	elif vendor_name == "ampm":
+	    import vendor.ampm as vendor
 	elif vendor_name == "baja":
 	    import vendor.baja as vendor
 	elif vendor_name == "big":

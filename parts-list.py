@@ -23,11 +23,11 @@ import run_vendor as run
 import vendor_sheet as sheet
 
 # Define the supported vendors and load yaml calculation and groups files
-Vendors = ["aci", "adu", "ard", "baja", "big", "bkr", "bush", "buy", "carr", "curt", "deck",
-           "dez", "eccon", "eccot", "fia", "fil", "gor", "gorm", "kar", "knk", "knn", "kso",
-           "mrw", "nfa", "odr", "par", "piaa", "prime", "protec", "rch", "rig", "road",
-           "rrk", "rsp", "rug", "sb", "scs", "tech", "tim", "trux", "vms", "warn", "wes",
-           "west", "yak"]
+Vendors = ["aci", "adu", "ampm", "ard", "baja", "big", "bkr", "bush", "buy", "carr",
+           "curt", "deck", "dez", "eccon", "eccot", "fia", "fil", "gor", "gorm", "kar",
+           "knk", "knn", "kso", "mrw", "nfa", "odr", "par", "piaa", "prime", "protec",
+           "rch", "rig", "road", "rrk", "rsp", "rug", "sb", "scs", "tech", "tim", "trux",
+           "vms", "warn", "wes", "west", "yak"]
 vendor_cal = {}
 product_groups = {}
 
@@ -68,6 +68,8 @@ if vname == "GORM":
     vname = "GOR"
 elif vname == "ECCOT" or vname == "ECCON":
     vname = "ECCO"
+elif vname == "AMPM":
+    vname = "AMP"
     
 titan_csv_file = vname + "_UPDATE_TTE_" + date + ".csv"
 nelson_csv_file = vname + "_UPDATE_NTE_" + date + ".csv"

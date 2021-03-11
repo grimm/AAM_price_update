@@ -18,7 +18,13 @@ def vendor(vendor_pandas, vendor_cal, product_groups, vendor_name, vendor):
 	    nelson_columns = titan_columns
 
 	if vendor_name == "amp":
-	    new_pandas = vendor.do_ard(vendor_pandas, vendor_cal["ard"])
+	    new_pandas = vendor.do_amp(vendor_pandas, vendor_cal["amp"])
+
+	if vendor_name == "ampm":
+	    new_pandas = vendor.do_ampm(vendor_pandas, vendor_cal["ampm"])
+	    titan_columns = ["NewPart", "Part Number", "Desc1", "Desc2", "P1", "P2", "P3", "P4",
+                     "P5", "Length", "Width", "Height", "Weight"]
+	    nelson_columns = titan_columns
 
 	if vendor_name == "ard":
 	    new_pandas = vendor.do_ard(vendor_pandas, vendor_cal["ard"])
