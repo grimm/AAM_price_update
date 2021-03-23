@@ -7,7 +7,7 @@
 #
 
 from datetime import datetime
-import csv
+import unidecode
 
 # Main vendor processing function
 def do_fia(vendor_pandas, tech_cal):
@@ -16,18 +16,17 @@ def do_fia(vendor_pandas, tech_cal):
     long_desc = "Long Description 100 Characters or less WITHOUT application information"
 
     # Process part number
-    vendor_pandas["NewPart"] = vendor_pandas["Part Number"].str.replace(' ', '')
-    vendor_pandas["NewPart"] = vendor_pandas["NewPart"].apply(lambda x: "FIA" + x)
+    vendor_pandas["Part Number"] = vendor_pandas["PART#"].str.replace(' ', '')
+    vendor_pandas["NewPart"] = vendor_pandas["Part Number"].apply(lambda x: "FIA" + x)
     
     # Create new description columns
-    vendor_pandas["Desc1"] = vendor_pandas[long_desc]
-    vendor_pandas["Desc2"] = vendor_pandas[long_desc]
+    vendor_pandas["Desc1"] = vendor_pandas["Description"]
+    vendor_pandas["Desc1"] = vendor_pandas["Desc1"].apply(lambda x: unidecode.unidecode(x))
 
     # Upper case text and trim it to 30 characters
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].str.upper()
+    vendor_pandas["Desc2"] = vendor_pandas["Desc1"].apply(lambda x: x[30:60])
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].apply(lambda x: x[:30])
-    vendor_pandas["Desc2"] = vendor_pandas["Desc2"].str.upper()
-    vendor_pandas["Desc2"] = vendor_pandas["Desc2"].apply(lambda x: x[30:60])
 
     # Create all price fields
     vendor_pandas["P1"] = vendor_pandas["MSRP/List"]
