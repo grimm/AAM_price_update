@@ -43,6 +43,8 @@ def vendor_func(vendor_name):
 	    import vendor.fia as vendor
 	elif vendor_name == "fil":
 	    import vendor.fil as vendor
+	elif vendor_name == "fpm":
+	    import vendor.fpm as vendor
 	elif vendor_name == "gor":
 	    import vendor.gor as vendor
 	elif vendor_name == "gorm":

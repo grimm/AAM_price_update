@@ -24,7 +24,7 @@ import vendor_sheet as sheet
 
 # Define the supported vendors and load yaml calculation and groups files
 Vendors = ["aci", "adu", "airl", "ampm", "ard", "baja", "big", "bkr", "bush", "buy", "carr",
-           "curt", "deck", "dez", "eccon", "eccot", "fia", "fil", "gor", "gorm", "kar",
+           "curt", "deck", "dez", "eccon", "eccot", "fia", "fil", "fpm", "gor", "gorm", "kar",
            "knk", "knn", "kso", "mrw", "nfa", "odr", "par", "piaa", "prime", "protec",
            "rch", "rig", "road", "rrk", "rsp", "rug", "sb", "scs", "tech", "tim", "trux",
            "vms", "warn", "wes", "west", "yak"]

@@ -17,6 +17,7 @@ eccon: {main: "WD",         P1: 0.6, P2: 0.7,   P3: 0.8, P4: 0.9,  P5: 0.8,  P6:
 eccot: {main: "WD",         P1: 0.5, P2: 0.6,   P3: 0.7, P4: 0.8,  P5: 0.8,  P6: 0,   NTE: 0}
 fia:  {main: "JOBBER",      P1: 0,   P2: 0.8,   P3: 0,   P4: 0.85, P5: 0,    P6: 0,   NTE: 0}
 fil:  {main: "List Price",  P1: 0,   P2: 0.7,   P3: 0.75, P4: 0.85, P5: 0,   P6: 0,   NTE: 0}
+fpm:  {main: "List Price",  P1: 0,   P2: 0.75,  P3: 0.0, P4: 0.95, P5: 0,    P6: 0,   NTE: 0}
 gor:  {main: "COST",        P1: 0,   P2: 0.644, P3: 0,   P4: 0.85, P5: 0,    P6: 0,   NTE: 0}
 gorm: {main: "COST",        P1: 0,   P2: 0.644, P3: 0,   P4: 0.85, P5: 0,    P6: 0,   NTE: 0}
 kar:  {main: "Trade Price", P1: 0.8, P2: 0,     P3: 0.8, P4: 0.753, P5: 1.07, P6: 0,  NTE: 0}
