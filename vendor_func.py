@@ -9,6 +9,8 @@ def vendor_func(vendor_name):
 	    import vendor.ard as vendor
 	elif vendor_name == "adu":
 	    import vendor.adu as vendor
+	elif vendor_name == "airl":
+	    import vendor.airl as vendor
 	elif vendor_name == "amp":
 	    import vendor.amp as vendor
 	elif vendor_name == "ampm":

@@ -17,6 +17,12 @@ def vendor(vendor_pandas, vendor_cal, product_groups, vendor_name, vendor):
                      "P5", "Length", "Width", "Height", "Weight"]
 	    nelson_columns = titan_columns
 
+	if vendor_name == "airl":
+	    new_pandas = vendor.do_airl(vendor_pandas, vendor_cal["airl"])
+	    titan_columns = ["NewPart", "Part Number", "Desc1", "Desc2", "P1", "P2", "P3", "P4",
+                     "P5", "Length", "Width", "Height", "Weight"]
+	    nelson_columns = titan_columns
+
 	if vendor_name == "amp":
 	    new_pandas = vendor.do_amp(vendor_pandas, vendor_cal["amp"])
 
@@ -138,6 +144,9 @@ def vendor(vendor_pandas, vendor_cal, product_groups, vendor_name, vendor):
 	    
 	if vendor_name == "knk":
 	    new_pandas = vendor.do_knk(vendor_pandas, vendor_cal["knk"])
+	    titan_columns = ["NewPart", "Part Number", "Desc1", "Desc2", "P1", "P2", "P3", "P4",
+                     "P5", "Weight", "Group Code"]
+	    nelson_columns = titan_columns
 
 	if vendor_name == "knn":
 	    new_pandas = vendor.do_knn(vendor_pandas, vendor_cal["knn"])

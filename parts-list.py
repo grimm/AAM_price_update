@@ -23,7 +23,7 @@ import run_vendor as run
 import vendor_sheet as sheet
 
 # Define the supported vendors and load yaml calculation and groups files
-Vendors = ["aci", "adu", "ampm", "ard", "baja", "big", "bkr", "bush", "buy", "carr",
+Vendors = ["aci", "adu", "airl", "ampm", "ard", "baja", "big", "bkr", "bush", "buy", "carr",
            "curt", "deck", "dez", "eccon", "eccot", "fia", "fil", "gor", "gorm", "kar",
            "knk", "knn", "kso", "mrw", "nfa", "odr", "par", "piaa", "prime", "protec",
            "rch", "rig", "road", "rrk", "rsp", "rug", "sb", "scs", "tech", "tim", "trux",
@@ -84,7 +84,6 @@ elif not sheet_name == "":   # read a specific sheet out of the Excel file
     vendor_pandas = pd.read_excel(args.file, keep_default_na=False, skiprows=skiprow, sheet_name=sheet_name)
 
 elif multisheet:             # Load multiple sheets, these get put into a dictionary
-    print(multisheet)
     vendor_pandas = pd.read_excel(args.file, keep_default_na=False, skiprows=skiprow, sheet_name= multisheet)
 elif csvfile == 1:           # Load CSV file instead of Excel
     vendor_pandas = pd.read_csv(args.file, keep_default_na=False)
