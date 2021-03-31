@@ -18,7 +18,7 @@ def set_excel(vendor):
 	  if vendor == "sb": csvfile = 1
 	elif (vendor == "adu") | (vendor == "prime"):
 	  skiprow = 2
-	elif (vendor == "amp") | (vendor == "odr"):
+	elif (vendor == "amp") | (vendor == "odr") | (vendor == "qf"):
 	  skiprow = 3
 	elif vendor == "kar":
 	  skiprow = 4

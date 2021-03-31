@@ -186,6 +186,12 @@ def vendor(vendor_pandas, vendor_cal, product_groups, vendor_name, vendor):
                      "P5"]
 	    nelson_columns = titan_columns
 
+	if vendor_name == "qf":
+	    new_pandas = vendor.do_qf(vendor_pandas, vendor_cal["qf"])
+	    titan_columns = ["NewPart", "Part Number", "Desc1", "Desc2", "P1", "P2", "P3", "P4",
+                     "P5", "Length", "Width", "Height", "Weight"]
+	    nelson_columns = titan_columns
+
 	if vendor_name == "rsp":
 	    new_pandas = vendor.do_rsp(vendor_pandas, vendor_cal["rsp"])
 

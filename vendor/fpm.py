@@ -8,7 +8,6 @@
 
 from datetime import datetime
 import unidecode
-import csv
 
 # Main vendor processing function
 def do_fpm(vendor_pandas, tech_cal):

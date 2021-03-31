@@ -79,6 +79,8 @@ def vendor_func(vendor_name):
 	    import vendor.prime as vendor
 	elif vendor_name == "protec":
 	    import vendor.protec as vendor
+	elif vendor_name == "qf":
+	    import vendor.qf as vendor
 	elif vendor_name == "rig":
 	    import vendor.rig as vendor
 	elif vendor_name == "rug":
