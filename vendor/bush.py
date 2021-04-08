@@ -1,9 +1,10 @@
 #
 # bush.py
 #
-# This script holds functions for the vendor Bush Master
+# This script holds functions for the vendor Bushwacker
 #
 # Initial version - 02/25/2021 - Jason Grimes
+#   Updated to the AAM file - 04/05/2021 - JG
 #
 
 from datetime import datetime
@@ -12,11 +13,15 @@ import csv
 
 # Main vendor processing function
 def do_bush(vendor_pandas, tech_cal):
+    # Put really long header text in some vars
+    short_desc = "Short Description (20 Characters or Less)"
+    long_desc = "Long Description 100 Characters or less WITHOUT application information"
+
     # Create new Status/NewPart columns
     vendor_pandas["NewPart"] = vendor_pandas["Part Number"].astype(str).apply(lambda x: "BUSH" + x)
     
     # Create new description columns
-    vendor_pandas["Desc1"] = vendor_pandas["PF Desc"] + " " + vendor_pandas["Product Class"]
+    vendor_pandas["Desc1"] = vendor_pandas[long_desc]
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].str.upper()
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].apply(lambda x: unidecode.unidecode(x))
 
@@ -24,10 +29,10 @@ def do_bush(vendor_pandas, tech_cal):
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].apply(lambda x: x[:30])
 
     # Create all price fields
-    vendor_pandas["P1"] = vendor_pandas["MSRP"].astype(float)
+    vendor_pandas["P1"] = vendor_pandas["MSRP/List"].astype(float)
     vendor_pandas["P3"] = vendor_pandas["Jobber"].astype(float)
 
-    vendor_pandas["P2"] = vendor_pandas["MAP"].astype(float)
+    vendor_pandas["P2"] = vendor_pandas["MAP Retail"].replace("", "0").astype(float)
     for index, item in enumerate(vendor_pandas["P2"]):
         if item == 0:
             vendor_pandas["P2"][index] = vendor_pandas["P3"][index]
@@ -35,14 +40,11 @@ def do_bush(vendor_pandas, tech_cal):
     vendor_pandas["P5"] = vendor_pandas["P3"] * 0.7 * 0.9
     vendor_pandas["P4"] = vendor_pandas["P5"] / tech_cal["P4"]
 
-    # Set dimensions and status
-    len_pandas = len(vendor_pandas.axes[0])
-    new_column = list("0" * len_pandas)
-
-    vendor_pandas["Length"] = new_column
-    vendor_pandas["Width"] = new_column
-    vendor_pandas["Height"] = new_column
-    vendor_pandas["Weight"] = new_column
+    # Set dimensions
+    vendor_pandas["Weight"] = vendor_pandas["Weight - IN POUNDS"].replace("", "0").astype(float)
+    vendor_pandas["Length"] = vendor_pandas["Length"].replace("", "0").astype(float)
+    vendor_pandas["Width"] = vendor_pandas["Width"].replace("", "0").astype(float)
+    vendor_pandas["Height"] = vendor_pandas["Height"].replace("", "0").astype(float)
 
     return vendor_pandas
 
