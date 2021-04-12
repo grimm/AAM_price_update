@@ -21,6 +21,11 @@ def do_curt(vendor_pandas, tech_cal):
     vendor_pandas['Part Number'] = vendor_pandas['Part Number'].astype(str)
     vendor_pandas = vendor_pandas[(vendor_pandas["Part Number"].str.len() == 5)]
 
+    # Filter out any part that has emailed for cost
+    vendor_pandas = vendor_pandas[(vendor_pandas["AAM Cost"] != "Emailed for Cost")]
+    vendor_pandas = vendor_pandas[(vendor_pandas["Life Cycle Status Code"] != "Discontinued")]
+    vendor_pandas = vendor_pandas.reset_index(drop=True)
+
     # Get length of dataframe and create new NewPart column
     len_pandas = len(vendor_pandas.axes[0])
     new_column = list("A" * len_pandas)
@@ -29,20 +34,21 @@ def do_curt(vendor_pandas, tech_cal):
     
     # Create new description columns and replace quotes
     vendor_pandas["Desc1"] = vendor_pandas[long_desc].str.replace('\"', 'in')
-    vendor_pandas["Desc2"] = vendor_pandas[long_desc].str.replace('\"', 'in')
+    for index, item in enumerate(vendor_pandas["Desc1"]):
+        if item == "":
+            vendor_pandas["Desc1"][index] = vendor_pandas[short_desc][index].replace('\"', 'in')
 
     # Upper case text and trim it to 30 characters
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].str.upper()
+    vendor_pandas["Desc2"] = vendor_pandas["Desc1"].apply(lambda x: x[30:60])
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].apply(lambda x: x[:30])
-    vendor_pandas["Desc2"] = vendor_pandas["Desc2"].str.upper()
-    vendor_pandas["Desc2"] = vendor_pandas["Desc2"].apply(lambda x: x[30:60])
 
     # Create all price fields
     vendor_pandas["P1"] = vendor_pandas["MSRP/List"]
     vendor_pandas["P3"] = vendor_pandas["Jobber"]
-    vendor_pandas["P5"] = vendor_pandas["AAM Cost"]
+    vendor_pandas["P5"] = vendor_pandas["AAM Cost"].astype(float)
 
-    vendor_pandas["P2"] = vendor_pandas["AAM Cost"]
+    vendor_pandas["P2"] = vendor_pandas["AAM Cost"].astype(float)
     vendor_pandas["MAP Retail"] = vendor_pandas["MAP Retail"].astype(str)
 
     vendor_pandas.index = range(len(vendor_pandas.index))
@@ -57,7 +63,10 @@ def do_curt(vendor_pandas, tech_cal):
     vendor_pandas["P4"] = vendor_pandas["P5"] / tech_cal["P4"]
 
     # Set dimensions and status
-    vendor_pandas["Weight"] = vendor_pandas["Weight - IN POUNDS"]
+    vendor_pandas["Weight"] = vendor_pandas["Weight - IN POUNDS"].replace("","0")
+    vendor_pandas["Width"] = vendor_pandas["Width"].replace("","0")
+    vendor_pandas["Length"] = vendor_pandas["Length"].replace("","0")
+    vendor_pandas["Height"] = vendor_pandas["Height"].replace("","0")
     vendor_pandas["Status"] = new_column
 
     # Check for discontinued parts
