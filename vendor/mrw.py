@@ -13,10 +13,9 @@ import pandas as pd
 
 # Main vendor processing function
 def do_mrw(vendor_pandas, tech_cal):
-    print(vendor_pandas["WHEELS"].axes[0])
-    print(vendor_pandas["ACCESSORIES"].axes[0])
+    # print(vendor_pandas["WHEELS"].axes[0])
+    # print(vendor_pandas["ACCESSORIES"].axes[0])
     # Concatinate both sheets for processing
-    # vendor_pandas = pd.concat(vendor_pandas, axis=0)
     vendor_pandas = pd.concat(vendor_pandas, axis=0, ignore_index=True)
 
     # Merge badly named columns
