@@ -79,6 +79,8 @@ def vendor_func(vendor_name):
 	    import vendor.prime as vendor
 	elif vendor_name == "protec":
 	    import vendor.protec as vendor
+	elif vendor_name == "put":
+	    import vendor.put as vendor
 	elif vendor_name == "qf":
 	    import vendor.qf as vendor
 	elif vendor_name == "rig":
@@ -91,6 +93,8 @@ def vendor_func(vendor_name):
 	    import vendor.scs as vendor
 	elif vendor_name == "trux":
 	    import vendor.trux as vendor
+	elif vendor_name == "und":
+	    import vendor.und as vendor
 	elif vendor_name == "vms":
 	    import vendor.vms as vendor
 	elif vendor_name == "warn":

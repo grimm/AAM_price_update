@@ -213,6 +213,12 @@ def vendor(vendor_pandas, vendor_cal, product_groups, vendor_name, vendor):
                      "P5", "Length", "Width", "Height", "Weight"]
 	    nelson_columns = titan_columns
 
+	if vendor_name == "put":
+	    new_pandas = vendor.do_put(vendor_pandas, vendor_cal["put"])
+	    titan_columns = ["NewPart", "Part Number", "Desc1", "Desc2", "P1", "P2", "P3", "P4",
+                     "P5", "Length", "Width", "Height", "Weight"]
+	    nelson_columns = titan_columns
+
 	if vendor_name == "rch":
 	    new_pandas = vendor.do_rch(vendor_pandas, vendor_cal["rch"])
 	    titan_columns = ["NewPart", "Part Number", "Desc1", "Desc2", "P1", "P2", "P3", "P4",
@@ -256,6 +262,12 @@ def vendor(vendor_pandas, vendor_cal, product_groups, vendor_name, vendor):
 	    new_pandas = vendor.do_trux(vendor_pandas, product_groups["trux"], vendor_cal["trux"])
 	    titan_columns = ["NewPart", "Part Number", "Desc1", "Desc2", "P1", "P2", "P3", "P4",
                      "P5", "Length", "Width", "Height", "Weight", "Group Code"]
+	    nelson_columns = titan_columns
+
+	if vendor_name == "und":
+	    new_pandas = vendor.do_und(vendor_pandas, vendor_cal["und"])
+	    titan_columns = ["NewPart", "Part Number", "Desc1", "Desc2", "P1", "P2", "P3", "P4",
+                     "P5", "Length", "Width", "Height", "Weight"]
 	    nelson_columns = titan_columns
 
 	if vendor_name == "vms":

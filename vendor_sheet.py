@@ -13,10 +13,10 @@ def set_excel(vendor):
 	csvfile = 0
 	
 	# Set skiprow or default to 1
-	if (vendor == "tech") | (vendor == "tim") | (vendor == "yak") | (vendor == "aci") | (vendor == "nfa") | (vendor == "baja") | (vendor == "west") | (vendor == "vms") | (vendor == "sb") | (vendor == "fil") | (vendor == "bush") | (vendor == "scs") | (vendor == "ampm") | (vendor == "knk"):
+	if (vendor == "tech") | (vendor == "tim") | (vendor == "yak") | (vendor == "aci") | (vendor == "nfa") | (vendor == "baja") | (vendor == "west") | (vendor == "vms") | (vendor == "sb") | (vendor == "fil") | (vendor == "scs") | (vendor == "ampm") | (vendor == "knk") | (vendor == "adu"):
 	  skiprow = 0
 	  if vendor == "sb": csvfile = 1
-	elif (vendor == "adu") | (vendor == "prime"):
+	elif (vendor == "prime"):
 	  skiprow = 2
 	elif (vendor == "amp") | (vendor == "odr") | (vendor == "qf"):
 	  skiprow = 3
