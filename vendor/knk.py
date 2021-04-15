@@ -1,7 +1,7 @@
 #
 # knk.py
 #
-# This script holds functions for the vendor Wernerco
+# This script holds functions for the vendor Wernerco (Weather Guard)
 #
 # Initial version - 03/24/2021 - Jason Grimes
 #
@@ -82,6 +82,6 @@ def do_knk(vendor_pandas, tech_cal):
             vendor_pandas["P4"][index] = vendor_pandas["P1"][index] * tech_cal["P4"]
 
     # Set dimensions and status
-    vendor_pandas["Weight"] = vendor_pandas["Weight"].astype(float)
+    vendor_pandas["Weight"] = vendor_pandas["Weight"].replace("","0").astype(float)
 
     return vendor_pandas
