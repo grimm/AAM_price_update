@@ -13,6 +13,11 @@ import csv
 
 # Main vendor processing function
 def do_adu(vendor_pandas, tech_cal):
+    # Remove in progress rows
+    vendor_pandas = vendor_pandas[(vendor_pandas["WD Cost"] != "")]
+    vendor_pandas = vendor_pandas[(vendor_pandas["Box Weight (lbs.)"] <= 8000)]
+    vendor_pandas = vendor_pandas.reset_index(drop=True)
+
     # Create new Status/NewPart columns
     vendor_pandas['NewPart'] = vendor_pandas['Part Number'].astype(str)
     vendor_pandas["NewPart"] = vendor_pandas["NewPart"].apply(lambda x: "ADU" + x)
@@ -33,7 +38,7 @@ def do_adu(vendor_pandas, tech_cal):
     vendor_pandas["P2"] = vendor_pandas["P1"]
     vendor_pandas["P3"] = vendor_pandas["Jobber"].astype(float)
     vendor_pandas["P4"] = vendor_pandas["P3"]
-    vendor_pandas["P5"] = vendor_pandas["WD Cost"].astype(float)
+    vendor_pandas["P5"] = vendor_pandas["P3"] * tech_cal["P5"] * tech_cal["P6"]
 
     # Set dimensions
     vendor_pandas["Weight"] = vendor_pandas["Box Weight (lbs.)"].astype(float)
