@@ -1,8 +1,8 @@
 # 
-# parts-list.py
+# conv_price.py
 #
-# This script converts a parts-list Excel file to a specially formated CSV file so it can be imported into
-# the FACS system.
+# This script converts a vendor parts Excel file to a specially formated CSV file so it
+# can be imported into the FACS system.
 #
 # 9-23-2020 - Initial Version 1.0  Jason Grimes
 #
