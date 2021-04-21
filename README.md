@@ -13,15 +13,15 @@ Requires these Python modules (use pip to install)...
 
 To run the script use the following comand...
 
-`py parts-list.py {name of price Excel file} {vendor name}`
+`py conv_price.py {name of price Excel file} {vendor name}`
 
 To see a list of supported vendor namess, use the following command...
 
-`py parts-list.py -h`
+`py conv_price.py -h`
 
 And the script should output something similar to this...
 
-```usage: parts-list.py [-h] file vendor
+```usage: conv_price.py [-h] file vendor
 
 Convert parts Excel file to a CSV formated file
 
