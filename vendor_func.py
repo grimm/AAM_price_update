@@ -61,6 +61,8 @@ def vendor_func(vendor_name):
 	    import vendor.mrw as vendor
 	elif vendor_name == "nfa":
 	    import vendor.nfa as vendor
+	elif vendor_name == "nitro":
+	    import vendor.nitro as vendor
 	elif vendor_name == "rch":
 	    import vendor.rch as vendor
 	elif vendor_name == "road":
