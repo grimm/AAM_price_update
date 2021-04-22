@@ -89,6 +89,8 @@ def vendor_func(vendor_name):
 	    import vendor.qf as vendor
 	elif vendor_name == "rig":
 	    import vendor.rig as vendor
+	elif vendor_name == "rlg":
+	    import vendor.rlg as vendor
 	elif vendor_name == "rug":
 	    import vendor.rug as vendor
 	elif vendor_name == "sb":
