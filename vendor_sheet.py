@@ -13,19 +13,17 @@ def set_excel(vendor):
 	csvfile = 0
 	
 	# Set skiprow or default to 1
-	if (vendor == "tech") | (vendor == "tim") | (vendor == "aci") | (vendor == "nfa") | (vendor == "baja") | (vendor == "west") | (vendor == "vms") | (vendor == "sb") | (vendor == "fil") | (vendor == "scs") | (vendor == "ampm") | (vendor == "knk") | (vendor == "adu") | (vendor == "mass") | (vendor == "put") | (vendor == "nitro"):
+	if (vendor == "tech") | (vendor == "tim") | (vendor == "aci") | (vendor == "nfa") | (vendor == "baja") | (vendor == "west") | (vendor == "vms") | (vendor == "sb") | (vendor == "fil") | (vendor == "scs") | (vendor == "ampm") | (vendor == "knk") | (vendor == "adu") | (vendor == "mass") | (vendor == "put") | (vendor == "nitro") | (vendor == "lnd") | (vendor == "rcs"):
 	  skiprow = 0
-	  if vendor == "sb": csvfile = 1
 	elif (vendor == "prime"):
 	  skiprow = 2
 	elif (vendor == "amp") | (vendor == "odr") | (vendor == "qf"):
 	  skiprow = 3
-	elif vendor == "kar":
+	elif (vendor == "kar") | (vendor == "arb"):
 	  skiprow = 4
-	  multisheet = 1
 	elif vendor == "road":
 	  skiprow = 4
-	elif (vendor == "gorm") | (vendor == "eccot") | (vendor == "eccon") | (vendor == "fia"):
+	elif (vendor == "gorm") | (vendor == "eccot") | (vendor == "eccon") | (vendor == "rfn"):
 	  skiprow = 5
 	elif vendor == "wes":
 	  skiprow = 8
@@ -34,10 +32,16 @@ def set_excel(vendor):
 	elif vendor == "kso":
 	  skiprow = 17
 
+  # Multisheet settings
 	if vendor == "ampm":
 		multisheet = ["PowerStep ", "BedSteps", "Bed Xtender "]
+
+	if vendor == "kar":
+		multisheet = 1
+
 	if vendor == "knk":
 		multisheet = ["JOBSITE", "VAN", "TRUCK"]
+
 	if vendor == "mrw":
 		multisheet = ["WHEELS", "ACCESSORIES"]
 
@@ -46,5 +50,8 @@ def set_excel(vendor):
 		sheetname = "price list"
 	if vendor == "fil":
 		sheetname = "Flat File"
+
+	# Set CSV file read
+	if vendor == "sb": csvfile = 1
 
 	return skiprow, sheetname, multisheet, csvfile

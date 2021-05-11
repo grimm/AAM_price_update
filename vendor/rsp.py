@@ -27,7 +27,7 @@ def do_rsp(vendor_pandas, tech_cal):
     #vendor_pandas[long_desc] = vendor_pandas[long_desc].replace(r'\\r\\n',' ', regex=True)
 
     # Process part number
-    vendor_pandas["NewPart"] = vendor_pandas["Part Number"]
+    vendor_pandas["NewPart"] = vendor_pandas["Part Number"].astype(str)
     for index, item in enumerate(vendor_pandas["NewPart"]):
         if item[:3] == "RSP":
             vendor_pandas["NewPart"][index] = item[3:]

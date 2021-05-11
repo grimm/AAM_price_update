@@ -5,6 +5,8 @@ def vendor_func(vendor_name):
 	    import vendor.tech as vendor
 	elif vendor_name == "aci":
 	    import vendor.aci as vendor
+	elif vendor_name == "arb":
+	    import vendor.arb as vendor
 	elif vendor_name == "ard":
 	    import vendor.ard as vendor
 	elif vendor_name == "adu":
@@ -15,6 +17,8 @@ def vendor_func(vendor_name):
 	    import vendor.amp as vendor
 	elif vendor_name == "ampm":
 	    import vendor.ampm as vendor
+	elif vendor_name == "bak":
+	    import vendor.bak as vendor
 	elif vendor_name == "baja":
 	    import vendor.baja as vendor
 	elif vendor_name == "big":
@@ -55,6 +59,8 @@ def vendor_func(vendor_name):
 	    import vendor.knk as vendor
 	elif vendor_name == "knn":
 	    import vendor.knn as vendor
+	elif vendor_name == "lnd":
+	    import vendor.lnd as vendor
 	elif vendor_name == "mass":
 	    import vendor.mass as vendor
 	elif vendor_name == "mrw":
@@ -87,10 +93,16 @@ def vendor_func(vendor_name):
 	    import vendor.put as vendor
 	elif vendor_name == "qf":
 	    import vendor.qf as vendor
+	elif vendor_name == "rcs":
+	    import vendor.rcs as vendor
+	elif vendor_name == "rfn":
+	    import vendor.rfn as vendor
 	elif vendor_name == "rig":
 	    import vendor.rig as vendor
 	elif vendor_name == "rlg":
 	    import vendor.rlg as vendor
+	elif vendor_name == "rtx":
+	    import vendor.rtx as vendor
 	elif vendor_name == "rug":
 	    import vendor.rug as vendor
 	elif vendor_name == "sb":
@@ -101,6 +113,8 @@ def vendor_func(vendor_name):
 	    import vendor.trux as vendor
 	elif vendor_name == "und":
 	    import vendor.und as vendor
+	elif vendor_name == "ven":
+	    import vendor.ven as vendor
 	elif vendor_name == "vms":
 	    import vendor.vms as vendor
 	elif vendor_name == "warn":

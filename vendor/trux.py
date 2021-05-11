@@ -28,8 +28,13 @@ def do_trux(vendor_pandas, prod_group, tech_cal):
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].apply(lambda x: x[:30])
 
     # Create all price fields
-    vendor_pandas["P1"] = vendor_pandas["MSRP/List"].replace("", "0").astype(float)
     vendor_pandas["P3"] = vendor_pandas["Jobber"].astype(float)
+
+    vendor_pandas["P1"] = vendor_pandas["MSRP/List"]
+    for index, item in enumerate(vendor_pandas["P1"]):
+        if item == "" or item =="n/a":
+            vendor_pandas["P1"][index] = vendor_pandas["P3"][index]
+
     vendor_pandas["P5"] = vendor_pandas["AAM Cost"].astype(float)
 
     vendor_pandas["P2"] = vendor_pandas["MAP Retail"]
@@ -37,7 +42,12 @@ def do_trux(vendor_pandas, prod_group, tech_cal):
         #print(index)
         if item == "":
             vendor_pandas["P2"][index] = vendor_pandas["P3"][index]
-    vendor_pandas["P2"] = vendor_pandas["P2"].astype(float)
+
+    vendor_pandas["P2"] = vendor_pandas["P2"]
+    for index, item in enumerate(vendor_pandas["P2"]):
+        if item == "" or item =="n/a":
+            vendor_pandas["P2"][index] = vendor_pandas["P3"][index]
+
 
     vendor_pandas["P4"] = vendor_pandas["MAP Wholesale / MSP"]
     for index, item in enumerate(vendor_pandas["MAP Wholesale / MSP"]):
@@ -45,9 +55,22 @@ def do_trux(vendor_pandas, prod_group, tech_cal):
         if item == "":
             vendor_pandas["P4"][index] = vendor_pandas["P5"][index] / tech_cal["P4"]
     vendor_pandas["P4"] = vendor_pandas["P4"].astype(float)
+    vendor_pandas["P1"] = vendor_pandas["P1"].astype(float)
+    vendor_pandas["P2"] = vendor_pandas["P2"].astype(float)
 
     # Set dimensions and status
     vendor_pandas["Weight"] = vendor_pandas["Weight - IN POUNDS"].astype(float)
+    vendor_pandas["Length"] = vendor_pandas["Length"].astype(str).apply(lambda x: unidecode.unidecode(x))
+    vendor_pandas["Length"] = vendor_pandas["Length"].astype(str).apply(lambda x: x.strip('"'))
+    vendor_pandas["Length"] = vendor_pandas["Length"].astype(float)
+
+    vendor_pandas["Height"] = vendor_pandas["Height"].astype(str).apply(lambda x: unidecode.unidecode(x))
+    vendor_pandas["Height"] = vendor_pandas["Height"].astype(str).apply(lambda x: x.strip('"'))
+    vendor_pandas["Height"] = vendor_pandas["Height"].astype(float)
+
+    vendor_pandas["Width"] = vendor_pandas["Width"].astype(str).apply(lambda x: unidecode.unidecode(x))
+    vendor_pandas["Width"] = vendor_pandas["Width"].astype(str).apply(lambda x: x.strip('"'))
+    vendor_pandas["Width"] = vendor_pandas["Width"].astype(float)
 
     # Set product groups
     vendor_pandas["Group Code"] = vendor_pandas["NewPart"]
