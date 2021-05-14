@@ -14,33 +14,40 @@ import unidecode
 def do_knk(vendor_pandas, tech_cal):
     # Put really long header text in some vars
     long_desc = "Description"
+    frames = []
 
     # Process all sheets and label descriptions
-    jobsite_pandas = vendor_pandas["JOBSITE"]
-    van_pandas = vendor_pandas["VAN"]
-    truck_pandas = vendor_pandas["TRUCK"]
+    if "JOBSITE" in vendor_pandas.keys() and not vendor_pandas["JOBSITE"].empty:
+      jobsite_pandas = vendor_pandas["JOBSITE"]
+      jobsite_pandas[long_desc] = jobsite_pandas[long_desc].apply(lambda x: "(JOBSITE) " + x)
+      sheetlen = len(jobsite_pandas.axes[0])
+      new_column = list("2" * sheetlen)
+      jobsite_pandas["Group Code"] = new_column
+      new_column = list("j" * sheetlen)
+      jobsite_pandas["type"] = new_column
+      frames.append(jobsite_pandas)
 
-    jobsite_pandas[long_desc] = jobsite_pandas[long_desc].apply(lambda x: "(JOBSITE) " + x)
-    van_pandas[long_desc] = van_pandas[long_desc].apply(lambda x: "(VAN) " + x)
-    truck_pandas[long_desc] = truck_pandas[long_desc].apply(lambda x: "(TRUCK) " + x)
+    if "VAN" in vendor_pandas.keys() and not vendor_pandas["VAN"].empty:
+      van_pandas = vendor_pandas["VAN"]
+      van_pandas[long_desc] = van_pandas[long_desc].apply(lambda x: "(VAN) " + x)
+      sheetlen = len(van_pandas.axes[0])
+      new_column = list("1" * sheetlen)
+      van_pandas["Group Code"] = new_column
+      new_column = list(" " * sheetlen)
+      van_pandas["type"] = new_column
+      frames.append(van_pandas)
 
-    # Add group code
-    sheetlen = len(jobsite_pandas.axes[0])
-    new_column = list("2" * sheetlen)
-    jobsite_pandas["Group Code"] = new_column
-    new_column = list("j" * sheetlen)
-    jobsite_pandas["type"] = new_column
-
-    sheetlen = len(van_pandas.axes[0])
-    new_column = list("1" * sheetlen)
-    van_pandas["Group Code"] = new_column
-
-    sheetlen = len(truck_pandas.axes[0])
-    new_column = list("1" * sheetlen)
-    truck_pandas["Group Code"] = new_column
+    if "TRUCK" in vendor_pandas.keys() and not vendor_pandas["TRUCK"].empty:
+      truck_pandas = vendor_pandas["TRUCK"]
+      truck_pandas[long_desc] = truck_pandas[long_desc].apply(lambda x: "(TRUCK) " + x)
+      sheetlen = len(truck_pandas.axes[0])
+      new_column = list("1" * sheetlen)
+      truck_pandas["Group Code"] = new_column
+      new_column = list(" " * sheetlen)
+      truck_pandas["type"] = new_column
+      frames.append(truck_pandas)
 
     # Concat all sheets into one data frame
-    frames = [jobsite_pandas, van_pandas, truck_pandas]
     vendor_pandas = pd.concat(frames)
     vendor_pandas = vendor_pandas[(vendor_pandas["Trade Price"] != 0)]
     vendor_pandas = vendor_pandas.reset_index(drop=True)
@@ -82,6 +89,7 @@ def do_knk(vendor_pandas, tech_cal):
             vendor_pandas["P4"][index] = vendor_pandas["P1"][index] * tech_cal["P4"]
 
     # Set dimensions and status
-    vendor_pandas["Weight"] = vendor_pandas["Weight"].replace("","0").astype(float)
+    vendor_pandas["Weight"] = vendor_pandas["Weight"].replace("","0")
+    vendor_pandas["Weight"] = vendor_pandas["Weight"].replace("undefined","0").astype(float)
 
     return vendor_pandas
