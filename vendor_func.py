@@ -23,6 +23,8 @@ def vendor_func(vendor_name):
 	    import vendor.baja as vendor
 	elif vendor_name == "big":
 	    import vendor.big as vendor
+	elif vendor_name == "bigm":
+	    import vendor.bigm as vendor
 	elif vendor_name == "bkr":
 	    import vendor.bkr as vendor
 	elif vendor_name == "bush":
@@ -33,6 +35,8 @@ def vendor_func(vendor_name):
 	    import vendor.tim as vendor
 	elif vendor_name == "carr":
 	    import vendor.carr as vendor
+	elif vendor_name == "crg":
+	    import vendor.crg as vendor
 	elif vendor_name == "curt":
 	    import vendor.curt as vendor
 	elif vendor_name == "deck":
@@ -53,6 +57,8 @@ def vendor_func(vendor_name):
 	    import vendor.gor as vendor
 	elif vendor_name == "gorm":
 	    import vendor.gorm as vendor
+	elif vendor_name == "hus":
+	    import vendor.hus as vendor
 	elif vendor_name == "kar":
 	    import vendor.kar as vendor
 	elif vendor_name == "knk":

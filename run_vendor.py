@@ -1,5 +1,5 @@
 # Run vendor processing and build columns
-def vendor(vendor_pandas, vendor_cal, product_groups, vendor_name, vendor):
+def vendor(vendor_pandas, vendor_cal, product_groups, vendor_name, vendor, discontinued):
 	titan_columns = ["NewPart", "Part Number", "Desc1", "Desc2", "P1", "P2", "P3", "P4", "P5",
                      "Length", "Width", "Height", "Weight", "Status"]
 	nelson_columns = titan_columns
@@ -59,6 +59,12 @@ def vendor(vendor_pandas, vendor_cal, product_groups, vendor_name, vendor):
 	                     "P4", "P5", "Length", "Width", "Height", "Weight", "Group"]
 	    nelson_columns = titan_columns
 
+	if vendor_name == "bigm":
+	    new_pandas = vendor.do_bigm(vendor_pandas, product_groups["bigm"], vendor_cal["bigm"])
+	    titan_columns = ["NewPart", "Part Number", "Desc1", "Desc2", "P1", "P2", "P3",
+	                     "P4", "P5", "Length", "Width", "Height", "Weight", "Group"]
+	    nelson_columns = titan_columns
+
 	if vendor_name == "bkr":
 	    new_pandas = vendor.do_bkr(vendor_pandas, vendor_cal["bkr"])
 	    titan_columns = ["NewPart", "Part Number", "Desc1", "Desc2", "P1", "P2", "P3", "P4",
@@ -93,6 +99,12 @@ def vendor(vendor_pandas, vendor_cal, product_groups, vendor_name, vendor):
 
 	if vendor_name == "carr":
 	    new_pandas = vendor.do_carr(vendor_pandas, vendor_cal["carr"])
+	    titan_columns = ["NewPart", "Part Number", "Desc1", "Desc2", "P1", "P2", "P3", "P4",
+                     "P5", "Length", "Width", "Height", "Weight"]
+	    nelson_columns = titan_columns
+
+	if vendor_name == "crg":
+	    new_pandas = vendor.do_crg(vendor_pandas, vendor_cal["crg"])
 	    titan_columns = ["NewPart", "Part Number", "Desc1", "Desc2", "P1", "P2", "P3", "P4",
                      "P5", "Length", "Width", "Height", "Weight"]
 	    nelson_columns = titan_columns
@@ -154,6 +166,12 @@ def vendor(vendor_pandas, vendor_cal, product_groups, vendor_name, vendor):
                      "P5", "Length", "Width", "Height", "Weight"]
 	    nelson_columns = titan_columns
 
+	if vendor_name == "hus":
+	    new_pandas = vendor.do_hus(vendor_pandas, vendor_cal["hus"], discontinued)
+	    titan_columns = ["NewPart", "Part Number", "Desc1", "Desc2", "P1", "P2", "P3", "P4",
+                     "P5", "Length", "Width", "Height", "Weight", "Status"]
+	    nelson_columns = titan_columns
+	    
 	if vendor_name == "kar":
 	    new_pandas = vendor.do_kar(vendor_pandas, vendor_cal["kar"])
 	    titan_columns = ["NewPart", "Part Number", "Desc1", "Desc2", "P1", "P2", "P3", "P4",

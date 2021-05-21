@@ -1,7 +1,7 @@
 #
 # rcs.py
 #
-# This script holds functions for the vendor Rough Country
+# This script holds functions for the vendor Rough Country Suspension
 #
 # Initial version - 05/03/2021 - Jason Grimes
 #

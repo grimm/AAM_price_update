@@ -1,7 +1,7 @@
 #
 # mass.py
 #
-# This script holds functions to import the mass update report FACS
+# This script holds functions to import the mass update report FACS IMS200
 #
 # Initial version - 04/16/2021 - Jason Grimes
 #

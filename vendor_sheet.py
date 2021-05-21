@@ -23,7 +23,7 @@ def set_excel(vendor):
 	  skiprow = 4
 	elif vendor == "road":
 	  skiprow = 4
-	elif (vendor == "gorm") | (vendor == "eccot") | (vendor == "eccon") | (vendor == "rfn"):
+	elif (vendor == "gorm") | (vendor == "eccot") | (vendor == "eccon") | (vendor == "rfn") | (vendor == "bigm"):
 	  skiprow = 5
 	elif vendor == "wes":
 	  skiprow = 8

@@ -23,11 +23,12 @@ import run_vendor as run
 import vendor_sheet as sheet
 
 # Define the supported vendors and load yaml calculation and groups files
-Vendors = ["aci", "adu", "airl", "ampm", "arb", "ard", "baja", "bak", "big", "bkr", "bush",
-           "buy", "carr", "curt", "deck", "dez", "eccon", "eccot", "fia", "fil", "fpm", "gor",
-           "gorm", "kar", "knk", "knn", "kso", "mass", "mrw", "nfa", "nitro", "odr", "par",
-           "piaa", "prime", "protec", "put", "qf", "rch", "rcs", "rfn", "rig", "rlg", "road",
-           "rrk", "rsp", "rtx", "rug", "sb", "scs", "tech", "tim", "trux", "und", "ven", "vms",
+Vendors = ["aci", "adu", "airl", "ampm", "arb", "ard", "baja", "bak", "big", "bigm",
+           "bkr", "bush", "buy", "carr", "crg", "curt", "deck", "dez", "eccon", "eccot",
+           "fia", "fil", "fpm", "gor", "gorm", "hus", "kar", "knk", "knn", "kso",
+           "mass", "mrw", "nfa", "nitro", "odr", "par", "piaa", "prime", "protec",
+           "put", "qf", "rch", "rcs", "rfn", "rig", "rlg", "road", "rrk", "rsp",
+           "rtx", "rug", "sb", "scs", "tech", "tim", "trux", "und", "ven", "vms",
            "warn", "wes", "west", "yak"]
 vendor_cal = {}
 product_groups = {}
@@ -46,6 +47,8 @@ with open('product_groups.yaml', encoding='utf8') as f:
 parser = argparse.ArgumentParser(description='Convert pricing Excel file to a CSV formated file', epilog = epilog)
 parser.add_argument('file', help='Excel file')
 parser.add_argument('vendor', help='Vendor name')
+parser.add_argument('-d', help='Process all parts as discontinued', action="store_true")
+parser.description = "The mass vendor is used to import data from the FACS mass report"
 args = parser.parse_args()
 
 # Check to see if vendor Excel files exists
@@ -93,7 +96,7 @@ elif csvfile == 1:           # Load CSV file instead of Excel
 # --------------------------
 # Run vendor function and set columns
 new_pandas, titan_columns, nelson_columns = run.vendor(vendor_pandas, vendor_cal,
-    product_groups, args.vendor, vendor)
+    product_groups, args.vendor, vendor, args.d)
 
 # Write CSV file
 new_pandas.to_csv(titan_csv_file, columns=titan_columns, header=False, index=False, float_format="%.2f", sep="|", quoting=csv.QUOTE_NONE, escapechar='\\')

@@ -1,7 +1,7 @@
 #
 # airl.py
 #
-# This script holds functions for the vendor Air Lift
+# This script holds functions for the vendor Air Lift (use Traditional price sheet)
 #
 # Initial version - 03/24/2021 - Jason Grimes
 #
@@ -43,5 +43,6 @@ def do_airl(vendor_pandas, tech_cal):
 
     # Make sure that measurement values are correct
     vendor_pandas = vendor_pandas.replace("N/A", "0")
+    vendor_pandas = vendor_pandas.replace("", "0")
 
     return vendor_pandas
