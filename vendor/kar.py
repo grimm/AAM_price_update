@@ -15,6 +15,10 @@ import csv
 def do_kar(vendor_pandas, tech_cal):
     # Concatinate both sheets for processing
     vendor_pandas = pd.concat(vendor_pandas, axis=0)
+
+    # Remove catalogs
+    vendor_pandas = vendor_pandas[(vendor_pandas["Your Cost"] != "")]
+    vendor_pandas = vendor_pandas.reset_index(drop=True)
     
     # Create new Status/NewPart columns
     vendor_pandas['Part Number'] = vendor_pandas['Part #'].astype(str)

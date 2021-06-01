@@ -28,7 +28,7 @@ Vendors = ["aci", "adu", "airl", "ampm", "arb", "ard", "baja", "bak", "big", "bi
            "fia", "fil", "fpm", "gor", "gorm", "hus", "kar", "knk", "knn", "kso",
            "mass", "mrw", "nfa", "nitro", "odr", "par", "piaa", "prime", "protec",
            "put", "qf", "rch", "rcs", "rfn", "rig", "rlg", "road", "rrk", "rsp",
-           "rtx", "rug", "sb", "scs", "tech", "tim", "trux", "und", "ven", "vms",
+           "rtx", "rug", "sb", "scs", "tech", "tim", "trux", "und", "uws", "ven", "vms",
            "warn", "wes", "west", "yak"]
 vendor_cal = {}
 product_groups = {}

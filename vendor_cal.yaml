@@ -59,6 +59,7 @@ tech: {main: "TTK",         P1: 0,   P2: 0.7,   P3: 0,   P4: 0.75, P5: 0,    P6:
 tim:  {main: "US $    MAP", P1: 0,   P2: 0.75,  P3: 0,   P4: 0.8,  P5: 0,    P6: 0,   NTE: 0}
 trux: {main: "MSRP/List",   P1: 0,   P2: 0.0,   P3: 0,   P4: 0.8,  P5: 0,    P6: 0,   NTE: 0}
 und:  {main: "MSRP",        P1: 0,   P2: 0.0,   P3: 0,   P4: 0.8,  P5: 0,    P6: 0,   NTE: 0}
+uws:  {main: "MSRP",        P1: 0.0, P2: 0.0,   P3: 0.0, P4: 0.0,  P5: 0.75, P6: 0,   NTE: 0}
 ven:  {main: "MSRP/List",   P1: 0,   P2: 0.59,  P3: 0,   P4: 0.8,  P5: 0,    P6: 0.75,NTE: 0}
 vms:  {main: "MSRP",        P1: 0,   P2: 0.0,   P3: 0,   P4: 0.75, P5: 0,    P6: 0,   NTE: 0}
 warn: {main: "JOBBER",      P1: 0,   P2: 0.9,   P3: 0,   P4: 0.85, P5: 0,    P6: 0,   NTE: 0}

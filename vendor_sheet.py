@@ -13,9 +13,9 @@ def set_excel(vendor):
 	csvfile = 0
 	
 	# Set skiprow or default to 1
-	if (vendor == "tech") | (vendor == "tim") | (vendor == "aci") | (vendor == "nfa") | (vendor == "baja") | (vendor == "west") | (vendor == "vms") | (vendor == "sb") | (vendor == "fil") | (vendor == "scs") | (vendor == "ampm") | (vendor == "knk") | (vendor == "adu") | (vendor == "mass") | (vendor == "put") | (vendor == "nitro") | (vendor == "lnd") | (vendor == "rcs"):
+	if (vendor == "tech") | (vendor == "tim") | (vendor == "aci") | (vendor == "nfa") | (vendor == "baja") | (vendor == "west") | (vendor == "vms") | (vendor == "sb") | (vendor == "fil") | (vendor == "scs") | (vendor == "ampm") | (vendor == "knk") | (vendor == "adu") | (vendor == "mass") | (vendor == "nitro") | (vendor == "lnd") | (vendor == "rcs"):
 	  skiprow = 0
-	elif (vendor == "prime"):
+	elif (vendor == "prime") | (vendor == "uws"):
 	  skiprow = 2
 	elif (vendor == "amp") | (vendor == "odr") | (vendor == "qf"):
 	  skiprow = 3
@@ -37,7 +37,7 @@ def set_excel(vendor):
 		multisheet = ["PowerStep ", "BedSteps", "Bed Xtender "]
 
 	if vendor == "kar":
-		multisheet = 1
+		multisheet = ["Parts Prices", "Package Prices"]
 
 	if vendor == "knk":
 		multisheet = ["JOBSITE", "VAN", "TRUCK"]

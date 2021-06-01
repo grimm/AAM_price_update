@@ -119,6 +119,8 @@ def vendor_func(vendor_name):
 	    import vendor.trux as vendor
 	elif vendor_name == "und":
 	    import vendor.und as vendor
+	elif vendor_name == "uws":
+	    import vendor.uws as vendor
 	elif vendor_name == "ven":
 	    import vendor.ven as vendor
 	elif vendor_name == "vms":
