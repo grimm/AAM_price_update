@@ -5,18 +5,20 @@ def vendor_func(vendor_name):
 	    import vendor.tech as vendor
 	elif vendor_name == "aci":
 	    import vendor.aci as vendor
-	elif vendor_name == "arb":
-	    import vendor.arb as vendor
-	elif vendor_name == "ard":
-	    import vendor.ard as vendor
 	elif vendor_name == "adu":
 	    import vendor.adu as vendor
 	elif vendor_name == "airl":
 	    import vendor.airl as vendor
+	elif vendor_name == "and":
+	    import vendor.andd as vendor
 	elif vendor_name == "amp":
 	    import vendor.amp as vendor
 	elif vendor_name == "ampm":
 	    import vendor.ampm as vendor
+	elif vendor_name == "arb":
+	    import vendor.arb as vendor
+	elif vendor_name == "ard":
+	    import vendor.ard as vendor
 	elif vendor_name == "bak":
 	    import vendor.bak as vendor
 	elif vendor_name == "baja":
@@ -67,6 +69,8 @@ def vendor_func(vendor_name):
 	    import vendor.knn as vendor
 	elif vendor_name == "lnd":
 	    import vendor.lnd as vendor
+	elif vendor_name == "mas":
+	    import vendor.mas as vendor
 	elif vendor_name == "mass":
 	    import vendor.mass as vendor
 	elif vendor_name == "mrw":
