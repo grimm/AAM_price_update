@@ -15,9 +15,17 @@ def do_dez(vendor_pandas, tech_cal):
     short_desc = "Short Description (20 Characters or Less)"
     long_desc = "Long Description 100 Characters or less WITHOUT application information"
 
+    # Remove parts with no pricing
+    vendor_pandas = vendor_pandas.drop(vendor_pandas[(vendor_pandas['Jobber'] == "")].index).reset_index(drop=True)
+
     # Create new Status/NewPart columns
     vendor_pandas["NewPart"] = vendor_pandas["Part Number"].apply(lambda x: "DEZ" + x)
     
+    # pull missing descriptions from application column
+    for index, item in enumerate(vendor_pandas[long_desc]):
+        if item == "":
+            vendor_pandas[long_desc][index] = vendor_pandas["Application"][index]
+            
     # Create new description columns
     vendor_pandas["Desc1"] = vendor_pandas[long_desc]
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].str.upper()
@@ -35,10 +43,10 @@ def do_dez(vendor_pandas, tech_cal):
     vendor_pandas["P4"] = vendor_pandas["P3"] * tech_cal["P4"]
 
     # Set dimensions and status
-    vendor_pandas["Weight"] = vendor_pandas["Weight - IN POUNDS"].astype(float)
-    vendor_pandas["Length"] = vendor_pandas["Length"].astype(float)
-    vendor_pandas["Width"] = vendor_pandas["Width"].astype(float)
-    vendor_pandas["Height"] = vendor_pandas["Height"].astype(float)
+    vendor_pandas["Weight"] = vendor_pandas["Weight - IN POUNDS"].replace("","0").astype(float)
+    vendor_pandas["Length"] = vendor_pandas["Length"].replace("","0").astype(float)
+    vendor_pandas["Width"] = vendor_pandas["Width"].replace("","0").astype(float)
+    vendor_pandas["Height"] = vendor_pandas["Height"].replace("","0").astype(float)
 
     return vendor_pandas
 

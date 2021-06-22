@@ -39,6 +39,7 @@ def do_tech(vendor_pandas, prod_group, tech_cal):
     # Create description 2
     # Concat the Make, Model, and Year columns
     vendor_pandas["Desc2"] = vendor_pandas["Make"].astype(str) + " " + vendor_pandas["Model"].astype(str) + " " + vendor_pandas["Year"].astype(str)
+    vendor_pandas["Desc2"] = vendor_pandas["Desc2"].str.replace("+", "")
     vendor_pandas["Desc2"] = vendor_pandas["Desc2"].apply(lambda x: x[:30]).str.upper()
     vendor_pandas["Desc2"] = vendor_pandas["Desc2"].apply(lambda x: unidecode.unidecode(x))
 

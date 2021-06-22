@@ -75,6 +75,8 @@ def vendor_func(vendor_name):
 	    import vendor.mass as vendor
 	elif vendor_name == "mrw":
 	    import vendor.mrw as vendor
+	elif vendor_name == "myp":
+	    import vendor.myp as vendor
 	elif vendor_name == "nfa":
 	    import vendor.nfa as vendor
 	elif vendor_name == "nitro":
@@ -91,6 +93,8 @@ def vendor_func(vendor_name):
 	    import vendor.kso as vendor
 	elif vendor_name == "odr":
 	    import vendor.odr as vendor
+	elif vendor_name == "ovs":
+	    import vendor.ovs as vendor
 	elif vendor_name == "par":
 	    import vendor.par as vendor
 	elif vendor_name == "piaa":
