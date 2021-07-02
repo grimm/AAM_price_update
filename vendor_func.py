@@ -23,6 +23,8 @@ def vendor_func(vendor_name):
 	    import vendor.bak as vendor
 	elif vendor_name == "baja":
 	    import vendor.baja as vendor
+	elif vendor_name == "bap":
+	    import vendor.bap as vendor
 	elif vendor_name == "big":
 	    import vendor.big as vendor
 	elif vendor_name == "bigm":
@@ -65,6 +67,8 @@ def vendor_func(vendor_name):
 	    import vendor.kar as vendor
 	elif vendor_name == "knk":
 	    import vendor.knk as vendor
+	elif vendor_name == "knkm":
+	    import vendor.knkm as vendor
 	elif vendor_name == "knn":
 	    import vendor.knn as vendor
 	elif vendor_name == "lnd":

@@ -15,8 +15,9 @@ def do_crg(vendor_pandas, tech_cal):
     short_desc = "Short Description (20 Characters or Less)"
     long_desc = "Long Description 100 Characters or less WITHOUT application information"
 
-    # Remove displays
+    # Remove displays and pricing quote rows
     vendor_pandas = vendor_pandas[(vendor_pandas["MSRP/List"] != "N/A")]
+    vendor_pandas = vendor_pandas[(vendor_pandas["MSRP/List"] != "Call for Pricing Quote")]
     vendor_pandas = vendor_pandas.reset_index(drop=True)
 
     # Process part number

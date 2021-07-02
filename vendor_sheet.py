@@ -13,7 +13,7 @@ def set_excel(vendor):
 	csvfile = 0
 	
 	# Set skiprow or default to 1
-	if (vendor == "tech") | (vendor == "tim") | (vendor == "aci") | (vendor == "nfa") | (vendor == "baja") | (vendor == "west") | (vendor == "vms") | (vendor == "sb") | (vendor == "fil") | (vendor == "scs") | (vendor == "ampm") | (vendor == "knk") | (vendor == "adu") | (vendor == "mass") | (vendor == "nitro") | (vendor == "lnd") | (vendor == "rcs") | (vendor == "and") | (vendor == "myp"):
+	if (vendor == "tech") | (vendor == "tim") | (vendor == "aci") | (vendor == "nfa") | (vendor == "baja") | (vendor == "west") | (vendor == "vms") | (vendor == "sb") | (vendor == "fil") | (vendor == "scs") | (vendor == "ampm") | (vendor == "knk") | (vendor == "adu") | (vendor == "mass") | (vendor == "nitro") | (vendor == "lnd") | (vendor == "rcs") | (vendor == "and") | (vendor == "myp") | (vendor == "bap"):
 	  skiprow = 0
 	elif (vendor == "prime") | (vendor == "uws") | (vendor == "mas"):
 	  skiprow = 2
@@ -25,6 +25,8 @@ def set_excel(vendor):
 	  skiprow = 4
 	elif (vendor == "gorm") | (vendor == "eccot") | (vendor == "eccon") | (vendor == "rfn") | (vendor == "bigm"):
 	  skiprow = 5
+	elif vendor == "knkm":
+	  skiprow = 6
 	elif vendor == "yak":
 	  skiprow = 9
 	elif vendor == "kso":

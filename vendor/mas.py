@@ -1,7 +1,7 @@
 #
 # mas.py
 #
-# This script holds functions for the vendor MasterRack
+# This script holds functions for the vendor Masterack
 #
 # Initial version - 06/01/2021 - Jason Grimes
 #
@@ -35,7 +35,14 @@ def do_mas(vendor_pandas, tech_cal):
     vendor_pandas["P4"] = vendor_pandas["P5"] / tech_cal["P4"]
 
     # Measurements
+    len_pandas = len(vendor_pandas.axes[0])
+    new_column = list("0" * len_pandas)
+
     vendor_pandas["Weight"] = vendor_pandas["WEIGHT"].astype(float)
+    vendor_pandas["Length"] = new_column
+    vendor_pandas["Width"] = new_column
+    vendor_pandas["Height"] = new_column
+
 
     return vendor_pandas
 

@@ -24,11 +24,11 @@ import vendor_sheet as sheet
 
 # Define the supported vendors and load yaml calculation and groups files
 Vendors = ["aci", "adu", "airl", "and", "amp", "ampm", "arb", "ard", "baja", "bak",
-           "big", "bigm", "bkr", "bush", "buy", "carr", "crg", "curt", "deck", "dez",
-           "eccon", "eccot", "fia", "fil", "fpm", "gor", "gorm", "hus", "kar",
-           "knk", "knn", "kso", "mas", "mass", "mrw", "myp", "nfa", "nitro", "odr",
-           "ovs", "par", "piaa", "prime", "protec", "put", "qf", "rch", "rcs", "rfn",
-           "rig", "rlg", "road", "rrk", "rsp", "rtx", "rug", "sb", "scs", "tech",
+           "bap", "big", "bigm", "bkr", "bush", "buy", "carr", "crg", "curt", "deck",
+           "dez", "eccon", "eccot", "fia", "fil", "fpm", "gor", "gorm", "hus", "kar",
+           "knk", "knkm", "knn", "kso", "mas", "mass", "mrw", "myp", "nfa", "nitro",
+           "odr", "ovs", "par", "piaa", "prime", "protec", "put", "qf", "rch", "rcs",
+           "rfn", "rig", "rlg", "road", "rrk", "rsp", "rtx", "rug", "sb", "scs", "tech",
            "tim", "trux", "und", "uws", "ven", "vms", "warn", "wes", "west", "yak"]
 vendor_cal = {}
 product_groups = {}
@@ -74,6 +74,8 @@ elif vname == "ECCOT" or vname == "ECCON":
     vname = "ECCO"
 elif vname == "AMPM":
     vname = "AMP"
+elif vname == "KNKM":
+    vname = "KNK"
     
 titan_csv_file = vname + "_UPDATE_TTE_" + date + ".csv"
 nelson_csv_file = vname + "_UPDATE_NTE_" + date + ".csv"

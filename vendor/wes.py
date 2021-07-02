@@ -16,6 +16,16 @@ def do_wes(vendor_pandas, prod_group, tech_cal):
     short_desc = "Short Description (20 Characters or Less)"
     long_desc = "Long Description 100 Characters or less WITHOUT application information"
 
+    # Set text to pull out display parts
+    bad_parts = ["Display", "Sample", "Catalog", "Guide", "Brochure", "Public", "Profile", "display", "Banner"]
+
+    # Remove displays and pricing quote rows
+    vendor_pandas = vendor_pandas[(vendor_pandas["MSRP/List"] != "0.00")]
+    vendor_pandas = vendor_pandas[(vendor_pandas["MSRP/List"] != "")]
+    vendor_pandas = vendor_pandas[~vendor_pandas[long_desc].str.contains('|'.join(bad_parts))]
+    vendor_pandas = vendor_pandas[~vendor_pandas[short_desc].str.contains('|'.join(bad_parts))]
+    vendor_pandas = vendor_pandas.reset_index(drop=True)
+
     # Create new Status/NewPart columns
     vendor_pandas['Part Number'] = vendor_pandas['Part Number'].astype(str)
     vendor_pandas["NewPart"] = vendor_pandas["Part Number"].apply(lambda x: "WES" + x)

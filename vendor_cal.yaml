@@ -8,6 +8,7 @@ arb:  {main: "List",        P1: 0,   P2: 0.0,   P3: 0.75, P4: 0.8, P5: 0.7,  P6:
 ard:  {main: "MSRP/List",   P1: 0,   P2: 0.85,  P3: 0,   P4: 0.75, P5: 0.65, P6: 0,   NTE: 0}
 bak:  {main: "AAM COST",    P1: 0,   P2: 0.7,   P3: 0,   P4: 0.85, P5: 0.0,  P6: 0,   NTE: 0}
 baja: {main: "COST",        P1: 0,   P2: 0.0,   P3: 0,   P4: 0.8,  P5: 0.96, P6: 0,   NTE: 0}
+bap:  {main: "COST",        P1: 0.6, P2: 0.6,   P3: 0.7, P4: 0.8,  P5: 0.0,  P6: 0,   NTE: 0}
 big:  {main: "COST",        P1: 0,   P2: 0.0,   P3: 0,   P4: 0.85, P5: 0.0,  P6: 0,   NTE: 0}
 bigm: {main: "COST",        P1: 0,   P2: 0.0,   P3: 0,   P4: 0.85, P5: 0.0,  P6: 0,   NTE: 0}
 bkr:  {main: "Map Retail",  P1: 0,   P2: 0.0,   P3: 0,   P4: 0.79, P5: 0.0,  P6: 0,   NTE: 0}
@@ -28,10 +29,11 @@ gorm: {main: "COST",        P1: 0,   P2: 0.644, P3: 0,   P4: 0.85, P5: 0,    P6:
 hus:  {main: "JOBBER",      P1: 0.7, P2: 0.85,  P3: 0,   P4: 0.85, P5: 0.7,  P6: 0.98,NTE: 0}
 kar:  {main: "Trade Price", P1: 0.8, P2: 0,     P3: 0.8, P4: 0.753, P5: 1.07, P6: 0,  NTE: 0}
 knk:  {main: "TRADE",       P1: 0,   P2: 0.9,   P3: 0.85, P4: 0.8, P5: 0,    P6: 0,   NTE: 0}
+knkm: {main: "TRADE",       P1: 0,   P2: 0.9,   P3: 0.85, P4: 0.8, P5: 0,    P6: 0,   NTE: 0}
 knn:  {main: "JOBBER",      P1: 0,   P2: 0.85,  P3: 0,   P4: 0.8,  P5: 0,    P6: 0,   NTE: 0}
 kso:  {main: "JOBBER",      P1: 0,   P2: 0,     P3: 0,   P4: 0.45, P5: 0.63, P6: 0,   NTE: 0}
 lnd:  {main: "MSRP/List",   P1: 0.6, P2: 0.7,   P3: 0,   P4: 0.75, P5: 0,    P6: 0,   NTE: 0}
-mas:  {main: "LIST",        P1: 0,   P2: 0.65,  P3: 0.7, P4: 0.75, P5: 0.55, P6: 0.09,NTE: 0}
+mas:  {main: "LIST",        P1: 0,   P2: 0.65,  P3: 0.7, P4: 0.75, P5: 0.55, P6: 1.09,NTE: 0}
 mass: {main: "JOBBER",      P1: 0,   P2: 0,     P3: 0,   P4: 0,    P5: 0.85, P6: 0.95,NTE: 0}
 mrw:  {main: "MSRP",        P1: 0,   P2: 0,     P3: 0,   P4: 0.0,  P5: 0.7,  P6: 0,   NTE: 0}
 myp:  {main: "LIST PRICE",  P1: 0,   P2: 0,     P3: 0.87, P4: 0.73, P5: 0,   P6: 0,   NTE: 0}
