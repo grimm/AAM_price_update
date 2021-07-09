@@ -46,8 +46,8 @@ def set_excel(vendor):
 		multisheet = ["WHEELS", "ACCESSORIES"]
 
 	# Set sheetname or default to the first sheet
-	if vendor == "protec":
-		sheetname = "price list"
+	# if vendor == "protec":
+	# 	sheetname = "price list"
 	if vendor == "fil":
 		sheetname = "Flat File"
 	if vendor == "mas":

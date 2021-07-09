@@ -83,6 +83,8 @@ def vendor_func(vendor_name):
 	    import vendor.myp as vendor
 	elif vendor_name == "nfa":
 	    import vendor.nfa as vendor
+	elif vendor_name == "rgr":
+	    import vendor.rgr as vendor
 	elif vendor_name == "nitro":
 	    import vendor.nitro as vendor
 	elif vendor_name == "rch":

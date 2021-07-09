@@ -24,12 +24,13 @@ import vendor_sheet as sheet
 
 # Define the supported vendors and load yaml calculation and groups files
 Vendors = ["aci", "adu", "airl", "and", "amp", "ampm", "arb", "ard", "baja", "bak",
-           "bap", "big", "bigm", "bkr", "bush", "buy", "carr", "crg", "curt", "deck",
-           "dez", "eccon", "eccot", "fia", "fil", "fpm", "gor", "gorm", "hus", "kar",
-           "knk", "knkm", "knn", "kso", "mas", "mass", "mrw", "myp", "nfa", "nitro",
-           "odr", "ovs", "par", "piaa", "prime", "protec", "put", "qf", "rch", "rcs",
-           "rfn", "rig", "rlg", "road", "rrk", "rsp", "rtx", "rug", "sb", "scs", "tech",
-           "tim", "trux", "und", "uws", "ven", "vms", "warn", "wes", "west", "yak"]
+           "bap", "big", "bigm", "bkr", "bush", "buy", "carr", "cipa", "crg", "curt",
+           "deck", "dez", "eccon", "eccot", "fia", "fil", "fpm", "gor", "gorm", "hus",
+           "kar", "knk", "knkm", "knn", "kso", "mas", "mass", "mrw", "myp", "nfa",
+           "nitro", "odr", "ovs", "par", "piaa", "prime", "protec", "put", "qf", "rch",
+           "rcs", "rfn", "rgr", "rig", "rlg", "road", "rrk", "rsp", "rtx", "rug", "sb",
+           "scs", "tech", "tim", "trux", "und", "uws", "ven", "vms", "warn", "wes",
+           "west", "yak"]
 vendor_cal = {}
 product_groups = {}
 
