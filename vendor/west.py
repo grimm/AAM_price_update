@@ -13,14 +13,14 @@ import csv
 def do_west(vendor_pandas, tech_cal):
 	# Put really long header text in some vars
     long_desc = "DESCRIPTION"
-    short_desc = "DESCRIPTION 2"
+    short_desc = "DESCRIPTION 2 "
 
     # Process part number
     vendor_pandas["Part Number"] = vendor_pandas["PN"].astype(str)
     vendor_pandas["NewPart"] = vendor_pandas["Part Number"].apply(lambda x: "WEST" + x)
     
     # Create new description columns
-    vendor_pandas["Desc1"] = vendor_pandas[long_desc] + " " + vendor_pandas[short_desc]
+    vendor_pandas["Desc1"] = vendor_pandas[long_desc].astype(str) + " " + vendor_pandas[short_desc].astype(str)
 
     # Upper case text and trim it to 30 characters
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].str.upper()

@@ -29,11 +29,19 @@ def do_nfa(vendor_pandas, tech_cal):
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].apply(lambda x: x[:30])
 
     # Create all price fields
-    vendor_pandas["P1"] = vendor_pandas["4/1/19 LIST"]
-    vendor_pandas["P2"] = vendor_pandas["4/1/19  MAP"]
-    vendor_pandas["P3"] = vendor_pandas["4/1/19 Jobber"]
-    vendor_pandas["P5"] = vendor_pandas["4/1/19 US MSP"].astype(float)
-    vendor_pandas["P4"] = vendor_pandas["P5"] / tech_cal["P4"]
+    vendor_pandas["P1"] = vendor_pandas["7/30/2021 List  (jobber +25%)"]
+    vendor_pandas["P2"] = vendor_pandas["7/30/2021 MAP (jobber +5%)"]
+    vendor_pandas["P3"] = vendor_pandas["7/30/2021 Jobber"]
+    vendor_pandas["P5"] = vendor_pandas["7/30/2021 MSP (Jobber -18%)"]
+    vendor_pandas["P4"] = vendor_pandas["P3"]
+
+    for index, item in enumerate(vendor_pandas["P1"]):
+        if vendor_pandas["P1"][index] == 0:
+            vendor_pandas["P1"][index] = vendor_pandas["P3"][index] / 0.75
+        if vendor_pandas["P2"][index] == 0:
+            vendor_pandas["P2"][index] = vendor_pandas["P3"][index] / 0.95
+        if vendor_pandas["P5"][index] == 0:
+            vendor_pandas["P5"][index] = vendor_pandas["P3"][index] * 0.72
 
     # Set dimensions
     vendor_pandas["Weight"] = vendor_pandas["Weight (LBS)"]

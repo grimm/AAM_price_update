@@ -12,11 +12,16 @@ import csv
 
 # Main vendor processing function
 def do_vms(vendor_pandas, tech_cal):
-	# Put really long header text in some vars
-    long_desc = "Transaction Description"
+    # print(vendor_pandas.columns)
+    # Remove in rows with no data
+    vendor_pandas = vendor_pandas[(vendor_pandas["Series"] != "BT LIGHT INDUSTRIAL")]
+    vendor_pandas = vendor_pandas.reset_index(drop=True)
+
+  	# Put really long header text in some vars
+    long_desc = "Description"
 
     # Process part number
-    vendor_pandas["Part Number"] = vendor_pandas["Item #"].astype(str)
+    vendor_pandas["Part Number"] = vendor_pandas["ItemCode"].astype(str)
     vendor_pandas["NewPart"] = vendor_pandas["Part Number"].apply(lambda x: "VMS" + x)
     
     # Create new description columns
@@ -29,22 +34,31 @@ def do_vms(vendor_pandas, tech_cal):
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].apply(lambda x: x[:30])
 
     # Create all price fields
-    vendor_pandas['P1']=(vendor_pandas['Calculated MSRP'].replace( '[\$,)]','', regex=True )).astype(float)
-    vendor_pandas["P2"] = vendor_pandas["Jobber"].replace( '[\$,)]','', regex=True ).astype(float)
-    vendor_pandas["P3"] = vendor_pandas["P2"].astype(float)
+    vendor_pandas["P5"] = vendor_pandas["Customer Price"].replace( '[\$,)]','', regex=True ).astype(float)
+    vendor_pandas["P2"] = vendor_pandas["Jobber/MAP"].replace( '[\$,)]','', regex=True ).astype(float)
+    vendor_pandas["P3"] = vendor_pandas["P2"]
+    vendor_pandas["P1"] = vendor_pandas["P2"]
+    # vendor_pandas["P1"] = vendor_pandas["P3"] * tech_cal["P1"]
     vendor_pandas["P4"] = vendor_pandas["P3"] * tech_cal["P4"]
-    vendor_pandas["P5"] = vendor_pandas["Titan Cost"].replace( '[\$,)]','', regex=True ).astype(float)
 
     # Set dimensions and status
-    vendor_pandas["Weight"] = vendor_pandas["T-Product Weight"].replace("", "0").astype(float)
+    # len_pandas = len(vendor_pandas.axes[0])
+    # new_column = list("0" * len_pandas)
+
+    # vendor_pandas["Weight"] = new_column
+    # vendor_pandas["Length"] = new_column
+    # vendor_pandas["Width"] = new_column
+    # vendor_pandas["Height"] = new_column
+
+    # vendor_pandas["Weight"] = vendor_pandas["T-Product Weight"].replace("", "0").astype(float)
     
-    vendor_pandas["Length"] = vendor_pandas["T-Product Length"].astype(str).replace("", "0")
-    vendor_pandas["Length"] = vendor_pandas["Length"].replace('"','')
+    # vendor_pandas["Length"] = vendor_pandas["T-Product Length"].astype(str).replace("", "0")
+    # vendor_pandas["Length"] = vendor_pandas["Length"].replace('"','')
 
-    vendor_pandas["Width"] = vendor_pandas["T-Product Width"].astype(str).replace("", "0")
-    vendor_pandas["Width"] = vendor_pandas["Width"].str.replace('"', '')
+    # vendor_pandas["Width"] = vendor_pandas["T-Product Width"].astype(str).replace("", "0")
+    # vendor_pandas["Width"] = vendor_pandas["Width"].str.replace('"', '')
 
-    vendor_pandas["Height"] = vendor_pandas["T-Product Height"].astype(str).replace("", "0")
-    vendor_pandas["Height"] = vendor_pandas["Height"].str.replace('"','')
+    # vendor_pandas["Height"] = vendor_pandas["T-Product Height"].astype(str).replace("", "0")
+    # vendor_pandas["Height"] = vendor_pandas["Height"].str.replace('"','')
 
     return vendor_pandas

@@ -11,12 +11,16 @@ def vendor_func(vendor_name):
 	    import vendor.airl as vendor
 	elif vendor_name == "and":
 	    import vendor.andd as vendor
+	elif vendor_name == "anz":
+	    import vendor.anz as vendor
 	elif vendor_name == "amp":
 	    import vendor.amp as vendor
 	elif vendor_name == "ampm":
 	    import vendor.ampm as vendor
 	elif vendor_name == "arb":
 	    import vendor.arb as vendor
+	elif vendor_name == "arcl":
+	    import vendor.arcl as vendor
 	elif vendor_name == "ard":
 	    import vendor.ard as vendor
 	elif vendor_name == "bak":
@@ -25,6 +29,8 @@ def vendor_func(vendor_name):
 	    import vendor.baja as vendor
 	elif vendor_name == "bap":
 	    import vendor.bap as vendor
+	elif vendor_name == "best":
+	    import vendor.best as vendor
 	elif vendor_name == "big":
 	    import vendor.big as vendor
 	elif vendor_name == "bigm":
@@ -65,6 +71,8 @@ def vendor_func(vendor_name):
 	    import vendor.hus as vendor
 	elif vendor_name == "kar":
 	    import vendor.kar as vendor
+	elif vendor_name == "kc":
+	    import vendor.kc as vendor
 	elif vendor_name == "knk":
 	    import vendor.knk as vendor
 	elif vendor_name == "knkm":
@@ -77,6 +85,8 @@ def vendor_func(vendor_name):
 	    import vendor.mas as vendor
 	elif vendor_name == "mass":
 	    import vendor.mass as vendor
+	elif vendor_name == "mba":
+	    import vendor.mba as vendor
 	elif vendor_name == "mrw":
 	    import vendor.mrw as vendor
 	elif vendor_name == "myp":

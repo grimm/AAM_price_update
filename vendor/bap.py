@@ -23,9 +23,10 @@ def do_bap(vendor_pandas, tech_cal):
 
     vendor_pandas["Desc2"] = vendor_pandas["Desc1"].apply(lambda x: x[30:60])
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].apply(lambda x: x[:30])
+    print(vendor_pandas.columns)
 
     # Create all price fields
-    vendor_pandas["P5"] = vendor_pandas["Price"].astype(float)
+    vendor_pandas["P5"] = vendor_pandas[1].replace('[\$,)]','', regex=True).astype(float)
     vendor_pandas["P1"] = vendor_pandas["P5"] / tech_cal["P1"]
     vendor_pandas["P2"] = vendor_pandas["P5"] / tech_cal["P2"]
     vendor_pandas["P3"] = vendor_pandas["P5"] / tech_cal["P3"]

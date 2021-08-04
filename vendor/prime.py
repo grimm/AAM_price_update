@@ -26,9 +26,9 @@ def do_prime(vendor_pandas, tech_cal):
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].apply(lambda x: x[:30])
 
     # Create all price fields
-    vendor_pandas["P1"] = vendor_pandas["2021 Retail Pricing"].astype(float)
+    vendor_pandas["P1"] = vendor_pandas["Market Pricing"].astype(float)
     vendor_pandas["P5"] = vendor_pandas["P1"] - (vendor_pandas["P1"] * 0.4)
-    vendor_pandas["P2"] = vendor_pandas["P5"] / 0.7
+    vendor_pandas["P2"] = vendor_pandas["P5"] / 0.6
     vendor_pandas["P3"] = vendor_pandas["P2"]
 
     # Get length of dataframe and create new P4 column with value of zero

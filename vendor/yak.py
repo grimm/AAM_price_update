@@ -13,8 +13,8 @@ import csv
 # Main vendor processing function
 def do_yak(vendor_pandas, tech_cal):
     # Remove in rows with no data
-    vendor_pandas = vendor_pandas[(vendor_pandas[" Whsl"] != "")]
-    vendor_pandas = vendor_pandas[(vendor_pandas[" Whsl"] != " Whsl")]
+    vendor_pandas = vendor_pandas[(vendor_pandas["WHSL"] != "")]
+    vendor_pandas = vendor_pandas[(vendor_pandas["MSRP"] != "n/a")]
     vendor_pandas = vendor_pandas.reset_index(drop=True)
 
     # Create new Status/NewPart columns
@@ -31,9 +31,9 @@ def do_yak(vendor_pandas, tech_cal):
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].apply(lambda x: x[:30])
 
     # Create all price fields
-    vendor_pandas["P1"] = vendor_pandas[" Retail"].replace("$","").astype(float)
+    vendor_pandas["P1"] = vendor_pandas["MSRP"].replace("n/a", "0").astype(float)
     vendor_pandas["P2"] = vendor_pandas["P1"]
-    vendor_pandas["P5"] = vendor_pandas[" Whsl"].replace("$","").astype(float)
+    vendor_pandas["P5"] = vendor_pandas["WHSL"].astype(float)
     vendor_pandas["P5"] = vendor_pandas["P5"] * tech_cal["P5"]
     vendor_pandas["P3"] = vendor_pandas["P5"] / tech_cal["P3"]
     vendor_pandas["P4"] = vendor_pandas["P5"] / tech_cal["P4"]
