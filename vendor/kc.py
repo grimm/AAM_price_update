@@ -15,7 +15,7 @@ def do_kc(vendor_pandas, tech_cal):
     vendor_pandas["NewPart"] = vendor_pandas["Part Number"].apply(lambda x: "KC" + x)
     
     # Create new description columns
-    vendor_pandas["Desc1"] = vendor_pandas["title"]
+    vendor_pandas["Desc1"] = vendor_pandas["PRODUCT NAME"]
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].apply(lambda x: unidecode.unidecode(x))
 
     # Upper case text and trim it to 30 characters

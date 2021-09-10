@@ -79,6 +79,8 @@ def vendor_func(vendor_name):
 	    import vendor.knkm as vendor
 	elif vendor_name == "knn":
 	    import vendor.knn as vendor
+	elif vendor_name == "lift":
+	    import vendor.lift as vendor
 	elif vendor_name == "lnd":
 	    import vendor.lnd as vendor
 	elif vendor_name == "mas":
@@ -125,6 +127,8 @@ def vendor_func(vendor_name):
 	    import vendor.qf as vendor
 	elif vendor_name == "rcs":
 	    import vendor.rcs as vendor
+	elif vendor_name == "rdl":
+	    import vendor.rdl as vendor
 	elif vendor_name == "rfn":
 	    import vendor.rfn as vendor
 	elif vendor_name == "rig":
@@ -139,12 +143,18 @@ def vendor_func(vendor_name):
 	    import vendor.sb as vendor
 	elif vendor_name == "scs":
 	    import vendor.scs as vendor
+	elif vendor_name == "snow":
+	    import vendor.snow as vendor
+	elif vendor_name == "stlc":
+	    import vendor.stlc as vendor
 	elif vendor_name == "trux":
 	    import vendor.trux as vendor
 	elif vendor_name == "und":
 	    import vendor.und as vendor
 	elif vendor_name == "uws":
 	    import vendor.uws as vendor
+	elif vendor_name == "uwsb":
+	    import vendor.uwsb as vendor
 	elif vendor_name == "ven":
 	    import vendor.ven as vendor
 	elif vendor_name == "vms":

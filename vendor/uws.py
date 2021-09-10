@@ -37,13 +37,13 @@ def do_uws(vendor_pandas, tech_cal):
     vendor_pandas["MAP"] = vendor_pandas["MAP"].str.replace("$", "")
     vendor_pandas["P2"] = vendor_pandas["MAP"].str.replace(",", "").astype(float)
 
-    vendor_pandas["JOBBER"] = vendor_pandas["JOBBER"].astype(str)
-    vendor_pandas["JOBBER"] = vendor_pandas["JOBBER"].str.replace("$", "")
-    vendor_pandas["P3"] = vendor_pandas["JOBBER"].str.replace(",", "").astype(float)
+    vendor_pandas["Jobber"] = vendor_pandas["Jobber"].astype(str)
+    vendor_pandas["Jobber"] = vendor_pandas["Jobber"].str.replace("$", "")
+    vendor_pandas["P3"] = vendor_pandas["Jobber"].str.replace(",", "").astype(float)
 
-    vendor_pandas["PRICE"] = vendor_pandas["PRICE"].astype(str)
-    vendor_pandas["PRICE"] = vendor_pandas["PRICE"].str.replace("$", "")
-    vendor_pandas["P5"] = vendor_pandas["PRICE"].str.replace(",", "").astype(float)
+    vendor_pandas["Price"] = vendor_pandas["Price"].astype(str)
+    vendor_pandas["Price"] = vendor_pandas["Price"].str.replace("$", "")
+    vendor_pandas["P5"] = vendor_pandas["Price"].str.replace(",", "").astype(float)
 
     vendor_pandas["P4"] = vendor_pandas["P5"] / tech_cal["P5"]
 

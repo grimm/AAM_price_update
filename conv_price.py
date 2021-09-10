@@ -26,11 +26,12 @@ import vendor_sheet as sheet
 Vendors = ["aci", "adu", "airl", "and", "anz", "amp", "ampm", "arb", "arcl", "ard",
            "baja", "bak", "bap", "best", "big", "bigm", "bkr", "bush", "buy", "carr",
            "cipa", "crg", "curt", "deck", "dez", "eccon", "eccot", "fia", "fil", "fpm",
-           "gor", "gorm", "hus", "kar", "kc", "knk", "knkm", "knn", "kso", "mas",
-           "mass", "mba", "mrw", "myp", "nfa", "nitro", "odr", "ovs", "par", "piaa",
-           "prime", "protec", "put", "qf", "rch", "rcs", "rfn", "rgr", "rig", "rlg",
-           "road", "rrk", "rsp", "rtx", "rug", "sb", "scs", "tech", "tim", "trux",
-           "und", "uws", "ven", "vms", "warn", "wes", "west", "yak"]
+           "gor", "gorm", "hus", "kar", "kc", "knk", "knkm", "knn", "kso", "lift",
+           "mas", "mass", "mba", "mrw", "myp", "nfa", "nitro", "odr", "ovs", "par",
+           "piaa", "prime", "protec", "put", "qf", "rch", "rcs", "rdl", "rfn", "rgr",
+           "rig", "rlg", "road", "rrk", "rsp", "rtx", "rug", "sb", "scs", "sls", "snow",
+           "stlc", "tech", "tim", "trux", "und", "uws", "uwsb", "ven", "vms", "warn",
+           "wes", "west", "yak"]
 vendor_cal = {}
 product_groups = {}
 
@@ -71,12 +72,14 @@ vname = args.vendor.upper()
 
 if vname == "GORM":
     vname = "GOR"
-elif vname == "ECCOT" or vname == "ECCON":
+if vname == "ECCOT" or vname == "ECCON":
     vname = "ECCO"
-elif vname == "AMPM":
+if vname == "AMPM":
     vname = "AMP"
-elif vname == "KNKM":
+if vname == "KNKM":
     vname = "KNK"
+if vname == "UWSB":
+    vname = "UWS"
     
 titan_csv_file = vname + "_UPDATE_TTE_" + date + ".csv"
 nelson_csv_file = vname + "_UPDATE_NTE_" + date + ".csv"

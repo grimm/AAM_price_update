@@ -16,7 +16,7 @@ def do_knkm(vendor_pandas, tech_cal):
     long_desc = "DESCRIPTION"
 
     # Drop all rows with no price
-    vendor_pandas = vendor_pandas[(vendor_pandas["Trade"] != "")]
+    vendor_pandas = vendor_pandas[(vendor_pandas["New Trade"] != "")]
     vendor_pandas = vendor_pandas.reset_index(drop=True)
 
     # Process part number
@@ -34,7 +34,7 @@ def do_knkm(vendor_pandas, tech_cal):
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].apply(lambda x: x[:30])
 
     # Create all price fields
-    vendor_pandas["P1"] = vendor_pandas["Trade"].replace("$", "")
+    vendor_pandas["P1"] = vendor_pandas["New Trade"].replace("$", "")
     vendor_pandas["P1"] = vendor_pandas["P1"].replace(",", "")
 
     vendor_pandas["P5"] = vendor_pandas["Select\nTier 1"].replace("$", "")

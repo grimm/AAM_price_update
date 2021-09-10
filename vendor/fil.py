@@ -1,7 +1,7 @@
 #
 # fil.py
 #
-# This script holds functions for the vendor FIL
+# This script holds functions for the vendor Filrite Pumps
 #
 # Initial version - 02/22/2021 - Jason Grimes
 #

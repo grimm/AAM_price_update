@@ -25,6 +25,7 @@ def do_carr(vendor_pandas, tech_cal):
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].apply(lambda x: unidecode.unidecode(x))
 
     # Upper case text and trim it to 30 characters
+    vendor_pandas["Desc1"] = vendor_pandas["Desc1"].str.replace(r"|","-")
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].str.upper()
     vendor_pandas["Desc2"] = vendor_pandas["Desc1"].apply(lambda x: x[30:60])
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].apply(lambda x: x[:30])

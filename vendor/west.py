@@ -8,6 +8,7 @@
 
 from datetime import datetime
 import csv
+import unidecode
 
 # Main vendor processing function
 def do_west(vendor_pandas, tech_cal):
@@ -23,16 +24,19 @@ def do_west(vendor_pandas, tech_cal):
     vendor_pandas["Desc1"] = vendor_pandas[long_desc].astype(str) + " " + vendor_pandas[short_desc].astype(str)
 
     # Upper case text and trim it to 30 characters
+    vendor_pandas["Desc1"] = vendor_pandas["Desc1"].str.replace(r"|","-")
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].str.upper()
+    vendor_pandas["Desc1"] = vendor_pandas["Desc1"].apply(lambda x: unidecode.unidecode(x))
+
     vendor_pandas["Desc2"] = vendor_pandas["Desc1"].apply(lambda x: x[30:60])
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].apply(lambda x: x[:30])
 
     # Create all price fields
-    vendor_pandas["P1"] = vendor_pandas["LIST PRICE"].replace("$","").replace(",", "").astype(float)
+    vendor_pandas["P1"] = vendor_pandas["LIST w Surcharge"].replace("$","").replace(",", "").astype(float)
     vendor_pandas["P2"] = vendor_pandas["P1"] * tech_cal["P2"]
     vendor_pandas["P3"] = vendor_pandas["P1"] * tech_cal["P3"]
     vendor_pandas["P4"] = vendor_pandas["P1"] * tech_cal["P4"]
-    vendor_pandas["P5"] = vendor_pandas["P1"] * tech_cal["P5"]
+    vendor_pandas["P5"] = vendor_pandas["NET w Surcharge"].replace("$","").replace(",", "").astype(float)
 
     # Set dimensions and status
     # Get length of dataframe and create new dimension columns
