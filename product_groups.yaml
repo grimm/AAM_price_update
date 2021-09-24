@@ -55,7 +55,9 @@ big:
   "Universal Bed Rails": 0
 
 tech:
+  "Child Car Seat Protector": 0
   "CupCoffee": 0
+  "CupCoffee 24 oz.": 0
   "Door Pocket Sanitizer Holder 2 oz.": 0
   "Door Pocket Sanitizer Holder 8 oz.": 0
   "Rotating MirrorFone": 0
@@ -936,6 +938,14 @@ piaa:
   "Wiring Harness": 0
 
 warn:
+  "STEP KIT": 0
+  "DOOR STOP": 0
+  "ADAPTER": 0
+  "MOUNTING PLATE": 0
+  "PULLEY": 0
+  "WINCH PLATE": 0
+  "PUSH TUBE": 0
+  "PLOW MOUNT": 0
   "120V MOTOR": 0
   "230V MOTOR": 0
   "12V MOTOR KIT": 0

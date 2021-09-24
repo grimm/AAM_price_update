@@ -12,6 +12,7 @@ import csv
 
 # Main vendor processing function
 def do_mass(vendor_pandas, tech_cal):
+    vendor_pandas = vendor_pandas.reset_index(drop=True)
     # Create new Status/NewPart columns
     vendor_pandas['Part Number'] = vendor_pandas['Supplier Part No.'].astype(str)
     vendor_pandas["NewPart"] = vendor_pandas["#"].astype(str)
@@ -21,13 +22,23 @@ def do_mass(vendor_pandas, tech_cal):
     vendor_pandas["Desc2"] = vendor_pandas["Extra Description"]
 
     # Create all price fields
-    vendor_pandas["P1"] = vendor_pandas["Price #1"].astype(float)
-    vendor_pandas["P2"] = vendor_pandas["Price #2"].astype(float)
-    vendor_pandas["P3"] = vendor_pandas["Price #3"].astype(float)
-    vendor_pandas["P4"] = vendor_pandas["Price #4"].astype(float)
+    # vendor_pandas["P1"] = vendor_pandas["Price #1"].astype(float)
+    # vendor_pandas["P2"] = vendor_pandas["Price #2"].astype(float)
+    # vendor_pandas["P3"] = vendor_pandas["Price #3"].astype(float)
+    # vendor_pandas["P4"] = vendor_pandas["Price #4"].astype(float)
     # vendor_pandas["P5"] = vendor_pandas["P3"] * tech_cal["P5"] * tech_cal["P6"]
     # Western (WEST) add surcharge (%40)
-    vendor_pandas["P5"] = vendor_pandas["Price #5"] * 1.4
+    # vendor_pandas["P5"] = vendor_pandas["Price #5"] * 1.4
+
+    # Create all price formulas (KNP)
+    len_pandas = len(vendor_pandas["Part Number"])
+    print(len_pandas)
+
+    vendor_pandas["P1"] = ["P5/.5"] * len_pandas
+    vendor_pandas["P2"] = ["P5/.6"] * len_pandas
+    vendor_pandas["P3"] = ["P5/.7"] * len_pandas
+    vendor_pandas["P4"] = ["P5/.8"] * len_pandas
+    vendor_pandas["P5"] = ["GC"] * len_pandas
 
     return vendor_pandas
 

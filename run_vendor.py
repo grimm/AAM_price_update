@@ -254,7 +254,7 @@ def vendor(vendor_pandas, vendor_cal, product_groups, vendor_name, vendor, disco
 	if vendor_name == "mass":
 	    new_pandas = vendor.do_mass(vendor_pandas, vendor_cal["mass"])
 	    titan_columns = ["NewPart", "Part Number", "Desc1", "Desc2", "P1", "P2", "P3", "P4",
-                     "P5", "Length", "Width", "Height", "Weight"]
+                     "P5"]
 	    nelson_columns = titan_columns
 
 	if vendor_name == "mba":
@@ -469,7 +469,7 @@ def vendor(vendor_pandas, vendor_cal, product_groups, vendor_name, vendor, disco
 	if vendor_name == "warn":
 	    new_pandas = vendor.do_warn(vendor_pandas, product_groups["warn"], vendor_cal["warn"])
 	    titan_columns = ["NewPart", "Part Number", "Desc1", "Desc2", "P1", "P2", "P3", "P4",
-                     "P5", "Length", "Width", "Height", "Weight", "Group Code"]
+                     "P5", "Length", "Width", "Height", "Weight", "Group"]
 	    nelson_columns = titan_columns
 
 	if vendor_name == "wes":

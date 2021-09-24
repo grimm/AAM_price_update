@@ -79,28 +79,7 @@ def do_warn(vendor_pandas, prod_group, tech_cal):
             if item == key:
                 vendor_pandas["Group"][index] = value
         if vendor_pandas["Group"][index] == 99999:
-            print("******* Warning - " + item + " not found in product groups!")
-
-    # Write out discontinued parts
-    #------------------------------
-    # date = datetime.today().strftime('%m-%d-%y')
-    # discon_file = "Warn_Discontinued_" + date + ".csv"
-
-    #           new_part   part          descriptions       P1    P2    P3    P4    P5
-    # columns = ["NewPart", "Part Number", "Desc1", "Desc2", "P1", "P2", "P3", "P4", "P5",
-    #            "Length", "Width", "Height", "Weight", "Status"]
-
-    # Separate out the discontinued parts from the others
-    # discon_pandas = vendor_pandas[vendor_pandas[short_desc].str.contains("Discontinued|To Be Discontinued")]
-    # update_pandas = vendor_pandas[~vendor_pandas[short_desc].isin(discon_pandas[short_desc])]
-
-    # Set status field
-    # len_pandas = len(discon_pandas.axes[0])
-    # new_column = list("D" * len_pandas)
-    # discon_pandas["Status"] = new_column
-
-    # discon_pandas.to_csv(discon_file, columns=columns, header=False, index=False, float_format="%.2f", sep="|", quoting=csv.QUOTE_NONE)
-    # print("Saved - " + discon_file + " discontinued parts file.")
+            print(item)
 
     return vendor_pandas
 

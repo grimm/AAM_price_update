@@ -91,6 +91,8 @@ def vendor_func(vendor_name):
 	    import vendor.mba as vendor
 	elif vendor_name == "mrw":
 	    import vendor.mrw as vendor
+	elif vendor_name == "mrwm":
+	    import vendor.mrwm as vendor
 	elif vendor_name == "myp":
 	    import vendor.myp as vendor
 	elif vendor_name == "nfa":
