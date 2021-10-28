@@ -17,6 +17,8 @@ def vendor_func(vendor_name):
 	    import vendor.amp as vendor
 	elif vendor_name == "ampm":
 	    import vendor.ampm as vendor
+	elif vendor_name == "aor":
+	    import vendor.aor as vendor
 	elif vendor_name == "arb":
 	    import vendor.arb as vendor
 	elif vendor_name == "arcl":
@@ -37,6 +39,8 @@ def vendor_func(vendor_name):
 	    import vendor.bigm as vendor
 	elif vendor_name == "bkr":
 	    import vendor.bkr as vendor
+	elif vendor_name == "brm":
+	    import vendor.brm as vendor
 	elif vendor_name == "bush":
 	    import vendor.bush as vendor
 	elif vendor_name == "buy":
@@ -45,6 +49,8 @@ def vendor_func(vendor_name):
 	    import vendor.tim as vendor
 	elif vendor_name == "carr":
 	    import vendor.carr as vendor
+	elif vendor_name == "cbp":
+	    import vendor.cbp as vendor
 	elif vendor_name == "crg":
 	    import vendor.crg as vendor
 	elif vendor_name == "curt":
@@ -57,10 +63,14 @@ def vendor_func(vendor_name):
 	    import vendor.eccot as vendor
 	elif vendor_name == "eccon":
 	    import vendor.eccon as vendor
+	elif vendor_name == "ffi":
+	    import vendor.ffi as vendor
 	elif vendor_name == "fia":
 	    import vendor.fia as vendor
 	elif vendor_name == "fil":
 	    import vendor.fil as vendor
+	elif vendor_name == "fire":
+	    import vendor.fire as vendor
 	elif vendor_name == "fpm":
 	    import vendor.fpm as vendor
 	elif vendor_name == "gor":
@@ -149,6 +159,8 @@ def vendor_func(vendor_name):
 	    import vendor.snow as vendor
 	elif vendor_name == "stlc":
 	    import vendor.stlc as vendor
+	elif vendor_name == "t-rex":
+	    import vendor.trex as vendor
 	elif vendor_name == "trux":
 	    import vendor.trux as vendor
 	elif vendor_name == "und":

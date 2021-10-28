@@ -1,31 +1,20 @@
 #
-# mrw.py
+# mrwm.py
 #
-# This script holds functions for the vendor Custom Wheel House
+# This script holds functions for the vendor Custom Wheel House special manufacture file
 #
-# Initial version - 02/24/2021 - Jason Grimes
+# Initial version - 09/14/2021 - Jason Grimes
 #
 
 from datetime import datetime
 import unidecode
-import csv
 import pandas as pd
 
 # Main vendor processing function
-def do_mrw(vendor_pandas, tech_cal):
-    # print(vendor_pandas["WHEELS"].axes[0])
-    # print(vendor_pandas["ACCESSORIES"].axes[0])
+def do_mrwm(vendor_pandas, tech_cal):
     # Concatinate both sheets for processing
     vendor_pandas = pd.concat(vendor_pandas, axis=0, ignore_index=True)
 
-    # Merge badly named columns
-    vendor_pandas[" MSRP "] = vendor_pandas[" MSRP "].fillna(vendor_pandas["MSRP PRICE"])
-    vendor_pandas["PART NUMBER"] = vendor_pandas["PART NUMBER"].fillna(vendor_pandas[" PART NUMBER "])
-    vendor_pandas["BOX L (IN)"] = vendor_pandas["BOX L (IN)"].fillna(vendor_pandas["LENGTH (IN)"])
-    vendor_pandas["BOX W (IN)"] = vendor_pandas["BOX W (IN)"].fillna(vendor_pandas["WIDTH (IN)"])
-    vendor_pandas["BOX H (IN)"] = vendor_pandas["BOX H (IN)"].fillna(vendor_pandas["HIEGHT (IN)"])
-    vendor_pandas["FREIGHT WEIGHT (LBS)"] = vendor_pandas["FREIGHT WEIGHT (LBS)"].fillna("0")
-    
     # Only use rows for Method Race Wheels
     vendor_pandas = vendor_pandas[(vendor_pandas["BRAND"] == "Method Race Wheels") | (vendor_pandas["BRAND  "] == "Method Race Wheels")]
     vendor_pandas = vendor_pandas[(vendor_pandas[" MSRP "] != "N/A")]

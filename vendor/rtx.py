@@ -1,7 +1,7 @@
 #
 # rtx.py
 #
-# This script holds functions for the vendor Retrax
+# This script holds functions for the vendor Retrax (Applied Products)
 #
 # Initial version - 5/03/2021 - Jason Grimes
 #

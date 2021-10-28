@@ -21,7 +21,7 @@ def do_myp(vendor_pandas, tech_cal):
     vendor_pandas["NewPart"] = vendor_pandas["Part Number"].apply(lambda x: "MYP" + x)
 
     # Change part number prefix for MYS parts
-    for index, code in enumerate(vendor_pandas["PRICE CODE"]):
+    for index, code in enumerate(vendor_pandas["Price Code"]):
         if code in mys_codes:
             vendor_pandas["NewPart"][index] = vendor_pandas["NewPart"][index].replace("MYP", "MYS")
     
@@ -37,18 +37,21 @@ def do_myp(vendor_pandas, tech_cal):
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].apply(lambda x: x[:30])
 
     # Create all price fields
-    vendor_pandas["P1"] = vendor_pandas["LIST PRICE"].astype(float)
+    vendor_pandas["P1"] = vendor_pandas["List Price"].replace("$", "").replace(",", "")
+    vendor_pandas["P1"] = vendor_pandas["P1"].astype(float)
     vendor_pandas["P2"] = vendor_pandas["P1"]
     vendor_pandas["P3"] = vendor_pandas["P1"] * tech_cal["P3"]
     vendor_pandas["P4"] = vendor_pandas["P1"] * tech_cal["P4"]
-    vendor_pandas["P5"] = vendor_pandas["Level 3"].astype(float)
+    vendor_pandas["P5"] = vendor_pandas["Gold"].replace("$", "").replace(",", "")
+    vendor_pandas["P5"] = vendor_pandas["P5"].astype(float)
 
     # Set dimensions and status
     len_pandas = len(vendor_pandas.axes[0])
     print(len_pandas)
     new_column = list("0" * len_pandas)
 
-    vendor_pandas["Weight"] = vendor_pandas["Weight (lbs.)"].astype(float)
+    # vendor_pandas["Weight"] = vendor_pandas["Weight (lbs.)"].astype(float)
+    vendor_pandas["Weight"] = new_column
     vendor_pandas["Length"] = new_column
     vendor_pandas["Width"] = new_column
     vendor_pandas["Height"] = new_column

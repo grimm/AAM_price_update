@@ -32,13 +32,20 @@ def do_mass(vendor_pandas, tech_cal):
 
     # Create all price formulas (KNP)
     len_pandas = len(vendor_pandas["Part Number"])
-    print(len_pandas)
+    # print(len_pandas)
 
-    vendor_pandas["P1"] = ["P5/.5"] * len_pandas
-    vendor_pandas["P2"] = ["P5/.6"] * len_pandas
-    vendor_pandas["P3"] = ["P5/.7"] * len_pandas
-    vendor_pandas["P4"] = ["P5/.8"] * len_pandas
-    vendor_pandas["P5"] = ["GC"] * len_pandas
+    # vendor_pandas["P1"] = ["P5/.5"] * len_pandas
+    # vendor_pandas["P2"] = ["P5/.6"] * len_pandas
+    # vendor_pandas["P3"] = ["P5/.7"] * len_pandas
+    # vendor_pandas["P4"] = ["P5/.8"] * len_pandas
+    # vendor_pandas["P5"] = ["GC"] * len_pandas
+
+    # Just change P2 for MAP update Pedal Commander (PC)
+    vendor_pandas["P1"] = vendor_pandas["Price #1"].astype(float)
+    vendor_pandas["P2"] = "349.99" * len_pandas
+    vendor_pandas["P3"] = vendor_pandas["Price #3"].astype(float)
+    vendor_pandas["P4"] = vendor_pandas["Price #4"].astype(float)
+    vendor_pandas["P5"] = vendor_pandas["Price #5"].astype(float)
 
     return vendor_pandas
 

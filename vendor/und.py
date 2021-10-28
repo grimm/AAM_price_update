@@ -42,8 +42,10 @@ def do_und(vendor_pandas, tech_cal):
     vendor_pandas["P4"] = vendor_pandas["MAP Wholesale / MSP"]
 
     for index, item in enumerate(vendor_pandas["P4"]):
-        if item == "N/A":
+        if item == "N/A" or item == "":
             vendor_pandas["P4"][index] = vendor_pandas["P5"][index]/tech_cal["P4"]
+            # New Calculation
+            # vendor_pandas["P4"][index] = vendor_pandas["P5"][index]/tech_cal["P6"]
 
     vendor_pandas["P4"] = vendor_pandas["P4"].astype(float)
 

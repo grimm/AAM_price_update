@@ -13,13 +13,13 @@ def set_excel(vendor):
 	csvfile = 0
 	
 	# Set skiprow or default to 1
-	if (vendor == "tech") | (vendor == "tim") | (vendor == "aci") | (vendor == "nfa") | (vendor == "baja") | (vendor == "west") | (vendor == "sb") | (vendor == "fil") | (vendor == "scs") | (vendor == "ampm") | (vendor == "knk") | (vendor == "adu") | (vendor == "mass") | (vendor == "nitro") | (vendor == "lnd") | (vendor == "rcs") | (vendor == "and") | (vendor == "myp") | (vendor == "yak") | (vendor == "snow") | (vendor == "mrwm"):
+	if (vendor == "tech") | (vendor == "tim") | (vendor == "aci") | (vendor == "nfa") | (vendor == "baja") | (vendor == "west") | (vendor == "sb") | (vendor == "fil") | (vendor == "scs") | (vendor == "ampm") | (vendor == "knk") | (vendor == "adu") | (vendor == "mass") | (vendor == "nitro") | (vendor == "lnd") | (vendor == "rcs") | (vendor == "and") | (vendor == "yak") | (vendor == "snow") | (vendor == "mrwm") | (vendor == "cbp"):
 	  skiprow = 0
-	elif (vendor == "mas") | (vendor == "kc") | (vendor == "prime"):
+	elif (vendor == "mas") | (vendor == "kc") | (vendor == "prime") | (vendor == "fire"):
 	  skiprow = 2
 	elif (vendor == "odr") | (vendor == "qf"):
 	  skiprow = 3
-	elif (vendor == "kar") | (vendor == "arb"):
+	elif (vendor == "kar") | (vendor == "arb") | (vendor == "myp"):
 	  skiprow = 4
 	elif (vendor == "gorm") | (vendor == "eccot") | (vendor == "eccon") | (vendor == "rfn") | (vendor == "bigm") | (vendor == "road"):
 	  skiprow = 5

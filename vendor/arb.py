@@ -18,6 +18,7 @@ def do_arb(vendor_pandas, tech_cal):
     
     # Create new description columns
     vendor_pandas["Desc1"] = vendor_pandas["Item Description1"] + " " + vendor_pandas["Item Description2"]
+    vendor_pandas["Desc1"] = vendor_pandas["Desc1"].replace("\|", "-", regex=True)
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].apply(lambda x: unidecode.unidecode(x))
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].str.upper()
 

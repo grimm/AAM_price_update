@@ -19,7 +19,7 @@ def do_tech(vendor_pandas, prod_group, tech_cal):
     vendor_pandas = vendor_pandas.reset_index(drop=True)
 
     # Copy Part column to NewPart column and modify to add TECH
-    vendor_pandas.loc[:,"NewPart"] = vendor_pandas["Part"]
+    vendor_pandas.loc[:,"NewPart"] = vendor_pandas["Part"].astype(str)
     vendor_pandas["NewPart"] = vendor_pandas["NewPart"].apply(lambda x: "TECH" + x)
     
     # Create description 1

@@ -44,6 +44,14 @@ def do_put(vendor_pandas, tech_cal):
     vendor_pandas["P4"] = vendor_pandas["P3"] * tech_cal["P4"]
     vendor_pandas["P5"] = vendor_pandas["AAM Cost"].astype(float)
 
+    # New Calculations
+    # vendor_pandas["P1"] = vendor_pandas["Unilateral"].astype(float)
+    # vendor_pandas["P2"] = vendor_pandas["Unilateral Retail"].astype(float)
+    # vendor_pandas["P3"] = vendor_pandas["Jobber"].astype(float)
+    # vendor_pandas["P5"] = vendor_pandas["AAM Cost"].astype(float)
+
+    # vendor_pandas["P4"] = vendor_pandas["P5"] / tech_cal["P4"]
+
     # Set dimensions and status
     lname = "Weight - IN POUNDS"
     vendor_pandas[lname] = vendor_pandas[lname].replace('', '0')

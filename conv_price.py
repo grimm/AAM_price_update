@@ -23,20 +23,20 @@ import run_vendor as run
 import vendor_sheet as sheet
 
 # Define the supported vendors and load yaml calculation and groups files
-Vendors = ["aci", "adu", "airl", "and", "anz", "amp", "ampm", "arb", "arcl", "ard",
-           "baja", "bak", "bap", "best", "big", "bigm", "bkr", "bush", "buy", "carr",
-           "cipa", "crg", "curt", "deck", "dez", "eccon", "eccot", "fia", "fil", "fpm",
-           "gor", "gorm", "hus", "kar", "kc", "knk", "knkm", "knn", "kso", "lift",
-           "mas", "mass", "mba", "mrw", "myp", "nfa", "nitro", "odr", "ovs", "par",
-           "piaa", "prime", "protec", "put", "qf", "rch", "rcs", "rdl", "rfn", "rgr",
-           "rig", "rlg", "road", "rrk", "rsp", "rtx", "rug", "sb", "scs", "sls", "snow",
-           "stlc", "tech", "tim", "trux", "und", "uws", "uwsb", "ven", "vms", "warn",
-           "wes", "west", "yak"]
+Vendors = ["aci", "adu", "airl", "and", "anz", "amp", "ampm", "aor", "arb", "arcl", "ard",
+           "baja", "bak", "bap", "best", "big", "bigm", "bkr", "brm", "bush", "buy",
+           "carr", "cbp", "cipa", "crg", "curt", "deck", "dez", "eccon", "eccot", "ffi",
+           "fia", "fil", "fire", "fpm", "gor", "gorm", "hus", "kar", "kc", "knk", "knkm",
+           "knn", "kso", "lift", "mas", "mass", "mba", "mrw", "myp", "nfa", "nitro", "odr",
+           "ovs", "par", "piaa", "prime", "protec", "put", "qf", "rch", "rcs", "rdl", "rfn",
+           "rgr", "rig", "rlg", "road", "rrk", "rsp", "rtx", "rug", "sb", "scs", "sls",
+           "snow", "stlc", "tech", "tim", "t-rex", "trux", "und", "uws", "uwsb", "ven",
+           "vms", "warn", "wes", "west", "yak"]
 vendor_cal = {}
 product_groups = {}
 
 vnum = str(len(Vendors))
-epilog = "The following " + vnum + " Vendors are supported: "
+epilog = "The following " + vnum + " Vendor product codes are supported: "
 epilog = epilog + ", ".join(Vendors)
 
 with open('vendor_cal.yaml') as f:
@@ -48,8 +48,9 @@ with open('product_groups.yaml', encoding='utf8') as f:
 # Parse command line options
 parser = argparse.ArgumentParser(description='Convert pricing Excel file to a CSV formated file', epilog = epilog)
 parser.add_argument('file', help='Excel file')
-parser.add_argument('vendor', help='Vendor name')
+parser.add_argument('vendor', help='Vendor Product Code')
 parser.add_argument('-d', help='Process all parts as discontinued', action="store_true")
+parser.add_argument('-n', help='Do new calculation', action="store_true")
 parser.description = "The mass vendor is used to import data from the FACS mass report"
 args = parser.parse_args()
 
@@ -102,7 +103,7 @@ elif csvfile == 1:           # Load CSV file instead of Excel
 # --------------------------
 # Run vendor function and set columns
 new_pandas, titan_columns, nelson_columns = run.vendor(vendor_pandas, vendor_cal,
-    product_groups, args.vendor, vendor, args.d)
+    product_groups, args.vendor, vendor, args.d, args.n)
 
 # Write CSV file
 new_pandas.to_csv(titan_csv_file, columns=titan_columns, header=False, index=False, float_format="%.2f", sep="|", quoting=csv.QUOTE_NONE, escapechar='\\')

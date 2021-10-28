@@ -43,17 +43,17 @@ def do_trux(vendor_pandas, prod_group, tech_cal):
         if item == "":
             vendor_pandas["P2"][index] = vendor_pandas["P3"][index]
 
-    vendor_pandas["P2"] = vendor_pandas["P2"]
     for index, item in enumerate(vendor_pandas["P2"]):
         if item == "" or item =="n/a":
             vendor_pandas["P2"][index] = vendor_pandas["P3"][index]
-
 
     vendor_pandas["P4"] = vendor_pandas["MAP Wholesale / MSP"]
     for index, item in enumerate(vendor_pandas["MAP Wholesale / MSP"]):
         #print(index)
         if item == "":
             vendor_pandas["P4"][index] = vendor_pandas["P5"][index] / tech_cal["P4"]
+            # new Calculation
+            # vendor_pandas["P4"][index] = vendor_pandas["P5"][index] / tech_cal["P6"]
     vendor_pandas["P4"] = vendor_pandas["P4"].astype(float)
     vendor_pandas["P1"] = vendor_pandas["P1"].astype(float)
     vendor_pandas["P2"] = vendor_pandas["P2"].astype(float)

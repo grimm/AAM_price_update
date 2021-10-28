@@ -5,6 +5,8 @@
 #
 # Initial version - 04/21/2021 - Jason Grimes
 #
+# NOTE: If they have a price increase, need to notify Jared.
+#
 
 from datetime import datetime
 import unidecode

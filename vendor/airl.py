@@ -10,7 +10,7 @@ from datetime import datetime
 import unidecode
 
 # Main vendor processing function
-def do_airl(vendor_pandas, tech_cal):
+def do_airl(vendor_pandas, tech_cal, new_cal):
     # Filter out all rows that are not for retail
     vendor_pandas = vendor_pandas[(vendor_pandas["Application"] == "")]
 
@@ -36,7 +36,10 @@ def do_airl(vendor_pandas, tech_cal):
     vendor_pandas["P3"] = vendor_pandas["Jobber"]
     vendor_pandas["P5"] = vendor_pandas["AAM Cost"]
     vendor_pandas["P2"] = vendor_pandas["P3"] / tech_cal["P2"]
-    vendor_pandas["P4"] = vendor_pandas["P3"] * tech_cal["P4"]
+    if new_cal:
+        vendor_pandas["P4"] = vendor_pandas["P5"] / 0.83
+    else:
+        vendor_pandas["P4"] = vendor_pandas["P3"] * tech_cal["P4"]
 
     # Set dimensions and status
     vendor_pandas["Weight"] = vendor_pandas["Weight - IN POUNDS"]

@@ -88,7 +88,7 @@ def do_aci(vendor_pandas, prod_group, tech_cal):
             if item == key:
                 vendor_pandas["Group"][index] = value
         if vendor_pandas["Group"][index] == 99999:
-            print("******* Warning - " + item + " not found in product groups!")
+            print(item)
 
     return vendor_pandas
 

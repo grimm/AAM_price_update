@@ -21,16 +21,22 @@ To see a list of supported vendor namess, use the following command...
 
 And the script should output something similar to this...
 
-```usage: conv_price.py [-h] file vendor
+```usage: conv_price.py [-h] [-d] [-n] file vendor
 
-Convert parts Excel file to a CSV formated file
+The mass vendor is used to import data from the FACS mass report
 
 positional arguments:
   file        Excel file
-  vendor      Vendor name
+  vendor      Vendor Product Code
 
 optional arguments:
   -h, --help  show this help message and exit
+  -d          Process all parts as discontinued
+  -n          Do new calculation
 
-The following Vendors are supported: tech, ard, tim, curt, fia, gor, knn, warn, rsp, kso, par, rig
+The following 90 Vendor product codes are supported: aci, adu, airl, and, anz, amp, ampm, aor, arb, arcl, ard, baja,
+bak, bap, best, big, bigm, bkr, brm, bush, buy, carr, cbp, cipa, crg, curt, deck, dez, eccon, eccot, ffi, fia, fil,
+fire, fpm, gor, gorm, hus, kar, kc, knk, knkm, knn, kso, lift, mas, mass, mba, mrw, myp, nfa, nitro, odr, ovs, par,
+piaa, prime, protec, put, qf, rch, rcs, rdl, rfn, rgr, rig, rlg, road, rrk, rsp, rtx, rug, sb, scs, sls, snow, stlc,
+tech, tim, t-rex, trux, und, uws, uwsb, ven, vms, warn, wes, west, yak
 
