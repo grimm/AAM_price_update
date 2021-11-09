@@ -36,6 +36,7 @@ def do_aor(vendor_pandas, prod_group, tech_cal):
         if item == "":
             vendor_pandas["P2"][index] = vendor_pandas["P5"][index] / tech_cal["P2"]
 
+    vendor_pandas["P2"] = vendor_pandas["P2"].astype(float)
     vendor_pandas["P4"] = vendor_pandas["P5"] / tech_cal["P4"]
 
     # Set product groups

@@ -25,12 +25,12 @@ import vendor_sheet as sheet
 # Define the supported vendors and load yaml calculation and groups files
 Vendors = ["aci", "adu", "airl", "and", "anz", "amp", "ampm", "aor", "arb", "arcl", "ard",
            "baja", "bak", "bap", "best", "big", "bigm", "bkr", "brm", "bush", "buy",
-           "carr", "cbp", "cipa", "crg", "curt", "deck", "dez", "eccon", "eccot", "ffi",
-           "fia", "fil", "fire", "fpm", "gor", "gorm", "hus", "kar", "kc", "knk", "knkm",
-           "knn", "kso", "lift", "mas", "mass", "mba", "mrw", "myp", "nfa", "nitro", "odr",
-           "ovs", "par", "piaa", "prime", "protec", "put", "qf", "rch", "rcs", "rdl", "rfn",
-           "rgr", "rig", "rlg", "road", "rrk", "rsp", "rtx", "rug", "sb", "scs", "sls",
-           "snow", "stlc", "tech", "tim", "t-rex", "trux", "und", "uws", "uwsb", "ven",
+           "carr", "cbp", "cipa", "crg", "curt", "deck", "dez", "eccon", "eccot", "ext",
+           "ffi", "fia", "fil", "fire", "fpm", "gor", "gorm", "hus", "kar", "kc", "knk", "knkm",
+           "knn", "kso", "lift", "lnd", "mas", "mass", "mba", "mrw", "myp", "nfa", "nitro",
+           "odr", "ovs", "par", "piaa", "prime", "protec", "put", "qf", "rch", "rcs", "rdl",
+           "rfn", "rgr", "rig", "rlg", "road", "rrk", "trm", "rsp", "rtx", "rug", "sb", "scs",
+           "sls", "snow", "stlc", "tech", "tim", "t-rex", "trux", "und", "uws", "uwsb", "ven",
            "vms", "warn", "wes", "west", "yak"]
 vendor_cal = {}
 product_groups = {}

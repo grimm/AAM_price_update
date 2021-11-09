@@ -15,6 +15,10 @@ def do_big(vendor_pandas, prod_group, tech_cal):
     short_desc = "Short Description (20 Characters or Less)"
     long_desc = "Long Description 100 Characters or less WITHOUT application information"
 
+    # Remove parts with no price
+    vendor_pandas = vendor_pandas[(vendor_pandas["AAM Cost"] != "")]
+    vendor_pandas = vendor_pandas.reset_index(drop=True)
+
     # Create new Status/NewPart columns
     vendor_pandas['Part Number'] = vendor_pandas['Part Number'].astype(str)
     vendor_pandas["NewPart"] = vendor_pandas["Part Number"].apply(lambda x: "BIG" + x)
@@ -82,7 +86,6 @@ def do_big(vendor_pandas, prod_group, tech_cal):
             if item == key:
                 vendor_pandas["Group"][index] = value
         if vendor_pandas["Group"][index] == 99999:
-            # print("******* Warning - " + item + " not found in product groups!")
             print(item)
 
     return vendor_pandas

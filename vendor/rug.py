@@ -1,7 +1,7 @@
 #
 # rug.py
 #
-# This script holds functions for the vendor Rugged
+# This script holds functions for the vendor Rugged Liner
 #
 # Initial version - 02/26/2021 - Jason Grimes
 #
@@ -21,7 +21,7 @@ def do_rug(vendor_pandas, tech_cal):
     vendor_pandas["NewPart"] = vendor_pandas["Part Number"].apply(lambda x: "RUG" + x)
     
     # Create new description columns
-    vendor_pandas["Desc1"] = vendor_pandas[long_desc]
+    vendor_pandas["Desc1"] = vendor_pandas[long_desc].astype(str)
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].apply(lambda x: unidecode.unidecode(x))
 
     # Upper case text and trim it to 30 characters

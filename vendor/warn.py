@@ -11,7 +11,7 @@ import unidecode
 import csv
 
 # Main vendor processing function
-def do_warn(vendor_pandas, prod_group, tech_cal):
+def do_warn(vendor_pandas, tech_cal):
     # Put really long header text in some vars
     short_desc = "Short Description (20 Characters or Less)"
     long_desc = "Long Description 100 Characters or less WITHOUT application information"
@@ -36,13 +36,16 @@ def do_warn(vendor_pandas, prod_group, tech_cal):
     vendor_pandas["P3"] = vendor_pandas["Jobber"]
     vendor_pandas["P5"] = vendor_pandas["AAM Cost"]
 
+    vendor_pandas["Group Code"] = vendor_pandas["NewPart"]
     vendor_pandas["P2"] = vendor_pandas["AAM Cost"]
     for index, item in enumerate(vendor_pandas["Unilateral Retail"]):
         #print(index)
         if item == "":
             vendor_pandas["P2"][index] = vendor_pandas["P3"][index] / tech_cal["P2"]
+            vendor_pandas["Group Code"][index] = 1
         else:
             vendor_pandas["P2"][index] = item
+            vendor_pandas["Group Code"][index] = 0
 
     vendor_pandas["P4"] = vendor_pandas["AAM Cost"]
     for index, item in enumerate(vendor_pandas["Unilateral Wholesale"]):
@@ -70,16 +73,6 @@ def do_warn(vendor_pandas, prod_group, tech_cal):
 
     vendor_pandas["Height"] = vendor_pandas["Height"].replace(' ', '0')
     vendor_pandas["Height"] = vendor_pandas["Height"].replace('', '0').astype(float)
-
-    # Set product groups
-    vendor_pandas["Group"] = vendor_pandas["NewPart"]
-    for index, item in enumerate(vendor_pandas[short_desc]):
-        vendor_pandas["Group"][index] = 99999
-        for key, value in prod_group.items():
-            if item == key:
-                vendor_pandas["Group"][index] = value
-        if vendor_pandas["Group"][index] == 99999:
-            print(item)
 
     return vendor_pandas
 

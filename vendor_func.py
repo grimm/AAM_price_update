@@ -63,6 +63,8 @@ def vendor_func(vendor_name):
 	    import vendor.eccot as vendor
 	elif vendor_name == "eccon":
 	    import vendor.eccon as vendor
+	elif vendor_name == "ext":
+	    import vendor.ext as vendor
 	elif vendor_name == "ffi":
 	    import vendor.ffi as vendor
 	elif vendor_name == "fia":
@@ -161,6 +163,8 @@ def vendor_func(vendor_name):
 	    import vendor.stlc as vendor
 	elif vendor_name == "t-rex":
 	    import vendor.trex as vendor
+	elif vendor_name == "trm":
+	    import vendor.trm as vendor
 	elif vendor_name == "trux":
 	    import vendor.trux as vendor
 	elif vendor_name == "und":

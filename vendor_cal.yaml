@@ -18,16 +18,17 @@ big:  {main: "COST",        P1: 0,   P2: 0.0,   P3: 0,   P4: 0.85, P5: 0.0,  P6:
 bigm: {main: "COST",        P1: 0,   P2: 0.0,   P3: 0,   P4: 0.85, P5: 0.0,  P6: 0,   NTE: 0}
 bkr:  {main: "Map Retail",  P1: 0,   P2: 0.0,   P3: 0,   P4: 0.79, P5: 0.0,  P6: 0,   NTE: 0}
 brm:  {main: "Map Retail",  P1: 0,   P2: 0.0,   P3: 0,   P4: 0.8,  P5: 0.0,  P6: 0,   NTE: 0}
-bush: {main: "MSRP",        P1: 0,   P2: 0.0,   P3: 0,   P4: 0.79, P5: 0.0,  P6: 0,   NTE: 0}
+bush: {main: "MSRP",        P1: 0,   P2: 0.75,  P3: 0,   P4: 0.79, P5: 0.0,  P6: 0,   NTE: 0}
 buy:  {main: "MSRP/List",   P1: 0,   P2: 0.6,   P3: 0,   P4: 0.7,  P5: 0.0,  P6: 0,   NTE: 0}
 carr: {main: "Jobber/MAP",  P1: 0,   P2: 0.8,   P3: 0,   P4: 0.85, P5: 0.67, P6: 0,   NTE: 0}
 cbp:  {main: "COST",        P1: 0.6, P2: 0.6,   P3: 0,   P4: 0.8,  P5: 0.0,  P6: 0,   NTE: 0}
 crg:  {main: "MSRP/List",   P1: 0,   P2: 0.0,   P3: 0,   P4: 0.9,  P5: 0.0,  P6: 0,   NTE: 0}
 curt: {main: "COST",        P1: 0,   P2: 0.66,  P3: 0,   P4: 0.8,  P5: 0.7,  P6: 0.8, NTE: 0}
 deck: {main: "MSRP/List",   P1: 0,   P2: 0.0,   P3: 0,   P4: 0.75, P5: 0.0,  P6: 0,   NTE: 0}
-dez:  {main: "AAM COST",    P1: 0.6, P2: 0.0,   P3: 0,   P4: 0.75, P5: 0.0,  P6: 0,   NTE: 0}
+dez:  {main: "AAM COST",    P1: 0.6, P2: 0.6,   P3: 0,   P4: 0.75, P5: 0.0,  P6: 0,   NTE: 0}
 eccon: {main: "WD",         P1: 0.6, P2: 0.7,   P3: 0.8, P4: 0.9,  P5: 0.8,  P6: 0,   NTE: 1}
 eccot: {main: "WD",         P1: 0.5, P2: 0.6,   P3: 0.7, P4: 0.8,  P5: 0.8,  P6: 0,   NTE: 0}
+ext:  {main: "MSRP/List",   P1: 0,   P2: 0.63,  P3: 0,   P4: 0.813, P5: 1.05, P6: 0,  NTE: 0}
 ffi:  {main: "JOBBER",      P1: 0,   P2: 0.8,   P3: 0,   P4: 0.78, P5: 0,    P6: 0,   NTE: 0}
 fia:  {main: "JOBBER",      P1: 0,   P2: 0.8,   P3: 0,   P4: 0.85, P5: 0,    P6: 0,   NTE: 0}
 fil:  {main: "List Price",  P1: 0,   P2: 0.7,   P3: 0.75, P4: 0.85, P5: 0,   P6: 0,   NTE: 0}
@@ -43,7 +44,7 @@ knk:  {main: "TRADE",       P1: 0,   P2: 0.9,   P3: 0.85, P4: 0.8, P5: 0,    P6:
 knkm: {main: "TRADE",       P1: 0,   P2: 0.9,   P3: 0.85, P4: 0.8, P5: 0,    P6: 0,   NTE: 0}
 knn:  {main: "JOBBER",      P1: 0,   P2: 0.85,  P3: 0,   P4: 0.8,  P5: 0,    P6: 0,   NTE: 0}
 kso:  {main: "JOBBER",      P1: 0,   P2: 0,     P3: 0,   P4: 0.45, P5: 0.63, P6: 0,   NTE: 0}
-lnd:  {main: "MSRP/List",   P1: 0.6, P2: 0.7,   P3: 0,   P4: 0.75, P5: 0,    P6: 0,   NTE: 0}
+lnd:  {main: "MSRP/List",   P1: 0.0, P2: 0.55,  P3: 0,   P4: 0.75, P5: 0,    P6: 0,   NTE: 0}
 lift: {main: "MSRP/List",   P1: 0.0, P2: 0.0,   P3: 0.0, P4: 0.9,  P5: 0,    P6: 0,   NTE: 0}
 mas:  {main: "LIST",        P1: 0,   P2: 0.65,  P3: 0.7, P4: 0.75, P5: 0.55, P6: 1.09,NTE: 0}
 mass: {main: "JOBBER",      P1: 0,   P2: 0,     P3: 0,   P4: 0,    P5: 0.85, P6: 0.95,NTE: 0}
@@ -59,7 +60,7 @@ par:  {main: "Jobber",      P1: 0.6, P2: 0,     P3: 0,   P4: 0.85, P5: 0,    P6:
 piaa: {main: "JOBBER",      P1: 0,   P2: 0.8,   P3: 0,   P4: 0.85, P5: 0.65, P6: 0,   NTE: 0}
 prime: {main: "Retail",     P1: 0,   P2: 0.7,   P3: 0.7, P4: 0,    P5: 0.6,  P6: 0,   NTE: 1}
 protec: {main: "MSRP",      P1: 0.6, P2: 0.65,  P3: 0.7, P4: 0.8,  P5: 0,    P6: 0,   NTE: 0}
-put:  {main: "Jobber",      P1: 0,   P2: 0,     P3: 0,   P4: 0.9,  P5: 0,    P6: 0,   NTE: 0}
+put:  {main: "Jobber",      P1: 0,   P2: 0.55,  P3: 0,   P4: 0.8,  P5: 0,    P6: 0,   NTE: 0}
 piaa: {main: "JOBBER",      P1: 0,   P2: 0.8,   P3: 0,   P4: 0.85, P5: 0.65, P6: 0,   NTE: 0}
 qf:   {main: "MSRP",        P1: 0,   P2: 0,     P3: 0,   P4: 0,    P5: 0,    P6: 0,   NTE: 0}
 rcs:  {main: "price",       P1: 0,   P2: 0.7,   P3: 0.7, P4: 0.8,  P5: 0.665, P6: 0,  NTE: 0}
@@ -80,12 +81,13 @@ snow: {main: "MSRP/List",   P1: 0.0, P2: 0.6,   P3: 0.7, P4: 0.8,  P5: 0,    P6:
 stlc: {main: "MSRP/List",   P1: 0.7, P2: 0.75,  P3: 0,   P4: 0.75, P5: 0,    P6: 0,   NTE: 0}
 tech: {main: "TTK",         P1: 0,   P2: 0.7,   P3: 0,   P4: 0.75, P5: 0,    P6: 0,   NTE: 1}
 tim:  {main: "US $    MAP", P1: 0,   P2: 0.75,  P3: 0,   P4: 0.8,  P5: 0,    P6: 0,   NTE: 0}
-t-rex: {main: "MSRP/List",   P1: 0,   P2: 0.0,   P3: 0,   P4: 0.8,  P5: 0,    P6: 0.0, NTE: 0}
-trux: {main: "MSRP/List",   P1: 0,   P2: 0.0,   P3: 0,   P4: 0.8,  P5: 0,    P6: 0.85, NTE: 0}
-und:  {main: "MSRP",        P1: 0,   P2: 0.0,   P3: 0,   P4: 0.8,  P5: 0,    P6: 0.78, NTE: 0}
-uws:  {main: "MSRP",        P1: 0.0, P2: 0.0,   P3: 0.0, P4: 0.75, P5: 0.0,  P6: 0.81, NTE: 0}
+t-rex: {main: "MSRP/List",  P1: 0,   P2: 0.0,   P3: 0,   P4: 0.8,  P5: 0,    P6: 0.0, NTE: 0}
+trm:  {main: "MSRP/List",   P1: 0,   P2: 0.75,  P3: 0,   P4: 0.75, P5: 0,    P6: 0,   NTE: 0}
+trux: {main: "MSRP/List",   P1: 0,   P2: 0.0,   P3: 0,   P4: 0.85, P5: 0,    P6: 0,   NTE: 0}
+und:  {main: "MSRP",        P1: 0,   P2: 0.0,   P3: 0,   P4: 0.75, P5: 0,    P6: 0.0, NTE: 0}
+uws:  {main: "MSRP",        P1: 0.0, P2: 0.0,   P3: 0.0, P4: 0.81, P5: 0.0,  P6: 0.0, NTE: 0}
 uwsb: {main: "MSRP",        P1: 0.0, P2: 0.0,   P3: 0.0, P4: 0.75, P5: 0.0,  P6: 0,   NTE: 0}
-ven:  {main: "MSRP/List",   P1: 0.6, P2: 0.59,  P3: 0.73, P4: 0.8, P5: 0,    P6: 0.75,NTE: 0}
+ven:  {main: "MSRP/List",   P1: 0.0, P2: 0.6,   P3: 0.0, P4: 0.73, P5: 0,    P6: 0,   NTE: 0}
 vms:  {main: "MSRP",        P1: 0.8, P2: 0.0,   P3: 0,   P4: 0.75, P5: 0,    P6: 0,   NTE: 0}
 warn: {main: "JOBBER",      P1: 0,   P2: 0.9,   P3: 0,   P4: 0.85, P5: 0,    P6: 0,   NTE: 0}
 wes:  {main: "JOBBER",      P1: 0,   P2: 0.75,  P3: 0,   P4: 0.8,  P5: 0,    P6: 0,   NTE: 0}

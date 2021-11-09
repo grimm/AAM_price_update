@@ -52,9 +52,8 @@ def do_trux(vendor_pandas, prod_group, tech_cal):
         #print(index)
         if item == "":
             vendor_pandas["P4"][index] = vendor_pandas["P5"][index] / tech_cal["P4"]
-            # new Calculation
-            # vendor_pandas["P4"][index] = vendor_pandas["P5"][index] / tech_cal["P6"]
     vendor_pandas["P4"] = vendor_pandas["P4"].astype(float)
+    
     vendor_pandas["P1"] = vendor_pandas["P1"].astype(float)
     vendor_pandas["P2"] = vendor_pandas["P2"].astype(float)
 

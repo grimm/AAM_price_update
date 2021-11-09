@@ -55,12 +55,8 @@ def do_tech(vendor_pandas, prod_group, tech_cal):
     else:
         vendor_pandas["P3"] = vendor_pandas["Jobber"]
 
-    # Create P2 and P4 by calculation
-    # Calculate P4 first as P2 uses it
-    vendor_pandas["P4"] = vendor_pandas[tech_cal["main"]] / tech_cal["P4"] / 1.01
-
-    # Calculate P2
-    vendor_pandas["P2"] = vendor_pandas["P4"] / tech_cal["P2"]
+    vendor_pandas["P4"] = vendor_pandas["P3"] * tech_cal["P4"]
+    vendor_pandas["P2"] = vendor_pandas["P1"]
 
     # Build group codes column
     vendor_pandas.loc[:,"Group"] = vendor_pandas["Product Group"]

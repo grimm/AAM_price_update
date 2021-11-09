@@ -60,15 +60,14 @@ def do_wes(vendor_pandas, prod_group, tech_cal):
     vendor_pandas["Height"] = vendor_pandas["Height"].replace(" ", "0").replace("", "0").astype(float)
 
     # Set product groups
-    vendor_pandas["Group"] = vendor_pandas["NewPart"]
+    vendor_pandas["Group Code"] = vendor_pandas["NewPart"]
     for index, item in enumerate(vendor_pandas[short_desc]):
-        vendor_pandas["Group"][index] = 99999
+        vendor_pandas["Group Code"][index] = 99999
         for key, value in prod_group.items():
             if item == key:
-                vendor_pandas["Group"][index] = value
-        if vendor_pandas["Group"][index] == 99999:
+                vendor_pandas["Group Code"][index] = value
+        if vendor_pandas["Group Code"][index] == 99999:
             print(item)
-            # print(item)
 
     return vendor_pandas
 

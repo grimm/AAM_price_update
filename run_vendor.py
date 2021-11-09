@@ -182,6 +182,12 @@ def vendor(vendor_pandas, vendor_cal, product_groups, vendor_name, vendor, disco
                      "P5", "Length", "Width", "Height", "Weight"]
 	    nelson_columns = titan_columns
 
+	if vendor_name == "ext":
+	    new_pandas = vendor.do_ext(vendor_pandas, vendor_cal["ext"])
+	    titan_columns = ["NewPart", "Part Number", "Desc1", "Desc2", "P1", "P2", "P3", "P4",
+                     "P5", "Length", "Width", "Height", "Weight"]
+	    nelson_columns = titan_columns
+
 	if vendor_name == "dez":
 	    new_pandas = vendor.do_dez(vendor_pandas, vendor_cal["dez"])
 	    titan_columns = ["NewPart", "Part Number", "Desc1", "Desc2", "P1", "P2", "P3", "P4",
@@ -466,6 +472,12 @@ def vendor(vendor_pandas, vendor_cal, product_groups, vendor_name, vendor, disco
                      "P5", "Length", "Width", "Height", "Weight"]
 	    nelson_columns = titan_columns
 
+	if vendor_name == "trm":
+	    new_pandas = vendor.do_trm(vendor_pandas, vendor_cal["trm"])
+	    titan_columns = ["NewPart", "Part Number", "Desc1", "Desc2", "P1", "P2", "P3", "P4",
+                     "P5", "Length", "Width", "Height", "Weight"]
+	    nelson_columns = titan_columns
+
 	if vendor_name == "trux":
 	    new_pandas = vendor.do_trux(vendor_pandas, product_groups["trux"], vendor_cal["trux"])
 	    titan_columns = ["NewPart", "Part Number", "Desc1", "Desc2", "P1", "P2", "P3", "P4",
@@ -503,15 +515,15 @@ def vendor(vendor_pandas, vendor_cal, product_groups, vendor_name, vendor, disco
 	    nelson_columns = titan_columns
 
 	if vendor_name == "warn":
-	    new_pandas = vendor.do_warn(vendor_pandas, product_groups["warn"], vendor_cal["warn"])
+	    new_pandas = vendor.do_warn(vendor_pandas, vendor_cal["warn"])
 	    titan_columns = ["NewPart", "Part Number", "Desc1", "Desc2", "P1", "P2", "P3", "P4",
-                     "P5", "Length", "Width", "Height", "Weight", "Group"]
+                     "P5", "Length", "Width", "Height", "Weight", "Group Code"]
 	    nelson_columns = titan_columns
 
 	if vendor_name == "wes":
 	    new_pandas = vendor.do_wes(vendor_pandas, product_groups["wes"], vendor_cal["wes"])
 	    titan_columns = ["NewPart", "Part Number", "Desc1", "Desc2", "P1", "P2", "P3", "P4",
-                     "P5", "Length", "Width", "Height", "Weight", "Group"]
+                     "P5", "Length", "Width", "Height", "Weight", "Group Code"]
 	    nelson_columns = titan_columns
 
 	if vendor_name == "west":

@@ -38,14 +38,14 @@ def do_dez(vendor_pandas, tech_cal):
     vendor_pandas["P3"] = vendor_pandas["Jobber"].astype(float)
     vendor_pandas["P5"] = vendor_pandas["AAM Cost"].astype(float)
 
-    vendor_pandas["P1"] = vendor_pandas["P3"] / tech_cal["P1"]
-    vendor_pandas["P2"] = vendor_pandas["P3"]
-    vendor_pandas["P4"] = vendor_pandas["P3"] * tech_cal["P4"]
+    # vendor_pandas["P1"] = vendor_pandas["P3"] / tech_cal["P1"]
+    # vendor_pandas["P2"] = vendor_pandas["P3"]
+    # vendor_pandas["P4"] = vendor_pandas["P3"] * tech_cal["P4"]
 
     # new calculations
-    # vendor_pandas["P1"] = vendor_pandas["P5"] / tech_cal["P1"]
-    # vendor_pandas["P2"] = vendor_pandas["P1"]
-    # vendor_pandas["P4"] = vendor_pandas["P5"] * tech_cal["P4"]
+    vendor_pandas["P1"] = vendor_pandas["P5"] / tech_cal["P1"]
+    vendor_pandas["P2"] = vendor_pandas["P1"]
+    vendor_pandas["P4"] = vendor_pandas["P5"] / tech_cal["P4"]
 
     # Set dimensions and status
     vendor_pandas["Weight"] = vendor_pandas["Weight - IN POUNDS"].replace("","0").astype(float)

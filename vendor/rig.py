@@ -58,18 +58,12 @@ def do_rig(vendor_pandas, tech_cal):
     vendor_pandas["P2"] = vendor_pandas["MAP Retail"]
     for index, item in enumerate(vendor_pandas["MAP Retail"]):
         if item == "":
-            vendor_pandas["P2"][index] = vendor_pandas["P3"][index]
+            vendor_pandas["P2"][index] = vendor_pandas["P1"][index]
         else:
             vendor_pandas["P2"][index] = item
 
     vendor_pandas["P5"] = vendor_pandas["AAM Cost"].astype(float)
-
-    vendor_pandas["P4"] = vendor_pandas["AAM Cost"]
-    for index, item in enumerate(vendor_pandas["MAP Wholesale / MSP"]):
-        if item == "":
-            vendor_pandas["P4"][index] = vendor_pandas["P5"][index] / tech_cal["P4"]
-        else:
-            vendor_pandas["P4"][index] = item
+    vendor_pandas["P4"] = vendor_pandas["P5"] / tech_cal["P4"]
 
     # Set dimensions and status
     vendor_pandas["Weight"] = vendor_pandas["Weight - IN POUNDS"]

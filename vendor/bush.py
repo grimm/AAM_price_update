@@ -31,13 +31,13 @@ def do_bush(vendor_pandas, tech_cal):
     # Create all price fields
     vendor_pandas["P1"] = vendor_pandas["MSRP/List"].astype(float)
     vendor_pandas["P3"] = vendor_pandas["Jobber"].astype(float)
+    vendor_pandas["P5"] = vendor_pandas["AAM Cost"].astype(float)
 
     vendor_pandas["P2"] = vendor_pandas["MAP Retail"].replace("", "0").astype(float)
     for index, item in enumerate(vendor_pandas["P2"]):
         if item == 0:
-            vendor_pandas["P2"][index] = vendor_pandas["P3"][index]
+            vendor_pandas["P2"][index] = vendor_pandas["P5"][index] / tech_cal["P2"]
 
-    vendor_pandas["P5"] = vendor_pandas["P3"] * 0.7 * 0.9
     vendor_pandas["P4"] = vendor_pandas["P5"] / tech_cal["P4"]
 
     # Set dimensions

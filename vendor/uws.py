@@ -41,8 +41,6 @@ def do_uws(vendor_pandas, group_code, tech_cal):
     vendor_pandas["P5"] = vendor_pandas["AAM Cost"].astype(float)
 
     vendor_pandas["P4"] = vendor_pandas["P5"] / tech_cal["P4"]
-    # New Calculation
-    # vendor_pandas["P4"] = vendor_pandas["P5"] / tech_cal["P6"]
 
     # Set dimensions and status
     vendor_pandas["Weight"] = vendor_pandas["Weight - IN POUNDS"].replace("", "0").astype(float)
@@ -51,14 +49,14 @@ def do_uws(vendor_pandas, group_code, tech_cal):
     vendor_pandas["Height"] = vendor_pandas["Height"].replace("", "0").astype(float)
 
     # Setup group codes
-    # vendor_pandas["Group Code"] = vendor_pandas["P1"]
-    # for index, item in enumerate(vendor_pandas["Group Code"]):
-    #     vendor_pandas["Group Code"][index] = 99999
-    #     for key, value in group_code.items():
-    #         if item == key:
-    #             vendor_pandas["Group Code"][index] = value
-    #     if vendor_pandas["Group Code"][index] == 99999:
-    #         print(item)
+    vendor_pandas["Group Code"] = vendor_pandas[short_desc]
+    for index, item in enumerate(vendor_pandas["Group Code"]):
+      vendor_pandas["Group Code"][index] = 99999
+      for key, value in group_code.items():
+        if item == key:
+          vendor_pandas["Group Code"][index] = value
+      if vendor_pandas["Group Code"][index] == 99999:
+        print(item)
 
     return vendor_pandas
 
