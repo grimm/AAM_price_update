@@ -185,5 +185,7 @@ def vendor_func(vendor_name):
 	    import vendor.west as vendor
 	elif vendor_name == "yak":
 	    import vendor.yak as vendor
+	elif vendor_name == "zll":
+	    import vendor.zll as vendor
 
 	return vendor

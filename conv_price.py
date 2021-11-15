@@ -31,7 +31,7 @@ Vendors = ["aci", "adu", "airl", "and", "anz", "amp", "ampm", "aor", "arb", "arc
            "odr", "ovs", "par", "piaa", "prime", "protec", "put", "qf", "rch", "rcs", "rdl",
            "rfn", "rgr", "rig", "rlg", "road", "rrk", "trm", "rsp", "rtx", "rug", "sb", "scs",
            "sls", "snow", "stlc", "tech", "tim", "t-rex", "trux", "und", "uws", "uwsb", "ven",
-           "vms", "warn", "wes", "west", "yak"]
+           "vms", "warn", "wes", "west", "yak", "zll"]
 vendor_cal = {}
 product_groups = {}
 
