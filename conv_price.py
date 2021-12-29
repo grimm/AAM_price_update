@@ -26,12 +26,12 @@ import vendor_sheet as sheet
 Vendors = ["aci", "adu", "airl", "and", "anz", "amp", "ampm", "aor", "arb", "arcl", "ard",
            "baja", "bak", "bap", "best", "big", "bigm", "bkr", "brm", "bush", "buy",
            "carr", "cbp", "cipa", "crg", "curt", "deck", "dez", "eccon", "eccot", "ext",
-           "ffi", "fia", "fil", "fire", "fpm", "gor", "gorm", "hus", "kar", "kc", "knk", "knkm",
-           "knn", "kso", "lift", "lnd", "mas", "mass", "mba", "mrw", "myp", "nfa", "nitro",
-           "odr", "ovs", "par", "piaa", "prime", "protec", "put", "qf", "rch", "rcs", "rdl",
-           "rfn", "rgr", "rig", "rlg", "road", "rrk", "trm", "rsp", "rtx", "rug", "sb", "scs",
-           "sls", "snow", "stlc", "tech", "tim", "t-rex", "trux", "und", "uws", "uwsb", "ven",
-           "vms", "warn", "wes", "west", "yak", "zll"]
+           "ffi", "fia", "fil", "fire", "fpm", "gor", "gorm", "hus", "kar", "kc", "kln", "knk",
+           "knkm", "knn", "kso", "lift", "lnd", "luv", "mas", "mass", "mba", "mrw", "myp", "nfa",
+           "nitro", "odr", "ovs", "par", "piaa", "prime", "protec", "put", "qf", "rch", "rcs",
+           "rdl", "rfn", "rgr", "rig", "rlg", "rnl", "road", "rrk", "trm", "rsp", "rtx", "rug",
+           "sb", "scs", "sls", "snow", "stlc", "tech", "tfi", "tim", "t-rex", "trux", "und",
+           "uws", "uwsb", "ven", "vms", "warn", "wes", "west", "yak", "zll"]
 vendor_cal = {}
 product_groups = {}
 

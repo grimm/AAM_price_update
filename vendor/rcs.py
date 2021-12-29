@@ -17,7 +17,7 @@ def do_rcs(vendor_pandas, tech_cal):
     vendor_pandas["NewPart"] = vendor_pandas["Part Number"].apply(lambda x: "RCS" + x)
     
     # Create new description columns
-    vendor_pandas["Desc1"] = vendor_pandas["title"].replace(" \|", ",", regex=True)
+    vendor_pandas["Desc1"] = vendor_pandas["title"].replace("\|", "", regex=True)
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].apply(lambda x: unidecode.unidecode(x))
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].str.upper()
 
@@ -25,8 +25,8 @@ def do_rcs(vendor_pandas, tech_cal):
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].apply(lambda x: x[:30])
 
     # Create all price fields
-    vendor_pandas["P1"] = vendor_pandas["NEW PRICE"].astype(float)
-    vendor_pandas["P5"] = vendor_pandas["P1"] * tech_cal["P5"]
+    vendor_pandas["P1"] = vendor_pandas["price"].astype(float)
+    vendor_pandas["P5"] = vendor_pandas["cost"]
 
     vendor_pandas["P2"] = vendor_pandas["P5"] / tech_cal["P2"]
     vendor_pandas["P3"] = vendor_pandas["P5"] / tech_cal["P3"]

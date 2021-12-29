@@ -16,6 +16,11 @@ def do_buy(vendor_pandas, tech_cal):
     short_desc = "Short Description (20 Characters or Less)"
     long_desc = "Long Description 100 Characters or less WITHOUT application information"
 
+    # Strip out parts with no pricing
+    vendor_pandas = vendor_pandas[(vendor_pandas["MSRP/List"] != "")]
+    # vendor_pandas = vendor_pandas[(vendor_pandas["MAP PRICE"] != "")]
+    vendor_pandas = vendor_pandas.reset_index(drop=True)
+
     # Create new Status/NewPart columns
     vendor_pandas['Part Number'] = vendor_pandas['Part Number'].astype(str)
     vendor_pandas["NewPart"] = vendor_pandas["Part Number"].apply(lambda x: "BUY" + x)
@@ -31,7 +36,7 @@ def do_buy(vendor_pandas, tech_cal):
     # Create all price fields
     vendor_pandas["P1"] = vendor_pandas["MSRP/List"].astype(float)
     vendor_pandas["P3"] = vendor_pandas["Jobber"].astype(float)
-    vendor_pandas["P5"] = vendor_pandas["AAM Cost / Break Qty 1"]
+    vendor_pandas["P5"] = vendor_pandas["AAM Cost / Qty 2"]
     for index, item in enumerate(vendor_pandas["P5"]):
         if item == "":
             vendor_pandas["P5"][index] = vendor_pandas["P3"][index]

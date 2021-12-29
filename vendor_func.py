@@ -85,6 +85,8 @@ def vendor_func(vendor_name):
 	    import vendor.kar as vendor
 	elif vendor_name == "kc":
 	    import vendor.kc as vendor
+	elif vendor_name == "kln":
+	    import vendor.kln as vendor
 	elif vendor_name == "knk":
 	    import vendor.knk as vendor
 	elif vendor_name == "knkm":
@@ -95,6 +97,8 @@ def vendor_func(vendor_name):
 	    import vendor.lift as vendor
 	elif vendor_name == "lnd":
 	    import vendor.lnd as vendor
+	elif vendor_name == "luv":
+	    import vendor.luv as vendor
 	elif vendor_name == "mas":
 	    import vendor.mas as vendor
 	elif vendor_name == "mass":
@@ -115,6 +119,8 @@ def vendor_func(vendor_name):
 	    import vendor.nitro as vendor
 	elif vendor_name == "rch":
 	    import vendor.rch as vendor
+	elif vendor_name == "rnl":
+	    import vendor.rnl as vendor
 	elif vendor_name == "road":
 	    import vendor.road as vendor
 	elif vendor_name == "rrk":

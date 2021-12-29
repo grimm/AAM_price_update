@@ -38,7 +38,7 @@ def do_fire(vendor_pandas, tech_cal):
     vendor_pandas["P3"] = vendor_pandas["October  1st, 2021 Jobber Price"].replace("$", "").replace(",","")
     vendor_pandas["P3"] = vendor_pandas["P3"].astype(float)
 
-    vendor_pandas["P1"] = vendor_pandas["2021 List Price"].replace("$","").replace(",","")
+    vendor_pandas["P1"] = vendor_pandas["List"].replace("$","").replace(",","")
     vendor_pandas["P1"] = vendor_pandas["P1"].astype(float)
 
     vendor_pandas["P5"] = vendor_pandas["Titan Truck      (J-36%)"].replace("$","").replace(",","")

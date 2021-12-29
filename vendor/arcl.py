@@ -1,7 +1,7 @@
 #
 # anz.py
 #
-# This script holds functions for the vendor ANZO USA
+# This script holds functions for the vendor Arc Lighting
 #
 # Initial version - 7/29/2021 - Jason Grimes
 #

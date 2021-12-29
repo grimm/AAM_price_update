@@ -16,6 +16,10 @@ def do_west(vendor_pandas, tech_cal):
     long_desc = "DESCRIPTION"
     short_desc = "DESCRIPTION 2 "
 
+    # Remove blank items
+    vendor_pandas = vendor_pandas[(vendor_pandas["LIST w Surcharge"] != "")]
+    vendor_pandas = vendor_pandas.reset_index(drop=True)
+
     # Process part number
     vendor_pandas["Part Number"] = vendor_pandas["PN"].astype(str)
     vendor_pandas["NewPart"] = vendor_pandas["Part Number"].apply(lambda x: "WEST" + x)
