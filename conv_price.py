@@ -18,6 +18,7 @@ from datetime import datetime
 import yaml
 import csv
 import os
+from sys import platform
 
 # Import helper functions
 import vendor_func as ven
@@ -113,10 +114,12 @@ new_pandas, titan_columns, nelson_columns = run.vendor(vendor_pandas, vendor_cal
 # Write CSV file
 new_pandas.to_csv(titan_csv_file, columns=titan_columns, header=False, index=False, float_format="%.2f", sep="|", quoting=csv.QUOTE_NONE, escapechar='\\')
 print("Saved - " + titan_csv_file)
-os.system("unix2dos " + titan_csv_file)
+if platform == "linux":
+    os.system("unix2dos " + titan_csv_file)
 
 if vendor_cal[args.vendor]["NTE"]:
     new_pandas.to_csv(nelson_csv_file, columns=nelson_columns, header=False, index=False, float_format="%.2f", sep="|", quoting=csv.QUOTE_NONE)
     print("Saved - " + nelson_csv_file)
-    os.system("unix2dos " + nelson_csv_file)
+    if platform == "linux":
+        os.system("unix2dos " + nelson_csv_file)
 
