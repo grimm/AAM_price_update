@@ -1,3 +1,4 @@
+#! /usr/bin/python3
 # 
 # conv_price.py
 #
@@ -16,6 +17,7 @@ from os import path
 from datetime import datetime
 import yaml
 import csv
+import os
 
 # Import helper functions
 import vendor_func as ven
@@ -24,14 +26,15 @@ import vendor_sheet as sheet
 
 # Define the supported vendors and load yaml calculation and groups files
 Vendors = ["aci", "adu", "airl", "and", "anz", "amp", "ampm", "aor", "arb", "arcl", "ard",
-           "baja", "bak", "bap", "best", "big", "bigm", "bkr", "brm", "bush", "buy",
-           "carr", "cbp", "cipa", "crg", "curt", "deck", "dez", "eccon", "eccot", "ext",
-           "ffi", "fia", "fil", "fire", "fpm", "gor", "gorm", "hus", "kar", "kc", "kln", "knk",
-           "knkm", "knn", "kso", "lift", "lnd", "luv", "mas", "mass", "mba", "mrw", "myp", "nfa",
-           "nitro", "odr", "ovs", "par", "piaa", "prime", "protec", "put", "qf", "rch", "rcs",
-           "rdl", "rfn", "rgr", "rig", "rlg", "rnl", "road", "rrk", "trm", "rsp", "rtx", "rug",
-           "sb", "scs", "sls", "snow", "stlc", "tech", "tfi", "tim", "t-rex", "trux", "und",
-           "uws", "uwsb", "ven", "vms", "warn", "wes", "west", "yak", "zll"]
+           "baja", "bak", "bap", "best", "big", "bigm", "bkr", "brm", "btr", "bush", "buy",
+           "carr", "cbp", "cipa", "cog", "crg", "curt", "deck", "dez", "eccon", "eccot", "ele",
+           "ext", "ffi", "fia", "fil", "fire", "fpm", "gor", "gorm", "hus", "kar", "kc", "kln",
+           "knk", "knkm", "knn", "kso", "lift", "lnd", "luv", "mas", "mass", "mba", "mrw",
+           "myp", "nfa", "nitro", "odr", "ovs", "par", "piaa", "prime", "protec", "put", "qf",
+           "rch", "rcs", "rdl", "rfn", "rgr", "rig", "rlg", "rnl", "road", "rrk", "trm", "rsp",
+           "rtx", "rug", "sb", "scs", "sls", "snow", "stlc", "tech", "tfi", "tft", "tim",
+           "t-rex", "trux", "truxm", "und", "uws", "uwsb", "ven", "vms", "warn", "wes", "west",
+           "yak", "zll"]
 vendor_cal = {}
 product_groups = {}
 
@@ -81,6 +84,8 @@ if vname == "KNKM":
     vname = "KNK"
 if vname == "UWSB":
     vname = "UWS"
+if vname == "TRUXM":
+    vname = "TRUX"
     
 titan_csv_file = vname + "_UPDATE_TTE_" + date + ".csv"
 nelson_csv_file = vname + "_UPDATE_NTE_" + date + ".csv"
@@ -108,8 +113,10 @@ new_pandas, titan_columns, nelson_columns = run.vendor(vendor_pandas, vendor_cal
 # Write CSV file
 new_pandas.to_csv(titan_csv_file, columns=titan_columns, header=False, index=False, float_format="%.2f", sep="|", quoting=csv.QUOTE_NONE, escapechar='\\')
 print("Saved - " + titan_csv_file)
+os.system("unix2dos " + titan_csv_file)
 
 if vendor_cal[args.vendor]["NTE"]:
     new_pandas.to_csv(nelson_csv_file, columns=nelson_columns, header=False, index=False, float_format="%.2f", sep="|", quoting=csv.QUOTE_NONE)
     print("Saved - " + nelson_csv_file)
+    os.system("unix2dos " + nelson_csv_file)
 

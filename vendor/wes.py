@@ -22,6 +22,7 @@ def do_wes(vendor_pandas, prod_group, tech_cal):
     # Remove displays and pricing quote rows
     vendor_pandas = vendor_pandas[(vendor_pandas["MSRP/List"] != "0.00")]
     vendor_pandas = vendor_pandas[(vendor_pandas["MSRP/List"] != "")]
+    vendor_pandas = vendor_pandas[(vendor_pandas["AAM Cost"] != "Emailed for Cost")]
     vendor_pandas = vendor_pandas[~vendor_pandas[long_desc].str.contains('|'.join(bad_parts))]
     vendor_pandas = vendor_pandas[~vendor_pandas[short_desc].str.contains('|'.join(bad_parts))]
     vendor_pandas = vendor_pandas.reset_index(drop=True)

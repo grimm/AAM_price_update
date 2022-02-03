@@ -25,12 +25,13 @@ def do_rcs(vendor_pandas, tech_cal):
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].apply(lambda x: x[:30])
 
     # Create all price fields
-    vendor_pandas["P1"] = vendor_pandas["price"].astype(float)
-    vendor_pandas["P5"] = vendor_pandas["cost"]
+    vendor_pandas["P1"] = vendor_pandas["NEW PRICE"].astype(float)
+    # vendor_pandas["P5"] = vendor_pandas["cost"]
 
     vendor_pandas["P2"] = vendor_pandas["P5"] / tech_cal["P2"]
     vendor_pandas["P3"] = vendor_pandas["P5"] / tech_cal["P3"]
     vendor_pandas["P4"] = vendor_pandas["P5"] / tech_cal["P4"]
+    vendor_pandas["P5"] = vendor_pandas["P5"] / tech_cal["P4"]
 
     # Measurements
     vendor_pandas["Length"] = vendor_pandas["length"].replace("", "0").astype(float)

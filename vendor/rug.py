@@ -16,6 +16,10 @@ def do_rug(vendor_pandas, tech_cal):
     short_desc = "Short Description (20 Characters or Less)"
     long_desc = "Long Description 100 Characters or less WITHOUT application information"
 
+    # Remove rows with no price
+    vendor_pandas = vendor_pandas[(vendor_pandas["AAM Cost"] != "")]
+    vendor_pandas = vendor_pandas.reset_index(drop=True)
+    
     # Create new Status/NewPart columns
     vendor_pandas['Part Number'] = vendor_pandas['Part Number'].astype(str)
     vendor_pandas["NewPart"] = vendor_pandas["Part Number"].apply(lambda x: "RUG" + x)
@@ -31,11 +35,14 @@ def do_rug(vendor_pandas, tech_cal):
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].apply(lambda x: x[:30])
 
     # Create all price fields
-    vendor_pandas["P1"] = vendor_pandas["MSRP/List"].replace("Emailed for Cost", "0.01").astype(float)
-    vendor_pandas["P3"] = vendor_pandas["Jobber"].astype(float)
-    vendor_pandas["P5"] = vendor_pandas["AAM Cost"].replace("Emailed for Cost", "0.01").astype(float)
-
+    # vendor_pandas["P1"] = vendor_pandas["MSRP/List"].replace("Emailed for Cost", "0.01").astype(float)
     vendor_pandas["P2"] = vendor_pandas["MAP Retail"]
+    vendor_pandas["P3"] = vendor_pandas["Jobber"].astype(float)
+    # vendor_pandas["P5"] = vendor_pandas["AAM Cost"].replace("Emailed for Cost", "0.01").astype(float)
+    vendor_pandas["P5"] = vendor_pandas["AAM Cost"].astype(float)
+
+    vendor_pandas["P1"] = vendor_pandas["P2"]
+
     for index, item in enumerate(vendor_pandas["P2"]):
         if item == "":
             vendor_pandas["P2"][index] = vendor_pandas["P3"][index]
@@ -54,7 +61,8 @@ def do_rug(vendor_pandas, tech_cal):
     vendor_pandas["Width"] = vendor_pandas["Width"].replace('', '0')
     vendor_pandas["Width"] = vendor_pandas["Width"].astype(float)
 
-    vendor_pandas["Height"] = vendor_pandas["Height"].replace('', '0')
+    # vendor_pandas["Height"] = vendor_pandas["Height"].replace('', '0')
+    vendor_pandas["Height"] = vendor_pandas["Height"].astype(str).apply(lambda x: x.strip('"'))
     vendor_pandas["Height"] = vendor_pandas["Height"].astype(float)
 
     return vendor_pandas

@@ -1,9 +1,9 @@
 #
-# knkm.py
+# btr.py
 #
-# This script holds functions for the vendor Wernerco (Weather Guard) manufacturer file
+# This script holds functions for the vendor Wernerco (Weather Guard) Better Built
 #
-# Initial version - 06/30/2021 - Jason Grimes
+# Initial version - 02/03/2022 - Jason Grimes
 #
 
 from datetime import datetime
@@ -11,7 +11,7 @@ import pandas as pd
 import unidecode
 
 # Main vendor processing function
-def do_knkm(vendor_pandas, tech_cal):
+def do_btr(vendor_pandas, tech_cal):
     # Put really long header text in some vars
     long_desc = "DESCRIPTION"
 
@@ -22,11 +22,14 @@ def do_knkm(vendor_pandas, tech_cal):
     # Process part number
     vendor_pandas["Part Number"] = vendor_pandas["PART NUMBER"].astype(str)
     vendor_pandas["NewPart"] = vendor_pandas["Part Number"]
-    vendor_pandas["NewPart"] = vendor_pandas["NewPart"].apply(lambda x: "KNK" + x)
+    vendor_pandas["NewPart"] = vendor_pandas["NewPart"].apply(lambda x: "BTR" + x)
     
     # Create new description columns
     vendor_pandas["Desc1"] = vendor_pandas[long_desc]
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].apply(lambda x: unidecode.unidecode(x))
+
+    vendor_pandas["Desc1"] = vendor_pandas["Desc1"].str.replace("\"", "IN")
+    vendor_pandas["Desc1"] = vendor_pandas["Desc1"].str.replace("\'", "FT")
 
     # Upper case text and trim it to 30 characters
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].str.upper()
@@ -40,12 +43,17 @@ def do_knkm(vendor_pandas, tech_cal):
     vendor_pandas["P5"] = vendor_pandas["Select\nTier 1"].replace("$", "")
     vendor_pandas["P5"] = vendor_pandas["P5"].replace(",", "")
 
-    vendor_pandas["P3"] = vendor_pandas["P1"] * tech_cal["P3"]
     vendor_pandas["P2"] = vendor_pandas["P1"] * tech_cal["P2"]
+    vendor_pandas["P3"] = vendor_pandas["P1"] * tech_cal["P3"]
     vendor_pandas["P4"] = vendor_pandas["P1"] * tech_cal["P4"]
+
+    vendor_pandas["P2"] = vendor_pandas["P2"].astype(float)
+    vendor_pandas["P3"] = vendor_pandas["P3"].astype(float)
+    vendor_pandas["P4"] = vendor_pandas["P4"].astype(float)
 
     # Set dimensions and status
     vendor_pandas["Weight"] = vendor_pandas["Weight (Lbs)"].replace("","0")
+    vendor_pandas["Weight"] = vendor_pandas["Weight"].replace("N/A","0")
     vendor_pandas["Weight"] = vendor_pandas["Weight"].replace("undefined","0").astype(float)
 
     len_pandas = len(vendor_pandas.axes[0])

@@ -13,18 +13,22 @@ def set_excel(vendor):
 	csvfile = 0
 	
 	# Set skiprow or default to 1
-	if (vendor == "tech") | (vendor == "tim") | (vendor == "aci") | (vendor == "nfa") | (vendor == "baja") | (vendor == "west") | (vendor == "sb") | (vendor == "fil") | (vendor == "scs") | (vendor == "ampm") | (vendor == "adu") | (vendor == "mass") | (vendor == "nitro") | (vendor == "rcs") | (vendor == "and") | (vendor == "yak") | (vendor == "snow") | (vendor == "mrwm") | (vendor == "cbp") | (vendor == "knk"):
+	if (vendor == "tech") | (vendor == "tim") | (vendor == "aci") | (vendor == "nfa") | (vendor == "west") | (vendor == "sb") | (vendor == "fil") | (vendor == "scs") | (vendor == "ampm") | (vendor == "adu") | (vendor == "mass") | (vendor == "nitro") | (vendor == "rcs") | (vendor == "and") | (vendor == "yak") | (vendor == "snow") | (vendor == "mrwm") | (vendor == "cbp") | (vendor == "knk") | (vendor == "cog") | (vendor == "cipa") | (vendor == "west"):
 	  skiprow = 0
-	elif (vendor == "mas") | (vendor == "kc") | (vendor == "prime") | (vendor == "fire") | (vendor == "kln"):
+	elif (vendor == "mas") | (vendor == "kc") | (vendor == "fire") | (vendor == "kln") | (vendor == "truxm"):
 	  skiprow = 2
-	elif (vendor == "odr") | (vendor == "qf"):
+	elif (vendor == "odr") | (vendor == "prime"):
 	  skiprow = 3
 	elif (vendor == "kar") | (vendor == "arb") | (vendor == "myp"):
 	  skiprow = 4
 	elif (vendor == "gorm") | (vendor == "eccot") | (vendor == "eccon") | (vendor == "rfn") | (vendor == "bigm") | (vendor == "road"):
 	  skiprow = 5
-	elif (vendor == "knkm"):
+	elif (vendor == "knkm") | (vendor == "btr"):
 	  skiprow = 6
+	elif (vendor == "piaa"):
+	  skiprow = 7
+	elif (vendor == "qf"):
+	  skiprow = 10
 	elif vendor == "kso":
 	  skiprow = 17
 
@@ -56,6 +60,8 @@ def set_excel(vendor):
 		sheetname = "FULL LIST"
 	if vendor == "yak":
 		sheetname = "Part Info"
+	if vendor == "btr":
+		sheetname = "Better Built"
 
 	# Set CSV file read
 	if vendor == "sb": csvfile = 1

@@ -23,10 +23,15 @@ def do_sls(vendor_pandas, tech_cal):
     # new_column = list("A" * len_pandas)
 
     # vendor_pandas["NewPart"] = new_column
+    vendor_pandas["Part Number"] = vendor_pandas["Part Number"].astype(str)
     vendor_pandas["NewPart"] = vendor_pandas["Part Number"].apply(lambda x: "SLS" + x)
     
     # Create new description columns
     vendor_pandas["Desc1"] = vendor_pandas[long_desc]
+
+    vendor_pandas["Desc1"] = vendor_pandas["Desc1"].str.replace("\"", "IN")
+    vendor_pandas["Desc1"] = vendor_pandas["Desc1"].str.replace("\'", "FT")
+
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].apply(lambda x: unidecode.unidecode(x))
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].str.upper()
 
@@ -36,34 +41,16 @@ def do_sls(vendor_pandas, tech_cal):
     # Create all price fields
     vendor_pandas["P1"] = vendor_pandas["MAP Retail"].astype(float)
     vendor_pandas["P2"] = vendor_pandas["P1"]
-    vendor_pandas["P3"] = vendor_pandas["Jobber"].astype(float)
+    vendor_pandas["P3"] = vendor_pandas["P1"]
+    vendor_pandas["P4"] = vendor_pandas["P1"]
     vendor_pandas["P5"] = vendor_pandas["AAM Cost"].astype(float)
-    vendor_pandas["P4"] = vendor_pandas["Unilateral Wholesale"].astype(float)
 
     # Set dimensions and status
     vendor_pandas["Weight"] = vendor_pandas["Weight - IN POUNDS"]
-    vendor_pandas["Status"] = new_column
+    vendor_pandas["Length"] = vendor_pandas["Length"].replace("", "0").astype(float)
+    vendor_pandas["Width"] = vendor_pandas["Width"].replace("", "0").astype(float)
+    vendor_pandas["Height"] = vendor_pandas["Height"].replace("", "0").astype(float)
 
-    # Write out discontinued parts
-    #------------------------------
-    date = datetime.today().strftime('%m-%d-%y')
-    discon_file = "ARD_Discontinued_" + date + ".csv"
 
-    #           new_part   part          descriptions       P1    P2    P3    P4    P5
-    columns = ["NewPart", "Part Number", "Desc1", "Desc2", "P1", "P2", "P3", "P4", "P5",
-               "Length", "Width", "Height", "Weight", "Status"]
-
-    # Separate out the discontinued parts from the others
-    discon_pandas = vendor_pandas[vendor_pandas[short_desc].str.match("Discontinued")]
-    update_pandas = vendor_pandas[~vendor_pandas[short_desc].isin(discon_pandas[short_desc])]
-
-    # Set status field
-    len_pandas = len(discon_pandas.axes[0])
-    new_column = list("D" * len_pandas)
-    discon_pandas["Status"] = new_column
-
-    discon_pandas.to_csv(discon_file, columns=columns, header=False, index=False, float_format="%.2f", sep="|")
-    print("Saved - " + discon_file + " discontinued parts file.")
-
-    return update_pandas
+    return vendor_pandas
 

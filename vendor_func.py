@@ -41,6 +41,8 @@ def vendor_func(vendor_name):
 	    import vendor.bkr as vendor
 	elif vendor_name == "brm":
 	    import vendor.brm as vendor
+	elif vendor_name == "btr":
+	    import vendor.btr as vendor
 	elif vendor_name == "bush":
 	    import vendor.bush as vendor
 	elif vendor_name == "buy":
@@ -51,8 +53,12 @@ def vendor_func(vendor_name):
 	    import vendor.carr as vendor
 	elif vendor_name == "cbp":
 	    import vendor.cbp as vendor
+	elif vendor_name == "cipa":
+	    import vendor.cipa as vendor
 	elif vendor_name == "crg":
 	    import vendor.crg as vendor
+	elif vendor_name == "cog":
+	    import vendor.cog as vendor
 	elif vendor_name == "curt":
 	    import vendor.curt as vendor
 	elif vendor_name == "deck":
@@ -63,6 +69,8 @@ def vendor_func(vendor_name):
 	    import vendor.eccot as vendor
 	elif vendor_name == "eccon":
 	    import vendor.eccon as vendor
+	elif vendor_name == "ele":
+	    import vendor.ele as vendor
 	elif vendor_name == "ext":
 	    import vendor.ext as vendor
 	elif vendor_name == "ffi":
@@ -163,16 +171,42 @@ def vendor_func(vendor_name):
 	    import vendor.sb as vendor
 	elif vendor_name == "scs":
 	    import vendor.scs as vendor
+	elif vendor_name == "sls":
+	    import vendor.sls as vendor
 	elif vendor_name == "snow":
 	    import vendor.snow as vendor
 	elif vendor_name == "stlc":
 	    import vendor.stlc as vendor
+	elif vendor_name == "tft":
+	    import vendor.tft as vendor
+	elif vendor_name == "trux":
+	    import vendor.trux as vendor
+	elif vendor_name == "truxm":
+	    import vendor.truxm as vendor
+	elif vendor_name == "und":
+	    import vendor.und as vendor
+	elif vendor_name == "uws":
+	    import vendor.uws as vendor
+	elif vendor_name == "uwsb":
+	    import vendor.uwsb as vendor
+	elif vendor_name == "ven":
+	    import vendor.ven as vendor
+	elif vendor_name == "vms":
+	    import vendor.vms as vendor
+	elif vendor_name == "warn":
+	    import vendor.warn as vendor
+	elif vendor_name == "wes":
+	    import vendor.wes as vendor
+	elif vendor_name == "west":
+	    import vendor.west as vendor
+	elif vendor_name == "yak":
+	    import vendor.yak as vendor
+	elif vendor_name == "zll":
+	    import vendor.zll as vendor
 	elif vendor_name == "t-rex":
 	    import vendor.trex as vendor
 	elif vendor_name == "trm":
 	    import vendor.trm as vendor
-	elif vendor_name == "trux":
-	    import vendor.trux as vendor
 	elif vendor_name == "und":
 	    import vendor.und as vendor
 	elif vendor_name == "uws":

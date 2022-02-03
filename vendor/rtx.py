@@ -31,7 +31,13 @@ def do_rtx(vendor_pandas, tech_cal):
     vendor_pandas["P1"] = vendor_pandas["MSRP/List"].astype(float)
     vendor_pandas["P2"] = vendor_pandas["MAP Retail"].astype(float)
     vendor_pandas["P3"] = vendor_pandas["Jobber"].astype(float)
-    vendor_pandas["P4"] = vendor_pandas["MAP Wholesale / MSP"].astype(float)
+
+    vendor_pandas["P4"] = vendor_pandas["MAP Wholesale / MSP"]
+    for index, item in enumerate(vendor_pandas["P4"]):
+        if item == "N/A":
+            vendor_pandas["P4"][index] = vendor_pandas["P3"][index]
+    vendor_pandas["P4"] = vendor_pandas["P4"].astype(float)
+    
     vendor_pandas["P5"] = vendor_pandas["AAM Cost"].astype(float)
 
     # Set dimensions and status

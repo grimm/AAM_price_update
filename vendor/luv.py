@@ -28,6 +28,9 @@ def do_luv(vendor_pandas, tech_cal):
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"] + " " + vendor_pandas["Application"].astype(str)
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].apply(lambda x: unidecode.unidecode(x))
 
+    vendor_pandas["Desc1"] = vendor_pandas["Desc1"].str.replace("\"", "IN")
+    vendor_pandas["Desc1"] = vendor_pandas["Desc1"].str.replace("\'", "FT")
+
     # Upper case text and trim it to 30 characters
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].str.upper()
     vendor_pandas["Desc2"] = vendor_pandas["Desc1"].apply(lambda x: x[30:60])
@@ -39,7 +42,7 @@ def do_luv(vendor_pandas, tech_cal):
     vendor_pandas["P3"] = vendor_pandas["Jobber"].astype(float)
     vendor_pandas["P5"] = vendor_pandas["AAM Cost"].astype(float)
 
-    vendor_pandas["P4"] = vendor_pandas["P3"] * tech_cal["P4"]
+    vendor_pandas["P4"] = vendor_pandas["P5"] / tech_cal["P4"]
 
     # Set dimensions and status
     vendor_pandas["Weight"] = vendor_pandas["Weight - IN POUNDS"].replace("", "0").astype(float)

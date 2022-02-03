@@ -7,6 +7,7 @@
 #
 
 import unidecode
+import re
 
 # Main vendor processing function
 def do_tech(vendor_pandas, prod_group, tech_cal):
@@ -72,6 +73,10 @@ def do_tech(vendor_pandas, prod_group, tech_cal):
 
     # Build Nelson cost from the TTK column
     vendor_pandas["NP5"] = vendor_pandas["TTK"] / 1.01
+
+    vendor_pandas["Length"] = vendor_pandas["Length"].apply(lambda x: re.sub("\D", "", str(x)))
+    vendor_pandas["Width"] = vendor_pandas["Width"].apply(lambda x: re.sub("\D", "", str(x)))
+    vendor_pandas["Height"] = vendor_pandas["Height"].apply(lambda x: re.sub("\D", "", str(x)))
 
     return vendor_pandas
 

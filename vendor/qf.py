@@ -31,11 +31,12 @@ def do_qf(vendor_pandas, tech_cal):
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].apply(lambda x: x[:30])
 
     # Create all price fields
-    vendor_pandas["P1"] = vendor_pandas["MSRP"].str.replace("$", "").astype(float)
+    vendor_pandas["P1"] = vendor_pandas["MSRP"].astype(str)
+    vendor_pandas["P1"] = vendor_pandas["MSRP"].replace("$", "").astype(float)
     vendor_pandas["P2"] = vendor_pandas["P1"]
-    vendor_pandas["P3"] = vendor_pandas["Jobber"].str.replace("$", "").astype(float)
+    vendor_pandas["P3"] = vendor_pandas["Jobber"].replace("$", "").astype(float)
     vendor_pandas["P4"] = vendor_pandas["P3"]
-    vendor_pandas["P5"] = vendor_pandas["WD"].str.replace("$", "").astype(float)
+    vendor_pandas["P5"] = vendor_pandas["WD"].replace("$", "").astype(float)
 
     # Set dimensions and status
     vendor_pandas["Dimensions"] = vendor_pandas["Dimensions"].apply(lambda x: unidecode.unidecode(x))

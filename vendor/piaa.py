@@ -11,17 +11,16 @@ import unidecode
 import csv
 
 # Main vendor processing function
-def do_piaa(vendor_pandas, prod_group, tech_cal):
+def do_piaa(vendor_pandas, tech_cal):
     # Remove parts with no pricing
-    vendor_pandas = vendor_pandas.drop(vendor_pandas[(vendor_pandas['MSRP/List'] == "") & (vendor_pandas['Unilateral Retail'] == "")].index).reset_index(drop=True)
+    # vendor_pandas = vendor_pandas.drop(vendor_pandas[(vendor_pandas['MSRP/List'] == "") & (vendor_pandas['Unilateral Retail'] == "")].index).reset_index(drop=True)
 
     # Create new Status/NewPart columns
-    vendor_pandas['Part Number'] = vendor_pandas['Part Number'].astype(str)
+    vendor_pandas['Part Number'] = vendor_pandas['PIAA Part #'].astype(str)
     vendor_pandas["NewPart"] = vendor_pandas["Part Number"].apply(lambda x: "PIAA" + x)
     
     # Create new description columns
-    long_desc = "Long Description 100 Characters or less WITHOUT application information"
-    vendor_pandas["Desc1"] = vendor_pandas[long_desc]
+    vendor_pandas["Desc1"] = vendor_pandas["Product Description (Detailed)"]
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].apply(lambda x: unidecode.unidecode(x))
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].str.upper()
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].str.replace('\"', 'in')
@@ -31,34 +30,25 @@ def do_piaa(vendor_pandas, prod_group, tech_cal):
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].apply(lambda x: x[:30])
 
     # Create all price fields
-    vendor_pandas["P1"] = vendor_pandas["MSRP/List"].astype(float)
-    vendor_pandas["P2"] = vendor_pandas["Unilateral Retail"].astype(float)
-    vendor_pandas["P3"] = vendor_pandas["Jobber"].astype(float)
-    vendor_pandas["P4"] = vendor_pandas["Unilateral Wholesale"].astype(float)
-    vendor_pandas["P5"] = (vendor_pandas["P3"] * tech_cal["P5"]).astype(float)
+    vendor_pandas["P3"] = vendor_pandas["Revised 2022 Jobber"].astype(float)
+    vendor_pandas["P5"] = vendor_pandas["NET PRICE"]
+
+    vendor_pandas["P1"] = vendor_pandas["P3"] / tech_cal["P1"]
+    vendor_pandas["P2"] = vendor_pandas["P3"] / tech_cal["P2"]
+    vendor_pandas["P4"] = vendor_pandas["P5"] / tech_cal["P4"]
 
     # Set dimensions and status
     # Make sure that measurement values are correct
-    vendor_pandas["Weight"] = vendor_pandas["Weight - IN POUNDS"].replace("", "0")
-    vendor_pandas["Length"] = vendor_pandas["Length"].replace("", "0")
-    vendor_pandas["Height"] = vendor_pandas["Height"].replace("", "0")
-    vendor_pandas["Width"] = vendor_pandas["Width"].replace("", "0")
+    len_pandas = len(vendor_pandas.axes[0])
+    new_column = list("0" * len_pandas)
 
-    vendor_pandas["Weight"] = vendor_pandas["Weight"].astype(float)
-    vendor_pandas["Length"] = vendor_pandas["Length"].astype(float)
-    vendor_pandas["Width"] = vendor_pandas["Width"].astype(float)
-    vendor_pandas["Height"] = vendor_pandas["Height"].astype(float)
+    vendor_pandas["Weight"] = new_column
+    vendor_pandas["Length"] = new_column
+    vendor_pandas["Height"] = new_column
+    vendor_pandas["Width"] = new_column
 
     # Set product groups
-    short_desc = "Short Description (20 Characters or Less)"
-    vendor_pandas["Group"] = vendor_pandas["NewPart"]
-    for index, item in enumerate(vendor_pandas[short_desc]):
-        vendor_pandas["Group"][index] = 99999
-        for key, value in prod_group.items():
-            if item == key:
-                vendor_pandas["Group"][index] = value
-        if vendor_pandas["Group"][index] == 99999:
-            print("******* Warning - " + item + " not found in product groups!")
+    vendor_pandas["Group"] = new_column
 
     return vendor_pandas
 

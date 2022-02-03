@@ -28,8 +28,9 @@ def do_protec(vendor_pandas, tech_cal):
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].apply(lambda x: x[:30])
 
     # Create all price fields
-    vendor_pandas["P5"] = vendor_pandas["price"].astype(float)
-    vendor_pandas["P1"] = vendor_pandas["MSRP"]
+    vendor_pandas["P5"] = vendor_pandas["1/1/22 price"].astype(float)
+    # vendor_pandas["P1"] = vendor_pandas["MSRP"]
+    vendor_pandas["P1"] = vendor_pandas["P5"] / tech_cal["P1"]
     vendor_pandas["P2"] = vendor_pandas["P5"] / tech_cal["P2"]
     vendor_pandas["P3"] = vendor_pandas["P5"] / tech_cal["P3"]
     vendor_pandas["P4"] = vendor_pandas["P5"] / tech_cal["P4"]
