@@ -10,6 +10,10 @@ Requires these Python modules (use pip to install)...
 - xlrd
 - unidecode
 - pyyaml
+- os
+
+Also this script requires the following software to function...
+- dos2unix
 
 To run the script use the following comand...
 
