@@ -26,16 +26,18 @@ import run_vendor as run
 import vendor_sheet as sheet
 
 # Define the supported vendors and load yaml calculation and groups files
-Vendors = ["aci", "adu", "airl", "and", "anz", "amp", "ampm", "aor", "arb", "arcl", "ard",
-           "baja", "bak", "bap", "best", "big", "bigm", "bkr", "brm", "btr", "bush", "buy",
-           "carr", "cbp", "cipa", "cog", "crg", "curt", "deck", "dez", "eccon", "eccot", "ele",
-           "ext", "ffi", "fia", "fil", "fire", "fpm", "gor", "gorm", "hus", "kar", "kc", "kln",
-           "knk", "knkm", "knn", "kso", "lift", "lnd", "luv", "mas", "mass", "mba", "mrw",
-           "myp", "nfa", "nitro", "odr", "ovs", "par", "piaa", "prime", "protec", "put", "qf",
-           "rch", "rcs", "rdl", "rfn", "rgr", "rig", "rlg", "rnl", "road", "rrk", "trm", "rsp",
-           "rtx", "rug", "sb", "scs", "sls", "snow", "stlc", "tech", "tfi", "tft", "tim",
-           "t-rex", "trux", "truxm", "und", "uws", "uwsb", "ven", "vms", "warn", "wes", "west",
-           "yak", "zll"]
+Vendors = ["acc", "aci", "adu", "airl", "and", "anz", "amp", "ampm", "aor", "arb", "arcl",
+           "ard", "baja", "bak", "bap", "bdw", "best", "big", "bigm", "bkr", "brm", "brug",
+           "btr", "bush", "buy", "carr", "cbp", "cipa", "cog", "cov", "crg", "curt", "curtmap",
+           "deck", "dez", "dia", "dom", "eccon", "eccot", "edge", "ele", "ext", "extm", "fac",
+           "ffi", "fia", "fil", "fire", "fpm", "golite", "gor", "gorm", "hus", "hyp",
+           "ici", "kar", "kc", "kln", "knk", "knkm", "knn", "kso", "lift", "lnd", "luv", "mag",
+           "mas", "mass", "maxx", "mba", "mrw", "myp", "nfa", "nitro", "odr", "ovs", "par",
+           "pc", "piaa", "prime", "protec", "pull", "put", "qf", "rch", "rcs", "rdl", "rfn",
+           "rgr", "rig", "rlg", "rnl", "road", "rrk", "trm", "rsp", "rtx", "rug", "sb",
+           "scs", "sls", "snow", "stlc", "sup", "tech", "tfi", "tfp", "tft", "tom", "tim",
+           "t-rex", "trux", "truxm", "und", "uws", "uwsb", "ven", "via", "vms", "warn",
+           "wes", "west", "wig", "yak", "zll"]
 vendor_cal = {}
 product_groups = {}
 
@@ -87,12 +89,14 @@ if vname == "UWSB":
     vname = "UWS"
 if vname == "TRUXM":
     vname = "TRUX"
+if vname == "CURTMAP":
+    vname = "CURT"
     
 titan_csv_file = vname + "_UPDATE_TTE_" + date + ".csv"
 nelson_csv_file = vname + "_UPDATE_NTE_" + date + ".csv"
 
 # Load vendor file using pandas
-skiprow, sheet_name, multisheet, csvfile = sheet.set_excel(args.vendor)
+skiprow, sheet_name, multisheet, csvfile, conv = sheet.set_excel(args.vendor)
 
 if sheet_name == "" and csvfile == 0 and not multisheet: # no sheet name
     vendor_pandas = pd.read_excel(args.file, keep_default_na=False, skiprows=skiprow)
@@ -101,7 +105,7 @@ elif not sheet_name == "":   # read a specific sheet out of the Excel file
     vendor_pandas = pd.read_excel(args.file, keep_default_na=False, skiprows=skiprow, sheet_name=sheet_name)
 
 elif multisheet:             # Load multiple sheets, these get put into a dictionary
-    vendor_pandas = pd.read_excel(args.file, keep_default_na=False, skiprows=skiprow, sheet_name= multisheet)
+    vendor_pandas = pd.read_excel(args.file, keep_default_na=False, skiprows=skiprow, sheet_name= multisheet, converters=conv)
 elif csvfile == 1:           # Load CSV file instead of Excel
     vendor_pandas = pd.read_csv(args.file, keep_default_na=False)
 

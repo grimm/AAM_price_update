@@ -21,9 +21,8 @@ def do_arb(vendor_pandas, tech_cal):
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].replace("\|", "-", regex=True)
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].apply(lambda x: unidecode.unidecode(x))
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].str.upper()
-
-    # vendor_pandas["Desc2"] = vendor_pandas["Desc2"].str.replace('\"', 'in')
-    # vendor_pandas["Desc2"] = vendor_pandas["Desc2"].str.replace('\'', 'ft')
+    vendor_pandas["Desc1"] = vendor_pandas["Desc1"].str.replace("\"", "IN")
+    vendor_pandas["Desc1"] = vendor_pandas["Desc1"].str.replace("\'", "FT")
 
     vendor_pandas["Desc2"] = vendor_pandas["Desc1"].apply(lambda x: x[30:60])
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].apply(lambda x: x[:30])
@@ -32,7 +31,7 @@ def do_arb(vendor_pandas, tech_cal):
     vendor_pandas["P1"] = vendor_pandas["List Price\nUSA"].replace("$", "").replace(",", "")
     vendor_pandas["P1"] = vendor_pandas["P1"].astype(float)
 
-    vendor_pandas["P2"] = vendor_pandas["MAP Price\nUSA"].replace("$", "").replace(",", "")
+    vendor_pandas["P2"] = vendor_pandas["MAP\nUSA"].replace("$", "").replace(",", "")
     vendor_pandas["P2"] = vendor_pandas["P2"].astype(float)
 
     vendor_pandas["P5"] = vendor_pandas["P1"] * tech_cal["P5"]

@@ -31,25 +31,26 @@ def do_kar(vendor_pandas, tech_cal):
 
     # Upper case text and trim it to 30 characters
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].str.upper()
-    vendor_pandas["Desc2"] = vendor_pandas["Desc1"]
+    vendor_pandas["Desc1"] = vendor_pandas["Desc1"].str.replace("\"", "IN")
+    vendor_pandas["Desc1"] = vendor_pandas["Desc1"].str.replace("\'", "FT")
 
-    vendor_pandas["Desc2"] = vendor_pandas["Desc2"].apply(lambda x: x[30:60])
+    vendor_pandas["Desc2"] = vendor_pandas["Desc1"].apply(lambda x: x[30:60])
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].apply(lambda x: x[:30])
 
     # Create all price fields
-    vendor_pandas[tech_cal["main"]] = vendor_pandas[tech_cal["main"]].str.replace("$", "")
-    vendor_pandas[tech_cal["main"]] = vendor_pandas[tech_cal["main"]].str.replace(",", "")
-    vendor_pandas[tech_cal["main"]] = vendor_pandas[tech_cal["main"]].replace("-", "0")
-    vendor_pandas["P2"] = vendor_pandas[tech_cal["main"]].astype(float)
+    # vendor_pandas["P1"] = vendor_pandas["Trade Price"].str.replace("$", "")
+    # vendor_pandas[tech_cal["main"]] = vendor_pandas[tech_cal["main"]].str.replace(",", "")
+    # vendor_pandas[tech_cal["main"]] = vendor_pandas[tech_cal["main"]].replace("-", "0")
+    vendor_pandas["P2"] = vendor_pandas["Trade Price"].astype(float)
 
     vendor_pandas["P1"] = vendor_pandas["P2"] / tech_cal["P1"]
     vendor_pandas["P3"] = vendor_pandas["P2"] * tech_cal["P3"]
     vendor_pandas["P4"] = vendor_pandas["P2"] * tech_cal["P4"]
 
-    vendor_pandas["Including Surcharge"] = vendor_pandas["Including Surcharge"].str.replace("$", "")
-    vendor_pandas["Including Surcharge"] = vendor_pandas["Including Surcharge"].str.replace(",", "")
-    vendor_pandas["Including Surcharge"] = vendor_pandas["Including Surcharge"].str.replace("-", "0")
-    vendor_pandas["P5"] = vendor_pandas["Including Surcharge"]
+    # vendor_pandas["Including Surcharge"] = vendor_pandas["Including Surcharge"].str.replace("$", "")
+    # vendor_pandas["Including Surcharge"] = vendor_pandas["Including Surcharge"].str.replace(",", "")
+    # vendor_pandas["Including Surcharge"] = vendor_pandas["Including Surcharge"].str.replace("-", "0")
+    vendor_pandas["P5"] = vendor_pandas["Including Surcharge"].astype(float)
 
     # Set dimensions and status
     vendor_pandas["Weight"] = vendor_pandas["Weight"].replace("", "0")

@@ -12,6 +12,10 @@ import csv
 
 # Main vendor processing function
 def do_ovs(vendor_pandas, tech_cal):
+    # Remove blank items
+    vendor_pandas = vendor_pandas[(vendor_pandas["AAM Cost"] != "TBD")]
+    vendor_pandas = vendor_pandas.reset_index(drop=True)
+
     # Put really long header text in some vars
     short_desc = "Short Description (20 Characters or Less)"
     long_desc = "Long Description 100 Characters or less WITHOUT application information"
@@ -37,10 +41,10 @@ def do_ovs(vendor_pandas, tech_cal):
     vendor_pandas["P4"] = vendor_pandas["P5"] / tech_cal["P4"]
 
     # Set dimensions and status
-    vendor_pandas["Weight"] = vendor_pandas["Weight - IN POUNDS"].astype(float)
-    vendor_pandas["Length"] = vendor_pandas["Length"].astype(float)
-    vendor_pandas["Width"] = vendor_pandas["Length"].astype(float)
-    vendor_pandas["Height"] = vendor_pandas["Length"].astype(float)
+    vendor_pandas["Weight"] = vendor_pandas["Weight - IN POUNDS"].replace("TBD", "0").replace("", "0").astype(float)
+    vendor_pandas["Length"] = vendor_pandas["Length"].replace("TBD", "0").replace("", "0").astype(float)
+    vendor_pandas["Width"] = vendor_pandas["Length"].replace("TBD", "0").replace("", "0").astype(float)
+    vendor_pandas["Height"] = vendor_pandas["Length"].replace("TBD", "0").replace("", "0").astype(float)
 
     return vendor_pandas
 

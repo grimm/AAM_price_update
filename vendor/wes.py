@@ -5,6 +5,9 @@
 #
 # Initial version - 1/12/2021 - Jason Grimes
 #
+#
+#  ALSO UPDATE SUPERWINCH AT THE SAME TIME!!!!!!
+#
 
 from datetime import datetime
 import unidecode
@@ -12,6 +15,10 @@ import csv
 
 # Main vendor processing function
 def do_wes(vendor_pandas, prod_group, tech_cal):
+    # Remove N/A parts
+    vendor_pandas = vendor_pandas[(vendor_pandas["Jobber"] != "N/A")]
+    vendor_pandas = vendor_pandas.reset_index(drop=True)
+
     # Put really long header text in some vars
     short_desc = "Short Description (20 Characters or Less)"
     long_desc = "Long Description 100 Characters or less WITHOUT application information"
@@ -23,6 +30,8 @@ def do_wes(vendor_pandas, prod_group, tech_cal):
     vendor_pandas = vendor_pandas[(vendor_pandas["MSRP/List"] != "0.00")]
     vendor_pandas = vendor_pandas[(vendor_pandas["MSRP/List"] != "")]
     vendor_pandas = vendor_pandas[(vendor_pandas["AAM Cost"] != "Emailed for Cost")]
+    vendor_pandas = vendor_pandas[(vendor_pandas["AAM Cost"] != "emailed for Cost")]
+    vendor_pandas = vendor_pandas[(vendor_pandas["AAM Cost"] != "emailed Mike S for Cost")]
     vendor_pandas = vendor_pandas[~vendor_pandas[long_desc].str.contains('|'.join(bad_parts))]
     vendor_pandas = vendor_pandas[~vendor_pandas[short_desc].str.contains('|'.join(bad_parts))]
     vendor_pandas = vendor_pandas.reset_index(drop=True)
@@ -36,6 +45,9 @@ def do_wes(vendor_pandas, prod_group, tech_cal):
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].apply(lambda x: unidecode.unidecode(x))
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].str.upper()
 
+    vendor_pandas["Desc1"] = vendor_pandas["Desc1"].str.replace("\"", "IN")
+    vendor_pandas["Desc1"] = vendor_pandas["Desc1"].str.replace("\'", "FT")
+    
     vendor_pandas["Desc2"] = vendor_pandas["Desc1"].apply(lambda x: x[30:60])
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].apply(lambda x: x[:30])
 

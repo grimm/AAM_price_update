@@ -48,6 +48,12 @@ def do_myp(vendor_pandas, tech_cal):
     vendor_pandas["P5"] = vendor_pandas["Gold"].replace("$", "").replace(",", "")
     vendor_pandas["P5"] = vendor_pandas["P5"].astype(float)
 
+    # Fix P3 and P4 for MYS parts
+    for index, code in enumerate(vendor_pandas["Price Code"]):
+        if code in mys_codes:
+            vendor_pandas["P3"][index] = vendor_pandas["P1"][index] * 0.9
+            vendor_pandas["P4"][index] = vendor_pandas["P3"][index]
+    
     # Set dimensions and status
     len_pandas = len(vendor_pandas.axes[0])
     print(len_pandas)

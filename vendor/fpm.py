@@ -27,6 +27,8 @@ def do_fpm(vendor_pandas, tech_cal):
     vendor_pandas["Desc1"] = vendor_pandas[long_desc]
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].str.upper()
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].apply(lambda x: unidecode.unidecode(x))
+    vendor_pandas["Desc1"] = vendor_pandas["Desc1"].str.replace("\"", "IN")
+    vendor_pandas["Desc1"] = vendor_pandas["Desc1"].str.replace("\'", "FT")
 
     vendor_pandas["Desc2"] = vendor_pandas["Desc1"].apply(lambda x: x[30:60])
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].apply(lambda x: x[:30])
@@ -43,6 +45,7 @@ def do_fpm(vendor_pandas, tech_cal):
         #print(index)
         if item == "":
             vendor_pandas["P2"][index] = vendor_pandas["P4"][index] / tech_cal["P2"]
+    vendor_pandas["P2"] = vendor_pandas["P2"].astype(float)
 
     # Set dimensions and status
     vendor_pandas["Weight"] = vendor_pandas["Weight - IN POUNDS"].replace('', '0').astype(float)

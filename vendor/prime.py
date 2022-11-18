@@ -14,7 +14,7 @@ import pandas as pd
 # Main vendor processing function
 def do_prime(vendor_pandas, tech_cal):
     # Create new Status/NewPart columns
-    vendor_pandas['Part Number'] = vendor_pandas['Item'].astype(str)
+    vendor_pandas['Part Number'] = vendor_pandas['Part Number'].astype(str)
     vendor_pandas["NewPart"] = vendor_pandas["Part Number"].apply(lambda x: "PRIME" + x)
     
     # Create new description columns
@@ -27,8 +27,8 @@ def do_prime(vendor_pandas, tech_cal):
 
     # Create all price fields
     vendor_pandas["P1"] = vendor_pandas["Market Pricing"].astype(float)
-    vendor_pandas["P5"] = vendor_pandas["P1"] - (vendor_pandas["P1"] * 0.4)
-    vendor_pandas["P2"] = vendor_pandas["P5"] / 0.6
+    vendor_pandas["P5"] = vendor_pandas["P1"] * 0.7
+    vendor_pandas["P2"] = vendor_pandas["P5"] / 0.7
     vendor_pandas["P3"] = vendor_pandas["P2"]
 
     # Get length of dataframe and create new P4 column with value of zero

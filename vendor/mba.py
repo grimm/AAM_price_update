@@ -30,18 +30,27 @@ def do_mba(vendor_pandas, tech_cal):
 
     # Upper case text and trim it to 30 characters
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].str.upper()
+    
+    vendor_pandas["Desc1"] = vendor_pandas["Desc1"].str.replace("\"", "IN")
+    vendor_pandas["Desc1"] = vendor_pandas["Desc1"].str.replace("\'", "FT")
+
     vendor_pandas["Desc2"] = vendor_pandas["Desc1"].apply(lambda x: x[30:60])
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].apply(lambda x: x[:30])
 
     # Create all price fields
+    # vendor_pandas["P1"] = vendor_pandas["MSRP/List"].astype(float)
     vendor_pandas["P1"] = vendor_pandas["MSRP/List"].astype(float)
     vendor_pandas["P3"] = vendor_pandas["Jobber"].astype(float)
     vendor_pandas["P5"] = vendor_pandas["AAM Cost"].astype(float)
+    # vendor_pandas["P5"] = vendor_pandas["AAM Cost"].astype(float)
     vendor_pandas["P2"] = vendor_pandas["MAP Retail"].astype(float)
-    vendor_pandas["P4"] = vendor_pandas["P3"] * tech_cal["P4"]
+    # vendor_pandas["P2"] = vendor_pandas["Retail MAP"].astype(float)
+    
+    vendor_pandas["P4"] = vendor_pandas["P5"] / tech_cal["P4"]
 
     # Set dimensions and status
     lname = "Weight - IN POUNDS"
+
     vendor_pandas["Weight"] = vendor_pandas[lname].astype(float)
     vendor_pandas["Length"] = vendor_pandas["Length"].astype(str)
     vendor_pandas["Width"] = vendor_pandas["Width"].astype(str)

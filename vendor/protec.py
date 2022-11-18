@@ -20,6 +20,8 @@ def do_protec(vendor_pandas, tech_cal):
     # Create new description columns
     vendor_pandas["Desc1"] = vendor_pandas["Description"]
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].apply(lambda x: unidecode.unidecode(x))
+    vendor_pandas["Desc1"] = vendor_pandas["Desc1"].str.replace('\"', 'in')
+    vendor_pandas["Desc1"] = vendor_pandas["Desc1"].str.replace('\'', 'ft')
 
     # Upper case text and trim it to 30 characters
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].str.upper()
@@ -28,7 +30,7 @@ def do_protec(vendor_pandas, tech_cal):
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].apply(lambda x: x[:30])
 
     # Create all price fields
-    vendor_pandas["P5"] = vendor_pandas["1/1/22 price"].astype(float)
+    vendor_pandas["P5"] = vendor_pandas["4/1/22 -10 price"].astype(float)
     # vendor_pandas["P1"] = vendor_pandas["MSRP"]
     vendor_pandas["P1"] = vendor_pandas["P5"] / tech_cal["P1"]
     vendor_pandas["P2"] = vendor_pandas["P5"] / tech_cal["P2"]

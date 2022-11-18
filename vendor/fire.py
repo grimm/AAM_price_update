@@ -35,15 +35,13 @@ def do_fire(vendor_pandas, tech_cal):
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].apply(lambda x: x[:30])
 
     # Create all price fields
-    vendor_pandas["P3"] = vendor_pandas["October  1st, 2021 Jobber Price"].replace("$", "").replace(",","")
+    vendor_pandas["P3"] = vendor_pandas["July 1st, 2022 Jobber Price"].replace("$", "").replace(",","")
     vendor_pandas["P3"] = vendor_pandas["P3"].astype(float)
 
-    vendor_pandas["P1"] = vendor_pandas["List"].replace("$","").replace(",","")
+    vendor_pandas["P1"] = vendor_pandas["July 1st, 2022 List Price"].replace("$","").replace(",","")
     vendor_pandas["P1"] = vendor_pandas["P1"].astype(float)
 
-    vendor_pandas["P5"] = vendor_pandas["Titan Truck      (J-36%)"].replace("$","").replace(",","")
-    vendor_pandas["P5"] = vendor_pandas["P5"].astype(float)
-
+    vendor_pandas["P5"] = vendor_pandas["P3"] * tech_cal["P5"]
     vendor_pandas["P2"] = vendor_pandas["P3"] / tech_cal["P2"]
     vendor_pandas["P4"] = vendor_pandas["P3"] * tech_cal["P4"]
 
@@ -55,7 +53,7 @@ def do_fire(vendor_pandas, tech_cal):
     vendor_pandas["Width"] = vendor_pandas["Weight"]
     vendor_pandas["Height"] = vendor_pandas["Weight"]
 
-    for index, item in enumerate(vendor_pandas["Box Dim              (L\" X W\" X H\")"]):
+    for index, item in enumerate(vendor_pandas["Box Dim              (L\" X W\" X H\")"].astype(str)):
         vendor_pandas["Length"][index] = 0
         vendor_pandas["Width"][index] = 0
         vendor_pandas["Height"][index] = 0

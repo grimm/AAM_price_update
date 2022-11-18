@@ -13,11 +13,15 @@ import csv
 # Main vendor processing function
 def do_snow(vendor_pandas, tech_cal):
     # Create new Status/NewPart columns
-    vendor_pandas['Part Number'] = vendor_pandas['ItemPartNumber'].replace(r"SNOWDOGG??", "SNOWDOGG")
+    vendor_pandas = vendor_pandas[(vendor_pandas["Amount01"] != "")]
+    vendor_pandas = vendor_pandas[(vendor_pandas["ItemPartNumber"].str[:2] == "16")]
+    vendor_pandas = vendor_pandas.reset_index(drop=True)
+
+    vendor_pandas['Part Number'] = vendor_pandas['ItemPartNumber']
     vendor_pandas["NewPart"] = vendor_pandas["Part Number"].apply(lambda x: "SNOW" + x)
-    
+     
     # Create new description columns
-    vendor_pandas["Desc1"] = vendor_pandas["Description"]
+    vendor_pandas["Desc1"] = vendor_pandas["Description"].str.replace("\?", "")
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].apply(lambda x: unidecode.unidecode(x))
 
     # Upper case text and trim it to 30 characters
@@ -36,10 +40,11 @@ def do_snow(vendor_pandas, tech_cal):
     vendor_pandas["P4"] = vendor_pandas["P5"] / tech_cal["P4"]
 
     # Set dimensions
+    vendor_pandas["Weight"] = vendor_pandas["Weight (lbs)"].replace('', '0').astype(float)
+
     len_pandas = len(vendor_pandas.axes[0])
     new_column = list("0" * len_pandas)
 
-    vendor_pandas["Weight"] = new_column
     vendor_pandas["Length"] = new_column
     vendor_pandas["Height"] = new_column
     vendor_pandas["Width"] = new_column

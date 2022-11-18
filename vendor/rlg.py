@@ -35,19 +35,14 @@ def do_rlg(vendor_pandas, tech_cal):
 
     # Create all price fields
     vendor_pandas["P1"] = vendor_pandas["MSRP/List"].astype(float)
-    vendor_pandas["P2"] = vendor_pandas["P1"]
-    vendor_pandas["P3"] = vendor_pandas["P1"]
-    vendor_pandas["P4"] = vendor_pandas["P1"]
+    vendor_pandas["P2"] = vendor_pandas["MAP Retail"]
+    vendor_pandas["P3"] = vendor_pandas["Jobber"]
+    vendor_pandas["P4"] = vendor_pandas["P3"]
     vendor_pandas["P5"] = vendor_pandas["AAM Cost"].astype(float)
 
     # Set dimensions and status
-    lname = "Weight - IN POUNDS"
-    vendor_pandas[lname] = vendor_pandas[lname].replace('', '0')
-    vendor_pandas["Weight"] = vendor_pandas[lname].astype(float)
-
-    vendor_pandas["Length"] = vendor_pandas["Length"].replace("", "0").astype(float)
-    vendor_pandas["Width"] = vendor_pandas["Width"].replace("", "0").astype(float)
-    vendor_pandas["Height"] = vendor_pandas["Height"].replace("", "0").astype(float)
+    vendor_pandas["Weight"] = vendor_pandas["Weight - IN POUNDS"].replace('', '0')
+    vendor_pandas["Weight"] = vendor_pandas["Weight"].astype(float)
 
     return vendor_pandas
 

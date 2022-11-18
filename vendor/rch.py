@@ -12,7 +12,9 @@ import csv
 # Main vendor processing function
 def do_rch(vendor_pandas, tech_cal):
     # Remove parts with no pricing
-    vendor_pandas = vendor_pandas.drop(vendor_pandas[(vendor_pandas['Jobber'] == "Call for pricing")].index).reset_index(drop=True)
+    vendor_pandas = vendor_pandas[(vendor_pandas['Jobber'] != "Call for pricing")]
+    vendor_pandas = vendor_pandas[(vendor_pandas["MAP Retail"] != "")]
+    vendor_pandas = vendor_pandas.reset_index(drop=True)
 
 	# Put really long header text in some vars
     short_desc = "Short Description (20 Characters or Less)"
@@ -23,7 +25,7 @@ def do_rch(vendor_pandas, tech_cal):
     vendor_pandas["NewPart"] = vendor_pandas["NewPart"].apply(lambda x: "RCH" + x)
     
     # Create new description columns
-    vendor_pandas["Desc1"] = vendor_pandas["Application"]
+    vendor_pandas["Desc1"] = vendor_pandas[long_desc] + " " + vendor_pandas["Application"]
 
     # Upper case text and trim it to 30 characters
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].str.upper()
@@ -31,11 +33,16 @@ def do_rch(vendor_pandas, tech_cal):
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].apply(lambda x: x[:30])
 
     # Create all price fields
-    vendor_pandas["P1"] = vendor_pandas["MAP Retail"].astype(float)
+    vendor_pandas["P1"] = vendor_pandas["MSRP/List"].astype(float)
+    vendor_pandas["P2"] = vendor_pandas["MAP Retail"]
     vendor_pandas["P3"] = vendor_pandas["Jobber"].astype(float)
-    vendor_pandas["P5"] = vendor_pandas["AAM Cost"].astype(float)
-    vendor_pandas["P2"] = vendor_pandas["P3"].astype(float)
     vendor_pandas["P4"] = vendor_pandas["Unilateral Wholesale"].astype(float)
+    vendor_pandas["P5"] = vendor_pandas["AAM Cost"].astype(float)
+
+    # Replace missing values in P2
+    for index, item in enumerate(vendor_pandas["P2"]):
+        if item == "":
+            vendor_pandas["P2"][index] = vendor_pandas["P1"][index]
 
     # Set dimensions and status
     vendor_pandas["Weight"] = vendor_pandas["Weight - IN POUNDS"].replace("N/A", "0")

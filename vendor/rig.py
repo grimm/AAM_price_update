@@ -44,6 +44,10 @@ def do_rig(vendor_pandas, tech_cal):
     vendor_pandas["Desc1"] = vendor_pandas[long_desc].astype(str)
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].str.replace("|", "-")
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].str.upper()
+
+    vendor_pandas["Desc1"] = vendor_pandas["Desc1"].str.replace("\"", "IN")
+    vendor_pandas["Desc1"] = vendor_pandas["Desc1"].str.replace("\'", "FT")
+
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].apply(lambda x: unidecode.unidecode(x))
     vendor_pandas["Desc2"] = vendor_pandas["Desc1"]
 
@@ -57,7 +61,7 @@ def do_rig(vendor_pandas, tech_cal):
 
     vendor_pandas["P2"] = vendor_pandas["MAP Retail"]
     for index, item in enumerate(vendor_pandas["MAP Retail"]):
-        if item == "":
+        if item == "" or item == "MAP":
             vendor_pandas["P2"][index] = vendor_pandas["P1"][index]
         else:
             vendor_pandas["P2"][index] = item

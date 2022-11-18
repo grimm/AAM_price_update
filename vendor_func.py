@@ -3,6 +3,8 @@
 def vendor_func(vendor_name):
 	if vendor_name == "tech":
 	    import vendor.tech as vendor
+	elif vendor_name == "acc":
+	    import vendor.acc as vendor
 	elif vendor_name == "aci":
 	    import vendor.aci as vendor
 	elif vendor_name == "adu":
@@ -31,6 +33,8 @@ def vendor_func(vendor_name):
 	    import vendor.baja as vendor
 	elif vendor_name == "bap":
 	    import vendor.bap as vendor
+	elif vendor_name == "bdw":
+	    import vendor.bdw as vendor
 	elif vendor_name == "best":
 	    import vendor.best as vendor
 	elif vendor_name == "big":
@@ -41,6 +45,8 @@ def vendor_func(vendor_name):
 	    import vendor.bkr as vendor
 	elif vendor_name == "brm":
 	    import vendor.brm as vendor
+	elif vendor_name == "brug":
+	    import vendor.brug as vendor
 	elif vendor_name == "btr":
 	    import vendor.btr as vendor
 	elif vendor_name == "bush":
@@ -59,20 +65,34 @@ def vendor_func(vendor_name):
 	    import vendor.crg as vendor
 	elif vendor_name == "cog":
 	    import vendor.cog as vendor
+	elif vendor_name == "cov":
+	    import vendor.cov as vendor
 	elif vendor_name == "curt":
 	    import vendor.curt as vendor
+	elif vendor_name == "curtmap":
+	    import vendor.curtmap as vendor
 	elif vendor_name == "deck":
 	    import vendor.deck as vendor
 	elif vendor_name == "dez":
 	    import vendor.dez as vendor
+	elif vendor_name == "dia":
+	    import vendor.dia as vendor
+	elif vendor_name == "dom":
+	    import vendor.dom as vendor
 	elif vendor_name == "eccot":
 	    import vendor.eccot as vendor
 	elif vendor_name == "eccon":
 	    import vendor.eccon as vendor
+	elif vendor_name == "edge":
+	    import vendor.edge as vendor
 	elif vendor_name == "ele":
 	    import vendor.ele as vendor
 	elif vendor_name == "ext":
 	    import vendor.ext as vendor
+	elif vendor_name == "extm":
+	    import vendor.extm as vendor
+	elif vendor_name == "fac":
+	    import vendor.fac as vendor
 	elif vendor_name == "ffi":
 	    import vendor.ffi as vendor
 	elif vendor_name == "fia":
@@ -83,12 +103,18 @@ def vendor_func(vendor_name):
 	    import vendor.fire as vendor
 	elif vendor_name == "fpm":
 	    import vendor.fpm as vendor
+	elif vendor_name == "golite":
+	    import vendor.golite as vendor
 	elif vendor_name == "gor":
 	    import vendor.gor as vendor
 	elif vendor_name == "gorm":
 	    import vendor.gorm as vendor
 	elif vendor_name == "hus":
 	    import vendor.hus as vendor
+	elif vendor_name == "hyp":
+	    import vendor.hyp as vendor
+	elif vendor_name == "ici":
+	    import vendor.ici as vendor
 	elif vendor_name == "kar":
 	    import vendor.kar as vendor
 	elif vendor_name == "kc":
@@ -107,10 +133,14 @@ def vendor_func(vendor_name):
 	    import vendor.lnd as vendor
 	elif vendor_name == "luv":
 	    import vendor.luv as vendor
+	elif vendor_name == "mag":
+	    import vendor.mag as vendor
 	elif vendor_name == "mas":
 	    import vendor.mas as vendor
 	elif vendor_name == "mass":
 	    import vendor.mass as vendor
+	elif vendor_name == "maxx":
+	    import vendor.maxx as vendor
 	elif vendor_name == "mba":
 	    import vendor.mba as vendor
 	elif vendor_name == "mrw":
@@ -143,12 +173,16 @@ def vendor_func(vendor_name):
 	    import vendor.ovs as vendor
 	elif vendor_name == "par":
 	    import vendor.par as vendor
+	elif vendor_name == "pc":
+	    import vendor.pc as vendor
 	elif vendor_name == "piaa":
 	    import vendor.piaa as vendor
 	elif vendor_name == "prime":
 	    import vendor.prime as vendor
 	elif vendor_name == "protec":
 	    import vendor.protec as vendor
+	elif vendor_name == "pull":
+	    import vendor.pull as vendor
 	elif vendor_name == "put":
 	    import vendor.put as vendor
 	elif vendor_name == "qf":
@@ -177,8 +211,16 @@ def vendor_func(vendor_name):
 	    import vendor.snow as vendor
 	elif vendor_name == "stlc":
 	    import vendor.stlc as vendor
+	elif vendor_name == "sup":
+	    import vendor.sup as vendor
+	elif vendor_name == "tfp":
+	    import vendor.tfp as vendor
 	elif vendor_name == "tft":
 	    import vendor.tft as vendor
+	elif vendor_name == "tgp":
+	    import vendor.tgp as vendor
+	elif vendor_name == "tom":
+	    import vendor.tom as vendor
 	elif vendor_name == "trux":
 	    import vendor.trux as vendor
 	elif vendor_name == "truxm":
@@ -223,6 +265,8 @@ def vendor_func(vendor_name):
 	    import vendor.wes as vendor
 	elif vendor_name == "west":
 	    import vendor.west as vendor
+	elif vendor_name == "wig":
+	    import vendor.wig as vendor
 	elif vendor_name == "yak":
 	    import vendor.yak as vendor
 	elif vendor_name == "zll":

@@ -15,7 +15,7 @@ def do_cog(vendor_pandas, vend_cal):
     vendor_pandas["NewPart"] = vendor_pandas["Part Number"].apply(lambda x: "COG" + x)
     
     # Create new description columns
-    vendor_pandas["Desc1"] = vendor_pandas["title"]
+    vendor_pandas["Desc1"] = vendor_pandas["title"].astype(str)
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].apply(lambda x: unidecode.unidecode(x))
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].str.upper()
 

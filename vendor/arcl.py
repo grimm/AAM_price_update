@@ -23,6 +23,8 @@ def do_arcl(vendor_pandas, tech_cal):
     vendor_pandas["Desc1"] = vendor_pandas[long_desc]
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].apply(lambda x: unidecode.unidecode(x))
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].str.upper()
+    vendor_pandas["Desc1"] = vendor_pandas["Desc1"].str.replace("\"", "IN")
+    vendor_pandas["Desc1"] = vendor_pandas["Desc1"].str.replace("\'", "FT")
 
     vendor_pandas["Desc2"] = vendor_pandas["Desc1"].apply(lambda x: x[30:60])
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].apply(lambda x: x[:30])
@@ -36,9 +38,16 @@ def do_arcl(vendor_pandas, tech_cal):
     vendor_pandas["P4"] = vendor_pandas["P5"] / tech_cal["P4"]
 
     # Set dimensions and status
-    vendor_pandas["Weight"] = vendor_pandas["Weight - IN POUNDS"].replace("N/A", "0").astype(float)
+    vendor_pandas["Weight"] = vendor_pandas["Weight - IN POUNDS"].replace("", "0")
+    vendor_pandas["Weight"] = vendor_pandas["Weight"].replace("N/A", "0").astype(float)
+
+    vendor_pandas["Length"] = vendor_pandas["Length"].replace("", "0")
     vendor_pandas["Length"] = vendor_pandas["Length"].replace("N/A", "0").astype(float)
+
+    vendor_pandas["Width"] = vendor_pandas["Width"].replace("", "0")
     vendor_pandas["Width"] = vendor_pandas["Width"].replace("N/A", "0").astype(float)
+
+    vendor_pandas["Height"] = vendor_pandas["Height"].replace("", "0")
     vendor_pandas["Height"] = vendor_pandas["Height"].replace("N/A", "0").astype(float)
 
     return vendor_pandas

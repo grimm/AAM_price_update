@@ -20,6 +20,7 @@ def do_sb(vendor_pandas, tech_cal):
     vendor_pandas["Desc1"] = vendor_pandas["title"]
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].str.upper()
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].apply(lambda x: unidecode.unidecode(x))
+    vendor_pandas["Desc1"] = vendor_pandas["Desc1"].replace(r'\n',' ', regex=True)
 
     vendor_pandas["Desc2"] = vendor_pandas["Desc1"].apply(lambda x: x[30:60])
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].apply(lambda x: x[:30])
@@ -30,6 +31,10 @@ def do_sb(vendor_pandas, tech_cal):
     vendor_pandas["P3"] = vendor_pandas["jobber"].astype(float)
     vendor_pandas["P4"] = vendor_pandas["P3"]
     vendor_pandas["P5"] = vendor_pandas["25_jobber_pricing"].astype(float)
+
+    for index, item in enumerate(vendor_pandas["P1"]):
+        if item < vendor_pandas["P3"][index]:
+            vendor_pandas["P1"][index] == vendor_pandas["P3"][index]
 
     # Set dimensions and status
     vendor_pandas["Weight"] = vendor_pandas["weight"].replace('', '0').astype(float)

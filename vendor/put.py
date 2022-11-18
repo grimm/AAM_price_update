@@ -11,6 +11,10 @@ import unidecode
 
 # Main vendor processing function
 def do_put(vendor_pandas, tech_cal):
+    # Remove in rows with no data
+    vendor_pandas = vendor_pandas[(vendor_pandas["Unilateral Retail"] != "DO NOT SELL ONLINE")]
+    vendor_pandas = vendor_pandas.reset_index(drop=True)
+
     # Put really long header text in some vars
     short_desc = "Short Description (20 Characters or Less)"
     long_desc = "Long Description 100 Characters or less WITHOUT application information"
@@ -25,6 +29,8 @@ def do_put(vendor_pandas, tech_cal):
 
     # Upper case text and trim it to 30 characters
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].str.upper()
+    vendor_pandas["Desc1"] = vendor_pandas["Desc1"].str.replace("\"", "IN")
+    vendor_pandas["Desc1"] = vendor_pandas["Desc1"].str.replace("\'", "FT")
 
     vendor_pandas["Desc2"] = vendor_pandas["Desc1"].apply(lambda x: x[30:60])
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].apply(lambda x: x[:30])

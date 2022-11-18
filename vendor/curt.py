@@ -23,6 +23,7 @@ def do_curt(vendor_pandas, tech_cal):
 
     # Filter out any part that has emailed for cost
     vendor_pandas = vendor_pandas[(vendor_pandas["AAM Cost"] != "Emailed for Cost")]
+    vendor_pandas = vendor_pandas[(vendor_pandas["AAM Cost"] != "")]
     vendor_pandas = vendor_pandas[(vendor_pandas["Life Cycle Status Code"] != "Discontinued")]
     vendor_pandas = vendor_pandas.reset_index(drop=True)
 
@@ -48,7 +49,7 @@ def do_curt(vendor_pandas, tech_cal):
     vendor_pandas["P3"] = vendor_pandas["Jobber"]
     vendor_pandas["P5"] = vendor_pandas["AAM Cost"].astype(float)
 
-    vendor_pandas["P2"] = vendor_pandas["AAM Cost"].astype(float)
+    vendor_pandas["P2"] = vendor_pandas["AAM Cost"]
     vendor_pandas["MAP Retail"] = vendor_pandas["MAP Retail"].astype(str)
 
     vendor_pandas.index = range(len(vendor_pandas.index))
@@ -59,6 +60,7 @@ def do_curt(vendor_pandas, tech_cal):
             vendor_pandas["P2"][index] = vendor_pandas["P5"][index] / tech_cal["P2"]
         else:
             vendor_pandas["P2"][index] = item
+    vendor_pandas["P2"] = vendor_pandas["P2"].astype(float)
 
     vendor_pandas["P4"] = vendor_pandas["P5"] / tech_cal["P4"]
 

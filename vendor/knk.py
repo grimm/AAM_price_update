@@ -82,7 +82,7 @@ def do_knk(vendor_pandas, tech_cal):
     vendor_pandas["P1"] = vendor_pandas["Trade"]
     vendor_pandas["P1"] = vendor_pandas["P1"].astype(float)
 
-    vendor_pandas["P2"] = vendor_pandas["UAP"]
+    vendor_pandas["P2"] = vendor_pandas["UAP"].replace("NO UAP", "")
 
     # Replace missing values in P2
     for index, item in enumerate(vendor_pandas["P2"]):

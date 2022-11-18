@@ -15,6 +15,10 @@ def do_deck(vendor_pandas, tech_cal):
     short_desc = "Short Description (20 Characters or Less)"
     long_desc = "Long Description 100 Characters or less WITHOUT application information"
 
+    # Remove parts with no pricing
+    vendor_pandas = vendor_pandas[(vendor_pandas["Jobber"] != "")]
+    vendor_pandas = vendor_pandas.reset_index(drop=True)
+
     # Process part number
     vendor_pandas["NewPart"] = vendor_pandas["Part Number"].astype(str)
     vendor_pandas["NewPart"] = vendor_pandas["NewPart"].apply(lambda x: "DECK" + x)

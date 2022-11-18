@@ -17,7 +17,7 @@ def do_west(vendor_pandas, tech_cal):
     short_desc = "DESCRIPTION 2 "
 
     # Remove blank items
-    vendor_pandas = vendor_pandas[(vendor_pandas["LIST w Surcharge"] != "")]
+    vendor_pandas = vendor_pandas[(vendor_pandas["LIST PRICE"] != "")]
     vendor_pandas = vendor_pandas.reset_index(drop=True)
 
     # Process part number
@@ -32,15 +32,18 @@ def do_west(vendor_pandas, tech_cal):
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].str.upper()
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].apply(lambda x: unidecode.unidecode(x))
 
+    vendor_pandas["Desc1"] = vendor_pandas["Desc1"].str.replace("\"", "IN")
+    vendor_pandas["Desc1"] = vendor_pandas["Desc1"].str.replace("\'", "FT")
+    
     vendor_pandas["Desc2"] = vendor_pandas["Desc1"].apply(lambda x: x[30:60])
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].apply(lambda x: x[:30])
 
     # Create all price fields
-    vendor_pandas["P1"] = vendor_pandas["LIST w Surcharge"].replace("$","").replace(",", "").astype(float)
+    vendor_pandas["P1"] = vendor_pandas["LIST PRICE"].replace("$","").replace(",", "").astype(float)
     vendor_pandas["P2"] = vendor_pandas["P1"] * tech_cal["P2"]
     vendor_pandas["P3"] = vendor_pandas["P1"] * tech_cal["P3"]
     vendor_pandas["P4"] = vendor_pandas["P1"] * tech_cal["P4"]
-    vendor_pandas["P5"] = vendor_pandas["NET w Surcharge"].replace("$","").replace(",", "").astype(float)
+    vendor_pandas["P5"] = vendor_pandas["NET PRICE"].replace("$","").replace(",", "").astype(float)
 
     # Set dimensions and status
     # Get length of dataframe and create new dimension columns

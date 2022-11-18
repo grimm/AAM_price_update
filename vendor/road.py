@@ -14,6 +14,7 @@ def do_road(vendor_pandas, tech_cal):
     # Filter out all rows that have no prices
     vendor_pandas = vendor_pandas[(vendor_pandas["Retail"] != "")]
     vendor_pandas = vendor_pandas[(vendor_pandas["Retail"] != "0")]
+    vendor_pandas = vendor_pandas.reset_index(drop=True)
 
     # Process part number
     vendor_pandas["Part Number"] = vendor_pandas["Name"].astype(str)
@@ -26,6 +27,9 @@ def do_road(vendor_pandas, tech_cal):
 
     # Upper case text and trim it to 30 characters
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].str.upper()
+    vendor_pandas["Desc1"] = vendor_pandas["Desc1"].str.replace("\"", "IN")
+    vendor_pandas["Desc1"] = vendor_pandas["Desc1"].str.replace("\'", "FT")
+    
     vendor_pandas["Desc2"] = vendor_pandas["Desc1"].apply(lambda x: x[30:60])
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].apply(lambda x: x[:30])
 
@@ -34,11 +38,12 @@ def do_road(vendor_pandas, tech_cal):
     vendor_pandas["P2"] = vendor_pandas["MAP Price"]
     vendor_pandas["P3"] = vendor_pandas["P1"]
     vendor_pandas["P4"] = vendor_pandas["P3"] * tech_cal["P4"]
-    vendor_pandas["P5"] = vendor_pandas["Dealer"].astype(float)
+    vendor_pandas["P5"] = vendor_pandas["Base Price"].astype(float)
 
     for index, item in enumerate(vendor_pandas["P2"]):
         if item == "":
             vendor_pandas["P2"][index] = vendor_pandas["P1"][index]
+    
     vendor_pandas["P2"] = vendor_pandas["P2"].astype(float)
 
     # Set dimensions and status

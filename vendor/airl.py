@@ -13,6 +13,7 @@ import unidecode
 def do_airl(vendor_pandas, tech_cal, new_cal):
     # Filter out all rows that are not for retail
     vendor_pandas = vendor_pandas[(vendor_pandas["Application"] == "")]
+    vendor_pandas = vendor_pandas.reset_index(drop=True)
 
 	# Put really long header text in some vars
     short_desc = "Short Description (20 Characters or Less)"
@@ -28,6 +29,8 @@ def do_airl(vendor_pandas, tech_cal, new_cal):
 
     # Upper case text and trim it to 30 characters
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].str.upper()
+    vendor_pandas["Desc1"] = vendor_pandas["Desc1"].str.replace("\"", "IN")
+    vendor_pandas["Desc1"] = vendor_pandas["Desc1"].str.replace("\'", "FT")
     vendor_pandas["Desc2"] = vendor_pandas["Desc1"].apply(lambda x: x[30:60])
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].apply(lambda x: x[:30])
 
@@ -37,6 +40,10 @@ def do_airl(vendor_pandas, tech_cal, new_cal):
     vendor_pandas["P5"] = vendor_pandas["AAM Cost"]
     vendor_pandas["P2"] = vendor_pandas["P3"]
     vendor_pandas["P4"] = vendor_pandas["P5"] / tech_cal["P4"]
+
+    for index, item in enumerate(vendor_pandas["P2"]):
+        if vendor_pandas["Unilateral Retail"][index] != "":
+            vendor_pandas["P2"][index] = vendor_pandas["Unilateral Retail"][index]
 
     # Set dimensions and status
     vendor_pandas["Weight"] = vendor_pandas["Weight - IN POUNDS"]

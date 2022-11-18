@@ -1,7 +1,7 @@
 #
 # fil.py
 #
-# This script holds functions for the vendor Filrite Pumps
+# This script holds functions for the vendor Fillrite Pumps
 #
 # Initial version - 02/22/2021 - Jason Grimes
 #
@@ -12,6 +12,10 @@ import csv
 
 # Main vendor processing function
 def do_fil(vendor_pandas, tech_cal):
+    # Remove bad rows
+    vendor_pandas = vendor_pandas[(vendor_pandas["List Price"] != "Request Pricing")]
+    vendor_pandas = vendor_pandas.reset_index(drop=True)
+    
     # Create new Status/NewPart columns
     vendor_pandas['Part Number'] = vendor_pandas['Model'].astype(str)
     vendor_pandas["NewPart"] = vendor_pandas["Part Number"].apply(lambda x: "FIL" + x)

@@ -16,12 +16,16 @@ def do_aor(vendor_pandas, prod_group, tech_cal):
     long_desc = "Long Description 100 Characters or less WITHOUT application information"
 
     # Get length of dataframe and create new Status/NewPart columns
-    vendor_pandas["NewPart"] = vendor_pandas["Part Number"].apply(lambda x: "AOR" + x)
+    vendor_pandas["NewPart"] = vendor_pandas["Part Number"].astype(str)
+    vendor_pandas["NewPart"] = vendor_pandas["NewPart"].apply(lambda x: "AOR" + x)
     
     # Create new description columns
     vendor_pandas["Desc1"] = vendor_pandas[long_desc]
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].apply(lambda x: unidecode.unidecode(x))
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].str.upper()
+
+    vendor_pandas["Desc1"] = vendor_pandas["Desc1"].str.replace("\"", "IN")
+    vendor_pandas["Desc1"] = vendor_pandas["Desc1"].str.replace("\'", "FT")
 
     vendor_pandas["Desc2"] = vendor_pandas["Desc1"].apply(lambda x: x[30:60])
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].apply(lambda x: x[:30])

@@ -20,20 +20,30 @@ def do_kc(vendor_pandas, tech_cal):
 
     # Upper case text and trim it to 30 characters
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].str.upper()
+
+    vendor_pandas["Desc1"] = vendor_pandas["Desc1"].str.replace("\"", "IN")
+    vendor_pandas["Desc1"] = vendor_pandas["Desc1"].str.replace("\'", "FT")
+    
     vendor_pandas["Desc2"] = vendor_pandas["Desc1"].apply(lambda x: x[30:60])
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].apply(lambda x: x[:30])
 
     # Create all price fields
-    vendor_pandas["P1"] = vendor_pandas["list_price"].astype(float)
-    vendor_pandas["P2"] = vendor_pandas["map_price"].astype(float)
-    vendor_pandas["P3"] = vendor_pandas["P2"]
-    vendor_pandas["P4"] = vendor_pandas["2a_pricing"].astype(float)
-    vendor_pandas["P5"] = (vendor_pandas["P1"] * 0.56) / tech_cal["P5"]
+    vendor_pandas["P1"] = vendor_pandas["MAP"].astype(float)
+    vendor_pandas["P5"] = vendor_pandas["DIR FIXED COST\n(ALL RESELLERS)"]
+
+    vendor_pandas["P2"] = vendor_pandas["P1"].astype(float)
+    vendor_pandas["P3"] = vendor_pandas["P1"]
+    vendor_pandas["P4"] = vendor_pandas["P1"].astype(float)
+
+    for index, item in enumerate(vendor_pandas["P5"]):
+        if item == "":
+            vendor_pandas["P5"][index] = (vendor_pandas["P1"][index] * tech_cal["P5"])
+    vendor_pandas["P5"] = vendor_pandas["P5"].astype(float)
 
     # Set dimensions and status
-    vendor_pandas["Weight"] = vendor_pandas["weight"].astype(float)
-    vendor_pandas["Length"] = vendor_pandas["dim_length"].astype(float)
-    vendor_pandas["Height"] = vendor_pandas["dim_height"].astype(float)
-    vendor_pandas["Width"] = vendor_pandas["dim_width"].astype(float)
+    vendor_pandas["Weight"] = vendor_pandas["BOX 1 WT (LBS)"].astype(float)
+    vendor_pandas["Length"] = vendor_pandas["BOX 1 L"].replace("", "0").astype(float)
+    vendor_pandas["Height"] = vendor_pandas["BOX 1 H"].replace("", "0").astype(float)
+    vendor_pandas["Width"] = vendor_pandas["BOX 1 W"].replace("", "0").astype(float)
 
     return vendor_pandas

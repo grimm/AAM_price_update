@@ -17,6 +17,7 @@ def do_rdl(vendor_pandas, tech_cal):
     # Remove blank items
     vendor_pandas = vendor_pandas[(vendor_pandas["AAM Cost"] != "")]
     vendor_pandas = vendor_pandas[(vendor_pandas["AAM Cost"] != "Net Pricing - Call")]
+    vendor_pandas = vendor_pandas[(vendor_pandas["AAM Cost"] != "Call for Pricing")]
     vendor_pandas = vendor_pandas.reset_index(drop=True)
 
     # vendor_pandas["NewPart"] = new_column

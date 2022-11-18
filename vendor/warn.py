@@ -36,16 +36,16 @@ def do_warn(vendor_pandas, tech_cal):
     vendor_pandas["P3"] = vendor_pandas["Jobber"]
     vendor_pandas["P5"] = vendor_pandas["AAM Cost"]
 
-    vendor_pandas["Group Code"] = vendor_pandas["NewPart"]
+    vendor_pandas["Group_Code"] = vendor_pandas["NewPart"]
     vendor_pandas["P2"] = vendor_pandas["AAM Cost"]
     for index, item in enumerate(vendor_pandas["Unilateral Retail"]):
         #print(index)
         if item == "":
             vendor_pandas["P2"][index] = vendor_pandas["P3"][index] / tech_cal["P2"]
-            vendor_pandas["Group Code"][index] = 1
+            vendor_pandas["Group_Code"][index] = 1
         else:
             vendor_pandas["P2"][index] = item
-            vendor_pandas["Group Code"][index] = 0
+            vendor_pandas["Group_Code"][index] = 0
 
     vendor_pandas["P4"] = vendor_pandas["AAM Cost"]
     for index, item in enumerate(vendor_pandas["Unilateral Wholesale"]):
