@@ -31,8 +31,9 @@ def do_rtx(vendor_pandas, tech_cal):
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].apply(lambda x: x[:30])
 
     # Create all price fields
-    vendor_pandas["P1"] = vendor_pandas["MSRP/List"].astype(float)
+    # vendor_pandas["P1"] = vendor_pandas["MSRP/List"].astype(float)
     vendor_pandas["P2"] = vendor_pandas["MAP Retail"].astype(float)
+    vendor_pandas["P1"] = vendor_pandas["P2"]
     vendor_pandas["P3"] = vendor_pandas["Jobber"].astype(float)
 
     vendor_pandas["P4"] = vendor_pandas["MAP Wholesale / MSP"]

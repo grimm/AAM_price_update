@@ -17,6 +17,7 @@ def do_curt(vendor_pandas, tech_cal):
     short_desc = "Short Description (20 Characters or Less)"
     long_desc = "Long Description 100 Characters or less WITHOUT application information"
 
+    print(vendor_pandas.columns)
     # Filter out all parts that are 5 digits long (not kitted SKU)
     vendor_pandas['Part Number'] = vendor_pandas['Part Number'].astype(str)
     vendor_pandas = vendor_pandas[(vendor_pandas["Part Number"].str.len() == 5)]

@@ -1,7 +1,7 @@
 #
-# rig.py
+# ros.py
 #
-# This script holds functions for the vendor Rigid Industries
+# This script holds functions for the vendor Readylift Offroad
 #
 # Initial version - 10/30/2020 - Jason Grimes
 #
@@ -11,7 +11,7 @@ import unidecode
 import re
 
 # Main vendor processing function
-def do_rig(vendor_pandas, tech_cal):
+def do_ros(vendor_pandas, tech_cal):
 	# Put really long header text in some vars
     short_desc = "Short Description (20 Characters or Less)"
     long_desc = "Long Description 100 Characters or less WITHOUT application information"
@@ -38,7 +38,7 @@ def do_rig(vendor_pandas, tech_cal):
 
     # vendor_pandas["NewPart"] = vendor_pandas["NewPart"].str.replace('-', '')
     # vendor_pandas["NewPart"] = vendor_pandas["NewPart"].apply(lambda x: x[:20])
-    vendor_pandas["NewPart"] = vendor_pandas["NewPart"].apply(lambda x: "RIG" + x)
+    vendor_pandas["NewPart"] = vendor_pandas["NewPart"].apply(lambda x: "ROS" + x)
     
     # Create new description columns
     vendor_pandas["Desc1"] = vendor_pandas[long_desc].astype(str)

@@ -15,10 +15,12 @@ import csv
 # Main vendor processing function
 def do_fire(vendor_pandas, tech_cal):
     # Remove parts with no pricing
-    # vendor_pandas = vendor_pandas.drop(vendor_pandas[(vendor_pandas['March 1, 2021 Jobber'] == "") | (vendor_pandas['March 1, 2021 Jobber'] == "TBD")].index).reset_index(drop=True)
+    vendor_pandas = vendor_pandas[(vendor_pandas["Ocotber 1st, 2022 List Price"] != "NA")]
+    vendor_pandas = vendor_pandas[(vendor_pandas["Ocotber 1st, 2022 List Price"] != "Ocotber 1st, 2022 List Price")]
+    vendor_pandas = vendor_pandas.reset_index(drop=True)
 
     # Concatinate both sheets for processing
-    vendor_pandas = pd.concat(vendor_pandas, axis=0, ignore_index=True)
+    #vendor_pandas = pd.concat(vendor_pandas, axis=0, ignore_index=True)
 
     # Create new Status/NewPart columns
     vendor_pandas['Part Number'] = vendor_pandas['4-Digit'].astype(str)
@@ -35,15 +37,21 @@ def do_fire(vendor_pandas, tech_cal):
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].apply(lambda x: x[:30])
 
     # Create all price fields
-    vendor_pandas["P3"] = vendor_pandas["July 1st, 2022 Jobber Price"].replace("$", "").replace(",","")
-    vendor_pandas["P3"] = vendor_pandas["P3"].astype(float)
-
-    vendor_pandas["P1"] = vendor_pandas["July 1st, 2022 List Price"].replace("$","").replace(",","")
+    vendor_pandas["P1"] = vendor_pandas["Ocotber 1st, 2022 List Price"].replace("$","").replace(",","")
     vendor_pandas["P1"] = vendor_pandas["P1"].astype(float)
 
-    vendor_pandas["P5"] = vendor_pandas["P3"] * tech_cal["P5"]
-    vendor_pandas["P2"] = vendor_pandas["P3"] / tech_cal["P2"]
+    vendor_pandas["P3"] = vendor_pandas["October 1st, 2022 Jobber Price"].replace("$", "").replace(",","")
+    vendor_pandas["P3"] = vendor_pandas["P3"].astype(float)
+
     vendor_pandas["P4"] = vendor_pandas["P3"] * tech_cal["P4"]
+    vendor_pandas["P5"] = vendor_pandas["P3"] * tech_cal["P5"]
+
+    vendor_pandas["P2"] = vendor_pandas["UMP [USD]"].replace("$","").replace(",","")
+    for index, item in enumerate(vendor_pandas["P2"]):
+        print(item)
+        if item == "":
+            vendor_pandas["P2"][index] = vendor_pandas["P5"][index] / tech_cal["P2"]
+    vendor_pandas["P2"] = vendor_pandas["P2"].astype(float)
 
     # Set dimensions and status
     # Make sure that measurement values are correct

@@ -221,20 +221,20 @@ def vendor(vendor_pandas, vendor_cal, product_groups, vendor_name, vendor, disco
                      "P5", "Length", "Width", "Height", "Weight"]
 	    nelson_columns = titan_columns
 
-	if vendor_name == "eccon":
-	    new_pandas = vendor.do_eccon(vendor_pandas, vendor_cal["eccon"])
-	    titan_columns = ["NewPart", "Part Number", "Desc1", "Desc2", "P1", "P2", "P3", "P4",
-                     "P5", "Length", "Width", "Height", "Weight"]
-	    nelson_columns = titan_columns
-
-	if vendor_name == "eccot":
-	    new_pandas = vendor.do_eccot(vendor_pandas, vendor_cal["eccot"])
+	if vendor_name == "ecco":
+	    new_pandas = vendor.do_ecco(vendor_pandas, vendor_cal["ecco"])
 	    titan_columns = ["NewPart", "Part Number", "Desc1", "Desc2", "P1", "P2", "P3", "P4",
                      "P5", "Length", "Width", "Height", "Weight"]
 	    nelson_columns = titan_columns
 
 	if vendor_name == "edge":
 	    new_pandas = vendor.do_edge(vendor_pandas, vendor_cal["edge"])
+	    titan_columns = ["NewPart", "Part Number", "Desc1", "Desc2", "P1", "P2", "P3", "P4",
+                     "P5", "Length", "Width", "Height", "Weight"]
+	    nelson_columns = titan_columns
+
+	if vendor_name == "egr":
+	    new_pandas = vendor.do_egr(vendor_pandas, vendor_cal["egr"])
 	    titan_columns = ["NewPart", "Part Number", "Desc1", "Desc2", "P1", "P2", "P3", "P4",
                      "P5", "Length", "Width", "Height", "Weight"]
 	    nelson_columns = titan_columns
@@ -267,6 +267,12 @@ def vendor(vendor_pandas, vendor_cal, product_groups, vendor_name, vendor, disco
 	    new_pandas = vendor.do_dom(vendor_pandas, vendor_cal["dom"])
 	    titan_columns = ["NewPart", "Part Number", "Desc1", "Desc2", "P1", "P2", "P3", "P4",
                      "P5", "Length", "Width", "Height", "Weight", "Group Code"]
+	    nelson_columns = titan_columns
+
+	if vendor_name == "f55":
+	    new_pandas = vendor.do_f55(vendor_pandas, vendor_cal["f55"])
+	    titan_columns = ["NewPart", "Part Number", "Desc1", "Desc2", "P1", "P2", "P3", "P4",
+                     "P5", "Length", "Width", "Height", "Weight"]
 	    nelson_columns = titan_columns
 
 	if vendor_name == "fac":
@@ -562,6 +568,12 @@ def vendor(vendor_pandas, vendor_cal, product_groups, vendor_name, vendor, disco
 
 	if vendor_name == "road":
 	    new_pandas = vendor.do_road(vendor_pandas, vendor_cal["road"])
+	    titan_columns = ["NewPart", "Part Number", "Desc1", "Desc2", "P1", "P2", "P3", "P4",
+                     "P5", "Length", "Width", "Height", "Weight"]
+	    nelson_columns = titan_columns
+
+	if vendor_name == "ros":
+	    new_pandas = vendor.do_ros(vendor_pandas, vendor_cal["ros"])
 	    titan_columns = ["NewPart", "Part Number", "Desc1", "Desc2", "P1", "P2", "P3", "P4",
                      "P5", "Length", "Width", "Height", "Weight"]
 	    nelson_columns = titan_columns

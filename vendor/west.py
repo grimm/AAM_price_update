@@ -14,7 +14,7 @@ import unidecode
 def do_west(vendor_pandas, tech_cal):
 	# Put really long header text in some vars
     long_desc = "DESCRIPTION"
-    short_desc = "DESCRIPTION 2 "
+    short_desc = "DESCRIPTION 2"
 
     # Remove blank items
     vendor_pandas = vendor_pandas[(vendor_pandas["LIST PRICE"] != "")]

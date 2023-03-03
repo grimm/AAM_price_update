@@ -16,6 +16,10 @@ def do_trex(vendor_pandas, tech_cal):
     short_desc = "Short Description (20 Characters or Less)"
     long_desc = "Long Description 100 Characters or less WITHOUT application information"
 
+    # Remove missing data
+    vendor_pandas = vendor_pandas[(vendor_pandas["MSRP/List"] != "")]
+    vendor_pandas = vendor_pandas.reset_index(drop=True)
+
     # Create new Status/NewPart columns
     vendor_pandas["NewPart"] = vendor_pandas["Part Number"].astype(str).apply(lambda x: "T-REX" + x)
     

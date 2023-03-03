@@ -16,7 +16,7 @@ def do_und(vendor_pandas, tech_cal):
     long_desc = "Long Description 100 Characters or less WITHOUT application information"
 
     # Strip out parts with no pricing
-    vendor_pandas = vendor_pandas[(vendor_pandas["MSRP/List"] != "")]
+    vendor_pandas = vendor_pandas[(vendor_pandas["MAP Retail"] != "")]
     vendor_pandas = vendor_pandas.reset_index(drop=True)
 
     # Create new Status/NewPart columns
@@ -34,11 +34,11 @@ def do_und(vendor_pandas, tech_cal):
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].apply(lambda x: x[:30])
 
     # Create all price fields
-    vendor_pandas["P1"] = vendor_pandas["MSRP/List"].astype(float)
+    vendor_pandas["P2"] = vendor_pandas["MAP Retail"].astype(float)
+    vendor_pandas["P1"] = vendor_pandas["P2"]
     vendor_pandas["P3"] = vendor_pandas["Jobber"].astype(float)
     vendor_pandas["P5"] = vendor_pandas["AAM Cost"].astype(float)
 
-    vendor_pandas["P2"] = vendor_pandas["MAP Retail"].astype(float)
     vendor_pandas["P4"] = vendor_pandas["MAP Wholesale / MSP"]
 
     for index, item in enumerate(vendor_pandas["P4"]):

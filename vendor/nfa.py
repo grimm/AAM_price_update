@@ -15,7 +15,8 @@ def do_nfa(vendor_pandas, tech_cal):
 
     # Remove non-active items
     # vendor_pandas = vendor_pandas[(vendor_pandas["Active / R&D"] == "Active")]
-    # vendor_pandas = vendor_pandas.reset_index(drop=True)
+    vendor_pandas = vendor_pandas[(vendor_pandas["Jobber"] != "")]
+    vendor_pandas = vendor_pandas.reset_index(drop=True)
 
     # Create NewPart column
     vendor_pandas["NewPart"] = vendor_pandas["Part Number"].apply(lambda x: "NFA" + x)

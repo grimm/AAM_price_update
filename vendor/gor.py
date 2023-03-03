@@ -13,12 +13,15 @@ import unidecode
 def do_gor(vendor_pandas, tech_cal):
     # Put really long header text in some vars
     short_desc = "Short Description (20 Characters or Less)"
-    # long_desc = "Long Description 100 Characters or less WITHOUT application information"
-    long_desc = "Product Line"
+    long_desc = "Long Description 100 Characters or less WITHOUT application information"
+    # long_desc = "Product Line"
+
+    vendor_pandas = vendor_pandas[(vendor_pandas["AAM Cost"] != "")]
+    vendor_pandas = vendor_pandas.reset_index(drop=True)
 
     # Create new Status/NewPart columns
-    # vendor_pandas['Part Number'] = vendor_pandas['Part Number'].astype(str)
-    vendor_pandas['Part Number'] = vendor_pandas['Part No.'].astype(str)
+    vendor_pandas['Part Number'] = vendor_pandas['Part Number'].astype(str)
+    # vendor_pandas['Part Number'] = vendor_pandas['Part No.'].astype(str)
     vendor_pandas["NewPart"] = vendor_pandas["Part Number"].apply(lambda x: "GOR" + x)
     
     # Create new description columns
@@ -32,52 +35,57 @@ def do_gor(vendor_pandas, tech_cal):
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].apply(lambda x: x[:30])
 
     # Create all price fields
-    # vendor_pandas["P1"] = vendor_pandas["MSRP/List"]
-    vendor_pandas["P1"] = vendor_pandas["MSRP"]
-    # vendor_pandas["P3"] = vendor_pandas["Jobber"]
-    vendor_pandas["P3"] = vendor_pandas["US Jobber "]
-    # vendor_pandas["P5"] = vendor_pandas["AAM Cost"]
-    vendor_pandas["P5"] = vendor_pandas["Titan Cost"]
-    vendor_pandas["P2"] = vendor_pandas["UMAP"]
-    vendor_pandas["P4"] = vendor_pandas["P3"] * tech_cal["P4"]
+    vendor_pandas["P1"] = vendor_pandas["MSRP/List"].astype(float)
+    # vendor_pandas["P1"] = vendor_pandas["MSRP"]
+    vendor_pandas["P3"] = vendor_pandas["Jobber"].astype(float)
+    # vendor_pandas["P3"] = vendor_pandas["US Jobber "]
+    vendor_pandas["P5"] = vendor_pandas["AAM Cost"].astype(float)
+    # vendor_pandas["P5"] = vendor_pandas["Titan Cost"]
+    # vendor_pandas["P2"] = vendor_pandas["UMAP"]
+    vendor_pandas["P2"] = vendor_pandas["Unilateral Retail"]
+    # vendor_pandas["P4"] = vendor_pandas["P3"] * tech_cal["P4"]
+    vendor_pandas["P4"] = vendor_pandas["Unilateral Wholesale"]
 
-    # for index, item in enumerate(vendor_pandas["Unilateral Retail"]):
-    #     if item == "":
-    #         vendor_pandas["P2"][index] = vendor_pandas["P5"][index] / tech_cal["P2"]
-    #     else:
-    #         vendor_pandas["P2"][index] = item
+    for index, item in enumerate(vendor_pandas["Unilateral Retail"]):
+     if item == "":
+         vendor_pandas["P2"][index] = vendor_pandas["P5"][index] / tech_cal["P2"]
+     else:
+         vendor_pandas["P2"][index] = item
 
-    # for index, item in enumerate(vendor_pandas["Unilateral Wholesale"]):
-    #     if item == "":
-    #         vendor_pandas["P4"][index] = vendor_pandas["P3"][index] * tech_cal["P4"]
-    #     else:
-    #         vendor_pandas["P4"][index] = item
+    for index, item in enumerate(vendor_pandas["Unilateral Wholesale"]):
+     if item == "":
+         vendor_pandas["P4"][index] = vendor_pandas["P3"][index] * tech_cal["P4"]
+     else:
+         vendor_pandas["P4"][index] = item
+
+    # vendor_pandas["P2"] = vendor_pandas["P2"].astype(float)
+    vendor_pandas["P4"] = vendor_pandas["P4"].astype(float)
 
     # Set dimensions and status
-    # lname = "Weight - IN POUNDS"
-    lname = "Weight (Lb)"
+    lname = "Weight - IN POUNDS"
+    # lname = "Weight (Lb)"
     vendor_pandas[lname] = vendor_pandas[lname].astype(str)
     vendor_pandas[lname] = vendor_pandas[lname].str.replace('TBD', '0')
     vendor_pandas["Weight"] = vendor_pandas[lname].replace("", "0")
     vendor_pandas["Weight"] = vendor_pandas["Weight"].str.replace("½", ".5").astype(float)
 
     # vendor_pandas["Length"] = vendor_pandas[lname].astype(str)
-    vendor_pandas["Length"] = vendor_pandas["Length (In)"].astype(str)
-    vendor_pandas["Length"] = vendor_pandas["Length"].str.replace('TBD', '0')
-    vendor_pandas["Length"] = vendor_pandas["Length"].str.replace("½", ".5")
-    vendor_pandas["Length"] = vendor_pandas["Length"].replace("", "0").astype(float)
+    # vendor_pandas["Length"] = vendor_pandas["Length (In)"].astype(str)
+    # vendor_pandas["Length"] = vendor_pandas["Length"].str.replace('TBD', '0')
+    # vendor_pandas["Length"] = vendor_pandas["Length"].str.replace("½", ".5")
+    # vendor_pandas["Length"] = vendor_pandas["Length"].replace("", "0").astype(float)
 
     # vendor_pandas["Width"] = vendor_pandas[lname].astype(str)
-    vendor_pandas["Width"] = vendor_pandas["Width (In)"].astype(str)
-    vendor_pandas["Width"] = vendor_pandas["Width"].str.replace('TBD', '0')
-    vendor_pandas["Width"] = vendor_pandas["Width"].str.replace("½", ".5")
-    vendor_pandas["Width"] = vendor_pandas["Width"].replace("", "0").astype(float)
+    # vendor_pandas["Width"] = vendor_pandas["Width (In)"].astype(str)
+    # vendor_pandas["Width"] = vendor_pandas["Width"].str.replace('TBD', '0')
+    # vendor_pandas["Width"] = vendor_pandas["Width"].str.replace("½", ".5")
+    # vendor_pandas["Width"] = vendor_pandas["Width"].replace("", "0").astype(float)
 
     # vendor_pandas["Height"] = vendor_pandas[lname].astype(str)
-    vendor_pandas["Height"] = vendor_pandas["Height (In)"].astype(str)
-    vendor_pandas["Height"] = vendor_pandas["Height"].str.replace('TBD', '0')
-    vendor_pandas["Height"] = vendor_pandas["Height"].str.replace("½", ".5")
-    vendor_pandas["Height"] = vendor_pandas["Height"].replace("", "0").astype(float)
+    # vendor_pandas["Height"] = vendor_pandas["Height (In)"].astype(str)
+    # vendor_pandas["Height"] = vendor_pandas["Height"].str.replace('TBD', '0')
+    # vendor_pandas["Height"] = vendor_pandas["Height"].str.replace("½", ".5")
+    # vendor_pandas["Height"] = vendor_pandas["Height"].replace("", "0").astype(float)
 
     return vendor_pandas
 

@@ -18,6 +18,7 @@ def do_rug(vendor_pandas, tech_cal):
 
     # Remove rows with no price
     vendor_pandas = vendor_pandas[(vendor_pandas["AAM Cost"] != "")]
+    vendor_pandas = vendor_pandas[(vendor_pandas["AAM Cost"] != "Assembly Only")]
     vendor_pandas = vendor_pandas.reset_index(drop=True)
     
     # Create new Status/NewPart columns

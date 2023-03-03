@@ -24,6 +24,9 @@ def do_scs(vendor_pandas, tech_cal):
     
     # Create new description columns
     vendor_pandas["Desc1"] = vendor_pandas[short_desc].apply(lambda x: unidecode.unidecode(x))
+    vendor_pandas["Desc1"] = vendor_pandas["Desc1"].str.replace('\"', 'in')
+    vendor_pandas["Desc1"] = vendor_pandas["Desc1"].str.replace('\'', 'ft')
+
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].str.upper()
     vendor_pandas["Desc2"] = vendor_pandas["Desc1"]
 

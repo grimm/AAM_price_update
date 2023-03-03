@@ -41,16 +41,16 @@ def do_rsp(vendor_pandas, tech_cal):
     vendor_pandas["NewPart"] = vendor_pandas["NewPart"].apply(lambda x: "RSP" + x)
     
     # Create new description columns
+        
     vendor_pandas["Desc1"] = vendor_pandas[long_desc]
+    vendor_pandas["Desc1"] = vendor_pandas["Desc1"].str.replace("\"", "IN")
+    vendor_pandas["Desc1"] = vendor_pandas["Desc1"].str.replace("\'", "FT")
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].apply(lambda x: unidecode.unidecode(x))
-    vendor_pandas["Desc2"] = vendor_pandas[long_desc]
-    vendor_pandas["Desc2"] = vendor_pandas["Desc2"].apply(lambda x: unidecode.unidecode(x))
 
     # Upper case text and trim it to 30 characters
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].str.upper()
+    vendor_pandas["Desc2"] = vendor_pandas["Desc1"].apply(lambda x: x[30:60])
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].apply(lambda x: x[:30])
-    vendor_pandas["Desc2"] = vendor_pandas["Desc2"].str.upper()
-    vendor_pandas["Desc2"] = vendor_pandas["Desc2"].apply(lambda x: x[30:60])
 
     # Create all price fields
     vendor_pandas["P1"] = vendor_pandas["MSRP/List"]

@@ -14,19 +14,20 @@ import csv
 def do_vms(vendor_pandas, tech_cal):
     # print(vendor_pandas.columns)
     # Remove in rows with no data
-    vendor_pandas = vendor_pandas[(vendor_pandas["Series"] != "BT LIGHT INDUSTRIAL")]
+    vendor_pandas = vendor_pandas[(vendor_pandas["PartNo"] != 0)]
     vendor_pandas = vendor_pandas.reset_index(drop=True)
 
   	# Put really long header text in some vars
     long_desc = "Description"
 
     # Process part number
-    vendor_pandas["Part Number"] = vendor_pandas["ItemCode"].astype(str)
+    vendor_pandas["Part Number"] = vendor_pandas["PartNo"].astype(str)
     vendor_pandas["NewPart"] = vendor_pandas["Part Number"].apply(lambda x: "VMS" + x)
     
     # Create new description columns
     vendor_pandas["Desc1"] = vendor_pandas[long_desc].astype(str)
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].apply(lambda x: unidecode.unidecode(x))
+    vendor_pandas["Desc1"] = vendor_pandas["Desc1"].str.replace("\"", "IN")
 
     # Upper case text and trim it to 30 characters
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].str.upper()
@@ -34,8 +35,8 @@ def do_vms(vendor_pandas, tech_cal):
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].apply(lambda x: x[:30])
 
     # Create all price fields
-    vendor_pandas["P5"] = vendor_pandas["Customer Price"].replace( '[\$,)]','', regex=True ).astype(float)
-    vendor_pandas["P2"] = vendor_pandas["Jobber/MAP"].replace( '[\$,)]','', regex=True ).astype(float)
+    vendor_pandas["P5"] = vendor_pandas["Customer Price"].astype(float)
+    vendor_pandas["P2"] = vendor_pandas["Jobber"].astype(float)
     vendor_pandas["P3"] = vendor_pandas["P2"]
     vendor_pandas["P1"] = vendor_pandas["P2"]
     # vendor_pandas["P1"] = vendor_pandas["P3"] * tech_cal["P1"]

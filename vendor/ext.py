@@ -30,7 +30,6 @@ def do_ext(vendor_pandas, tech_cal):
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].apply(lambda x: x[:30])
 
     # Create all price fields
-    vendor_pandas["P1"] = vendor_pandas["MSRP/List"].astype(float)
     vendor_pandas["P3"] = vendor_pandas["Jobber"].astype(float)
     vendor_pandas["P5"] = vendor_pandas["AAM Cost"].astype(float)
 
@@ -39,6 +38,7 @@ def do_ext(vendor_pandas, tech_cal):
         if item == "":
             vendor_pandas["P2"][index] = vendor_pandas["P5"][index] / tech_cal["P2"]
     vendor_pandas["P2"] = vendor_pandas["P2"].astype(float)
+    vendor_pandas["P1"] = vendor_pandas["P2"]
 
     vendor_pandas["P4"] = vendor_pandas["MAP Wholesale / MSP"]
     for index, item in enumerate(vendor_pandas["P4"]):
@@ -48,8 +48,10 @@ def do_ext(vendor_pandas, tech_cal):
 
     # Set dimensions and status
     lname = "Weight - IN POUNDS"
-    vendor_pandas[lname] = vendor_pandas[lname].replace('', '0')
-    vendor_pandas["Weight"] = vendor_pandas[lname].astype(float)
+    # print(vendor_pandas[lname].tolist())
+    vendor_pandas["Weight"] = vendor_pandas[lname].str.replace('', '0')
+    # print(vendor_pandas["Weight"].tolist())
+    vendor_pandas["Weight"] = vendor_pandas["Weight"].astype(float)
 
     vendor_pandas["Length"] = vendor_pandas["Length"].replace("", "0").astype(float)
     vendor_pandas["Width"] = vendor_pandas["Width"].replace("", "0").astype(float)

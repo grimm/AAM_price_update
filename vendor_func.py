@@ -79,18 +79,20 @@ def vendor_func(vendor_name):
 	    import vendor.dia as vendor
 	elif vendor_name == "dom":
 	    import vendor.dom as vendor
-	elif vendor_name == "eccot":
-	    import vendor.eccot as vendor
-	elif vendor_name == "eccon":
-	    import vendor.eccon as vendor
+	elif vendor_name == "ecco":
+	    import vendor.ecco as vendor
 	elif vendor_name == "edge":
 	    import vendor.edge as vendor
+	elif vendor_name == "egr":
+	    import vendor.egr as vendor
 	elif vendor_name == "ele":
 	    import vendor.ele as vendor
 	elif vendor_name == "ext":
 	    import vendor.ext as vendor
 	elif vendor_name == "extm":
 	    import vendor.extm as vendor
+	elif vendor_name == "f55":
+	    import vendor.f55 as vendor
 	elif vendor_name == "fac":
 	    import vendor.fac as vendor
 	elif vendor_name == "ffi":
@@ -197,6 +199,8 @@ def vendor_func(vendor_name):
 	    import vendor.rig as vendor
 	elif vendor_name == "rlg":
 	    import vendor.rlg as vendor
+	elif vendor_name == "ros":
+	    import vendor.ros as vendor
 	elif vendor_name == "rtx":
 	    import vendor.rtx as vendor
 	elif vendor_name == "rug":

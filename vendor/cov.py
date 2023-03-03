@@ -17,7 +17,12 @@ def do_cov(vendor_pandas, tech_cal):
         cov_skus = yaml.load(f, Loader=yaml.FullLoader)
 
     skus_list = list(cov_skus.keys())
-    print(skus_list)
+    # print(skus_list)
+
+    # Remove promotional stuff
+    vendor_pandas = vendor_pandas[(vendor_pandas["Part Number"].isin(skus_list))]
+    vendor_pandas = vendor_pandas.reset_index(drop=True)
+
 
     # Create new Status/NewPart columns
     vendor_pandas['NewPart'] = vendor_pandas['Part Number'].astype(str)

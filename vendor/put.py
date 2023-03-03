@@ -12,8 +12,8 @@ import unidecode
 # Main vendor processing function
 def do_put(vendor_pandas, tech_cal):
     # Remove in rows with no data
-    vendor_pandas = vendor_pandas[(vendor_pandas["Unilateral Retail"] != "DO NOT SELL ONLINE")]
-    vendor_pandas = vendor_pandas.reset_index(drop=True)
+    # vendor_pandas = vendor_pandas[(vendor_pandas["Unilateral Retail"] != "DO NOT SELL ONLINE")]
+    # vendor_pandas = vendor_pandas.reset_index(drop=True)
 
     # Put really long header text in some vars
     short_desc = "Short Description (20 Characters or Less)"
@@ -51,13 +51,17 @@ def do_put(vendor_pandas, tech_cal):
     # vendor_pandas["P5"] = vendor_pandas["AAM Cost"].astype(float)
 
     # New Calculations
-    vendor_pandas["P3"] = vendor_pandas["Jobber"].astype(float)
-    vendor_pandas["P5"] = vendor_pandas["AAM Cost"].astype(float)
+    # vendor_pandas["P3"] = vendor_pandas["Jobber"].astype(float)
+    vendor_pandas["P3"] = vendor_pandas["New Jobber"].astype(float)
+    # vendor_pandas["P5"] = vendor_pandas["AAM Cost"].astype(float)
+    vendor_pandas["P5"] = vendor_pandas["MWD COST"].astype(float)
 
-    vendor_pandas["P2"] = vendor_pandas["Unilateral Retail"]
+    # vendor_pandas["P2"] = vendor_pandas["Unilateral Retail"]
+    vendor_pandas["P2"] = vendor_pandas["New MAP"]
     for index, item in enumerate(vendor_pandas["P2"]):
       if item == "":
-         vendor_pandas["P2"][index] = vendor_pandas["Unilateral Retail"][index]
+         # vendor_pandas["P2"][index] = vendor_pandas["Unilateral Retail"][index]
+         vendor_pandas["P2"][index] = vendor_pandas["New MAP"][index]
          if vendor_pandas["P2"][index] == "":
              vendor_pandas["P2"][index] = vendor_pandas["P5"][index] / tech_cal["P2"]
 
@@ -67,7 +71,8 @@ def do_put(vendor_pandas, tech_cal):
     vendor_pandas["P4"] = vendor_pandas["P5"] / tech_cal["P4"]
 
     # Set dimensions and status
-    lname = "Weight - IN POUNDS"
+    # lname = "Weight - IN POUNDS"
+    lname = "Weight"
     vendor_pandas[lname] = vendor_pandas[lname].replace('', '0')
     vendor_pandas[lname] = vendor_pandas[lname].replace('A', '0')
     vendor_pandas["Weight"] = vendor_pandas[lname].astype(float)
