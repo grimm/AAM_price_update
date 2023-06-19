@@ -33,9 +33,9 @@ def do_trex(vendor_pandas, tech_cal):
 
     # Create all price fields
     vendor_pandas["P1"] = vendor_pandas["MSRP/List"].astype(float)
-    vendor_pandas["P2"] = vendor_pandas["Unilateral Retail"].astype(float)
+    vendor_pandas["P2"] = vendor_pandas["MAP Retail"].astype(float)
     vendor_pandas["P3"] = vendor_pandas["Jobber"].astype(float)
-    vendor_pandas["P4"] = vendor_pandas["Unilateral Wholesale"].astype(float)
+    vendor_pandas["P4"] = vendor_pandas["MAP Wholesale / MSP"].astype(float)
     vendor_pandas["P5"] = vendor_pandas["AAM Cost"].astype(float)
 
     # for index, item in enumerate(vendor_pandas["P1"]):

@@ -20,7 +20,14 @@ def do_buy(vendor_pandas, tech_cal):
     vendor_pandas = vendor_pandas[(vendor_pandas["Amount01"] != "")]
     vendor_pandas = vendor_pandas.reset_index(drop=True)
 
+    # Strip out all snowdogg and spreader parts
+    vendor_pandas = vendor_pandas[(vendor_pandas["ItemPartNumber"].str[:2] != "14")]
     vendor_pandas = vendor_pandas[(vendor_pandas["ItemPartNumber"].str[:2] != "16")]
+    vendor_pandas = vendor_pandas[(vendor_pandas["ItemPartNumber"].str[:3] != "PRO")]
+    vendor_pandas = vendor_pandas[(vendor_pandas["ItemPartNumber"].str[:3] != "TGS")]
+    vendor_pandas = vendor_pandas[(vendor_pandas["ItemPartNumber"].str[:4] != "SHPE")]
+    vendor_pandas = vendor_pandas[(vendor_pandas["ItemPartNumber"] != "3011864")]
+    vendor_pandas = vendor_pandas[(vendor_pandas["ItemPartNumber"] != "3016233")]
     vendor_pandas = vendor_pandas.reset_index(drop=True)
 
     # Create new Status/NewPart columns
@@ -37,7 +44,13 @@ def do_buy(vendor_pandas, tech_cal):
 
     # Create all price fields
     vendor_pandas["P1"] = vendor_pandas["ListPrice"].astype(float)
-    vendor_pandas["P5"] = vendor_pandas["Amount01"].astype(float)
+    vendor_pandas["P5"] = vendor_pandas["Amount02"]
+
+    for index, item in enumerate(vendor_pandas["P5"]):
+        if item == "":
+            vendor_pandas["P5"][index] = vendor_pandas["Amount01"][index]
+
+    vendor_pandas["P5"] = vendor_pandas["P5"].astype(float)
 
     vendor_pandas["P2"] = vendor_pandas["P5"] / tech_cal["P2"]
     vendor_pandas["P3"] = vendor_pandas["P5"] / tech_cal["P3"]

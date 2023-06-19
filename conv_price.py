@@ -26,18 +26,18 @@ import run_vendor as run
 import vendor_sheet as sheet
 
 # Define the supported vendors and load yaml calculation and groups files
-Vendors = ["acc", "aci", "adu", "airl", "and", "anz", "amp", "ampm", "aor", "arb", "arcl",
+Vendors = ["aac", "aci", "adu", "airl", "and", "anz", "amp", "ampm", "aor", "arb", "arcl",
            "ard", "baja", "bak", "bap", "bdw", "best", "big", "bigm", "bkr", "brm", "brug",
            "btr", "bush", "buy", "carr", "cbp", "cipa", "cog", "cov", "crg", "curt", "curtmap",
-           "deck", "dez", "dia", "dom", "ecco", "edge", "egr", "ele", "ext", "extm", "f55",
-           "fac", "ffi", "fia", "fil", "fire", "fpm", "golite", "gor", "gorm", "hus", "hyp",
-           "ici", "kar", "kc", "kln", "knk", "knkm", "knn", "kso", "lift", "lnd", "luv", "mag",
-           "mas", "mass", "maxx", "mba", "mrw", "myp", "nfa", "nitro", "odr", "ovs", "par",
+           "deck", "dez", "dia", "dom", "duha", "ecco", "edge", "egr", "ele", "ext", "extm", "f55",
+           "fac", "federal", "ffi", "fia", "fil", "fire", "fpm", "golite", "gor", "gorm", "hus",
+           "hyp", "ici", "kar", "kc", "kln", "knk", "knkm", "knn", "kso", "lift", "lnd", "luv",
+           "mag", "mas", "mass", "maxx", "mba", "mrw", "myp", "nfa", "nitro", "odr", "ovs", "par",
            "pc", "piaa", "prime", "protec", "pull", "put", "qf", "rch", "rcs", "rdl", "rfn",
            "rgr", "rig", "rlg", "rnl", "road", "ros", "rrk", "trm", "rsp", "rtx", "rug", "sb",
            "scs", "sls", "snow", "stlc", "sup", "tech", "tfi", "tfp", "tft", "tom", "tim",
            "t-rex", "trux", "truxm", "und", "uws", "uwsb", "ven", "via", "vms", "warn",
-           "wes", "west", "wig", "yak", "zll"]
+           "wes", "west", "wig", "xan", "yak", "zll"]
 vendor_cal = {}
 product_groups = {}
 
@@ -97,16 +97,16 @@ nelson_csv_file = vname + "_UPDATE_NTE_" + date + ".csv"
 skiprow, sheet_name, multisheet, csvfile, conv = sheet.set_excel(args.vendor)
 
 vendor_pandas = pd.read_excel(args.file, keep_default_na=False, skiprows=skiprow)
-# if sheet_name == "" and csvfile == 0 and multisheet == []: # no sheet name
-#     vendor_pandas = pd.read_excel(args.file, keep_default_na=False, skiprows=skiprow)
+if sheet_name == "" and csvfile == 0 and multisheet == []: # no sheet name
+  vendor_pandas = pd.read_excel(args.file, keep_default_na=False, skiprows=skiprow)
 
-# elif not sheet_name == "":   # read a specific sheet out of the Excel file
-#     vendor_pandas = pd.read_excel(args.file, keep_default_na=False, skiprows=skiprow, sheet_name=sheet_name)
+elif not sheet_name == "":   # read a specific sheet out of the Excel file
+  vendor_pandas = pd.read_excel(args.file, keep_default_na=False, skiprows=skiprow, sheet_name=sheet_name)
 
-# elif multisheet:             # Load multiple sheets, these get put into a dictionary
-#     vendor_pandas = pd.read_excel(args.file, keep_default_na=False, skiprows=skiprow, sheet_name= multisheet, converters=conv)
-# elif csvfile == 1:           # Load CSV file instead of Excel
-#     vendor_pandas = pd.read_csv(args.file, keep_default_na=False)
+elif multisheet:             # Load multiple sheets, these get put into a dictionary
+  vendor_pandas = pd.read_excel(args.file, keep_default_na=False, skiprows=skiprow, sheet_name= multisheet, converters=conv)
+elif csvfile == 1:           # Load CSV file instead of Excel
+  vendor_pandas = pd.read_csv(args.file, keep_default_na=False)
 
 # Create CSV file dictionary
 # --------------------------

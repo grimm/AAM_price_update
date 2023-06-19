@@ -1,7 +1,7 @@
 #
 # kar.py
 #
-# This script holds functions for the vendor Kargo Master
+# This script holds functions for the vendor Kargo Master (Holman)
 #
 # Initial version - 12/14/2020 - Jason Grimes
 #
@@ -14,11 +14,11 @@ import csv
 # Main vendor processing function
 def do_kar(vendor_pandas, tech_cal):
     # Concatinate both sheets for processing
-    # vendor_pandas = pd.concat(vendor_pandas, axis=0)
+    vendor_pandas = pd.concat(vendor_pandas, axis=0)
 
     # Remove catalogs
     vendor_pandas = vendor_pandas[(vendor_pandas["Your Cost"] != "")]
-    vendor_pandas = vendor_pandas[(vendor_pandas["MAP"] != "#N/A")]
+    # vendor_pandas = vendor_pandas[(vendor_pandas["MAP"] != "#N/A")]
     vendor_pandas = vendor_pandas.reset_index(drop=True)
     
     # Create new Status/NewPart columns
@@ -39,12 +39,10 @@ def do_kar(vendor_pandas, tech_cal):
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].apply(lambda x: x[:30])
 
     # Create all price fields
-    vendor_pandas["P1"] = vendor_pandas["MAP"].replace({'\$': '', ',': ''}, regex=True)
-    vendor_pandas["P1"] = vendor_pandas["P1"].astype(float)
-
     vendor_pandas["P2"] = vendor_pandas["Trade Price"].astype(float)
-    vendor_pandas["P5"] = vendor_pandas["Including Surcharge"].astype(float)
+    vendor_pandas["P5"] = vendor_pandas["Your Cost"].astype(float)
 
+    vendor_pandas["P1"] = vendor_pandas["P5"] / tech_cal["P1"]
     vendor_pandas["P3"] = vendor_pandas["P5"] / tech_cal["P3"]
     vendor_pandas["P4"] = vendor_pandas["P5"] / tech_cal["P4"]
 

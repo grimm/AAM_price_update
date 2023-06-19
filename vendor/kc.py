@@ -28,8 +28,8 @@ def do_kc(vendor_pandas, tech_cal):
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].apply(lambda x: x[:30])
 
     # Create all price fields
-    vendor_pandas["P1"] = vendor_pandas["MAP"].astype(float)
-    vendor_pandas["P5"] = vendor_pandas["DIR FIXED COST\n(ALL RESELLERS)"]
+    vendor_pandas["P1"] = vendor_pandas["UPCOMING MAP"].astype(float)
+    vendor_pandas["P5"] = vendor_pandas["UPCOMING DIR FIXED COST"]
 
     vendor_pandas["P2"] = vendor_pandas["P1"].astype(float)
     vendor_pandas["P3"] = vendor_pandas["P1"]

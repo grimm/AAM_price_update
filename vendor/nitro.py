@@ -16,8 +16,8 @@ def do_nitro(vendor_pandas, tech_cal):
     # Create new Status/NewPart columns
     vendor_pandas['Part Number'] = vendor_pandas['mfg_original_sku'].astype(str)
     # removed prefix, part #s are too long
-    # vendor_pandas["NewPart"] = vendor_pandas["Part Number"].apply(lambda x: "NITRO" + x)
-    vendor_pandas["NewPart"] = vendor_pandas["Part Number"]
+    vendor_pandas["NewPart"] = vendor_pandas["Part Number"].apply(lambda x: "NIT" + x)
+    # vendor_pandas["NewPart"] = vendor_pandas["Part Number"]
     
     # Create new description columns
     vendor_pandas["Desc1"] = vendor_pandas["title"]
@@ -35,7 +35,7 @@ def do_nitro(vendor_pandas, tech_cal):
     vendor_pandas["P3"] = vendor_pandas["map_price"].astype(float)
     vendor_pandas["P4"] = vendor_pandas["map_price"].astype(float)
     # vendor_pandas["P5"] = vendor_pandas["w4_pricing"].astype(float)
-    vendor_pandas["P5"] = vendor_pandas["c_pricing"].astype(float)
+    vendor_pandas["P5"] = vendor_pandas["a_pricing"].astype(float)
 
     # Set dimensions and status
     vendor_pandas["Weight"] = vendor_pandas["weight"].astype(float)

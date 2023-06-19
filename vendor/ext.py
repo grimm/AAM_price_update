@@ -49,7 +49,7 @@ def do_ext(vendor_pandas, tech_cal):
     # Set dimensions and status
     lname = "Weight - IN POUNDS"
     # print(vendor_pandas[lname].tolist())
-    vendor_pandas["Weight"] = vendor_pandas[lname].str.replace('', '0')
+    vendor_pandas["Weight"] = vendor_pandas[lname].astype(str).replace('', '0')
     # print(vendor_pandas["Weight"].tolist())
     vendor_pandas["Weight"] = vendor_pandas["Weight"].astype(float)
 

@@ -16,7 +16,9 @@ def do_odr(vendor_pandas, tech_cal):
     long_desc = "Long Description 100 Characters or less WITHOUT application information"
 
     # Remove promotional items
-    vendor_pandas = vendor_pandas[~(vendor_pandas[short_desc] == "removed")]
+    vendor_pandas = vendor_pandas[(vendor_pandas[short_desc] != "")]
+    vendor_pandas = vendor_pandas[(vendor_pandas["MSRP/List"] != "")]
+    vendor_pandas = vendor_pandas.reset_index(drop=True)
 
     # Create new Status/NewPart columns
     vendor_pandas['NewPart'] = vendor_pandas['Part Number'].astype(str)

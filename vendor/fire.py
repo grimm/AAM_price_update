@@ -37,18 +37,19 @@ def do_fire(vendor_pandas, tech_cal):
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].apply(lambda x: x[:30])
 
     # Create all price fields
-    vendor_pandas["P1"] = vendor_pandas["Ocotber 1st, 2022 List Price"].replace("$","").replace(",","")
+    vendor_pandas["P1"] = vendor_pandas["April 1st, 2023 List Price"].replace("$","").replace(",","")
     vendor_pandas["P1"] = vendor_pandas["P1"].astype(float)
 
-    vendor_pandas["P3"] = vendor_pandas["October 1st, 2022 Jobber Price"].replace("$", "").replace(",","")
+    vendor_pandas["P3"] = vendor_pandas["April 1st, 2023 Jobber Price"].replace("$", "").replace(",","")
     vendor_pandas["P3"] = vendor_pandas["P3"].astype(float)
 
     vendor_pandas["P4"] = vendor_pandas["P3"] * tech_cal["P4"]
-    vendor_pandas["P5"] = vendor_pandas["P3"] * tech_cal["P5"]
+    vendor_pandas["P5"] = vendor_pandas["Titan Truck (36.0%)"].astype(float)
+    vendor_pandas["P5"] = vendor_pandas["P5"] * 1.01
 
     vendor_pandas["P2"] = vendor_pandas["UMP [USD]"].replace("$","").replace(",","")
     for index, item in enumerate(vendor_pandas["P2"]):
-        print(item)
+        # print(item)
         if item == "":
             vendor_pandas["P2"][index] = vendor_pandas["P5"][index] / tech_cal["P2"]
     vendor_pandas["P2"] = vendor_pandas["P2"].astype(float)

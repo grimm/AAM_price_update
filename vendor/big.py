@@ -61,6 +61,7 @@ def do_big(vendor_pandas, prod_group, tech_cal):
     lname = "Weight - IN POUNDS"
     vendor_pandas[lname] = vendor_pandas[lname].astype(str)
     vendor_pandas[lname] = vendor_pandas[lname].str.replace('TBD', '0')
+    vendor_pandas[lname] = vendor_pandas[lname].str.replace('-', '0')
     vendor_pandas["Weight"] = vendor_pandas[lname].astype(float)
 
     vendor_pandas["Length"] = vendor_pandas[lname].astype(str)

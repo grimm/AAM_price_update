@@ -16,7 +16,9 @@ def do_dez(vendor_pandas, tech_cal):
     long_desc = "Long Description 100 Characters or less WITHOUT application information"
 
     # Remove parts with no pricing
-    vendor_pandas = vendor_pandas.drop(vendor_pandas[(vendor_pandas['Jobber'] == "")].index).reset_index(drop=True)
+    vendor_pandas = vendor_pandas[(vendor_pandas["Jobber"] != "")]
+    vendor_pandas = vendor_pandas[(vendor_pandas["AAM Cost"] != "")]
+    vendor_pandas = vendor_pandas.reset_index(drop=True)
 
     # Create new Status/NewPart columns
     vendor_pandas["NewPart"] = vendor_pandas["Part Number"].apply(lambda x: "DEZ" + x)

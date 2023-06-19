@@ -8,15 +8,24 @@
 
 from datetime import datetime
 import unidecode
-import csv
+import pandas as pd
 
 # Main vendor processing function
 def do_snow(vendor_pandas, tech_cal):
     # Create new Status/NewPart columns
     vendor_pandas = vendor_pandas[(vendor_pandas["Amount01"] != "")]
-    vendor_pandas = vendor_pandas[(vendor_pandas["ItemPartNumber"].str[:2] == "16")]
     vendor_pandas = vendor_pandas.reset_index(drop=True)
 
+    part1 = vendor_pandas[(vendor_pandas["ItemPartNumber"].str[:2] == "14")]
+    part2 = vendor_pandas[(vendor_pandas["ItemPartNumber"].str[:2] == "16")]
+    part3 = vendor_pandas[(vendor_pandas["ItemPartNumber"].str[:3] == "PRO")]
+    part4 = vendor_pandas[(vendor_pandas["ItemPartNumber"].str[:3] == "TGS")]
+    part5 = vendor_pandas[(vendor_pandas["ItemPartNumber"].str[:4] == "SHPE")]
+    part6 = vendor_pandas[(vendor_pandas["ItemPartNumber"] == "3011864")]
+    part7 = vendor_pandas[(vendor_pandas["ItemPartNumber"] == "3016233")]
+
+    vendor_pandas = pd.concat([part1, part2, part3, part4, part5, part6, part7])
+    
     vendor_pandas['Part Number'] = vendor_pandas['ItemPartNumber']
     vendor_pandas["NewPart"] = vendor_pandas["Part Number"].apply(lambda x: "SNOW" + x)
      

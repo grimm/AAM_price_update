@@ -1,7 +1,7 @@
 #
-# acc.py
+# aac.py
 #
-# This script holds functions for the vendor ACC Performance
+# This script holds functions for the vendor ADVANCED ACCESSORY CONCEPTS
 #
 # Initial version - 05/10/2022 - Jason Grimes
 # Changed to new format, they are no longer in AAM
@@ -11,7 +11,7 @@ from datetime import datetime
 import unidecode
 
 # Main vendor processing function
-def do_acc(vendor_pandas, tech_cal):
+def do_aac(vendor_pandas, tech_cal):
     # Put really long header text in some vars
     long_desc = "Description"
 
@@ -22,7 +22,7 @@ def do_acc(vendor_pandas, tech_cal):
     vendor_pandas = vendor_pandas.reset_index(drop=True)
 
     vendor_pandas["Part Number"] = vendor_pandas["Part#"].astype(str)
-    vendor_pandas["NewPart"] = vendor_pandas["Part Number"].apply(lambda x: "ACC" + x)
+    vendor_pandas["NewPart"] = vendor_pandas["Part Number"].apply(lambda x: "AAC" + x)
     
     # Create new description columns
     vendor_pandas["Desc1"] = vendor_pandas[long_desc]

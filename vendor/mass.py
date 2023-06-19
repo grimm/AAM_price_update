@@ -18,7 +18,10 @@ def do_mass(vendor_pandas, tech_cal):
 
     # Create new Status/NewPart columns
     vendor_pandas['Part Number'] = vendor_pandas['Supplier Part No.'].astype(str)
-    vendor_pandas["NewPart"] = vendor_pandas["#"].astype(str)
+    # vendor_pandas["NewPart"] = vendor_pandas["#"].astype(str)
+
+    # FED (Federal Signal)
+    vendor_pandas["NewPart"] = vendor_pandas["Part Number"].apply(lambda x: "FED" + x)
 
     # WES
     # vendor_pandas["NewPart"] = vendor_pandas["Part"].astype(str)
@@ -75,6 +78,14 @@ def do_mass(vendor_pandas, tech_cal):
     # len_pandas = len(vendor_pandas.axes[0])
     # new_column = list("D" * len_pandas)
     # vendor_pandas["Status"] = new_column
+
+    # Set profit number
+    len_pandas = len(vendor_pandas.axes[0])
+    new_column = list("2" * len_pandas)
+    vendor_pandas["Profit"] = new_column
+
+    # for index, item in enumerate(vendor_pandas["Profit"]):
+    #     vendor_pandas["Profit"][index] = "FED"
 
     # Set product group code (Tech)
     # vendor_pandas["Group Code"] = vendor_pandas["Code"].astype(int)

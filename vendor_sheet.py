@@ -13,13 +13,13 @@ def set_excel(vendor):
   csvfile = 0
   
   # Set skiprow or default to 1
-  if (vendor == "tech") | (vendor == "west") | (vendor == "sb") | (vendor == "fil") | (vendor == "mass") | (vendor == "nitro") | (vendor == "rcs") | (vendor == "and") | (vendor == "yak") | (vendor == "mrw") | (vendor == "mrwm") | (vendor == "cbp") | (vendor == "cog") | (vendor == "cipa") | (vendor == "west") | (vendor == "pc") | (vendor == "tfp") | (vendor == "maxx") | (vendor == "rfn") | (vendor == "pull") | (vendor == "mag") | (vendor == "edge") | (vendor == "dia") | (vendor == "sup") | (vendor == "cov") | (vendor == "tom") | (vendor == "aci") | (vendor == "vms") | (vendor == "mba") | (vendor == "f55"):
+  if (vendor == "tech") | (vendor == "west") | (vendor == "sb") | (vendor == "fil") | (vendor == "mass") | (vendor == "nitro") | (vendor == "rcs") | (vendor == "and") | (vendor == "yak") | (vendor == "mrw") | (vendor == "mrwm") | (vendor == "cbp") | (vendor == "cog") | (vendor == "cipa") | (vendor == "west") | (vendor == "pc") | (vendor == "tfp") | (vendor == "maxx") | (vendor == "rfn") | (vendor == "pull") | (vendor == "mag") | (vendor == "edge") | (vendor == "dia") | (vendor == "sup") | (vendor == "cov") | (vendor == "tom") | (vendor == "aci") | (vendor == "vms") | (vendor == "mba") | (vendor == "federal") | (vendor == "aac") | (vendor == "myp"):
     skiprow = 0
-  elif (vendor == "mas") | (vendor == "kc") | (vendor == "fire") | (vendor == "kln") | (vendor == "truxm") | (vendor == "buy") | (vendor == "snow") | (vendor == "prime"):
+  elif (vendor == "mas") | (vendor == "kc") | (vendor == "fire") | (vendor == "kln") | (vendor == "truxm") | (vendor == "buy") | (vendor == "snow") | (vendor == "prime") | (vendor == "rdl"):
     skiprow = 2
-  elif (vendor == "odr") | (vendor == "wig") | (vendor == "lift") | (vendor == "ampm"):
+  elif (vendor == "wig") | (vendor == "lift") | (vendor == "ampm"):
     skiprow = 3
-  elif (vendor == "kar") | (vendor == "arb") | (vendor == "myp") | (vendor == "golite"):
+  elif (vendor == "kar") | (vendor == "arb") | (vendor == "golite"):
     skiprow = 4
   elif (vendor == "gorm") | (vendor == "ecco") | (vendor == "bigm") | (vendor == "road"):
     skiprow = 5
@@ -52,8 +52,8 @@ def set_excel(vendor):
   # if vendor == "mrw":
   #   multisheet = ["WHEELS", "ACCESSORIES"]
 
-  # if vendor == "yak":
-  #   multisheet = ["Part Info"]
+  if vendor == "yak":
+    multisheet = ["Products", "Replacement Parts"]
 
   #if vendor == "fire":
   #  multisheet = ["UMP Monitored ", " Not Monitored "]
@@ -65,8 +65,8 @@ def set_excel(vendor):
     sheetname = "Flat File"
   if vendor == "mas":
     sheetname = "FULL LIST"
-  if vendor == "yak":
-    sheetname = "Part Info"
+  # if vendor == "yak":
+  #   sheetname = "Part Info"
   if vendor == "btr":
     sheetname = "Better Built"
   if vendor == "protec":

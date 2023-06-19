@@ -1,4 +1,4 @@
-acc:  {main: "MSRP/List",   P1: 0,   P2: 0.0,   P3: 0,   P4: 0.75, P5: 0,    P6: 0,   NTE: 0}
+aac:  {main: "MSRP/List",   P1: 0,   P2: 0.0,   P3: 0,   P4: 0.75, P5: 0,    P6: 0,   NTE: 0}
 aci:  {main: "JOBBER",      P1: 0,   P2: 0.85,  P3: 0,   P4: 0.85, P5: 0,    P6: 0,   NTE: 0}
 adu:  {main: "MSRP/List",   P1: 0,   P2: 0,     P3: 0,   P4: 0,    P5: 0.85, P6: 0.95, NTE: 0}
 airl: {main: "MSRP/List",   P1: 0,   P2: 0.85,  P3: 0,   P4: 0.83, P5: 0,    P6: 0,   NTE: 0}
@@ -36,6 +36,7 @@ deck: {main: "MSRP/List",   P1: 0,   P2: 0.0,   P3: 0,   P4: 0.75, P5: 0.0,  P6:
 dez:  {main: "AAM COST",    P1: 0.6, P2: 0.6,   P3: 0,   P4: 0.75, P5: 0.0,  P6: 0,   NTE: 0}
 dia:  {main: "COST",        P1: 0,   P2: 0.0,   P3: 0.82, P4: 0.82, P5: 0.0, P6: 0,   NTE: 0}
 dom:  {main: "MSRP",        P1: 0.0, P2: 0.0,   P3: 0,   P4: 0.95, P5: 0.0,  P6: 0,   NTE: 0}
+duha: {main: "MSRP",        P1: 0.0, P2: 0.0,   P3: 0,   P4: 0.95, P5: 0.0,  P6: 0,   NTE: 0}
 ecco: {main: "WD",          P1: 0.5, P2: 0.6,   P3: 0.7, P4: 0.8,  P5: 0.8,  P6: 0,   NTE: 0}
 edge: {main: "COST",        P1: 0,   P2: 0.0,   P3: 0.82, P4: 0.82, P5: 0.0, P6: 0,   NTE: 0}
 egr:  {main: "COST",        P1: 0,   P2: 0,     P3: 0,   P4: 0.0,  P5: 0,    P6: 0,   NTE: 0}
@@ -43,6 +44,7 @@ ele:  {main: "COST",        P1: 0,   P2: 0,     P3: 0,   P4: 0.0,  P5: 0,    P6:
 ext:  {main: "MSRP/List",   P1: 0,   P2: 0.63,  P3: 0,   P4: 0.813, P5: 1.05, P6: 0,  NTE: 0}
 f55:  {main: "MSRP/List",   P1: 0,   P2: 0.0,   P3: 0,   P4: 0.8,  P5: 0.0,  P6: 0,   NTE: 0}
 fac:  {main: "MSRP/List",   P1: 0,   P2: 0.0,   P3: 0,   P4: 0.8,  P5: 0.0,  P6: 0,   NTE: 0}
+federal: {main: "MSRP/List", P1: 0,  P2: 0.0,   P3: 0,   P4: 0.0,  P5: 0.0,  P6: 0,   NTE: 0}
 ffi:  {main: "JOBBER",      P1: 0,   P2: 0.8,   P3: 0,   P4: 0.78, P5: 0,    P6: 0,   NTE: 0}
 fia:  {main: "JOBBER",      P1: 0,   P2: 0.8,   P3: 0,   P4: 0.85, P5: 0,    P6: 0,   NTE: 0}
 fil:  {main: "List Price",  P1: 0,   P2: 0.7,   P3: 0.75, P4: 0.85, P5: 0,   P6: 0,   NTE: 0}
@@ -54,7 +56,7 @@ gorm: {main: "COST",        P1: 0,   P2: 0.644, P3: 0,   P4: 0.85, P5: 0,    P6:
 hus:  {main: "JOBBER",      P1: 0.0, P2: 0.39,  P3: 0,   P4: 0.69, P5: 0.0,  P6: 0.0, NTE: 0}
 hyp:  {main: "JOBBER",      P1: 0.0, P2: 0.0,   P3: 0,   P4: 0.8,  P5: 0.0,  P6: 0,   NTE: 0}
 ici:  {main: "JOBBER",      P1: 0.6, P2: 0.8,   P3: 0,   P4: 0.8,  P5: 0.0,  P6: 0,   NTE: 0}
-kar:  {main: "Trade Price", P1: 0.8, P2: 0,     P3: 0.77, P4: 0.82, P5: 1.07, P6: 0,  NTE: 0}
+kar:  {main: "Trade Price", P1: 0.5, P2: 0,     P3: 0.77, P4: 0.82, P5: 1.07, P6: 0,  NTE: 0}
 kc:   {main: "MAP Price",   P1: 0.0, P2: 0.0,   P3: 0.0, P4: 0.0,  P5: 0.7,  P6: 0,   NTE: 0}
 kln:  {main: "List",        P1: 0,   P2: 0.0,   P3: 0.0, P4: 0.8,  P5: 0.6,  P6: 0,   NTE: 0}
 knk:  {main: "TRADE",       P1: 0,   P2: 0.9,   P3: 0.85, P4: 0.8, P5: 0,    P6: 0,   NTE: 0}
@@ -71,7 +73,7 @@ maxx: {main: "MSRP/List",   P1: 0.5, P2: 0.6,   P3: 0.7, P4: 0.8,  P5: 0,    P6:
 mba:  {main: "MSRP/List",   P1: 0,   P2: 0.0,   P3: 0.0, P4: 0.8,  P5: 0.0,  P6: 0,   NTE: 0}
 mrw:  {main: "MSRP",        P1: 0,   P2: 0,     P3: 0,   P4: 0.82, P5: 0.7,  P6: 0,   NTE: 0}
 mrwm: {main: "MSRP",        P1: 0,   P2: 0,     P3: 0,   P4: 0.0,  P5: 0.7,  P6: 0,   NTE: 0}
-myp:  {main: "LIST PRICE",  P1: 0,   P2: 0,     P3: 0.87, P4: 0.73, P5: 0,   P6: 0,   NTE: 0}
+myp:  {main: "LIST PRICE",  P1: 0,   P2: 0.6,   P3: 0.7, P4: 0.75, P5: 0,    P6: 0.8, NTE: 0}
 nfa:  {main: "COST",        P1: 0,   P2: 0.63,  P3: 0,   P4: 0.81, P5: 0,    P6: 0,   NTE: 0}
 nitro: {main: "COST",       P1: 0,   P2: 0,     P3: 0,   P4: 0.0,  P5: 0,    P6: 0,   NTE: 0}
 odr:  {main: "MSRP/List",   P1: 0,   P2: 0,     P3: 0,   P4: 0.72, P5: 0,    P6: 0,   NTE: 0}
@@ -124,5 +126,6 @@ warn: {main: "JOBBER",      P1: 0,   P2: 0.9,   P3: 0,   P4: 0.85, P5: 0,    P6:
 wes:  {main: "JOBBER",      P1: 0,   P2: 0.75,  P3: 0,   P4: 0.8,  P5: 0,    P6: 0,   NTE: 0}
 west: {main: "LIST",        P1: 0,   P2: 0.9,   P3: 0.8, P4: 0.75, P5: 0.6,  P6: 0,   NTE: 0}
 wig:  {main: "cost",        P1: 0,   P2: 0.9,   P3: 0,   P4: 0.8,  P5: 0,    P6: 0,   NTE: 0}
+xan:  {main: "MSRP",        P1: 0.0, P2: 0.65,  P3: 0.7, P4: 0.7,  P5: 0.0,  P6: 0,   NTE: 0}
 yak:  {main: "MAP",         P1: 0,   P2: 0,     P3: 0.725,P4: 0.725,P5: 0.9, P6: 0,   NTE: 0}
 zll:  {main: "MAP",         P1: 0,   P2: 0,     P3: 0.0, P4: 0.0,  P5: 0.0,  P6: 0,   NTE: 0}

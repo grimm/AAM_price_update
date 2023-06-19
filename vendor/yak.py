@@ -8,13 +8,23 @@
 
 from datetime import datetime
 import unidecode
-import csv
+import pandas as pd
 
 # Main vendor processing function
 def do_yak(vendor_pandas, tech_cal):
+    # Concat all sheet into one frame
+    frames = []
+    sheets = ["Products", "Replacement Parts"]
+
+    for sheet in sheets:
+        frames.append(vendor_pandas[sheet])
+
+    vendor_pandas = pd.concat(frames)
+
     # Remove in rows with no data
-    vendor_pandas = vendor_pandas[(vendor_pandas["WHSL"] != "")]
+    vendor_pandas = vendor_pandas[(vendor_pandas["Titan Price"] != "")]
     vendor_pandas = vendor_pandas[(vendor_pandas["MSRP"] != "n/a")]
+    vendor_pandas = vendor_pandas[(vendor_pandas["MSRP"] != "")]
     vendor_pandas = vendor_pandas.reset_index(drop=True)
 
     # Create new Status/NewPart columns
@@ -37,8 +47,8 @@ def do_yak(vendor_pandas, tech_cal):
     # Create all price fields
     vendor_pandas["P1"] = vendor_pandas["MSRP"].replace("n/a", "0").astype(float)
     vendor_pandas["P2"] = vendor_pandas["P1"]
-    vendor_pandas["P5"] = vendor_pandas["WHSL"].astype(float)
-    vendor_pandas["P5"] = vendor_pandas["P5"] * tech_cal["P5"]
+    vendor_pandas["P5"] = vendor_pandas["Titan Price"].astype(float)
+    # vendor_pandas["P5"] = vendor_pandas["P5"] * tech_cal["P5"]
     vendor_pandas["P3"] = vendor_pandas["P5"] / tech_cal["P3"]
     vendor_pandas["P4"] = vendor_pandas["P5"] / tech_cal["P4"]
 
@@ -46,10 +56,15 @@ def do_yak(vendor_pandas, tech_cal):
     len_pandas = len(vendor_pandas.axes[0])
     new_column = list("0" * len_pandas)
 
-    vendor_pandas["Weight"] = new_column
-    vendor_pandas["Length"] = new_column
-    vendor_pandas["Width"] = new_column
-    vendor_pandas["Height"] = new_column
+    # vendor_pandas["Weight"] = new_column
+    # vendor_pandas["Length"] = new_column
+    # vendor_pandas["Width"] = new_column
+    # vendor_pandas["Height"] = new_column
+
+    vendor_pandas["Weight"] = vendor_pandas["Ship Weight (lbs)"]
+    vendor_pandas["Length"] = vendor_pandas["Length\n(in)"]
+    vendor_pandas["Width"] = vendor_pandas["Width\n(in)"]
+    vendor_pandas["Height"] = vendor_pandas["Height\n(in)"]
 
     return vendor_pandas
 

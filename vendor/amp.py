@@ -14,6 +14,9 @@ def do_amp(vendor_pandas, tech_cal):
     short_desc = "Short Description (20 Characters or Less)"
     long_desc = "Long Description 100 Characters or less WITHOUT application information"
 
+    # vendor_pandas = vendor_pandas[(vendor_pandas["MSRP/List"] != "")]
+    # vendor_pandas = vendor_pandas.reset_index(drop=True)
+
     # Remove promotional items
     vendor_pandas = vendor_pandas[~((vendor_pandas["Jobber"] == vendor_pandas["AAM Cost"]) | (vendor_pandas["MSRP/List"] == vendor_pandas["AAM Cost"]))]
     vendor_pandas = vendor_pandas[~(vendor_pandas[short_desc] == "AIRAID Trucker Hat")]
@@ -37,9 +40,9 @@ def do_amp(vendor_pandas, tech_cal):
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].apply(lambda x: x[:30])
 
     # Create all price fields
-    vendor_pandas["P1"] = vendor_pandas["MSRP/List"].astype(float)
     vendor_pandas["P3"] = vendor_pandas["Jobber"].astype(float)
-    vendor_pandas["P2"] = vendor_pandas["Unilateral Retail"].astype(float)
+    vendor_pandas["P1"] = vendor_pandas["P3"]
+    vendor_pandas["P2"] = vendor_pandas["P3"]
     vendor_pandas["P5"] = vendor_pandas["AAM Cost"].astype(float)
     vendor_pandas["P4"] = vendor_pandas["Unilateral Wholesale"].astype(float)
 

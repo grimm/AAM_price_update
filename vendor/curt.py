@@ -20,7 +20,7 @@ def do_curt(vendor_pandas, tech_cal):
     print(vendor_pandas.columns)
     # Filter out all parts that are 5 digits long (not kitted SKU)
     vendor_pandas['Part Number'] = vendor_pandas['Part Number'].astype(str)
-    vendor_pandas = vendor_pandas[(vendor_pandas["Part Number"].str.len() == 5)]
+    vendor_pandas = vendor_pandas[(vendor_pandas["Part Number"].str.len() == 5) | (vendor_pandas["Part Number"].str.len() == 6)]
 
     # Filter out any part that has emailed for cost
     vendor_pandas = vendor_pandas[(vendor_pandas["AAM Cost"] != "Emailed for Cost")]

@@ -6,8 +6,8 @@ def vendor(vendor_pandas, vendor_cal, product_groups, vendor_name, vendor, disco
 	titan_columns_group = ["NewPart", "Part Number", "Desc1", "Desc2", "P1", "P2", "P3", "P4",
 	                       "P5", "Length", "Width", "Height", "Weight", "Group Code"]
 
-	if vendor_name == "acc":
-	    new_pandas = vendor.do_acc(vendor_pandas, vendor_cal["acc"])
+	if vendor_name == "aac":
+	    new_pandas = vendor.do_aac(vendor_pandas, vendor_cal["aac"])
 	    titan_columns = ["NewPart", "Part Number", "Desc1", "Desc2", "P1", "P2", "P3",
 	                     "P4", "P5", "Length", "Width", "Height", "Weight"]
 
@@ -221,6 +221,12 @@ def vendor(vendor_pandas, vendor_cal, product_groups, vendor_name, vendor, disco
                      "P5", "Length", "Width", "Height", "Weight"]
 	    nelson_columns = titan_columns
 
+	if vendor_name == "duha":
+	    new_pandas = vendor.do_duha(vendor_pandas, vendor_cal["duha"])
+	    titan_columns = ["NewPart", "Part Number", "Desc1", "Desc2", "P1", "P2", "P3", "P4",
+                     "P5", "Length", "Width", "Height", "Weight"]
+	    nelson_columns = titan_columns
+
 	if vendor_name == "ecco":
 	    new_pandas = vendor.do_ecco(vendor_pandas, vendor_cal["ecco"])
 	    titan_columns = ["NewPart", "Part Number", "Desc1", "Desc2", "P1", "P2", "P3", "P4",
@@ -277,6 +283,12 @@ def vendor(vendor_pandas, vendor_cal, product_groups, vendor_name, vendor, disco
 
 	if vendor_name == "fac":
 	    new_pandas = vendor.do_fac(vendor_pandas, vendor_cal["fac"])
+	    titan_columns = ["NewPart", "Part Number", "Desc1", "Desc2", "P1", "P2", "P3", "P4",
+                     "P5", "Length", "Width", "Height", "Weight"]
+	    nelson_columns = titan_columns
+
+	if vendor_name == "federal":
+	    new_pandas = vendor.do_federal(vendor_pandas, vendor_cal["federal"])
 	    titan_columns = ["NewPart", "Part Number", "Desc1", "Desc2", "P1", "P2", "P3", "P4",
                      "P5", "Length", "Width", "Height", "Weight"]
 	    nelson_columns = titan_columns
@@ -412,7 +424,8 @@ def vendor(vendor_pandas, vendor_cal, product_groups, vendor_name, vendor, disco
 	if vendor_name == "mass":
 	    new_pandas = vendor.do_mass(vendor_pandas, vendor_cal["mass"])
 	    # titan_columns = ["NewPart", "Part Number", "Desc1", "Desc2", "P1", "P2", "P3", "P4", "P5"]
-	    titan_columns = ["NewPart", "Part Number", "Desc1", "Desc2", "P1", "P2", "P3", "P4", "P5"] # Tech
+	    # titan_columns = ["NewPart", "Part Number", "Desc1", "Desc2", "P1", "P2", "P3", "P4", "P5"] # Tech
+	    titan_columns = ["NewPart", "Part Number", "Desc1", "Desc2", "P1", "P2", "P3", "P4", "P5", "Profit"] # FED
 	    # titan_columns = ["NewPart", "Desc1", "Desc2", "Status"] # WES
 	    nelson_columns = titan_columns
 
@@ -732,6 +745,12 @@ def vendor(vendor_pandas, vendor_cal, product_groups, vendor_name, vendor, disco
 	    new_pandas = vendor.do_wig(vendor_pandas, vendor_cal["wig"])
 	    titan_columns = ["NewPart", "Part Number", "Desc1", "Desc2", "P1", "P2", "P3", "P4",
                      "P5", "Length", "Width", "Height", "Weight"]
+	    nelson_columns = titan_columns
+
+	if vendor_name == "xan":
+	    new_pandas = vendor.do_xan(vendor_pandas, vendor_cal["xan"])
+	    titan_columns = ["NewPart", "Part Number", "Desc1", "Desc2", "P1", "P2", "P3", "P4",
+                     "P5"]
 	    nelson_columns = titan_columns
 
 	if vendor_name == "yak":

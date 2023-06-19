@@ -48,7 +48,7 @@ def do_bak(vendor_pandas, tech_cal):
     vendor_pandas["Weight"] = vendor_pandas["Weight - IN POUNDS"].replace("", "0").astype(float)
     vendor_pandas["Length"] = vendor_pandas["Length"].astype(str).map(lambda x: x.replace(' lbs', ''))
     vendor_pandas["Length"] = vendor_pandas["Length"].astype(str).map(lambda x: x.replace(' LBS', ''))
-    print(vendor_pandas["Length"])
+    # print(vendor_pandas["Length"])
     vendor_pandas["Length"] = vendor_pandas["Length"].replace("", "0").astype(float)
 
     vendor_pandas["Width"] = vendor_pandas["Width"].replace("", "0").astype(float)

@@ -3,8 +3,8 @@
 def vendor_func(vendor_name):
 	if vendor_name == "tech":
 	    import vendor.tech as vendor
-	elif vendor_name == "acc":
-	    import vendor.acc as vendor
+	elif vendor_name == "aac":
+	    import vendor.aac as vendor
 	elif vendor_name == "aci":
 	    import vendor.aci as vendor
 	elif vendor_name == "adu":
@@ -79,6 +79,8 @@ def vendor_func(vendor_name):
 	    import vendor.dia as vendor
 	elif vendor_name == "dom":
 	    import vendor.dom as vendor
+	elif vendor_name == "duha":
+	    import vendor.duha as vendor
 	elif vendor_name == "ecco":
 	    import vendor.ecco as vendor
 	elif vendor_name == "edge":
@@ -95,6 +97,8 @@ def vendor_func(vendor_name):
 	    import vendor.f55 as vendor
 	elif vendor_name == "fac":
 	    import vendor.fac as vendor
+	elif vendor_name == "federal":
+	    import vendor.federal as vendor
 	elif vendor_name == "ffi":
 	    import vendor.ffi as vendor
 	elif vendor_name == "fia":
@@ -271,6 +275,8 @@ def vendor_func(vendor_name):
 	    import vendor.west as vendor
 	elif vendor_name == "wig":
 	    import vendor.wig as vendor
+	elif vendor_name == "xan":
+	    import vendor.xan as vendor
 	elif vendor_name == "yak":
 	    import vendor.yak as vendor
 	elif vendor_name == "zll":
