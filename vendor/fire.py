@@ -15,8 +15,8 @@ import csv
 # Main vendor processing function
 def do_fire(vendor_pandas, tech_cal):
     # Remove parts with no pricing
-    vendor_pandas = vendor_pandas[(vendor_pandas["Ocotber 1st, 2022 List Price"] != "NA")]
-    vendor_pandas = vendor_pandas[(vendor_pandas["Ocotber 1st, 2022 List Price"] != "Ocotber 1st, 2022 List Price")]
+    vendor_pandas = vendor_pandas[(vendor_pandas["April 1st, 2023 List Price"] != "NA")]
+    vendor_pandas = vendor_pandas[(vendor_pandas["April 1st, 2023 List Price"] != "April 1st, 2023 List Price")]
     vendor_pandas = vendor_pandas.reset_index(drop=True)
 
     # Concatinate both sheets for processing

@@ -6,10 +6,21 @@
 # Initial version - 9/24/2020 - Jason Grimes
 #
 
+import pandas as pd
+
 # Main vendor processing function
 def do_tim(vendor_pandas, tech_cal):
+    # Concat all sheet into one frame
+    frames = []
+    sheets = ["TIMBREN SES & AORB", "SPACER KITS"]
+
+    for sheet in sheets:
+        frames.append(vendor_pandas[sheet])
+
+    vendor_pandas = pd.concat(frames)
+
     # Remove junk in the file
-    vendor_pandas = vendor_pandas.head(-2)
+    vendor_pandas = vendor_pandas.head(-1)
     
     # Copy Part # column to NewPart column and modify to add TIM
     vendor_pandas["NewPart"] = vendor_pandas["PART #"]
@@ -21,6 +32,8 @@ def do_tim(vendor_pandas, tech_cal):
     # Create description 1 and 2
     # Upper case text and trim it to 30 characters
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].str.upper()
+    vendor_pandas["Desc1"] = vendor_pandas["Desc1"].replace("”", "IN")
+    vendor_pandas["Desc1"] = vendor_pandas["Desc1"].replace("\'", "FT")
     vendor_pandas["Desc2"] = vendor_pandas["Desc1"].apply(lambda x: x[30:60])
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].apply(lambda x: x[:30])
 

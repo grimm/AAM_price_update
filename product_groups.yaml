@@ -355,6 +355,8 @@ bignew:
   "universal bed rails": 0
 
 tech:
+  "ToolTray ": 0
+  "Cargo With Liner Bumper Protector": 0
   "TechLiner": 0
   "Seat Back Protectors": 0
   "Cargo Liner With Bumper Protector": 0

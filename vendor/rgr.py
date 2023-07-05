@@ -31,7 +31,7 @@ def do_rgr(vendor_pandas, tech_cal):
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].apply(lambda x: x[:30])
 
     # Create all price fields
-    vendor_pandas["P1"] = vendor_pandas["MSRP/List"].astype(float)
+    vendor_pandas["P1"] = vendor_pandas["MSRP/List"]
     vendor_pandas["P3"] = vendor_pandas["Jobber"].astype(float)
     vendor_pandas["P4"] = vendor_pandas["P3"] * tech_cal["P4"]
     vendor_pandas["P5"] = vendor_pandas["AAM Cost"].astype(float)
@@ -39,9 +39,15 @@ def do_rgr(vendor_pandas, tech_cal):
     vendor_pandas["P2"] = vendor_pandas["MAP Retail"]
     for index, item in enumerate(vendor_pandas["MAP Retail"]):
         if item == "":
-            vendor_pandas["P2"][index] = vendor_pandas["P3"][index] / tech_cal["P2"]
+            vendor_pandas["P2"][index] = vendor_pandas["P3"][index] * tech_cal["P2"]
         else:
             vendor_pandas["P2"][index] = item
+    vendor_pandas["P2"] = vendor_pandas["P2"].astype(float)
+
+    for index, item in enumerate(vendor_pandas["P1"]):
+        if item == "":
+            vendor_pandas["P1"][index] = vendor_pandas["P2"][index]
+    vendor_pandas["P1"] = vendor_pandas["P1"].astype(float)
 
     # Set dimensions and status
     vendor_pandas["Weight"] = vendor_pandas["Weight - IN POUNDS"]

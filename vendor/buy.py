@@ -44,11 +44,11 @@ def do_buy(vendor_pandas, tech_cal):
 
     # Create all price fields
     vendor_pandas["P1"] = vendor_pandas["ListPrice"].astype(float)
-    vendor_pandas["P5"] = vendor_pandas["Amount02"]
+    vendor_pandas["P5"] = vendor_pandas["Amount01"]
 
-    for index, item in enumerate(vendor_pandas["P5"]):
-        if item == "":
-            vendor_pandas["P5"][index] = vendor_pandas["Amount01"][index]
+    # for index, item in enumerate(vendor_pandas["P5"]):
+    #     if item == "":
+    #         vendor_pandas["P5"][index] = vendor_pandas["Amount01"][index]
 
     vendor_pandas["P5"] = vendor_pandas["P5"].astype(float)
 

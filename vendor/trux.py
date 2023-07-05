@@ -30,10 +30,10 @@ def do_trux(vendor_pandas, prod_group, tech_cal):
     # Create all price fields
     vendor_pandas["P3"] = vendor_pandas["Jobber"].astype(float)
 
-    vendor_pandas["P1"] = vendor_pandas["MSRP/List"]
-    for index, item in enumerate(vendor_pandas["P1"]):
-        if item == "" or item =="n/a":
-            vendor_pandas["P1"][index] = vendor_pandas["P3"][index]
+    # vendor_pandas["P1"] = vendor_pandas["MSRP/List"]
+    # for index, item in enumerate(vendor_pandas["P1"]):
+    #     if item == "" or item =="n/a":
+    #         vendor_pandas["P1"][index] = vendor_pandas["P3"][index]
 
     vendor_pandas["P5"] = vendor_pandas["AAM Cost"].astype(float)
 
@@ -54,8 +54,8 @@ def do_trux(vendor_pandas, prod_group, tech_cal):
             vendor_pandas["P4"][index] = vendor_pandas["P5"][index] / tech_cal["P4"]
     vendor_pandas["P4"] = vendor_pandas["P4"].astype(float)
     
-    vendor_pandas["P1"] = vendor_pandas["P1"].astype(float)
     vendor_pandas["P2"] = vendor_pandas["P2"].astype(float)
+    vendor_pandas["P1"] = vendor_pandas["P2"]
 
     # Set dimensions and status
     vendor_pandas["Weight"] = vendor_pandas["Weight - IN POUNDS"].astype(float)

@@ -55,6 +55,9 @@ def set_excel(vendor):
   if vendor == "yak":
     multisheet = ["Products", "Replacement Parts"]
 
+  if vendor == "tim":
+    multisheet = ["TIMBREN SES & AORB", "SPACER KITS"]
+
   #if vendor == "fire":
   #  multisheet = ["UMP Monitored ", " Not Monitored "]
 
