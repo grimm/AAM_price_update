@@ -1,9 +1,9 @@
 #
-# vms.py
+# pj.py
 #
-# This script holds functions for the vendor Vision X USA
+# This script holds functions for the vendor Vision X USA Projecta line
 #
-# Initial version - 02/01/2021 - Jason Grimes
+# Initial version - 10/20/2023 - Jason Grimes
 #
 
 from datetime import datetime
@@ -11,18 +11,18 @@ import unidecode
 import csv
 
 # Main vendor processing function
-def do_vms(vendor_pandas, tech_cal):
+def do_pj(vendor_pandas, tech_cal):
     # print(vendor_pandas.columns)
     # Remove in rows with no data
-    vendor_pandas = vendor_pandas[(vendor_pandas["PartNo"] != 0)]
-    vendor_pandas = vendor_pandas.reset_index(drop=True)
+    # vendor_pandas = vendor_pandas[(vendor_pandas["PartNo"] != 0)]
+    # vendor_pandas = vendor_pandas.reset_index(drop=True)
 
   	# Put really long header text in some vars
-    long_desc = "Description"
+    long_desc = "DESCRIPTION"
 
     # Process part number
-    vendor_pandas["Part Number"] = vendor_pandas["ItemCode"].astype(str)
-    vendor_pandas["NewPart"] = vendor_pandas["Part Number"].apply(lambda x: "VMS" + x)
+    vendor_pandas["Part Number"] = vendor_pandas["ITEM #"].astype(str)
+    vendor_pandas["NewPart"] = vendor_pandas["Part Number"]
     
     # Create new description columns
     vendor_pandas["Desc1"] = vendor_pandas[long_desc].astype(str)
@@ -35,12 +35,12 @@ def do_vms(vendor_pandas, tech_cal):
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].apply(lambda x: x[:30])
 
     # Create all price fields
-    vendor_pandas["P5"] = vendor_pandas["Customer Price"].astype(float)
-    vendor_pandas["P2"] = vendor_pandas["Jobber"].astype(float)
-    vendor_pandas["P3"] = vendor_pandas["P2"]
-    vendor_pandas["P1"] = vendor_pandas["P2"]
+    vendor_pandas["P1"] = vendor_pandas["JOBBER"].astype(float)
+    vendor_pandas["P2"] = vendor_pandas["P1"]
+    vendor_pandas["P3"] = vendor_pandas["P1"]
     # vendor_pandas["P1"] = vendor_pandas["P3"] * tech_cal["P1"]
-    vendor_pandas["P4"] = vendor_pandas["P3"] * tech_cal["P4"]
+    vendor_pandas["P5"] = vendor_pandas["P1"] * 0.5525
+    vendor_pandas["P4"] = vendor_pandas["P1"] * tech_cal["P4"]
 
     # Set dimensions and status
     # len_pandas = len(vendor_pandas.axes[0])

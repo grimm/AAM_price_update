@@ -27,12 +27,12 @@ def do_cipa(vendor_pandas, tech_cal):
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].apply(lambda x: x[:30])
 
     # Create all price fields
-    vendor_pandas["P3"] = vendor_pandas["JOBBER updated 01/01/2022"].astype(float)
-    vendor_pandas["P5"] = vendor_pandas["WD updated 01/01/2022"].astype(float)
+    vendor_pandas["P3"] = vendor_pandas["JOBBER updated 01/01/2024"].astype(float)
+    vendor_pandas["P5"] = vendor_pandas["WD Updated 01/01/2024"].astype(float)
 
     vendor_pandas["P1"] = vendor_pandas["P3"] * tech_cal["P1"]
     vendor_pandas["P2"] = vendor_pandas["P3"] / tech_cal["P2"]
-    vendor_pandas["P4"] = vendor_pandas["P3"] / tech_cal["P4"]
+    vendor_pandas["P4"] = vendor_pandas["P3"] * tech_cal["P4"]
 
     return vendor_pandas
 

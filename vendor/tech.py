@@ -88,6 +88,8 @@ def do_tech(vendor_pandas, prod_group, tech_cal, new_cal):
             vendor_pandas["P3"] = vendor_pandas["Jobber"]
 
         vendor_pandas["P4"] = vendor_pandas["P3"] * tech_cal["P4"]
+        vendor_pandas["P4"] = vendor_pandas["P4"].astype(float)
+        vendor_pandas["P3"] = vendor_pandas["P3"].astype(float)
         vendor_pandas["P2"] = vendor_pandas["P1"]
     else:
         # Get prices (mass update)
@@ -117,6 +119,7 @@ def do_tech(vendor_pandas, prod_group, tech_cal, new_cal):
                     vendor_pandas["Group"][index] = 0
             if vendor_pandas["Group"][index] == 99999:
                 # print("******* Warning - " + item + " not found in product groups!")
+                # print(item + "*")
                 print(item)
     else:
         # Get group codes (mass update)

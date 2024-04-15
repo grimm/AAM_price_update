@@ -52,7 +52,7 @@ def do_hus(vendor_pandas, tech_cal):
     for index, item in enumerate(vendor_pandas["P4"]):
       if item == "               " or item == "":
         vendor_pandas["P4"][index] = vendor_pandas["P5"][index] / tech_cal["P4"]
-      print(index, vendor_pandas["P4"][index])
+      # print(index, vendor_pandas["P4"][index])
 
     vendor_pandas["P2"] = vendor_pandas["P2"].astype(float)
     vendor_pandas["P1"] = vendor_pandas["P2"]

@@ -12,9 +12,12 @@ import pandas as pd
 
 # Main vendor processing function
 def do_yak(vendor_pandas, tech_cal):
+    # Fix Whsl column name
+    vendor_pandas["Part Info"]["Whsl"] = vendor_pandas["Part Info"]["WHSL"]
+
     # Concat all sheet into one frame
     frames = []
-    sheets = ["Products", "Replacement Parts"]
+    sheets = ["Part Info", "Replacement Part Info"]
 
     for sheet in sheets:
         frames.append(vendor_pandas[sheet])
@@ -22,7 +25,7 @@ def do_yak(vendor_pandas, tech_cal):
     vendor_pandas = pd.concat(frames)
 
     # Remove in rows with no data
-    vendor_pandas = vendor_pandas[(vendor_pandas["Titan Price"] != "")]
+    # vendor_pandas = vendor_pandas[(vendor_pandas["Titan Price"] != "")]
     vendor_pandas = vendor_pandas[(vendor_pandas["MSRP"] != "n/a")]
     vendor_pandas = vendor_pandas[(vendor_pandas["MSRP"] != "")]
     vendor_pandas = vendor_pandas.reset_index(drop=True)
@@ -47,10 +50,15 @@ def do_yak(vendor_pandas, tech_cal):
     # Create all price fields
     vendor_pandas["P1"] = vendor_pandas["MSRP"].replace("n/a", "0").astype(float)
     vendor_pandas["P2"] = vendor_pandas["P1"]
-    vendor_pandas["P5"] = vendor_pandas["Titan Price"].astype(float)
-    # vendor_pandas["P5"] = vendor_pandas["P5"] * tech_cal["P5"]
+    # vendor_pandas["P5"] = vendor_pandas["Titan Price"].astype(float)
+    vendor_pandas["P5"] = vendor_pandas["Whsl"]
+    vendor_pandas["P5"] = vendor_pandas["P5"] * tech_cal["P5"]
     vendor_pandas["P3"] = vendor_pandas["P5"] / tech_cal["P3"]
     vendor_pandas["P4"] = vendor_pandas["P5"] / tech_cal["P4"]
+
+    vendor_pandas["P3"] = vendor_pandas["P3"].astype(float)
+    vendor_pandas["P4"] = vendor_pandas["P4"].astype(float)
+    vendor_pandas["P5"] = vendor_pandas["P5"].astype(float)
 
     # Set dimensions
     len_pandas = len(vendor_pandas.axes[0])

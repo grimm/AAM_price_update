@@ -13,6 +13,7 @@ import csv
 # Main vendor processing function
 def do_dia(vendor_pandas, tech_cal):
     # Remove all rows that are not part of the brand
+    # print(vendor_pandas.columns)
     vendor_pandas = vendor_pandas[(vendor_pandas["Brand"] == "DiabloSport")]
     vendor_pandas = vendor_pandas[(vendor_pandas["SRP"] != "N/A")]
     vendor_pandas = vendor_pandas.reset_index(drop=True)

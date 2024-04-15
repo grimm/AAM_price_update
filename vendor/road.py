@@ -36,15 +36,21 @@ def do_road(vendor_pandas, tech_cal):
     # Create all price fields
     vendor_pandas['P1'] = vendor_pandas['Retail'].astype(float)
     vendor_pandas["P2"] = vendor_pandas["MAP Price"]
-    vendor_pandas["P3"] = vendor_pandas["P1"]
-    vendor_pandas["P4"] = vendor_pandas["P3"] * tech_cal["P4"]
-    vendor_pandas["P5"] = vendor_pandas["Base Price"].astype(float)
+    vendor_pandas["P3"] = vendor_pandas["P2"]
+    vendor_pandas["P5"] = vendor_pandas["Titan price"].astype(float)
 
     for index, item in enumerate(vendor_pandas["P2"]):
-        if item == "":
+        if item == "" or item == 0:
             vendor_pandas["P2"][index] = vendor_pandas["P1"][index]
     
     vendor_pandas["P2"] = vendor_pandas["P2"].astype(float)
+
+    for index, item in enumerate(vendor_pandas["P3"]):
+        if item == "" or item == 0:
+            vendor_pandas["P3"][index] = vendor_pandas["P1"][index]
+    
+    vendor_pandas["P3"] = vendor_pandas["P3"].astype(float)
+    vendor_pandas["P4"] = vendor_pandas["P3"] * tech_cal["P4"]
 
     # Set dimensions and status
     len_pandas = len(vendor_pandas.axes[0])

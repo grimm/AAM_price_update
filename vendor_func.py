@@ -1,6 +1,8 @@
 # Import vender functions
 
 def vendor_func(vendor_name):
+	if vendor_name == "3du":
+	    import vendor.t3du as vendor
 	if vendor_name == "tech":
 	    import vendor.tech as vendor
 	elif vendor_name == "aac":
@@ -23,10 +25,14 @@ def vendor_func(vendor_name):
 	    import vendor.aor as vendor
 	elif vendor_name == "arb":
 	    import vendor.arb as vendor
+	elif vendor_name == "arc":
+	    import vendor.arc as vendor
 	elif vendor_name == "arcl":
 	    import vendor.arcl as vendor
 	elif vendor_name == "ard":
 	    import vendor.ard as vendor
+	elif vendor_name == "autc":
+	    import vendor.autc as vendor
 	elif vendor_name == "bak":
 	    import vendor.bak as vendor
 	elif vendor_name == "baja":
@@ -41,6 +47,8 @@ def vendor_func(vendor_name):
 	    import vendor.big as vendor
 	elif vendor_name == "bigm":
 	    import vendor.bigm as vendor
+	elif vendor_name == "bil":
+	    import vendor.bil as vendor
 	elif vendor_name == "bkr":
 	    import vendor.bkr as vendor
 	elif vendor_name == "brm":
@@ -63,6 +71,8 @@ def vendor_func(vendor_name):
 	    import vendor.cipa as vendor
 	elif vendor_name == "crg":
 	    import vendor.crg as vendor
+	elif vendor_name == "cmf":
+	    import vendor.cmf as vendor
 	elif vendor_name == "cog":
 	    import vendor.cog as vendor
 	elif vendor_name == "cov":
@@ -133,6 +143,8 @@ def vendor_func(vendor_name):
 	    import vendor.knkm as vendor
 	elif vendor_name == "knn":
 	    import vendor.knn as vendor
+	elif vendor_name == "knp":
+	    import vendor.knp as vendor
 	elif vendor_name == "lift":
 	    import vendor.lift as vendor
 	elif vendor_name == "lnd":
@@ -175,6 +187,8 @@ def vendor_func(vendor_name):
 	    import vendor.kso as vendor
 	elif vendor_name == "odr":
 	    import vendor.odr as vendor
+	elif vendor_name == "orl":
+	    import vendor.orl as vendor
 	elif vendor_name == "ovs":
 	    import vendor.ovs as vendor
 	elif vendor_name == "par":
@@ -183,6 +197,8 @@ def vendor_func(vendor_name):
 	    import vendor.pc as vendor
 	elif vendor_name == "piaa":
 	    import vendor.piaa as vendor
+	elif vendor_name == "pj":
+	    import vendor.pj as vendor
 	elif vendor_name == "prime":
 	    import vendor.prime as vendor
 	elif vendor_name == "protec":
@@ -213,6 +229,8 @@ def vendor_func(vendor_name):
 	    import vendor.sb as vendor
 	elif vendor_name == "scs":
 	    import vendor.scs as vendor
+	elif vendor_name == "sky":
+	    import vendor.sky as vendor
 	elif vendor_name == "sls":
 	    import vendor.sls as vendor
 	elif vendor_name == "snow":
@@ -233,6 +251,8 @@ def vendor_func(vendor_name):
 	    import vendor.trux as vendor
 	elif vendor_name == "truxm":
 	    import vendor.truxm as vendor
+	elif vendor_name == "ult":
+	    import vendor.ult as vendor
 	elif vendor_name == "und":
 	    import vendor.und as vendor
 	elif vendor_name == "uws":

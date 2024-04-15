@@ -14,6 +14,7 @@ import csv
 def do_rcs(vendor_pandas, tech_cal):
     # Remove clothing
     vendor_pandas = vendor_pandas[(vendor_pandas["sku"].str[:2] != "84")]
+    vendor_pandas = vendor_pandas[(vendor_pandas["cost"] != "")]
     vendor_pandas = vendor_pandas.reset_index(drop=True)
 
     # Create new Status/NewPart columns
@@ -44,7 +45,8 @@ def do_rcs(vendor_pandas, tech_cal):
     vendor_pandas["Length"] = vendor_pandas["length"].replace("", "0").astype(float)
     vendor_pandas["Width"] = vendor_pandas["width"].replace("", "0").astype(float)
     vendor_pandas["Height"] = vendor_pandas["height"].replace("", "0").astype(float)
-    vendor_pandas["Weight"] = vendor_pandas["weight"].replace("", "0").astype(float)
+    vendor_pandas["Weight"] = vendor_pandas["weight"].replace("", "0")
+    vendor_pandas["Weight"] = vendor_pandas["Weight"].str.replace("lbs", "").astype(float)
 
     # Group codes
     vendor_pandas["Group Code"] = vendor_pandas["P1"]

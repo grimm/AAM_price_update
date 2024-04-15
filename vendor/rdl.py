@@ -17,6 +17,7 @@ def do_rdl(vendor_pandas, tech_cal):
     # vendor_pandas = vendor_pandas.reset_index(drop=True)
 
     # vendor_pandas["NewPart"] = new_column
+    print(vendor_pandas.columns)
     vendor_pandas["NewPart"] = vendor_pandas["Part Number"].apply(lambda x: "RDL" + x)
     
     # Create new description columns
@@ -32,12 +33,12 @@ def do_rdl(vendor_pandas, tech_cal):
     # Create all price fields
     vendor_pandas["P2"] = vendor_pandas["US Retail MAP"].astype(float)
     vendor_pandas["P3"] = vendor_pandas["Jobber USD"].astype(float)
-    vendor_pandas["P5"] = vendor_pandas["Titan Cost (w/ off invoice co-op)"].astype(float)
+    vendor_pandas["P5"] = vendor_pandas["Titan Cost with co-op included in price"].astype(float)
     # calculate coop
     vendor_pandas["P5"] = vendor_pandas["P5"] / 0.95
 
     vendor_pandas["P1"] = vendor_pandas["P2"]
-    vendor_pandas["P4"] = vendor_pandas["P3"] * tech_cal["P4"]
+    vendor_pandas["P4"] = vendor_pandas["P5"] / tech_cal["P4"]
 
     return vendor_pandas
 

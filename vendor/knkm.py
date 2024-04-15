@@ -17,10 +17,12 @@ def do_knkm(vendor_pandas, tech_cal):
 
     # Drop all rows with no price
     vendor_pandas = vendor_pandas[(vendor_pandas["Trade"] != "")]
+    # vendor_pandas = vendor_pandas[(vendor_pandas["TRADE"] != "")]
     vendor_pandas = vendor_pandas.reset_index(drop=True)
 
     # Process part number
-    vendor_pandas["Part Number"] = vendor_pandas["PART NUMBER"].astype(str)
+    # vendor_pandas["Part Number"] = vendor_pandas["PART NUMBER"].astype(str)
+    vendor_pandas["Part Number"] = vendor_pandas["Model"].astype(str)
     vendor_pandas["NewPart"] = vendor_pandas["Part Number"]
     vendor_pandas["NewPart"] = vendor_pandas["NewPart"].apply(lambda x: "KNK" + x)
     
@@ -34,6 +36,7 @@ def do_knkm(vendor_pandas, tech_cal):
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].apply(lambda x: x[:30])
 
     # Create all price fields
+    # vendor_pandas["P1"] = vendor_pandas["TRADE"].replace("$", "")
     vendor_pandas["P1"] = vendor_pandas["Trade"].replace("$", "")
     vendor_pandas["P1"] = vendor_pandas["P1"].replace(",", "")
 

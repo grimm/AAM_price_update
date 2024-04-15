@@ -14,6 +14,7 @@ import csv
 def do_ovs(vendor_pandas, tech_cal):
     # Remove blank items
     vendor_pandas = vendor_pandas[(vendor_pandas["AAM Cost"] != "TBD")]
+    vendor_pandas = vendor_pandas[(vendor_pandas["MAP Retail"] != "")]
     vendor_pandas = vendor_pandas.reset_index(drop=True)
 
     # Put really long header text in some vars

@@ -28,7 +28,7 @@ def do_trux(vendor_pandas, prod_group, tech_cal):
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].apply(lambda x: x[:30])
 
     # Create all price fields
-    vendor_pandas["P3"] = vendor_pandas["Jobber"].astype(float)
+    vendor_pandas["P3"] = vendor_pandas["Jobber "].astype(float)
 
     # vendor_pandas["P1"] = vendor_pandas["MSRP/List"]
     # for index, item in enumerate(vendor_pandas["P1"]):

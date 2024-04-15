@@ -12,8 +12,9 @@ import unidecode
 # Main vendor processing function
 def do_xan(vendor_pandas, tech_cal):
     # Remove blank items
-    # vendor_pandas = vendor_pandas[(vendor_pandas["MSRP/List"] != "")]
-    # vendor_pandas = vendor_pandas.reset_index(drop=True)
+    vendor_pandas = vendor_pandas[(vendor_pandas["MSRP"] != "")]
+    vendor_pandas = vendor_pandas[(vendor_pandas["MSRP"] != "MSRP")]
+    vendor_pandas = vendor_pandas.reset_index(drop=True)
 
     # Process part number
     vendor_pandas["Part Number"] = vendor_pandas["ITEM#"].astype(str)

@@ -9,7 +9,7 @@
 import unidecode
 
 # Main vendor processing function
-def do_eccot(vendor_pandas, tech_cal):
+def do_ecco(vendor_pandas, tech_cal):
     # Process part number
     vendor_pandas["Part Number"] = vendor_pandas["Numeric Part No"].astype(str)
     vendor_pandas["NewPart"] = vendor_pandas["Part Number"].apply(lambda x: "ECCO" + x)

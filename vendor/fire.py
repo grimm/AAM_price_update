@@ -15,8 +15,9 @@ import csv
 # Main vendor processing function
 def do_fire(vendor_pandas, tech_cal):
     # Remove parts with no pricing
-    vendor_pandas = vendor_pandas[(vendor_pandas["April 1st, 2023 List Price"] != "NA")]
-    vendor_pandas = vendor_pandas[(vendor_pandas["April 1st, 2023 List Price"] != "April 1st, 2023 List Price")]
+    # print(vendor_pandas.columns)
+    vendor_pandas = vendor_pandas[(vendor_pandas["January 1st, 2024 List Price"] != "NA")]
+    # vendor_pandas = vendor_pandas[(vendor_pandas["October 2nd, 2023 List Price"] != "October 2nd, 2023 List Price")]
     vendor_pandas = vendor_pandas.reset_index(drop=True)
 
     # Concatinate both sheets for processing
@@ -37,17 +38,18 @@ def do_fire(vendor_pandas, tech_cal):
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].apply(lambda x: x[:30])
 
     # Create all price fields
-    vendor_pandas["P1"] = vendor_pandas["April 1st, 2023 List Price"].replace("$","").replace(",","")
+    vendor_pandas["P1"] = vendor_pandas["January 1st, 2024 List Price"].replace("$","").replace(",","")
     vendor_pandas["P1"] = vendor_pandas["P1"].astype(float)
-
-    vendor_pandas["P3"] = vendor_pandas["April 1st, 2023 Jobber Price"].replace("$", "").replace(",","")
-    vendor_pandas["P3"] = vendor_pandas["P3"].astype(float)
+    vendor_pandas["P3"] = vendor_pandas["January 1st, 2024 Jobber Price"].astype(float)
 
     vendor_pandas["P4"] = vendor_pandas["P3"] * tech_cal["P4"]
-    vendor_pandas["P5"] = vendor_pandas["Titan Truck (36.0%)"].astype(float)
+    # Calculate Titan's price 36% off of Jobber
+    # vendor_pandas["P5"] = vendor_pandas["Titan Truck (36.0%)"].astype(float)
+    vendor_pandas["P5"] = vendor_pandas["P3"] * 0.64
+    # Add 1%
     vendor_pandas["P5"] = vendor_pandas["P5"] * 1.01
 
-    vendor_pandas["P2"] = vendor_pandas["UMP [USD]"].replace("$","").replace(",","")
+    vendor_pandas["P2"] = vendor_pandas["MAP [USD]"].replace("$","").replace(",","")
     for index, item in enumerate(vendor_pandas["P2"]):
         # print(item)
         if item == "":
@@ -57,7 +59,7 @@ def do_fire(vendor_pandas, tech_cal):
     # Set dimensions and status
     # Make sure that measurement values are correct
     vendor_pandas["Weight"] = vendor_pandas["Gross Wgt [lbs]"].replace("n/a", "0")
-    vendor_pandas["Weight"] = vendor_pandas["Weight"].astype(float)
+    vendor_pandas["Weight"] = vendor_pandas["Weight"].replace("TBD", "0").astype(float)
     vendor_pandas["Length"] = vendor_pandas["Weight"]
     vendor_pandas["Width"] = vendor_pandas["Weight"]
     vendor_pandas["Height"] = vendor_pandas["Weight"]

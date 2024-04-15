@@ -17,7 +17,7 @@ def do_curt(vendor_pandas, tech_cal):
     short_desc = "Short Description (20 Characters or Less)"
     long_desc = "Long Description 100 Characters or less WITHOUT application information"
 
-    print(vendor_pandas.columns)
+    # print(vendor_pandas.columns)
     # Filter out all parts that are 5 digits long (not kitted SKU)
     vendor_pandas['Part Number'] = vendor_pandas['Part Number'].astype(str)
     vendor_pandas = vendor_pandas[(vendor_pandas["Part Number"].str.len() == 5) | (vendor_pandas["Part Number"].str.len() == 6)]
@@ -57,7 +57,7 @@ def do_curt(vendor_pandas, tech_cal):
     
     for index, item in enumerate(vendor_pandas["MAP Retail"]):
         #print(index)
-        if item == "Removed" or item == "0" or item == "":
+        if item == "Removed" or item == "0" or item == "" or item == "Enforced MAP Removed":
             vendor_pandas["P2"][index] = vendor_pandas["P5"][index] / tech_cal["P2"]
         else:
             vendor_pandas["P2"][index] = item

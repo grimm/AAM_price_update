@@ -10,7 +10,7 @@ from datetime import datetime
 import unidecode
 
 # Main vendor processing function
-def do_dom(vendor_pandas, tech_cal):
+def do_dom(vendor_pandas, group_code, tech_cal):
     # Remove in rows with no data
     # vendor_pandas = vendor_pandas[(vendor_pandas["Jobber"] != "")]
     # vendor_pandas = vendor_pandas.reset_index(drop=True)
@@ -37,22 +37,33 @@ def do_dom(vendor_pandas, tech_cal):
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].apply(lambda x: x[:30])
 
     # Create all price fields
-    vendor_pandas["P1"] = vendor_pandas["MSRP/List"].astype(float)
-    vendor_pandas["P2"] = vendor_pandas["P1"]
+    vendor_pandas["P1"] = vendor_pandas["MSRP/List"]
     vendor_pandas["P5"] = vendor_pandas["AAM Cost"].astype(float)
 
     vendor_pandas["P3"] = vendor_pandas["Jobber"].astype(float)
     vendor_pandas["P4"] = vendor_pandas["P3"]
 
+    for index, item in enumerate(vendor_pandas["P1"]):
+        if item == "": 
+            vendor_pandas["P1"] = vendor_pandas["P3"]
+    vendor_pandas["P1"] = vendor_pandas["P1"].astype(float)
+    vendor_pandas["P2"] = vendor_pandas["P1"]
     vendor_pandas["Group Code"] = vendor_pandas["P1"].astype(int)
-    for index, item in enumerate(vendor_pandas["P4"]):
-        test = vendor_pandas["P5"][index] / vendor_pandas["P3"][index]
+
+    # Setup group codes
+    for index, item in enumerate(vendor_pandas["P5"]):
+        test = item / vendor_pandas["P3"][index]
+        # print(test)
         if test >= 0.8:
             vendor_pandas["Group Code"][index] = 0
         else:
-            vendor_pandas["P4"][index] = item * tech_cal["P4"]
             vendor_pandas["Group Code"][index] = 1
-    vendor_pandas["P4"] = vendor_pandas["P4"].astype(float)
+
+    # Find specific SKUs from product_groups.yaml file and set group code
+    for index, item in enumerate(vendor_pandas["NewPart"]):
+      for key, value in group_code.items():
+        if item == key:
+          vendor_pandas["Group Code"][index] = value
 
     # Get length of dataframe and create new dimension columns
     vendor_pandas["Weight"] = vendor_pandas["Weight - IN POUNDS"].replace("", "0").astype(float)

@@ -39,8 +39,10 @@ def do_kar(vendor_pandas, tech_cal):
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].apply(lambda x: x[:30])
 
     # Create all price fields
-    vendor_pandas["P2"] = vendor_pandas["Trade Price"].astype(float)
-    vendor_pandas["P5"] = vendor_pandas["Your Cost"].astype(float)
+    vendor_pandas["P2"] = vendor_pandas["Trade Price"].str.replace("$","")
+    vendor_pandas["P2"] = vendor_pandas["P2"].str.replace(",","").astype(float)
+    vendor_pandas["P5"] = vendor_pandas["Your Cost"].str.replace("$","")
+    vendor_pandas["P5"] = vendor_pandas["P5"].str.replace(",","").astype(float)
 
     vendor_pandas["P1"] = vendor_pandas["P5"] / tech_cal["P1"]
     vendor_pandas["P3"] = vendor_pandas["P5"] / tech_cal["P3"]

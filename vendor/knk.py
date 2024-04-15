@@ -11,7 +11,7 @@ import pandas as pd
 import unidecode
 
 # Main vendor processing function
-def do_knk(vendor_pandas, tech_cal):
+def do_knk(vendor_pandas, group_code, tech_cal):
     # Put really long header text in some vars
     long_desc = "DESCRIPTION"
     frames = []
@@ -25,11 +25,12 @@ def do_knk(vendor_pandas, tech_cal):
       jobsite_pandas["Group Code"] = new_column
 
       # Replace missing values in Auth.
-      for index, item in enumerate(jobsite_pandas["Auth."]):
-          if item == "":
-              jobsite_pandas["Auth."][index] = jobsite_pandas["Select\nTier 1"][index]
+      # for index, item in enumerate(jobsite_pandas["Auth."]):
+      #     if item == "":
+      #         jobsite_pandas["Auth."][index] = jobsite_pandas["Select\nTier 1"][index]
 
-      jobsite_pandas["Select\nTier 1"] = jobsite_pandas["Auth."]
+      # jobsite_pandas["Select\nTier 1"] = jobsite_pandas["Auth."]
+      jobsite_pandas["Select\nTier 1"] = jobsite_pandas["Select\nTier 2"]
 
       # new_column = list("j" * sheetlen)
       # jobsite_pandas["type"] = new_column
@@ -41,6 +42,8 @@ def do_knk(vendor_pandas, tech_cal):
       sheetlen = len(van_pandas.axes[0])
       new_column = list("1" * sheetlen)
       van_pandas["Group Code"] = new_column
+      new_column = list("0" * sheetlen)
+      van_pandas["Weight (Lbs)"] = new_column
       # new_column = list(" " * sheetlen)
       # van_pandas["type"] = new_column
       frames.append(van_pandas)
@@ -57,8 +60,25 @@ def do_knk(vendor_pandas, tech_cal):
 
     # Concat all sheets into one data frame
     vendor_pandas = pd.concat(frames)
-    vendor_pandas = vendor_pandas[(vendor_pandas["Trade"] != "")]
-    vendor_pandas = vendor_pandas[(vendor_pandas["Trade"] != 0)]
+
+    # Find all XX and XXX parts and expand them
+    for index, item in enumerate(vendor_pandas["PART NUMBER"]):
+      if item[-2:] == "XX":
+        for key, value in group_code.items():
+          if item == key:
+            for extrasku in value:
+              rowloc = vendor_pandas.index[vendor_pandas['PART NUMBER'] == key]
+              rowcopy = vendor_pandas.loc[rowloc].copy()
+              rowcopy["PART NUMBER"] = extrasku
+              # print(rowcopy)
+              vendor_pandas = pd.concat([vendor_pandas, rowcopy], ignore_index=True)
+
+    # vendor_pandas = vendor_pandas[(vendor_pandas["Trade"] != "")]
+    # vendor_pandas = vendor_pandas[(vendor_pandas["Trade"] != 0)]
+    vendor_pandas = vendor_pandas[(vendor_pandas["TRADE"] != "")]
+    vendor_pandas = vendor_pandas[(vendor_pandas["TRADE"] != 0)]
+    # vendor_pandas = vendor_pandas[(vendor_pandas["Select\nTier 1"] != "")]
+    # vendor_pandas = vendor_pandas[(vendor_pandas["Select\nTier 1"] != "Act")]
     vendor_pandas = vendor_pandas.reset_index(drop=True)
 
     # Process part number
@@ -79,20 +99,28 @@ def do_knk(vendor_pandas, tech_cal):
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].apply(lambda x: x[:30])
 
     # Create all price fields
-    vendor_pandas["P1"] = vendor_pandas["Trade"]
+    # vendor_pandas["P1"] = vendor_pandas["Trade"]
+    vendor_pandas["P1"] = vendor_pandas["TRADE"]
     vendor_pandas["P1"] = vendor_pandas["P1"].astype(float)
 
     vendor_pandas["P2"] = vendor_pandas["UAP"].replace("NO UAP", "")
 
     # Replace missing values in P2
     for index, item in enumerate(vendor_pandas["P2"]):
-        if item == "":
+        if (item == "") or (item == "NO UAP "):
             vendor_pandas["P2"][index] = vendor_pandas["P1"][index] * tech_cal["P2"]
 
     vendor_pandas["P2"] = vendor_pandas["P2"].apply(lambda x: float(x))
 
-    vendor_pandas["P5"] = vendor_pandas["Select\nTier 1"].replace("$", "")
-    vendor_pandas["P5"] = vendor_pandas["P5"].replace(",", "").astype(float)
+    vendor_pandas["P5"] = vendor_pandas["Select\nTier 1"]
+
+    # Replace missing values in P5
+    for index, item in enumerate(vendor_pandas["P5"]):
+        if (item == "") or (item == "Act"):
+            vendor_pandas["P5"][index] = vendor_pandas["P1"][index] * tech_cal["P5"]
+        # print(vendor_pandas["NewPart"][index],vendor_pandas["P5"][index],"*"+str(item)+"*", index)
+
+    vendor_pandas["P5"] = vendor_pandas["P5"].astype(float)
 
     vendor_pandas["P3"] = vendor_pandas["P1"] * tech_cal["P3"]
     vendor_pandas["P4"] = vendor_pandas["P1"] * tech_cal["P4"]
@@ -116,7 +144,8 @@ def do_knk(vendor_pandas, tech_cal):
     #         vendor_pandas["P4"][index] = vendor_pandas["P1"][index] * tech_cal["P4"]
 
     # Set dimensions and status
-    vendor_pandas["Weight"] = vendor_pandas["Weight (Lbs)"].replace("","0")
+    vendor_pandas["Weight"] = vendor_pandas["Weight (Lbs)"].astype(str).replace("","0")
+    vendor_pandas["Weight"] = vendor_pandas["Weight"].replace(" ", "0")
     vendor_pandas["Weight"] = vendor_pandas["Weight"].astype(float)
 
     return vendor_pandas

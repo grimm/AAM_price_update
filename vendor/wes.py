@@ -77,7 +77,7 @@ def do_wes(vendor_pandas, prod_group, tech_cal):
     for index, item in enumerate(vendor_pandas[short_desc]):
         vendor_pandas["Group Code"][index] = 99999
         for key, value in prod_group.items():
-            if item == key:
+            if item == key or vendor_pandas[long_desc][index] == key:
                 vendor_pandas["Group Code"][index] = value
         if vendor_pandas["Group Code"][index] == 99999:
             print(item)

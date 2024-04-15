@@ -20,7 +20,7 @@ def do_rtx(vendor_pandas, tech_cal):
     vendor_pandas["NewPart"] = vendor_pandas["Part Number"].astype(str).apply(lambda x: "RTX" + x)
     
     # Create new description columns
-    vendor_pandas["Desc1"] = vendor_pandas[long_desc] + " " + vendor_pandas["Application"]
+    vendor_pandas["Desc1"] = vendor_pandas[short_desc] + " " + vendor_pandas["Application"]
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].apply(lambda x: unidecode.unidecode(x))
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].str.upper()
     

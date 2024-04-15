@@ -1,27 +1,27 @@
 #
-# dez.py
+# ran.py
 #
-# This script holds functions for the vendor Dee Zee
+# This script holds functions for the vendor Rancho
 #
-# Initial version - 03/01/2021 - Jason Grimes
+# Initial version - 12/29/2023 - Jason Grimes
 #
 
 from datetime import datetime
 import unidecode
 
 # Main vendor processing function
-def do_dez(vendor_pandas, tech_cal):
+def do_ran(vendor_pandas, tech_cal):
     # Put really long header text in some vars
     short_desc = "Short Description (20 Characters or Less)"
     long_desc = "Long Description 100 Characters or less WITHOUT application information"
 
     # Remove parts with no pricing
-    vendor_pandas = vendor_pandas[(vendor_pandas["Jobber"] != "")]
-    vendor_pandas = vendor_pandas[(vendor_pandas["AAM Cost"] != "")]
-    vendor_pandas = vendor_pandas.reset_index(drop=True)
+    # vendor_pandas = vendor_pandas[(vendor_pandas["Jobber"] != "")]
+    # vendor_pandas = vendor_pandas[(vendor_pandas["AAM Cost"] != "")]
+    # vendor_pandas = vendor_pandas.reset_index(drop=True)
 
     # Create new Status/NewPart columns
-    vendor_pandas["NewPart"] = vendor_pandas["Part Number"].apply(lambda x: "DEZ" + x)
+    vendor_pandas["NewPart"] = vendor_pandas["Part Number"].apply(lambda x: "RAN" + x)
     
     # pull missing descriptions from application column
     for index, item in enumerate(vendor_pandas[long_desc]):

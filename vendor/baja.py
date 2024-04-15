@@ -18,6 +18,7 @@ def do_baja(vendor_pandas, tech_cal):
     vendor_pandas["Part Number"] = vendor_pandas["Part Number"].astype(str)
     # vendor_pandas["Part Number"] = vendor_pandas["sku"].str[:-5].astype(str) # ASAP
     vendor_pandas = vendor_pandas[(vendor_pandas["Part Number"].str[:3] != "980")]
+    vendor_pandas = vendor_pandas[(vendor_pandas["AAM Cost"] != "")]
     vendor_pandas = vendor_pandas.reset_index(drop=True)
 
     # Process part number
@@ -42,13 +43,13 @@ def do_baja(vendor_pandas, tech_cal):
     # vendor_pandas["P2"] = vendor_pandas["P1"] # ASAP
     vendor_pandas["P3"] = vendor_pandas["Jobber"]
     # vendor_pandas["P3"] = vendor_pandas["P1"] # ASAP
-    vendor_pandas["P5"] = vendor_pandas["AAM Cost"] / tech_cal["P5"]
+    vendor_pandas["P5"] = (vendor_pandas["AAM Cost"] / tech_cal["P5"]).astype(float)
     # vendor_pandas["P5"] = vendor_pandas["4c_pricing"] / tech_cal["P5"] # ASAP
-    vendor_pandas["P4"] = vendor_pandas["P5"] / tech_cal["P4"]
+    vendor_pandas["P4"] = (vendor_pandas["P5"] / tech_cal["P4"]).astype(float)
     # vendor_pandas["P4"] = vendor_pandas["P5"] / tech_cal["P4"] # ASAP
 
     # Set dimensions and status
-    vendor_pandas["Weight"] = vendor_pandas["Weight - IN POUNDS"].astype(float)
+    vendor_pandas["Weight"] = vendor_pandas["Weight - IN POUNDS"].replace("", "0").astype(float)
     # vendor_pandas["Weight"] = vendor_pandas["weight"].astype(float) # ASAP
     # vendor_pandas["Length"] = vendor_pandas["dim_length"].astype(float) # ASAP
     # vendor_pandas["Height"] = vendor_pandas["dim_height"].astype(float) # ASAP

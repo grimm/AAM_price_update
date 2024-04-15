@@ -26,17 +26,17 @@ import run_vendor as run
 import vendor_sheet as sheet
 
 # Define the supported vendors and load yaml calculation and groups files
-Vendors = ["aac", "aci", "adu", "airl", "and", "anz", "amp", "ampm", "aor", "arb", "arcl",
-           "ard", "baja", "bak", "bap", "bdw", "best", "big", "bigm", "bkr", "brm", "brug",
-           "btr", "bush", "buy", "carr", "cbp", "cipa", "cog", "cov", "crg", "curt", "curtmap",
+Vendors = ["3du", "aac", "aci", "adu", "airl", "and", "anz", "amp", "ampm", "aor", "arb", "arc",
+           "arcl", "ard", "autc", "baja", "bak", "bap", "bdw", "best", "big", "bigm", "bil", "bkr", "brm", "brug",
+           "btr", "bush", "buy", "carr", "cbp", "cipa", "cmf", "cog", "cov", "crg", "curt", "curtmap",
            "deck", "dez", "dia", "dom", "duha", "ecco", "edge", "egr", "ele", "ext", "extm", "f55",
            "fac", "federal", "ffi", "fia", "fil", "fire", "fpm", "golite", "gor", "gorm", "hus",
-           "hyp", "ici", "kar", "kc", "kln", "knk", "knkm", "knn", "kso", "lift", "lnd", "luv",
-           "mag", "mas", "mass", "maxx", "mba", "mrw", "myp", "nfa", "nitro", "odr", "ovs", "par",
-           "pc", "piaa", "prime", "protec", "pull", "put", "qf", "rch", "rcs", "rdl", "rfn",
-           "rgr", "rig", "rlg", "rnl", "road", "ros", "rrk", "trm", "rsp", "rtx", "rug", "sb",
-           "scs", "sls", "snow", "stlc", "sup", "tech", "tfi", "tfp", "tft", "tom", "tim",
-           "t-rex", "trux", "truxm", "und", "uws", "uwsb", "ven", "via", "vms", "warn",
+           "hyp", "ici", "kar", "kc", "kln", "knk", "knkm", "knn", "knp", "kso", "lift", "lnd", "luv",
+           "mag", "mas", "mass", "maxx", "mba", "mrw", "myp", "nfa", "nitro", "odr", "orl", "ovs",
+           "par", "pc", "piaa", "pj", "prime", "protec", "pull", "put", "qf", "rch", "rcs", "rdl",
+           "rfn", "rgr", "rig", "rlg", "rnl", "road", "ros", "rrk", "trm", "rsp", "rtx", "rug", "sb",
+           "scs", "sky", "sls", "snow", "stlc", "sup", "tech", "tfi", "tfp", "tft", "tom", "tim",
+           "t-rex", "trux", "truxm", "ult", "und", "uws", "uwsb", "ven", "via", "vms", "warn",
            "wes", "west", "wig", "xan", "yak", "zll"]
 vendor_cal = {}
 product_groups = {}
@@ -95,6 +95,7 @@ nelson_csv_file = vname + "_UPDATE_NTE_" + date + ".csv"
 
 # Load vendor file using pandas
 skiprow, sheet_name, multisheet, csvfile, conv = sheet.set_excel(args.vendor)
+print(skiprow)
 
 vendor_pandas = pd.read_excel(args.file, keep_default_na=False, skiprows=skiprow)
 if sheet_name == "" and csvfile == 0 and multisheet == []: # no sheet name

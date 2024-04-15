@@ -13,7 +13,8 @@ import csv
 # Main vendor processing function
 def do_fil(vendor_pandas, tech_cal):
     # Remove bad rows
-    vendor_pandas = vendor_pandas[(vendor_pandas["List Price"] != "Request Pricing")]
+    vendor_pandas = vendor_pandas[(vendor_pandas["NET PRICE\n"] != "Request Pricing")]
+    vendor_pandas = vendor_pandas[(vendor_pandas["LIST PRICE"] != "")]
     vendor_pandas = vendor_pandas.reset_index(drop=True)
     
     # Create new Status/NewPart columns
@@ -31,11 +32,11 @@ def do_fil(vendor_pandas, tech_cal):
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].apply(lambda x: x[:30])
 
     # Create all price fields
-    vendor_pandas["P1"] = vendor_pandas["List Price"].astype(float)
-    vendor_pandas["P5"] = vendor_pandas["NET Price"].astype(float)
+    vendor_pandas["P1"] = vendor_pandas["LIST PRICE"].astype(float)
+    vendor_pandas["P5"] = vendor_pandas["NET PRICE\n"].astype(float)
     vendor_pandas["P2"] = (vendor_pandas["P5"] / tech_cal["P2"])
     vendor_pandas["P3"] = (vendor_pandas["P5"] / tech_cal["P3"])
-    vendor_pandas["P4"] = vendor_pandas["MAP"].replace('', '0').astype(float)
+    vendor_pandas["P4"] = vendor_pandas["MAP\nUNITED STATES"].replace('', '0').astype(float)
 
     for index, item in enumerate(vendor_pandas["P4"]):
         if item == 0:

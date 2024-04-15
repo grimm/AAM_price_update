@@ -17,6 +17,7 @@ def do_uws(vendor_pandas, group_code, tech_cal):
     long_desc = "Long Description 100 Characters or less WITHOUT application information"
 
     vendor_pandas = vendor_pandas[(vendor_pandas["MAP Retail"] != "Removed")]
+    vendor_pandas = vendor_pandas[(vendor_pandas["MAP Retail"] != "")]
     vendor_pandas = vendor_pandas.reset_index(drop=True)
 
     # Create new Status/NewPart columns

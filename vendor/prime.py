@@ -14,7 +14,8 @@ import pandas as pd
 # Main vendor processing function
 def do_prime(vendor_pandas, tech_cal):
     # Create new Status/NewPart columns
-    vendor_pandas['Part Number'] = vendor_pandas['Part Number'].astype(str)
+    print(vendor_pandas.columns)
+    vendor_pandas['Part Number'] = vendor_pandas['Item'].astype(str)
     vendor_pandas["NewPart"] = vendor_pandas["Part Number"].apply(lambda x: "PRIME" + x)
     
     # Create new description columns
