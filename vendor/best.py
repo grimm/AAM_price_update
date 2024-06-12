@@ -16,6 +16,10 @@ def do_best(vendor_pandas, tech_cal):
     short_desc = "Short Description (20 Characters or Less)"
     long_desc = "Long Description 100 Characters or less WITHOUT application information"
 
+    # Remove rows with missing data
+    vendor_pandas = vendor_pandas[(vendor_pandas["AAM Cost"] != "")]
+    vendor_pandas = vendor_pandas.reset_index(drop=True)
+
     # Create new Status/NewPart columns
     vendor_pandas["NewPart"] = vendor_pandas["Part Number"].astype(str).apply(lambda x: "BEST" + x)
     
@@ -41,10 +45,10 @@ def do_best(vendor_pandas, tech_cal):
     vendor_pandas["P2"] = vendor_pandas["P2"].astype(float)
 
     # Set dimensions and status
-    vendor_pandas["Weight"] = vendor_pandas["Weight - IN POUNDS"].replace("N/A", "0").astype(float)
-    vendor_pandas["Length"] = vendor_pandas["Length"].replace("N/A", "0").astype(float)
-    vendor_pandas["Width"] = vendor_pandas["Width"].replace("N/A", "0").astype(float)
-    vendor_pandas["Height"] = vendor_pandas["Height"].replace("N/A", "0").astype(float)
+    vendor_pandas["Weight"] = vendor_pandas["Weight - IN POUNDS"].replace("N/A", "0").replace("", "0").astype(float)
+    vendor_pandas["Length"] = vendor_pandas["Length"].replace("N/A", "0").replace("", "0").astype(float)
+    vendor_pandas["Width"] = vendor_pandas["Width"].replace("N/A", "0").replace("", "0").astype(float)
+    vendor_pandas["Height"] = vendor_pandas["Height"].replace("N/A", "0").replace("", "0").astype(float)
 
     return vendor_pandas
 

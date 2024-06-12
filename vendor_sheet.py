@@ -16,13 +16,13 @@ def set_excel(vendor):
   if (vendor == "tech") | (vendor == "west") | (vendor == "sb") | (vendor == "fil") | (vendor == "mass") | (vendor == "rcs") | (vendor == "and") | (vendor == "yak") | (vendor == "cbp") | (vendor == "cog") | (vendor == "cipa") | (vendor == "pc") | (vendor == "tfp") | (vendor == "maxx") | (vendor == "rfn") | (vendor == "pull") | (vendor == "mag") | (vendor == "edge") | (vendor == "dia") | (vendor == "sup") | (vendor == "cov") | (vendor == "tom") | (vendor == "aci") | (vendor == "vms") | (vendor == "federal") | (vendor == "aac") | (vendor == "myp") | (vendor == "cmf") | (vendor == "3du") | (vendor == "sky") | (vendor == "protec") | (vendor == "knkm") | (vendor == "road") | (vendor == "bil") | (vendor == "anz"):
 
     skiprow = 0
-  elif (vendor == "mas") | (vendor == "kc") | (vendor == "fire") | (vendor == "kln") | (vendor == "truxm") | (vendor == "buy") | (vendor == "snow") | (vendor == "prime") | (vendor == "knp"):
+  elif (vendor == "mas") | (vendor == "kc") | (vendor == "fire") | (vendor == "kln") | (vendor == "truxm") | (vendor == "buy") | (vendor == "snow") | (vendor == "prime") | (vendor == "knp") | (vendor =="tft") | (vendor == "wick"):
     skiprow = 2
   elif (vendor == "wig") | (vendor == "lift") | (vendor == "ampm") | (vendor == "rdl") | (vendor == "xan"):
     skiprow = 3
-  elif (vendor == "kar") | (vendor == "arb") | (vendor == "golite") | (vendor == "arc") | (vendor == "adu"):
+  elif (vendor == "kar") | (vendor == "golite") | (vendor == "arc") | (vendor == "adu"):
     skiprow = 4
-  elif (vendor == "gorm") | (vendor == "ecco") | (vendor == "bigm"):
+  elif (vendor == "gorm") | (vendor == "ecco") | (vendor == "bigm") | (vendor == "arb"):
     skiprow = 5
   elif (vendor == "btr") | (vendor == "knk"):
     skiprow = 6
@@ -72,11 +72,14 @@ def set_excel(vendor):
   if vendor == "tim":
     multisheet = ["TIMBREN SES & AORB", "SPACER KITS"]
 
+  if vendor == "wick":
+    multisheet = ["Cab Racks", "Cab Rack Acc", "XBOX Single Lid", "XBOX Dual Lid", "IBOX Box"]
+
   #if vendor == "fire":
   #  multisheet = ["UMP Monitored ", " Not Monitored "]
 
   if vendor == "west":
-    multisheet = ["2024 Western Inseason Master P", "Non-Truck"]
+    multisheet = ["Truck", "Non-Truck"]
 
   # Set sheetname or default to the first sheet
   # if vendor == "protec":

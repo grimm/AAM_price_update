@@ -42,10 +42,13 @@ def do_cov(vendor_pandas, tech_cal):
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].apply(lambda x: x[:30])
 
     # Create all price fields
-    vendor_pandas["P1"] = vendor_pandas["New MAP"].astype(float)
+    # vendor_pandas["P1"] = vendor_pandas["New MAP"].astype(float)
+    vendor_pandas["P1"] = vendor_pandas["MAP"].astype(float)
     vendor_pandas["P2"] = vendor_pandas["P1"]
-    vendor_pandas["P3"] = vendor_pandas["New Jobber"].astype(float)
-    vendor_pandas["P5"] = vendor_pandas["New Cost"].astype(float)
+    # vendor_pandas["P3"] = vendor_pandas["New Jobber"].astype(float)
+    vendor_pandas["P3"] = vendor_pandas["Jobber"].astype(float)
+    # vendor_pandas["P5"] = vendor_pandas["New Cost"].astype(float)
+    vendor_pandas["P5"] = vendor_pandas["Cost"].astype(float)
     vendor_pandas["P4"] = vendor_pandas["P5"] / tech_cal["P4"]
 
     # Set dimensions and status

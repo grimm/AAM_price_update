@@ -49,7 +49,7 @@ def do_baja(vendor_pandas, tech_cal):
     # vendor_pandas["P4"] = vendor_pandas["P5"] / tech_cal["P4"] # ASAP
 
     # Set dimensions and status
-    vendor_pandas["Weight"] = vendor_pandas["Weight - IN POUNDS"].replace("", "0").astype(float)
+    vendor_pandas["Weight"] = vendor_pandas["Weight - IN POUNDS"].replace("", "0").replace("TBD", "0").astype(float)
     # vendor_pandas["Weight"] = vendor_pandas["weight"].astype(float) # ASAP
     # vendor_pandas["Length"] = vendor_pandas["dim_length"].astype(float) # ASAP
     # vendor_pandas["Height"] = vendor_pandas["dim_height"].astype(float) # ASAP

@@ -43,15 +43,18 @@ def do_ven(vendor_pandas, tech_cal):
     vendor_pandas["P4"] = vendor_pandas["P5"] / tech_cal["P4"]
 
     for index, item in enumerate(vendor_pandas["P1"]):
-        # print(item)
+        # print("***"+item+"***")
         if item == "":
             vendor_pandas["P1"][index] = vendor_pandas["P2"][index]
+        if vendor_pandas["P2"][index] == "":
+            vendor_pandas["P1"][index] = vendor_pandas["P5"][index] / tech_cal["P2"]
+
     vendor_pandas["P1"] = vendor_pandas["P1"].astype(float)
 
     for index, item in enumerate(vendor_pandas["P2"]):
         # print(item)
         if item == "":
-            vendor_pandas["P2"][index] = vendor_pandas["P1"][index]
+            vendor_pandas["P2"][index] = vendor_pandas["P5"][index] / tech_cal["P2"]
     vendor_pandas["P2"] = vendor_pandas["P2"].astype(float)
     
     # Set dimensions and status

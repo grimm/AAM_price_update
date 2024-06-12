@@ -38,7 +38,7 @@ def do_knk(vendor_pandas, group_code, tech_cal):
 
     if "Van" in vendor_pandas.keys() and not vendor_pandas["Van"].empty:
       van_pandas = vendor_pandas["Van"]
-      van_pandas["DESCRIPTION"] = van_pandas["DESCRIPTION"].apply(lambda x: "(Van) " + x)
+      van_pandas[long_desc] = van_pandas[long_desc].apply(lambda x: "(Van) " + x)
       sheetlen = len(van_pandas.axes[0])
       new_column = list("1" * sheetlen)
       van_pandas["Group Code"] = new_column
@@ -103,14 +103,14 @@ def do_knk(vendor_pandas, group_code, tech_cal):
     vendor_pandas["P1"] = vendor_pandas["TRADE"]
     vendor_pandas["P1"] = vendor_pandas["P1"].astype(float)
 
-    vendor_pandas["P2"] = vendor_pandas["UAP"].replace("NO UAP", "")
+    vendor_pandas["P3"] = vendor_pandas["UAP"].replace("NO UAP", "")
 
-    # Replace missing values in P2
-    for index, item in enumerate(vendor_pandas["P2"]):
+    # Replace missing values in P3
+    for index, item in enumerate(vendor_pandas["P3"]):
         if (item == "") or (item == "NO UAP "):
-            vendor_pandas["P2"][index] = vendor_pandas["P1"][index] * tech_cal["P2"]
+            vendor_pandas["P3"][index] = vendor_pandas["P1"][index] * tech_cal["P3"]
 
-    vendor_pandas["P2"] = vendor_pandas["P2"].apply(lambda x: float(x))
+    vendor_pandas["P3"] = vendor_pandas["P3"].apply(lambda x: float(x))
 
     vendor_pandas["P5"] = vendor_pandas["Select\nTier 1"]
 
@@ -122,7 +122,7 @@ def do_knk(vendor_pandas, group_code, tech_cal):
 
     vendor_pandas["P5"] = vendor_pandas["P5"].astype(float)
 
-    vendor_pandas["P3"] = vendor_pandas["P1"] * tech_cal["P3"]
+    vendor_pandas["P2"] = vendor_pandas["P1"] * tech_cal["P2"]
     vendor_pandas["P4"] = vendor_pandas["P1"] * tech_cal["P4"]
 
     # Fix Jobsite values

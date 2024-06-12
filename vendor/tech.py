@@ -9,6 +9,7 @@
 import unidecode
 import re
 import yaml
+import math
 
 # Main vendor processing function
 def do_tech(vendor_pandas, prod_group, tech_cal, new_cal):
@@ -65,7 +66,11 @@ def do_tech(vendor_pandas, prod_group, tech_cal, new_cal):
 
     if not new_cal:
         # Create price numbers (normal)
-        vendor_pandas["TTK"] = vendor_pandas["TTK"].astype(float)
+        # Fix rounding errors
+        vendor_pandas["TTK"] = vendor_pandas["TTK"] * 100.0
+        vendor_pandas["TTK"] = vendor_pandas["TTK"].apply(lambda x: math.ceil(x))
+        vendor_pandas["TTK"] = vendor_pandas["TTK"] / 100.0
+
         vendor_pandas["Surcharge Fee"] = vendor_pandas["Surcharge Fee"].replace("", "0.0").astype(float)
         vendor_pandas["P5"] = vendor_pandas["TTK"] + vendor_pandas["Surcharge Fee"]
         # for index, item in enumerate(vendor_pandas["P5"]):

@@ -13,7 +13,8 @@ import unidecode
 def do_dom(vendor_pandas, group_code, tech_cal):
     # Remove in rows with no data
     # vendor_pandas = vendor_pandas[(vendor_pandas["Jobber"] != "")]
-    # vendor_pandas = vendor_pandas.reset_index(drop=True)
+    vendor_pandas = vendor_pandas[(vendor_pandas["AAM Cost"] != "")]
+    vendor_pandas = vendor_pandas.reset_index(drop=True)
 
     # Put really long header text in some vars
     short_desc = "Short Description (20 Characters or Less)"

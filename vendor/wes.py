@@ -7,6 +7,7 @@
 #
 #
 #  ALSO UPDATE SUPERWINCH AT THE SAME TIME!!!!!!
+#  Add a -n to the command line to specifically process SuperWinch parts
 #
 
 from datetime import datetime
@@ -14,9 +15,10 @@ import unidecode
 import csv
 
 # Main vendor processing function
-def do_wes(vendor_pandas, prod_group, tech_cal):
+def do_wes(vendor_pandas, prod_group, tech_cal, new_cal):
     # Remove N/A parts
     vendor_pandas = vendor_pandas[(vendor_pandas["Jobber"] != "N/A")]
+    vendor_pandas = vendor_pandas[(vendor_pandas["Jobber"] != "")]
     vendor_pandas = vendor_pandas.reset_index(drop=True)
 
     # Put really long header text in some vars
@@ -28,7 +30,6 @@ def do_wes(vendor_pandas, prod_group, tech_cal):
 
     # Remove displays and pricing quote rows
     vendor_pandas = vendor_pandas[(vendor_pandas["MSRP/List"] != "0.00")]
-    vendor_pandas = vendor_pandas[(vendor_pandas["MSRP/List"] != "")]
     vendor_pandas = vendor_pandas[(vendor_pandas["AAM Cost"] != "Emailed for Cost")]
     vendor_pandas = vendor_pandas[(vendor_pandas["AAM Cost"] != "emailed for Cost")]
     vendor_pandas = vendor_pandas[(vendor_pandas["AAM Cost"] != "emailed Mike S for Cost")]
@@ -52,19 +53,44 @@ def do_wes(vendor_pandas, prod_group, tech_cal):
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].apply(lambda x: x[:30])
 
     # Create all price fields
-    vendor_pandas["P1"] = vendor_pandas["MSRP/List"].astype(float)
+    vendor_pandas["P1"] = vendor_pandas["MSRP/List"]
     vendor_pandas["P3"] = vendor_pandas["Jobber"].astype(float)
     vendor_pandas["P5"] = vendor_pandas["AAM Cost"].astype(float)
 
-    vendor_pandas["P2"] = vendor_pandas["P3"]
-    for index, item in enumerate(vendor_pandas["MAP Retail"]):
+    vendor_pandas["P2"] = vendor_pandas["MAP Retail"]
+    for index, item in enumerate(vendor_pandas["P2"]):
         #print(index)
-        if item == "":
-            vendor_pandas["P2"][index] = vendor_pandas["P1"][index] * tech_cal["P2"]
+        if new_cal == 1:
+            print(vendor_pandas["P1"][index])
+            print(vendor_pandas["P2"][index])
+            print(vendor_pandas["P3"][index])
+            if vendor_pandas["P1"][index] == "" and vendor_pandas["P2"][index] == "":
+                print("Got to 1")
+                vendor_pandas["P1"][index] = vendor_pandas["P3"][index]
+                vendor_pandas["P2"][index] = vendor_pandas["P3"][index]
+
+            if vendor_pandas["P1"][index] != "" and vendor_pandas["P2"][index] == "":
+                print("Got to 2")
+                vendor_pandas["P2"][index] = vendor_pandas["P1"][index]
+
+            elif vendor_pandas["P1"][index] == "" and vendor_pandas["P2"][index] != "":
+                print("Got to 3")
+                vendor_pandas["P1"][index] = vendor_pandas["P2"][index]
+
+            # if vendor_pandas["P1"][index] == "":
+            #     vendor_pandas["P1"][index] = vendor_pandas["P3"][index]
+
         else:
-            vendor_pandas["P2"][index] = item
+          if item == "":
+              vendor_pandas["P2"][index] = vendor_pandas["P1"][index] * tech_cal["P2"]
+          else:
+              vendor_pandas["P2"][index] = item
 
     vendor_pandas["P4"] = vendor_pandas["P3"] * tech_cal["P4"]
+
+    vendor_pandas["P1"] = vendor_pandas["P1"].astype(float)
+    vendor_pandas["P2"] = vendor_pandas["P2"].astype(float)
+    vendor_pandas["P4"] = vendor_pandas["P4"].astype(float)
 
     # Set dimensions and status
     vendor_pandas["Weight"] = vendor_pandas["Weight - IN POUNDS"].replace(" ", "0").replace("", "0").astype(float)
@@ -75,12 +101,15 @@ def do_wes(vendor_pandas, prod_group, tech_cal):
     # Set product groups
     vendor_pandas["Group Code"] = vendor_pandas["NewPart"]
     for index, item in enumerate(vendor_pandas[short_desc]):
-        vendor_pandas["Group Code"][index] = 99999
-        for key, value in prod_group.items():
-            if item == key or vendor_pandas[long_desc][index] == key:
-                vendor_pandas["Group Code"][index] = value
-        if vendor_pandas["Group Code"][index] == 99999:
-            print(item)
+        if new_cal == 1:
+          vendor_pandas["Group Code"][index] = 1
+        else:
+          vendor_pandas["Group Code"][index] = 99999
+          for key, value in prod_group.items():
+              if item == key or vendor_pandas[long_desc][index] == key:
+                  vendor_pandas["Group Code"][index] = value
+          if vendor_pandas["Group Code"][index] == 99999:
+              print(item)
 
     return vendor_pandas
 

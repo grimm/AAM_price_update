@@ -293,6 +293,8 @@ def vendor_func(vendor_name):
 	    import vendor.wes as vendor
 	elif vendor_name == "west":
 	    import vendor.west as vendor
+	elif vendor_name == "wick":
+	    import vendor.wick as vendor
 	elif vendor_name == "wig":
 	    import vendor.wig as vendor
 	elif vendor_name == "xan":

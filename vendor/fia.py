@@ -44,6 +44,7 @@ def do_fia(vendor_pandas, tech_cal):
 
   # Set dimensions
   vendor_pandas["Weight"] = vendor_pandas["Weight - IN POUNDS"].replace("N/A", "0").astype(float)
+  vendor_pandas["Length"] = vendor_pandas["Length"].replace("", "0")
   vendor_pandas["Length"] = vendor_pandas["Length"].replace("N/A", "0").astype(float)
   vendor_pandas["Width"] = vendor_pandas["Width"].replace("N/A", "0").astype(float)
   vendor_pandas["Height"] = vendor_pandas["Height"].replace("N/A", "0").astype(float)

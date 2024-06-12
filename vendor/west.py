@@ -15,35 +15,35 @@ import pandas as pd
 def do_west(vendor_pandas, tech_cal):
 	# Put really long header text in some vars
     long_desc = "DESCRIPTION"
-    short_desc = "DESCRIPTION 2"
+    short_desc = "DESCRIPTION 2 "
 
     # Process all sheets
-    # frames = []
-    # if "2024 Western Inseason Master P" in vendor_pandas.keys() and not vendor_pandas["2024 Western Inseason Master P"].empty:
-    #   truck_pandas = vendor_pandas["2024 Western Inseason Master P"]
+    frames = []
+    if "Truck" in vendor_pandas.keys() and not vendor_pandas["Truck"].empty:
+      truck_pandas = vendor_pandas["Truck"]
 
-    #   sheetlen = len(truck_pandas.axes[0])
-    #   new_column = list("1" * sheetlen)
-    #   truck_pandas["Group_Code"] = new_column
+      sheetlen = len(truck_pandas.axes[0])
+      new_column = list("1" * sheetlen)
+      truck_pandas["Group_Code"] = new_column
 
-    #   frames.append(truck_pandas)
+      frames.append(truck_pandas)
 
-    # if "Non-Truck" in vendor_pandas.keys() and not vendor_pandas["Non-Truck"].empty:
-    #   nontruck_pandas = vendor_pandas["Non-Truck"]
+    if "Non-Truck" in vendor_pandas.keys() and not vendor_pandas["Non-Truck"].empty:
+      nontruck_pandas = vendor_pandas["Non-Truck"]
       
-    #   sheetlen = len(nontruck_pandas.axes[0])
-    #   new_column = list("2" * sheetlen)
-    #   nontruck_pandas["Group_Code"] = new_column
+      sheetlen = len(nontruck_pandas.axes[0])
+      new_column = list("2" * sheetlen)
+      nontruck_pandas["Group_Code"] = new_column
 
-    #   # Fix group codes for 40% parts
-    #   for index, item in enumerate(nontruck_pandas["DISCOUNT"]):
-    #      if item == 0.4:
-    #          nontruck_pandas["Group_Code"][index] = "1"
+      # Fix group codes for 40% parts
+      for index, item in enumerate(nontruck_pandas["DISCOUNT"]):
+        if item == 0.4:
+          nontruck_pandas["Group_Code"][index] = "1"
 
-    #   frames.append(nontruck_pandas)
+      frames.append(nontruck_pandas)
 
     # Concat all sheets into one data frame
-    # vendor_pandas = pd.concat(frames)
+    vendor_pandas = pd.concat(frames)
 
     # Remove blank items
     vendor_pandas = vendor_pandas[(vendor_pandas["LIST PRICE"] != "")]

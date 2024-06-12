@@ -14,17 +14,15 @@ import csv
 # Main vendor processing function
 def do_myp(vendor_pandas, tech_cal):
     # Set price codes to pull out MYS parts
-    mys_codes = ["MS", "MSP", "SAC1", "SS", "SSP", "US", "A3", "A4", "TB"]
+    # mys_codes = ["MS", "MSP", "SAC1", "SS", "SSP", "US", "A3", "A4", "TB"]
 
     # Create new Status/NewPart columns
-    # vendor_pandas['Part Number'] = vendor_pandas['Part'].astype(str)
     vendor_pandas['Part Number'] = vendor_pandas['PART NUMBER'].astype(str)
     vendor_pandas["NewPart"] = vendor_pandas["Part Number"].apply(lambda x: "MYP" + x)
 
     # Change part number prefix for MYS parts
-    # for index, code in enumerate(vendor_pandas["Pcode"]):
     for index, code in enumerate(vendor_pandas["Price Code"]):
-        if code in mys_codes:
+        if code == "MYS":
             vendor_pandas["NewPart"][index] = vendor_pandas["NewPart"][index].replace("MYP", "MYS")
     
     # Create new description columns
@@ -46,18 +44,20 @@ def do_myp(vendor_pandas, tech_cal):
     # vendor_pandas["P1"] = vendor_pandas["List"].replace("$", "").replace(",", "")
     vendor_pandas["P1"] = vendor_pandas["List Price"].replace("$", "").replace(",", "")
     vendor_pandas["P1"] = vendor_pandas["P1"].astype(float)
+    vendor_pandas["P3"] = vendor_pandas["Map"].replace("$", "").replace(",", "")
+    vendor_pandas["P3"] = vendor_pandas["P3"].astype(float)
     # vendor_pandas["P5"] = vendor_pandas["Premier Net"].replace("$", "").replace(",", "")
     vendor_pandas["P5"] = vendor_pandas["Premier"].replace("$", "").replace(",", "")
     vendor_pandas["P5"] = vendor_pandas["P5"].astype(float)
 
     vendor_pandas["P2"] = vendor_pandas["P5"] / tech_cal["P2"]
-    vendor_pandas["P3"] = vendor_pandas["P5"] / tech_cal["P3"]
+    # vendor_pandas["P3"] = vendor_pandas["P5"] / tech_cal["P3"]
     vendor_pandas["P4"] = vendor_pandas["P5"] / tech_cal["P4"]
 
     # Fix P3 and P4 for MYS parts
     # for index, code in enumerate(vendor_pandas["Pcode"]):
     for index, code in enumerate(vendor_pandas["Price Code"]):
-        if code in mys_codes:
+        if code == "MYS":
             vendor_pandas["P3"][index] = vendor_pandas["P5"][index] / tech_cal["P3"]
             vendor_pandas["P2"][index] = vendor_pandas["P3"][index]
             vendor_pandas["P4"][index] = vendor_pandas["P5"][index] / tech_cal["P6"]
