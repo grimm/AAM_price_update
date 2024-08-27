@@ -18,6 +18,7 @@ def do_hus(vendor_pandas, tech_cal):
 
     vendor_pandas = vendor_pandas[(vendor_pandas["MAP Retail"] != "Removed")]
     vendor_pandas = vendor_pandas[(vendor_pandas["AAM Cost"] != "")]
+    vendor_pandas = vendor_pandas[(vendor_pandas["AAM Cost"] != "They are working on cost")]
     vendor_pandas = vendor_pandas.reset_index(drop=True)
 
     # Create new Status/NewPart columns

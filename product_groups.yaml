@@ -469,6 +469,11 @@ bignew:
   "universal bed rails": 0
 
 tech:
+  "Cargo Liner With Bumper Protector ": 1
+  "FridgeMat": 1
+  "All -Purpose Mat": 1
+  "FloorLiner 1st Row - Over The Hump": 1
+  "StairEdge ": 0
   "Drink Coasters 4\" Square ": 0
   "Home Surface Protectors 8\" Square ": 0
   "Home Surface Protectors 12\" Square ": 0
@@ -862,6 +867,10 @@ tech:
   "weathertech water bottle": 0
 
 trux:
+  "RealTruck Elevate - Cargo Basket - Standard": 0
+  "RealTruck Elevate Cargo Basket - Narrow": 0
+  "RealTruck Elevate - Kayak Carrier": 0
+  "Lo Pro Tonneau Cover, International": 0
   "Real Truck - Elevate Load Stops (set of 4)": 0
   "RealTruck - Elevate Side Bar Long (50\" inside measurement upright to upright)": 0
   "RealTruck - Elevate Side Bar Short (32\" inside measurement upright to upright)": 0
@@ -982,6 +991,13 @@ trux:
   "universal tailgate seal : 200' spool": 0
 
 wes:
+  "Retrofit Kit": 0
+  "HDX Bandit Front Bumper": 0
+  "HDX Modular Winch Mount Grille Guard": 0
+  "HDX Modular Grille Guard": 0
+  "HDX Winch Mount Grille Guard": 0
+  "2024 Retrofit Kit for Sportsman X Grille Guard": 0
+  "2024 Retrofit Kit for HDX Modular Grille Guard": 0
   "Outlaw Running Board": 0
   "Pro-e Running Board": 0
   "Truck Bed Mat Black": 4

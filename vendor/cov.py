@@ -20,12 +20,14 @@ def do_cov(vendor_pandas, tech_cal):
     # print(skus_list)
 
     # Remove promotional stuff
+    # vendor_pandas = vendor_pandas[(vendor_pandas["Code / Part # / Series"].isin(skus_list))]
     vendor_pandas = vendor_pandas[(vendor_pandas["Part Number"].isin(skus_list))]
     vendor_pandas = vendor_pandas.reset_index(drop=True)
 
 
     # Create new Status/NewPart columns
     vendor_pandas['NewPart'] = vendor_pandas['Part Number'].astype(str)
+    # vendor_pandas['NewPart'] = vendor_pandas['Code / Part # / Series'].astype(str)
     vendor_pandas["NewPart"] = vendor_pandas["NewPart"].apply(lambda x: "COV" + x)
     
     # Create new description columns
@@ -49,6 +51,7 @@ def do_cov(vendor_pandas, tech_cal):
     vendor_pandas["P3"] = vendor_pandas["Jobber"].astype(float)
     # vendor_pandas["P5"] = vendor_pandas["New Cost"].astype(float)
     vendor_pandas["P5"] = vendor_pandas["Cost"].astype(float)
+    # vendor_pandas["P5"] = vendor_pandas["New Net"].astype(float)
     vendor_pandas["P4"] = vendor_pandas["P5"] / tech_cal["P4"]
 
     # Set dimensions and status

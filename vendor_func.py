@@ -117,6 +117,8 @@ def vendor_func(vendor_name):
 	    import vendor.fil as vendor
 	elif vendor_name == "fire":
 	    import vendor.fire as vendor
+	elif vendor_name == "fish":
+	    import vendor.fish as vendor
 	elif vendor_name == "fpm":
 	    import vendor.fpm as vendor
 	elif vendor_name == "golite":
@@ -197,6 +199,8 @@ def vendor_func(vendor_name):
 	    import vendor.pc as vendor
 	elif vendor_name == "piaa":
 	    import vendor.piaa as vendor
+	elif vendor_name == "phoe":
+	    import vendor.phoe as vendor
 	elif vendor_name == "pj":
 	    import vendor.pj as vendor
 	elif vendor_name == "prime":
@@ -239,6 +243,8 @@ def vendor_func(vendor_name):
 	    import vendor.stlc as vendor
 	elif vendor_name == "sup":
 	    import vendor.sup as vendor
+	elif vendor_name == "tfi":
+	    import vendor.tfi as vendor
 	elif vendor_name == "tfp":
 	    import vendor.tfp as vendor
 	elif vendor_name == "tft":

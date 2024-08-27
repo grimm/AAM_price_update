@@ -30,7 +30,7 @@ def do_knk(vendor_pandas, group_code, tech_cal):
       #         jobsite_pandas["Auth."][index] = jobsite_pandas["Select\nTier 1"][index]
 
       # jobsite_pandas["Select\nTier 1"] = jobsite_pandas["Auth."]
-      jobsite_pandas["Select\nTier 1"] = jobsite_pandas["Select\nTier 2"]
+      # jobsite_pandas["Select\nTier 1"] = jobsite_pandas["Select\nTier 2"]
 
       # new_column = list("j" * sheetlen)
       # jobsite_pandas["type"] = new_column
@@ -62,7 +62,7 @@ def do_knk(vendor_pandas, group_code, tech_cal):
     vendor_pandas = pd.concat(frames)
 
     # Find all XX and XXX parts and expand them
-    for index, item in enumerate(vendor_pandas["PART NUMBER"]):
+    for index, item in enumerate(vendor_pandas["PART NUMBER"].astype(str)):
       if item[-2:] == "XX":
         for key, value in group_code.items():
           if item == key:
@@ -112,7 +112,8 @@ def do_knk(vendor_pandas, group_code, tech_cal):
 
     vendor_pandas["P3"] = vendor_pandas["P3"].apply(lambda x: float(x))
 
-    vendor_pandas["P5"] = vendor_pandas["Select\nTier 1"]
+    # vendor_pandas["P5"] = vendor_pandas["Select\nTier 1"]
+    vendor_pandas["P5"] = vendor_pandas["Select Tier 2"]
 
     # Replace missing values in P5
     for index, item in enumerate(vendor_pandas["P5"]):

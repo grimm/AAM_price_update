@@ -19,6 +19,7 @@ def do_wes(vendor_pandas, prod_group, tech_cal, new_cal):
     # Remove N/A parts
     vendor_pandas = vendor_pandas[(vendor_pandas["Jobber"] != "N/A")]
     vendor_pandas = vendor_pandas[(vendor_pandas["Jobber"] != "")]
+    vendor_pandas = vendor_pandas[(vendor_pandas["AAM Cost"] != "")]
     vendor_pandas = vendor_pandas.reset_index(drop=True)
 
     # Put really long header text in some vars

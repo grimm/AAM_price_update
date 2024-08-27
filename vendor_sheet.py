@@ -13,7 +13,7 @@ def set_excel(vendor):
   csvfile = 0
   
   # Set skiprow or default to 1
-  if (vendor == "tech") | (vendor == "west") | (vendor == "sb") | (vendor == "fil") | (vendor == "mass") | (vendor == "rcs") | (vendor == "and") | (vendor == "yak") | (vendor == "cbp") | (vendor == "cog") | (vendor == "cipa") | (vendor == "pc") | (vendor == "tfp") | (vendor == "maxx") | (vendor == "rfn") | (vendor == "pull") | (vendor == "mag") | (vendor == "edge") | (vendor == "dia") | (vendor == "sup") | (vendor == "cov") | (vendor == "tom") | (vendor == "aci") | (vendor == "vms") | (vendor == "federal") | (vendor == "aac") | (vendor == "myp") | (vendor == "cmf") | (vendor == "3du") | (vendor == "sky") | (vendor == "protec") | (vendor == "knkm") | (vendor == "road") | (vendor == "bil") | (vendor == "anz"):
+  if (vendor == "tech") | (vendor == "west") | (vendor == "sb") | (vendor == "fil") | (vendor == "mass") | (vendor == "rcs") | (vendor == "and") | (vendor == "yak") | (vendor == "cbp") | (vendor == "cog") | (vendor == "cipa") | (vendor == "pc") | (vendor == "tfp") | (vendor == "maxx") | (vendor == "rfn") | (vendor == "pull") | (vendor == "mag") | (vendor == "edge") | (vendor == "dia") | (vendor == "sup") | (vendor == "cov") | (vendor == "tom") | (vendor == "aci") | (vendor == "vms") | (vendor == "federal") | (vendor == "aac") | (vendor == "myp") | (vendor == "cmf") | (vendor == "3du") | (vendor == "sky") | (vendor == "protec") | (vendor == "knkm") | (vendor == "road") | (vendor == "anz"):
 
     skiprow = 0
   elif (vendor == "mas") | (vendor == "kc") | (vendor == "fire") | (vendor == "kln") | (vendor == "truxm") | (vendor == "buy") | (vendor == "snow") | (vendor == "prime") | (vendor == "knp") | (vendor =="tft") | (vendor == "wick"):
@@ -22,18 +22,20 @@ def set_excel(vendor):
     skiprow = 3
   elif (vendor == "kar") | (vendor == "golite") | (vendor == "arc") | (vendor == "adu"):
     skiprow = 4
-  elif (vendor == "gorm") | (vendor == "ecco") | (vendor == "bigm") | (vendor == "arb"):
+  elif (vendor == "gorm") | (vendor == "ecco") | (vendor == "bigm") | (vendor == "arb") | (vendor == "tfi"):
     skiprow = 5
-  elif (vendor == "btr") | (vendor == "knk"):
+  elif (vendor == "btr"):
     skiprow = 6
-  elif (vendor == "piaa") | (vendor == "tim"):
+  elif (vendor == "tim") | (vendor == "fish"):
     skiprow = 7
-  # elif (vendor == "pj"):
-  #   skiprow = 8
+  elif (vendor == "knk"):
+    skiprow = 8
   elif (vendor == "ult") | (vendor == "pj"):
     skiprow = 9
-  elif (vendor == "qf"):
+  elif (vendor == "qf") | (vendor == "piaa"):
     skiprow = 10
+  elif (vendor == "phoe"):
+    skiprow = 12
   elif (vendor == "autc"):
     skiprow = 13
   elif vendor == "kso":
@@ -61,7 +63,8 @@ def set_excel(vendor):
 
   if vendor == "knk":
     # multisheet = ["Jobsite", "Van", "Truck"]
-    multisheet = ["Van", "Truck"]
+    multisheet = ["Jobsite"]
+    # multisheet = ["Van", "Truck"]
 
   if vendor == "mrw":
     multisheet = ["WHEELS", "ACCESSORIES"]
@@ -74,6 +77,9 @@ def set_excel(vendor):
 
   if vendor == "wick":
     multisheet = ["Cab Racks", "Cab Rack Acc", "XBOX Single Lid", "XBOX Dual Lid", "IBOX Box"]
+
+  if vendor == "fish":
+    multisheet = ["BLADE-ATTACHMENT", "MOUNT KITS", "MOUNT KITS 2", "ELECTRICAL", "PLOW ACCESSORIES PG. 1", "PLOW ACCESSORIES PG. 2", "CUTTING EDGES", "TAILGATE SPREADERS", "HOPPER SPREADERS & PREWET", "SPREADER ACCESSORIES", "SIDEWALKS", "Plows - HD UTV", "Plows - MD UTV", "Plows -Subcompact Tractor", "Plows - Skid Steer", "Plows - Tractor", "Skid and Tractor Plow Accs", "Pusher Plows", "Hopper Spreaders", "Tailgate Spreaders (2)", "Drop Spreaders", "Sidewalk Management", "Additional Accessories"]
 
   #if vendor == "fire":
   #  multisheet = ["UMP Monitored ", " Not Monitored "]
@@ -92,8 +98,8 @@ def set_excel(vendor):
     sheetname = "Complete Price Listing"
   # if vendor == "yak":
   #   sheetname = "Part Info"
-  if vendor == "btr":
-    sheetname = "Better Built"
+  # if vendor == "btr":
+  #   sheetname = "Better Built"
 
   if (vendor == "dia") | (vendor == "edge") | (vendor == "sup"):
     sheetname = "Active"

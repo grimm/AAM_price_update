@@ -55,6 +55,7 @@ def do_curt(vendor_pandas, tech_cal):
 
     vendor_pandas.index = range(len(vendor_pandas.index))
     
+    # Correct for missing P2 prices
     for index, item in enumerate(vendor_pandas["MAP Retail"]):
         #print(index)
         if item == "Removed" or item == "0" or item == "" or item == "Enforced MAP Removed":

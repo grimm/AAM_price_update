@@ -39,7 +39,8 @@ def do_baja(vendor_pandas, tech_cal):
     # Create all price fields
     vendor_pandas["P1"] = vendor_pandas["MSRP/List"].astype(float)
     # vendor_pandas["P1"] = vendor_pandas["list_price"].astype(float) # ASAP
-    vendor_pandas["P2"] = vendor_pandas["MAP Retail"].astype(float)
+    # vendor_pandas["P2"] = vendor_pandas["MAP Retail"].astype(float)
+    vendor_pandas["P2"] = vendor_pandas["MAP Retail"]
     # vendor_pandas["P2"] = vendor_pandas["P1"] # ASAP
     vendor_pandas["P3"] = vendor_pandas["Jobber"]
     # vendor_pandas["P3"] = vendor_pandas["P1"] # ASAP
@@ -48,6 +49,10 @@ def do_baja(vendor_pandas, tech_cal):
     vendor_pandas["P4"] = (vendor_pandas["P5"] / tech_cal["P4"]).astype(float)
     # vendor_pandas["P4"] = vendor_pandas["P5"] / tech_cal["P4"] # ASAP
 
+    for index, item in enumerate(vendor_pandas["P2"]):
+      if item == "":
+        vendor_pandas["P2"][index] = vendor_pandas["P1"][index]
+    
     # Set dimensions and status
     vendor_pandas["Weight"] = vendor_pandas["Weight - IN POUNDS"].replace("", "0").replace("TBD", "0").astype(float)
     # vendor_pandas["Weight"] = vendor_pandas["weight"].astype(float) # ASAP

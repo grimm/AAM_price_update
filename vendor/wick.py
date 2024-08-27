@@ -54,6 +54,11 @@ def do_wick(vendor_pandas, tech_cal):
     vendor_pandas['Part Number'] = vendor_pandas['Item #'].astype(str)
     vendor_pandas["NewPart"] = vendor_pandas["Part Number"].apply(lambda x: "WICK" + x)
     
+    # Remove asterix from description
+    for index, item in enumerate(vendor_pandas["Description"]):
+        if item[:1] == "*":
+            vendor_pandas["Description"][index] = item[2:]
+
     # Create new description columns
     vendor_pandas["Desc1"] = vendor_pandas["Description"].astype(str)
     vendor_pandas["Desc1"] = vendor_pandas["Desc1"].apply(lambda x: unidecode.unidecode(x))
